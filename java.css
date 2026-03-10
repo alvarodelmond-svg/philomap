@@ -1,0 +1,35 @@
+/* seção de recomendação filosófica */
+
+section{
+    background: white;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+}
+
+/* botão de recomendação */
+
+#botaoRecomendacao{
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* efeito quando passa o mouse */
+
+#botaoRecomendacao:hover{
+    background-color: #555;
+}
+
+/* texto da recomendação */
+
+#recomendacao{
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
