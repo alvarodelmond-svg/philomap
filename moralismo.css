@@ -1,0 +1,18 @@
+/* Este arquivo muda APENAS as cores da página de Moralismo */
+
+header {
+    background-color: #4b0000; /* Um vinho bem escuro em vez de preto */
+}
+
+article {
+    border-left: 10px solid #8b0000; /* Borda vinho escuro */
+    background-color: #fffaf0;       /* Um fundo "creme" bem leve para o card */
+}
+
+h2, h3 {
+    color: #4b0000; /* Títulos combinando com o header */
+}
+
+.foto-filosofo {
+    border-color: #8b0000; /* Borda da foto em vinho */
+}
