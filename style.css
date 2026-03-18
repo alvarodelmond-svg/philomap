@@ -40,42 +40,44 @@ nav a {
 }
 
 main {
-    width: 90%;
-    max-width: 800px;
-    margin: 40px 0;
+    width: 95%;           /* Ocupa 95% da largura da tela */
+    max-width: 1300px;    /* Aumentamos o limite de 800px para 1300px */
+    margin: 40px auto;    /* Centraliza o bloco gigante */
 }
 
 article {
-    background-color: #ffffff; /* Card branco */
-    padding: 40px;
+    background-color: #ffffff;
+    padding: 50px;        /* Aumentamos o respiro interno do card */
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border-left: 10px solid #000000; /* Borda preta da logo */
+    border-left: 15px solid #000000; /* Borda lateral mais grossa para combinar */
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 2.8rem;    /* Títulos bem maiores */
+    color: #000000;
+    text-align: center;
     margin-bottom: 30px;
 }
 
-h2, h3 {
-    color: #000000;
-    text-align: center;
-}
-
 p {
+    font-size: 1.3rem;    /* Texto de leitura maior (1.3rem) */
     color: #333333;
-    line-height: 1.6;
+    line-height: 1.8;     /* Mais espaço entre as linhas para facilitar a leitura */
     text-align: justify;
 }
 
 /* O SEGREDO PARA AS FOTOS APARECEREM */
 .foto-filosofo {
     display: block;
-    margin: 20px auto;
-    width: 220px; 
-    height: 220px;
+    margin: 30px auto;
+    width: 320px;         /* Aumentamos de 220px para 320px */
+    height: 320px;        /* Mantém o círculo */
     object-fit: cover;
     border-radius: 50%;
-    border: 5px solid #000000;
-    filter: grayscale(100%); /* Fotos em P&B para combinar com a logo */
-    transition: 0.3s;
+    border: 8px solid #000000; /* Borda mais imponente */
+    filter: grayscale(100%);
 }
 
 .foto-filosofo:hover {
@@ -90,11 +92,10 @@ hr {
 }
 
 .imagem-banner {
-    display: block;      /* Transforma em bloco para permitir centralização */
-    margin: 20px auto;   /* Margem automática nas laterais centraliza o bloco */
-    width: 100%;         
-    max-width: 600px;    /* Ajusta o tamanho horizontal */
-    border-radius: 8px;  
-    border: 3px solid #000000; /* Mantém a borda preta para combinar com o tema */
-    /* A LINHA DE FILTRO FOI REMOVIDA PARA MANTER A COR */
+    width: 100%;          /* O banner agora atravessa o card de ponta a ponta */
+    height: auto;
+    max-height: 500px;    /* Limita a altura para não precisar rolar demais */
+    object-fit: cover;    /* Corta a imagem de forma inteligente */
+    border-radius: 8px;
+    margin-bottom: 30px;
 }
