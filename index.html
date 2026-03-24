@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>PhiloMap | Minimalist Philosophy</title>
+=======
+    <title>PhiloMap | Portal de Filosofia</title>
+>>>>>>> 2a894cc (atividade de imersão em java)
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<<<<<<< HEAD
     <header>
         <div class="container header-container">
             <div class="logo-area" onclick="mostrarSecao('home')">
@@ -179,5 +184,75 @@
 
     <script src="db.js"></script>
     <script src="controller.js"></script>
+=======
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo-text">PhiloMap</div>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Pesquisar conceitos...">
+                <button class="search-btn">🔍</button>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="etica.html">Ética</a></li>
+                    <li><a href="logica.html">Lógica</a></li>
+                    <li><a href="moralismo.html">Moralismo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 60px 0;">
+        
+        <!-- Box de Boas-vindas -->
+        <section class="content-box">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                <div>
+                    <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px;">Explore o Pensamento</h1>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem;">O PhiloMap é uma plataforma dedicada a mapear e explicar os fundamentos da filosofia de forma clara e estruturada.</p>
+                </div>
+                <div class="image-box">
+                    <img src="https://escuelandalusi.es/wp-content/uploads/2019/01/5-768x492.png" alt="Filosofia">
+                </div>
+            </div>
+        </section>
+
+        <!-- Box de Recomendações -->
+        <section class="content-box" style="text-align: center;">
+            <h2 style="text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; color: var(--text-secondary);">Dica de Hoje</h2>
+            <div id="recommendationDisplay" style="min-height: 80px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 300;">
+                <span style="opacity: 0.5;">Clique no botão abaixo para gerar...</span>
+            </div>
+            <button id="btnRecommend" class="btn-primary" style="margin: 0 auto;">Gerar Recomendação</button>
+        </section>
+
+        <!-- Grade de Conceitos em Boxes -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <article class="content-box">
+                <h3 style="color: #fff;">Ética</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary);">Reflexão crítica sobre os valores e princípios que orientam a conduta humana na sociedade.</p>
+                <a href="etica.html" style="color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #fff; width: fit-content;">Explorar</a>
+            </article>
+
+            <article class="content-box">
+                <h3 style="color: #fff;">Lógica</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary);">O estudo das leis do raciocínio e da validade dos argumentos e do pensamento formal.</p>
+                <a href="logica.html" style="color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #fff; width: fit-content;">Explorar</a>
+            </article>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>2024 PHILOMAP — DESENVOLVIDO POR ALVARO E PEDRO</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+>>>>>>> 2a894cc (atividade de imersão em java)
 </body>
 </html>

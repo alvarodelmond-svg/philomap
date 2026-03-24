@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* 
  * PhiloMap - Premium Minimalist B&W Style
  */
@@ -301,3 +302,133 @@ input:focus, textarea:focus {
     .concept-box { padding: 2rem; }
     .logo-header { height: 80px; }
 }
+=======
+/* STYLE.CSS - PADRÃO MONOCROMÁTICO (PRETO E BRANCO) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+:root {
+    --bg: #000000;
+    --card-bg: #111111;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent: #ffffff;
+    --border: #333333;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+    background-color: var(--bg); 
+    color: var(--text-primary); 
+    font-family: 'Inter', sans-serif; 
+    line-height: 1.6;
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 0 25px; }
+
+/* Header Minimalista */
+.main-header { 
+    height: 80px; background: rgba(0,0,0,0.9); 
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.header-content { display: flex; justify-content: space-between; width: 100%; align-items: center; }
+
+.logo-text { font-weight: 800; font-size: 1.4rem; letter-spacing: -1px; text-transform: uppercase; }
+
+.nav-links { display: flex; gap: 30px; list-style: none; }
+.nav-links a { 
+    color: var(--text-secondary); text-decoration: none; 
+    font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    transition: var(--transition);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+
+/* Botões e Interações */
+.btn-primary { 
+    background: #ffffff; color: #000000; border: none; padding: 14px 30px; 
+    border-radius: 4px; font-weight: 800; cursor: pointer; transition: var(--transition);
+    text-transform: uppercase; font-size: 0.8rem;
+}
+
+.btn-primary:hover { transform: scale(1.02); filter: invert(0.1); }
+
+/* Barra de Pesquisa Minimalista */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 15px;
+    transition: var(--transition);
+}
+
+.search-container:focus-within {
+    border-color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    padding: 8px;
+    outline: none;
+    font-size: 0.85rem;
+    width: 200px;
+}
+
+.search-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.search-btn:hover { color: #fff; }
+
+/* Box Layout - Caixas de Conteúdo */
+.content-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 40px;
+    margin-bottom: 30px;
+    transition: var(--transition);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.content-box:hover {
+    border-color: #555;
+}
+
+.image-box {
+    border: 1px solid var(--border);
+    padding: 10px;
+    background: #000;
+    display: inline-block;
+    line-height: 0;
+}
+
+.image-box img {
+    width: 100%;
+    filter: grayscale(100%);
+    transition: var(--transition);
+}
+
+.image-box:hover img {
+    filter: grayscale(0%);
+}
+
+/* Footer Ajustado */
+footer { padding: 60px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.8rem; letter-spacing: 1px; }
+>>>>>>> 2a894cc (atividade de imersão em java)

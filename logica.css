@@ -1,0 +1,19 @@
+/* LOGICA.CSS - MONOCROMÁTICO */
+@import url('style.css');
+
+.grid-layout { 
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 100px 0;
+}
+
+.intro-logica h2 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
+
+.concept-box { 
+    border: 1px solid var(--border); padding: 40px; 
+    transition: var(--transition);
+}
+
+.concept-box:hover { border-color: #ffffff; background: #080808; }
+
+.concept-number { font-size: 3rem; font-weight: 800; opacity: 0.1; margin-bottom: -20px; display: block; }
+.concept-title { font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 10px; }
+.concept-desc { color: var(--text-secondary); font-size: 0.95rem; }
