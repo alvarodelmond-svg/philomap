@@ -46,3 +46,6 @@ areaRecomendacao.innerHTML =
 `<strong>${item.tipo}</strong>: ${item.titulo} <br> ${item.autor}`;
 
 }
+function toggleMenu(){
+    document.querySelector(".menu-lateral").classList.toggle("ativo");
+}
