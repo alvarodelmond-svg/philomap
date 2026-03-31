@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio PhiloMap | O Pesadelo da UX</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+        :root {
+            --bg: #000;
+            --text: #fff;
+            --border: #333;
+        }
+
+        body { 
+            font-family: 'Comic Neue', cursive; 
+            background: var(--bg); 
+            color: var(--text); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0; 
+            overflow: hidden;
+            transition: background 0.1s;
+        }
+
+        .chaos-card { 
+            background: #111; 
+            border: 5px solid #ff00ff; 
+            padding: 40px; 
+            border-radius: 20px; 
+            max-width: 450px; 
+            width: 100%; 
+            position: relative; 
+            box-shadow: 0 0 50px #ff00ff;
+            transform: rotate(-2deg);
+            z-index: 10;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        .shaking { animation: shake 0.5s; animation-iteration-count: infinite; }
+
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-size: 1.2rem; color: #00ffff; text-shadow: 2px 2px #ff00ff; margin-bottom: 15px; text-transform: uppercase; text-align: center; }
+        
+        .chaos-controls { display: flex; flex-direction: column; gap: 20px; }
+        .chaos-item { display: flex; align-items: center; gap: 15px; font-size: 1rem; color: #ffff00; }
+        
+        input[type="range"] { 
+            width: 100%; 
+            cursor: help;
+            filter: hue-rotate(90deg);
+        }
+
+        .btn-chaos { 
+            background: #ff00ff; 
+            border: none; 
+            color: #fff; 
+            padding: 10px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            width: 100px;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        }
+
+        .btn-chaos-move { 
+            position: relative; 
+            background: #ff4444; 
+            color: #fff; 
+            border: 3px solid #fff; 
+            padding: 12px 20px; 
+            font-size: 0.9rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            box-shadow: 5px 5px 0px #000;
+            z-index: 100;
+        }
+
+        .btn-chaos-move.tired {
+            background: #44ff44 !important;
+            color: #000 !important;
+            box-shadow: none;
+            transform: scale(1.2);
+            border-color: #000;
+        }
+
+        .btn-chaos-move.spinning {
+            background: #ffff00 !important;
+            color: #000 !important;
+            animation: pulse 0.2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .final-display { 
+            margin-top: 25px; 
+            padding: 15px; 
+            background: #000; 
+            font-family: 'Courier New', monospace; 
+            font-size: 1.1rem; 
+            text-align: center; 
+            border: 2px dashed #00ffff;
+            color: #00ffff;
+        }
+
+        .btn-save { 
+            background: #ffff00; 
+            color: #000; 
+            border: none; 
+            padding: 15px; 
+            width: 100%; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: 5px; 
+            cursor: pointer; 
+            margin-top: 20px;
+        }
+
+        #attempts-text { font-size: 0.8rem; color: #ff0000; font-weight: bold; }
+
+        .taunt {
+            position: absolute;
+            color: #fff;
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1000;
+            animation: fadeOut 1s forwards;
+            text-shadow: 2px 2px #000;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-50px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chaos-card" id="chaos-card">
+        <div class="form-group">
+            <label>ROLE SEU ANO DE NASCIMENTO!</label>
+            <div class="chaos-controls">
+                <div class="chaos-item">
+                    <span>DIA:</span>
+                    <input type="range" id="chaos-day" min="1" max="31" value="1">
+                </div>
+                
+                <div class="chaos-item">
+                    <span>MÊS:</span>
+                    <button type="button" id="chaos-month-btn" class="btn-chaos">JAN</button>
+                </div>
+
+                <div class="chaos-item" style="flex-direction: column; align-items: center;">
+                    <div style="margin-bottom: 10px;">
+                        <span>ANO:</span>
+                        <span id="chaos-year-display" style="font-size: 2.5rem; color: #00ff00; font-family: 'Courier New', monospace;">1900</span>
+                    </div>
+                    <button type="button" id="chaos-year-btn" class="btn-chaos-move">ME CLICA!</button>
+                </div>
+                
+                <div style="text-align: center;">
+                    <span id="attempts-text">HUMILHAÇÕES: 0</span>
+                    <p id="hint-text" style="font-size: 0.7rem; color: #ff00ff; font-weight: bold; margin-top: 5px;"></p>
+                </div>
+            </div>
+            
+            <div class="final-display" id="display-container">
+                DATA FINAL: <span id="selected-date">01/JAN/1900</span>
+            </div>
+            
+            <button class="btn-save" onclick="salvarData()">SALVAR ESTA OBRA DE ARTE</button>
+        </div>
+    </div>
+
+    <script src="db.js"></script>
+    <script>
+        let dia = 1; let mesIdx = 0; let ano = 1900; let tentativas = 0;
+        let isTired = false;
+        let isSpinning = false;
+        let spinInterval;
+
+        const meses = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"];
+        const taunts = ["ERROU!", "QUASE!", "TÁ LENTO!", "TENTA DE NOVO!", "KKKKKKKK", "DÁ PENA...", "MEU PET CLICA MELHOR", "OPS!", "NÃO FOI DESSA VEZ"];
+
+        const card = document.getElementById('chaos-card');
+        const yearBtn = document.getElementById('chaos-year-btn');
+        const yearDisplay = document.getElementById('chaos-year-display');
+        const body = document.body;
+        const hint = document.getElementById('hint-text');
+
+        document.getElementById('chaos-day').oninput = (e) => { 
+            dia = e.target.value; 
+            update(); 
+            body.style.filter = `invert(${Math.random() * 0.2})`;
+            setTimeout(() => body.style.filter = 'none', 50);
+        };
+        
+        document.getElementById('chaos-month-btn').onclick = function() {
+            if (isSpinning) return;
+            mesIdx = (mesIdx + 1) % 12;
+            this.innerText = meses[mesIdx];
+            update();
+        };
+
+        yearBtn.onmouseover = function(e) {
+            if (isTired || isSpinning) return; 
+
+            tentativas++;
+            document.getElementById('attempts-text').innerText = `HUMILHAÇÕES: ${tentativas}`;
+            
+            if (tentativas % 10 === 0) {
+                becomeTired();
+                return;
+            }
+
+            card.classList.add('shaking');
+            body.style.background = `rgb(${Math.random()*50}, ${Math.random()*50}, ${Math.random()*50})`;
+            
+            const rect = card.getBoundingClientRect();
+            const newX = Math.random() * (rect.width - this.offsetWidth - 40) + 20;
+            const newY = Math.random() * (rect.height - this.offsetHeight - 40) + 20;
+            
+            this.style.position = 'absolute';
+            this.style.left = `${newX}px`;
+            this.style.top = `${newY}px`;
+
+            setTimeout(() => card.classList.remove('shaking'), 500);
+        };
+
+        function becomeTired() {
+            isTired = true;
+            yearBtn.classList.add('tired');
+            yearBtn.innerText = "CLICA AGORA!";
+            hint.innerText = "O BOTÃO CANSOu! GIRE A ROLETA!";
+            
+            setTimeout(() => {
+                if (!isSpinning) {
+                    isTired = false;
+                    yearBtn.classList.remove('tired');
+                    yearBtn.innerText = "ME CLICA!";
+                    hint.innerText = "";
+                }
+            }, 3000); 
+        }
+
+        yearBtn.onclick = function() {
+            if (!isTired && !isSpinning) return;
+
+            if (!isSpinning) {
+                // Inicia a Roleta
+                isSpinning = true;
+                isTired = false;
+                yearBtn.classList.remove('tired');
+                yearBtn.classList.add('spinning');
+                yearBtn.innerText = "PARAR!!";
+                hint.innerText = "CLIQUE NO MOMENTO CERTO!";
+                
+                spinInterval = setInterval(() => {
+                    ano++;
+                    if (ano > 2024) ano = 1900;
+                    yearDisplay.innerText = ano;
+                    update();
+                }, 200); // 200ms para ser humanamente possível
+            } else {
+                // Para a Roleta
+                clearInterval(spinInterval);
+                isSpinning = false;
+                yearBtn.classList.remove('spinning');
+                yearBtn.innerText = "GIRAR DE NOVO?";
+                yearBtn.style.position = 'static';
+                hint.innerText = "CONSEGUIU? SE NÃO, TENTE DE NOVO!";
+                
+                // Forçar o botão a voltar a fugir após 2 segundos
+                setTimeout(() => {
+                    if (!isSpinning) {
+                        tentativas = 0;
+                        document.getElementById('attempts-text').innerText = `HUMILHAÇÕES: 0`;
+                        yearBtn.innerText = "ME CLICA!";
+                    }
+                }, 2000);
+            }
+        };
+
+        function update() {
+            const d = String(dia).padStart(2, '0');
+            document.getElementById('selected-date').innerText = `${d}/${meses[mesIdx]}/${ano}`;
+        }
+
+        async function salvarData() {
+            if (isSpinning) {
+                alert("PARE A ROLETA PRIMEIRO, APRESSADINHO!");
+                return;
+            }
+            const dataObjeto = {
+                tipo: "Atividade Roleta do Caos",
+                dataNascimento: `${ano}-${String(mesIdx + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`,
+                tentativas: tentativas,
+                dataRegistro: new Date().toLocaleString('pt-BR')
+            };
+
+            try {
+                if(typeof adicionarItem === 'function') {
+                    await adicionarItem(dataObjeto);
+                    alert("FINALMENTE! Sua data foi salva. Você é um mestre da paciência.");
+                    location.reload();
+                } else {
+                    alert("Erro: db.js não encontrado.");
+                }
+            } catch (e) { alert("Erro ao salvar."); }
+        }
+    </script>
+</body>
+</html>
