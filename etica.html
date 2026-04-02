@@ -3,55 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap - Ética</title>
-    <link rel="stylesheet" href="style.css">
+    <title>PhiloMap | Ética</title>
+    <link rel="stylesheet" href="etica.css">
 </head>
 <body>
-    <header>
-        <h1>Ética</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="etica.html">Ética</a></li>
-                <li><a href="logica.html">Lógica</a></li>
-                <li><a href="moralismo.html">Moralismo</a></li>
-                <li><a href="felicidade.html">Felicidade</a></li>
-            </ul>
-        </nav>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo-text">PhiloMap</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="etica.html" class="active">Ética</a></li>
+                    <li><a href="logica.html">Lógica</a></li>
+                    <li><a href="moralismo.html">Moralismo</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <article>
-            <h2>O que é Ética?</h2>
-            <p>A ética ou filosofia moral é uma área de conhecimento que tem como objeto de investigação as ações humanas e seus princípios orientadores. Toda cultura e toda sociedade estabelece-se baseada em valores definidos a partir de uma interpretação do que é o bem e o mal, o certo e o errado.</p>
-            <p>O termo “ética” tem sua origem na Grécia antiga, na palavra <em>ethos</em>, e possui um duplo significado: por um lado representa os costumes e hábitos, e por outro o caráter e a índole dos indivíduos.</p>
-        </article>
+    <main class="container etica-main">
+        <article class="card-texto">
+            <span class="subtitulo">Conceitos Fundamentais</span>
+            <h1>Ética e Valores</h1>
+            
+            <p>A ética é o ramo da filosofia que busca entender os princípios que orientam o <strong>comportamento humano</strong>. Diferente da moral, que se baseia em costumes, a ética é uma reflexão crítica sobre o que é "bom" ou "justo".</p>
 
-        <article>
-            <h2>Pensadores Fundamentais</h2>
+            <blockquote class="citacao-destaque">
+                "A excelência não é um ato, mas um hábito." — Aristóteles
+            </blockquote>
 
-            <section class="pensador">
-                <h3>1. Aristóteles</h3>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg" alt="Aristóteles" class="foto-filosofo">
-                <p>Aristóteles (384 a.C. - 322 a.C.) traz avanços para o desenvolvimento da ética como uma área própria do conhecimento. Em sua obra <em>Ética a Nicômaco</em>, ele investiga os princípios que orientam as ações e o que seria uma vida virtuosa, focada na felicidade e na prudência.</p>
-            </section>
-
-            <hr>
-
-            <section class="pensador">
-                <h3>2. Maquiavel</h3>
-                <img src="https://th.bing.com/th/id/OIP.BaGyfHbVJ58CKar8H4zW9gHaFj?w=208&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" class="foto-filosofo">
-                <p>Nicolau Maquiavel (1469-1527), em sua obra <em>O Príncipe</em>, foi responsável pela dissociação da ética dos indivíduos da ética do Estado. Ele criou uma distinção entre a virtude moral e a virtude política, rompendo com a tradição da Idade Média.</p>
-            </section>
-
-            <hr>
-
-            <section class="pensador">
-                <h3>3. Kant</h3>
-                <img src="https://th.bing.com/th/id/OIP.XK-SLJX6RElRqXq-m8_F2wHaIW?w=208&h=235&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Kant" class="foto-filosofo">
-                <p>Immanuel Kant elaborou um modelo ético em que a razão é o fundamento primordial. O imperativo categórico proposto por Kant guia as ações humanas através da máxima: <em>"Age de tal maneira que a máxima de sua ação possa ser tomada como máxima universal."</em></p>
-            </section>
+            <p>Em nosso projeto, exploramos como esses valores moldam a sociedade contemporânea e como as escolhas individuais impactam o coletivo. Abaixo, veja os pilares que sustentam este estudo:</p>
+            
+            <div style="margin-top: 40px; display: grid; gap: 20px;">
+                <div style="border-top: 1px solid #333; padding-top: 20px;">
+                    <h3 style="margin-bottom: 10px; color: #fff;">01. Deontologia</h3>
+                    <p style="font-size: 0.95rem;">O dever como base das escolhas morais, popularizado por Immanuel Kant.</p>
+                </div>
+                <div style="border-top: 1px solid #333; padding-top: 20px;">
+                    <h3 style="margin-bottom: 10px; color: #fff;">02. Utilitarismo</h3>
+                    <p style="font-size: 0.95rem;">A busca pela maior felicidade para o maior número de pessoas.</p>
+                </div>
+            </div>
         </article>
     </main>
+
+    <footer>
+        <div class="container">
+            <p>2024 PHILOMAP — FILOSOFIA E TECNOLOGIA</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

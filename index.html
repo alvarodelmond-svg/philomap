@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap - Início</title>
+    <title>PhiloMap | Portal de Filosofia</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark-mode"> <!-- Começa no dark mode por padrão -->
 
     <header>
-        <h1>PhiloMap</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="etica.html">Ética</a></li>
-                <li><a href="logica.html">Lógica</a></li>
-                <li><a href="moralismo.html">Moralismo</a></li>
-                <li><a href="felicidade.html">Felicidade</a></li>
-                <li><a href="metafísica.html">Metafísica</a></li>
-                <li><a href="epistemologia.html">Epistemologia</a></li>
-                <li><a href="referências.html">Referências</a></li>
-            </ul>
-        </nav>
+        <div class="container header-container">
+            <div class="logo-area" onclick="mostrarSecao('home')">
+                <img src="logo-site.svg" class="logo-header" alt="PhiloMap Logo">
+                <h1>PhiloMap</h1>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><button onclick="mostrarSecao('home')" class="nav-btn">Início</button></li>
+                    <li><button onclick="mostrarSecao('etica')" class="nav-btn">Ética</button></li>
+                    <li><button onclick="mostrarSecao('logica')" class="nav-btn">Lógica</button></li>
+                    <li><button onclick="mostrarSecao('moralismo')" class="nav-btn">Moralismo</button></li>
+                    <li><button onclick="mostrarSecao('cadastro')" class="nav-btn">Cadastro</button></li>
+                    <li><button onclick="mostrarSecao('listagem')" class="nav-btn">Comunidade</button></li>
+                    <li><button onclick="toggleTheme()" class="nav-btn" id="theme-toggle">🌓</button></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -30,31 +36,56 @@
             
             <img src="https://escuelandalusi.es/wp-content/uploads/2019/01/5-768x492.png" alt="Banner PhiloMap" class="imagem-banner">
             
-            <p>Sejam bem-vindos ao Philomap. Um projeto de Webpágina focado em conceitos de filosofia. Desenvolvido pelos alunos do Instituto Federal do Tocantins Campus Araguaína (IFTO) Alvaro Lucas e Pedro Filho, orientados pelo Professor Iury Gomes. O Philomap visa facilitar o aprendizado e conhecimento da Filosofia. Explore os caminhos do pensamento humano, desde a ética antiga até as questões existenciais modernas.</p>
-        </article>
-
-        <article>
-            <h2 style="text-align: center;">💡 Reflexão do Dia</h2>
-            <p style="text-align: center;">Clique no botão abaixo para receber uma recomendação de estudo ou uma frase para pensar:</p>
-            
-            <div style="text-align: center; margin-top: 20px;">
-                <button id="botaoRecomendacao" style="padding: 12px 25px; font-size: 16px; cursor: pointer; background-color: #000; color: #fff; border: none; border-radius: 5px;">
-                    Me recomende algo para refletir
-                </button>
-                <p id="recomendacao" style="margin-top: 20px; font-weight: bold; min-height: 30px;"></p>
-            </div>
+            <p>Sejam bem-vindos ao Philomap. Um projeto de Webpágina focado em conceitos de filosofia. Desenvolvido pelos alunos do Instituto Federal do Tocantins Campus Araguaina (IFTO) Alvaro Lucas e Pedro Filho orientados pelo Professor Iury Gomes apresentamos o Philomap. Um projeto de webpagina desenvolvido com o intuito de explicar diversos conceitos da filosofia visando facilitar o aprendizado e conhecimento da Filosofia.</strong> Exemplo: Explore os caminhos do pensamento humano, desde a ética antiga até as questões existenciais modernas.</p>
         </article>
 
         <article>
             <h2>Sobre Nosso Projeto</h2>
-             <img src="https://cdn.wallpapersafari.com/14/5/KdVhGy.jpg" alt="Banner PhiloMap" class="imagem-banner">
+
+             <img src="https://th.bing.com/th/id/OIP.JdF1gTIejZKUt8FKotYjpAHaEK?w=304&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Banner PhiloMap" class="imagem-banner">
             
             <div class="container-flex">
                 <div class="texto-flex">
-                    <p>Nosso projeto se trata de um site focado em conceitos de filosofia. Visamos reunir diversos conceitos em um único lugar para facilitar o estudo dos mesmos. Desenvolvido no IFTO Campus Araguaína, o objetivo é criar uma ferramenta acessível para todos os estudantes.</p>
+                    <p>Nosso projeto se trata de um site focado em conceitos de filosofia. Visamos reunir diversos conceitos em um unico lugar para facilitar o estudo dos mesmos. Conte sobre o IFTO Campus Araguaína, quem são os alunos e qual o objetivo deste site.</p>
                 </div>
                 
-                <img src="equipe.png" class="foto-lateral">
+                <form id="formCadastro" class="modern-form">
+                    <div class="form-group">
+                        <input type="text" id="nome" name="nome" required placeholder="NOME COMPLETO">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required placeholder="E-MAIL">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="font-size: 0.6rem; letter-spacing: 1px; color: var(--text-dim);">DATA DE NASCIMENTO</label>
+                        <input type="date" id="nascimento" name="nascimento" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="font-size: 0.6rem; letter-spacing: 1px; color: var(--text-dim);">INTERESSES</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border: 1px solid var(--border); padding: 15px;">
+                            <label style="font-size: 0.7rem;"><input type="checkbox" name="interesse" value="Ética"> ÉTICA</label>
+                            <label style="font-size: 0.7rem;"><input type="checkbox" name="interesse" value="Lógica"> LÓGICA</label>
+                            <label style="font-size: 0.7rem;"><input type="checkbox" name="interesse" value="Moral"> MORAL</label>
+                            <label style="font-size: 0.7rem;"><input type="checkbox" name="interesse" value="Outros"> OUTROS</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">REGISTRAR PENSAMENTO</button>
+                </form>
+            </article>
+        </section>
+
+        <!-- SEÇÃO: LISTAGEM -->
+        <section id="listagem" class="content-section">
+            <div class="section-header">
+                <h2>Comunidade</h2>
+                <p style="color: var(--text-dim);">Estudantes e pesquisadores que compartilham do mapa.</p>
+            </div>
+            <div id="listaDados" style="margin-top: 30px;">
+                <p style="text-align: center; color: var(--text-dim);">Carregando registros do banco...</p>
             </div>
         </article>
 
@@ -67,25 +98,17 @@
                     <strong>Ética:</strong> A ética é o ramo da filosofia que estuda os princípios que orientam o comportamento humano.
                 </li>
                 <li>
-                    <strong>Lógica:</strong> Lógica é o estudo dos princípios do raciocínio correto, particularmente a estrutura dos argumentos.
+                    <strong>Lógica:</strong>  Lógica é o estudo dos princípios do raciocínio correto, particularmente a estrutura dos argumentos e os critérios para avaliar sua validade.
                 </li>
                 <li>
-                    <strong>Moralismo:</strong> Aplicação rígida de normas morais, muitas vezes sem reflexão crítica.
+                    <strong>Moralismo:</strong> Moralismo é a aplicação rígida de normas morais, muitas vezes sem reflexão crítica. Difere da ética porque tende a impor regras absolutas, julgando comportamentos de forma inflexível.
                 </li>
                 <li>
-                    <strong>Felicidade:</strong> Entendida como o fim último da vida humana (Eudaimonia).
+                    <strong>Felicidade:</strong> Na filosofia, felicidade é entendida como o fim último da vida humana. Aristóteles a definiu como eudaimonia — viver de acordo com a virtude e realizar plenamente o potencial humano.
                 </li>
             </ul>
         </article>
-
-        <article>
-            <h2>Aprendizados com a Filosofia</h2>
-            <img src="https://tse1.explicit.bing.net/th/id/OIP.AnVPHPn-Et8VYI__vbhiIwHaEc?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Banner PhiloMap" class="imagem-banner">
-            <p>A filosofia pode ser uma poderosa aliada na formação de jovens pensadores críticos e autônomos. Ela nos ensina a questionar a realidade, a desenvolver argumentos e a ouvir diferentes pontos de vista.</p>
-        </article>
     </main>
-
-    <script src="script.js"></script>
 
 </body>
 </html>
