@@ -1,0 +1,38 @@
+/* MORALISMO.CSS - CLASSIC STYLE */
+@import url('style.css');
+
+.hero-moralismo { 
+    height: 500px; 
+    width: 100%; 
+    background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7)), 
+    url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=80');
+    background-size: cover; 
+    background-position: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
+    border: 1px solid var(--border);
+}
+
+.moralismo-body { padding: 80px 0; max-width: 1000px; margin: 0 auto; }
+
+.moralismo-card { 
+    background: var(--surface); 
+    padding: 60px; 
+    border: 1px solid var(--border);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+}
+
+.moralismo-card h2 { 
+    color: var(--accent); 
+    margin-bottom: 30px; 
+    border-bottom: 2px double var(--border); 
+    padding-bottom: 15px; 
+}
+
+.moralismo-card p { 
+    line-height: 2; 
+    margin-bottom: 25px; 
+    color: var(--text-main); 
+}

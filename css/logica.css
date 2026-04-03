@@ -1,0 +1,49 @@
+/* LOGICA.CSS - CLASSIC STYLE */
+@import url('style.css');
+
+.grid-layout { 
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 60px 0;
+}
+
+.intro-logica h2 { 
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; 
+    font-weight: 800; 
+    margin-bottom: 20px; 
+}
+
+.concept-box { 
+    background: var(--surface);
+    border: 1px solid var(--border); 
+    padding: 40px; 
+    transition: var(--transition);
+}
+
+.concept-box:hover { 
+    border-color: var(--accent); 
+    background: var(--bg);
+    transform: translateY(-5px);
+}
+
+.concept-number { 
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; 
+    font-weight: 900; 
+    opacity: 0.2; 
+    margin-bottom: -20px; 
+    display: block; 
+    color: var(--accent);
+}
+
+.concept-title { 
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    color: var(--text-main); 
+    margin-bottom: 15px; 
+}
+
+.concept-desc { 
+    color: var(--text-dim); 
+    font-size: 1rem; 
+}

@@ -1,0 +1,340 @@
+/* 
+ * PhiloMap - Classic Academic Style
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap');
+
+:root {
+    /* Classic Parchment Theme with Logo Ink Accents */
+    --bg: #f4f1ea;
+    --surface: #ffffff;
+    --border: #d3cbb8;
+    --text-main: #1a1a1a; /* Logo Ink Black */
+    --text-dim: #5d544b;
+    --accent: #1a1a1a; /* Replaced Brown with Logo Black */
+    --transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body.dark-mode {
+    --bg: #121212;
+    --surface: #1e1e1e;
+    --border: #333333;
+    --text-main: #e8e1d5;
+    --text-dim: #b8ada1;
+    --accent: #d2b48c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lora', serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+p {
+    text-align: justify;
+    margin-bottom: 1.5rem;
+}
+
+/* ... existing ... */
+
+.card-texto { 
+    background: var(--surface); 
+    padding: 80px; 
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
+
+.subtitulo { 
+    color: var(--accent); 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: 0.9rem; 
+    font-weight: 700;
+    margin-bottom: 15px; 
+    display: block; 
+}
+
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.container {
+    width: 85%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+header {
+    padding: 2rem 0;
+    border-bottom: 2px double var(--border);
+    background: var(--bg);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.logo-header {
+    height: 80px;
+    margin-bottom: 0.5rem;
+}
+
+.logo-area h1 {
+    font-size: 3rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+/* NAVEGAÇÃO */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+}
+
+nav a {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    padding-bottom: 5px;
+}
+
+nav a:hover, nav a.active {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+}
+
+/* SEÇÕES */
+main {
+    padding: 60px 0;
+}
+
+article {
+    margin-bottom: 80px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    margin: 15px auto;
+}
+
+@keyframes revealImage {
+    from { 
+        opacity: 0; 
+        transform: translateY(50px);
+        filter: blur(15px) grayscale(100%) brightness(0.5);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+        filter: blur(0) grayscale(0%) brightness(1);
+    }
+}
+
+/* Animação de flutuação contínua */
+@keyframes etherealFloat {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(0.5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.imagem-banner, .foto-filosofo, .phi-card img {
+    /* Combina a revelação inicial com a flutuação contínua */
+    animation: 
+        revealImage 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        etherealFloat 6s ease-in-out infinite 1.5s;
+    
+    will-change: transform, opacity, filter;
+    cursor: pointer;
+    transition: 
+        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+        filter 0.4s ease, 
+        box-shadow 0.4s ease;
+}
+
+/* Efeito de HOVER aprimorado (ao passar o mouse) */
+.imagem-banner:hover, .foto-filosofo:hover, .phi-card img:hover {
+    transform: scale(1.05) translateY(-15px) rotate(-1deg) !important;
+    filter: 
+        drop-shadow(0 20px 30px rgba(0,0,0,0.15)) 
+        brightness(1.1) 
+        saturate(1.2);
+    z-index: 10;
+}
+
+/* Animação ao CLICAR (Feedback tátil) */
+.imagem-banner:active, .foto-filosofo:active, .phi-card img:active {
+    transform: scale(0.92) !important;
+    filter: brightness(0.7) contrast(1.3) grayscale(0.3);
+    transition: transform 0.1s ease;
+}
+
+.imagem-banner {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    margin: 2.5rem 0;
+    mix-blend-mode: multiply;
+}
+
+.imagem-banner:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+}
+
+/* GRID DE FILÓSOFOS */
+.philosophers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 3rem;
+}
+
+.phi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 3rem;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.phi-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.phi-card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+    margin-bottom: 2rem;
+}
+
+.foto-filosofo {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    margin: 20px auto;
+    display: block;
+    transition: var(--transition);
+}
+
+/* FORMULÁRIO CLÁSSICO */
+.modern-form {
+    background: var(--surface);
+    padding: 40px;
+    border: 1px solid var(--border);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+input, textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 15px;
+    font-family: 'Lora', serif;
+    color: var(--text-main);
+}
+
+.btn-submit {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 20px 40px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background: #000;
+}
+
+/* LISTA ESTILIZADA */
+.lista-estilizada {
+    list-style: none;
+}
+
+.lista-estilizada li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.lista-estilizada strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.citacao-destaque { 
+    border-left: 4px solid var(--accent); 
+    padding-left: 40px; 
+    margin: 60px 0;
+    font-size: 1.8rem; 
+    font-weight: 400; 
+    font-style: italic; 
+    color: var(--text-dim);
+    font-family: 'Playfair Display', serif;
+}

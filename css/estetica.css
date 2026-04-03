@@ -1,0 +1,9 @@
+/* ESTETICA.CSS - CLASSIC STYLE */
+@import url('style.css');
+
+h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--accent);
+}

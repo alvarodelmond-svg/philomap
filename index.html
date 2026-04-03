@@ -4,51 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Portal de Filosofia</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
 </head>
-<body class="dark-mode"> <!-- Começa no dark mode por padrão -->
+<body>
 
     <header>
         <div class="container header-container">
-            <div class="logo-area" onclick="mostrarSecao('home')">
-                <img src="logo-site.svg" class="logo-header" alt="PhiloMap Logo">
+            <div class="logo-area" onclick="location.href='index.html'">
                 <h1>PhiloMap</h1>
+                <p style="letter-spacing: 2px; font-size: 0.8rem;">CONHECIMENTO & SABEDORIA</p>
             </div>
 
             <nav>
                 <ul>
-                    <li><button onclick="mostrarSecao('home')" class="nav-btn">Início</button></li>
-                    <li><button onclick="mostrarSecao('etica')" class="nav-btn">Ética</button></li>
-                    <li><button onclick="mostrarSecao('logica')" class="nav-btn">Lógica</button></li>
-                    <li><button onclick="mostrarSecao('moralismo')" class="nav-btn">Moralismo</button></li>
-                    <li><button onclick="mostrarSecao('cadastro')" class="nav-btn">Cadastro</button></li>
-                    <li><button onclick="mostrarSecao('listagem')" class="nav-btn">Comunidade</button></li>
-                    <li><button onclick="toggleTheme()" class="nav-btn" id="theme-toggle">🌓</button></li>
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="pages/etica.html">Ética</a></li>
+                    <li><a href="pages/logica.html">Lógica</a></li>
+                    <li><a href="pages/moralismo.html">Moralismo</a></li>
+                    <li><a href="pages/existencialismo.html">Existencialismo</a></li>
+                    <li><a href="pages/estetica.html">Estética</a></li>
+                    <li><a href="pages/INSCRICAO.html">Inscrição</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <article>
-            <h2>Bem-vindo ao Mapa da Filosofia</h2>
+    <main class="container">
+        <article class="card-texto">
+            <span class="subtitulo">Bem-vindo ao Portal</span>
+            <h2>O Mapa da Filosofia</h2>
             
-            <img src="https://escuelandalusi.es/wp-content/uploads/2019/01/5-768x492.png" alt="Banner PhiloMap" class="imagem-banner">
+            <img src="https://wallpaperaccess.com/full/2238939.jpg" alt="Banner PhiloMap" class="imagem-banner">
             
-            <p>Sejam bem-vindos ao Philomap. Um projeto de Webpágina focado em conceitos de filosofia. Desenvolvido pelos alunos do Instituto Federal do Tocantins Campus Araguaina (IFTO) Alvaro Lucas e Pedro Filho orientados pelo Professor Iury Gomes apresentamos o Philomap. Um projeto de webpagina desenvolvido com o intuito de explicar diversos conceitos da filosofia visando facilitar o aprendizado e conhecimento da Filosofia.</strong> Exemplo: Explore os caminhos do pensamento humano, desde a ética antiga até as questões existenciais modernas.</p>
-        </article>
+            <p>Sejam bem-vindos ao <strong>Philomap</strong>, um portal dedicado à exploração profunda dos conceitos fundamentais que moldaram o pensamento humano ao longo dos séculos. Este projeto nasceu da necessidade de criar um espaço digital que não apenas catalogue ideias, mas que as conecte de forma intuitiva e visualmente rica. Desenvolvido pelos alunos do Instituto Federal do Tocantins Campus Araguaina (IFTO), <strong>Alvaro Lucas e Pedro Filho</strong>, sob a orientação do <strong>Professor Iury Gomes</strong>, o Philomap é o resultado de uma pesquisa acadêmica focada na democratização do conhecimento filosófico.</p>
+            
+            <p>Nossa missão é transformar a complexidade da filosofia em um caminho acessível para estudantes, pesquisadores e curiosos. Através de uma interface que remete aos grandes clássicos da literatura acadêmica, buscamos proporcionar uma experiência de leitura que convida à reflexão e ao questionamento constante.</p>
 
-        <article>
-            <h2>Sobre Nosso Projeto</h2>
+            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
 
-             <img src="https://th.bing.com/th/id/OIP.JdF1gTIejZKUt8FKotYjpAHaEK?w=304&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Banner PhiloMap" class="imagem-banner">
+            <span class="subtitulo">Institucional</span>
+            <h2>Sobre Nosso Projeto e o IFTO</h2>
+
+             <img src="https://cdn.wallpapersafari.com/14/5/KdVhGy.jpg" alt="Banner PhiloMap" class="imagem-banner">
             
             <div class="container-flex">
                 <div class="texto-flex">
-                    <p>Nosso projeto se trata de um site focado em conceitos de filosofia. Visamos reunir diversos conceitos em um unico lugar para facilitar o estudo dos mesmos. Conte sobre o IFTO Campus Araguaína, quem são os alunos e qual o objetivo deste site.</p>
+                    <p>O Instituto Federal do Tocantins (IFTO) Campus Araguaína é um polo de excelência em educação tecnológica e científica na região norte do Brasil. Dentro deste contexto de inovação, o Philomap surge como uma ferramenta interdisciplinar, unindo tecnologia da informação e ciências humanas. O objetivo principal deste site é reunir diversos conceitos — da Ética à Lógica, do Moralismo à Estética — em um único repositório digital de fácil navegação.</p>
+                    
+                    <p>Acreditamos que a filosofia é a base para o desenvolvimento do pensamento crítico necessário na era da informação. Por isso, cada aba deste portal foi cuidadosamente curada para oferecer não apenas definições, mas contextos históricos e citações de grandes pensadores que ajudam a fundamentar o aprendizado.</p>
                 </div>
                 
+                <h3 style="margin-top: 40px; text-align: center; font-family: 'Playfair Display', serif;">Junte-se à nossa Comunidade</h3>
+                <p style="text-align: center; margin-bottom: 20px;">Cadastre-se para receber atualizações e participar de nossas discussões filosóficas.</p>
+
                 <form id="formCadastro" class="modern-form">
                     <div class="form-group">
                         <input type="text" id="nome" name="nome" required placeholder="NOME COMPLETO">
@@ -59,52 +68,42 @@
                     </div>
 
                     <div class="form-group">
-                        <label style="font-size: 0.6rem; letter-spacing: 1px; color: var(--text-dim);">DATA DE NASCIMENTO</label>
+                        <label style="font-size: 0.8rem; letter-spacing: 1px; color: var(--text-dim);">DATA DE NASCIMENTO</label>
                         <input type="date" id="nascimento" name="nascimento" required>
                     </div>
 
                     <div class="form-group">
-                        <label style="font-size: 0.6rem; letter-spacing: 1px; color: var(--text-dim);">INTERESSES</label>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border: 1px solid var(--border); padding: 15px;">
-                            <label style="font-size: 0.7rem;"><input type="checkbox" name="interesse" value="Ética"> ÉTICA</label>
-                            <label style="font-size: 0.7rem;"><input type="checkbox" name="interesse" value="Lógica"> LÓGICA</label>
-                            <label style="font-size: 0.7rem;"><input type="checkbox" name="interesse" value="Moral"> MORAL</label>
-                            <label style="font-size: 0.7rem;"><input type="checkbox" name="interesse" value="Outros"> OUTROS</label>
+                        <label style="font-size: 0.8rem; letter-spacing: 1px; color: var(--text-dim);">INTERESSES FILOSÓFICOS</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border: 1px solid var(--border); padding: 15px; background: var(--bg);">
+                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Ética"> ÉTICA</label>
+                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Lógica"> LÓGICA</label>
+                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Moral"> MORAL</label>
+                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Existencialismo"> EXISTENCIALISMO</label>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn-submit">REGISTRAR PENSAMENTO</button>
+                    <button type="submit" class="btn-submit">REGISTRAR NO MAPA</button>
                 </form>
-            </article>
-        </section>
-
-        <!-- SEÇÃO: LISTAGEM -->
-        <section id="listagem" class="content-section">
-            <div class="section-header">
-                <h2>Comunidade</h2>
-                <p style="color: var(--text-dim);">Estudantes e pesquisadores que compartilham do mapa.</p>
             </div>
-            <div id="listaDados" style="margin-top: 30px;">
-                <p style="text-align: center; color: var(--text-dim);">Carregando registros do banco...</p>
-            </div>
-        </article>
 
-        <article>
-            <h2>Explorar Conceitos</h2>
-            <p>Abaixo, veja um resumo do que você encontrará em cada aba do nosso mapa:</p>
+            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
+
+            <span class="subtitulo">Explorar</span>
+            <h2>Explorar o Conhecimento</h2>
+            <p>Navegue pelas nossas abas especializadas e mergulhe em estudos detalhados sobre os pilares da filosofia ocidental:</p>
             
             <ul class="lista-estilizada">
                 <li>
-                    <strong>Ética:</strong> A ética é o ramo da filosofia que estuda os princípios que orientam o comportamento humano.
+                    <strong>Ética e Valores:</strong> Um estudo sobre o comportamento humano, a justiça e a busca pelo "bem viver". Descubra as diferenças entre ética deontológica e utilitarista.
                 </li>
                 <li>
-                    <strong>Lógica:</strong>  Lógica é o estudo dos princípios do raciocínio correto, particularmente a estrutura dos argumentos e os critérios para avaliar sua validade.
+                    <strong>Lógica e Razão:</strong> Explore as estruturas do pensamento correto. De Aristóteles à lógica matemática moderna, entenda como construímos argumentos válidos.
                 </li>
                 <li>
-                    <strong>Moralismo:</strong> Moralismo é a aplicação rígida de normas morais, muitas vezes sem reflexão crítica. Difere da ética porque tende a impor regras absolutas, julgando comportamentos de forma inflexível.
+                    <strong>Moralismo e Sociedade:</strong> Analise as normas que regem as comunidades e como a moralidade se diferencia da reflexão ética crítica.
                 </li>
                 <li>
-                    <strong>Felicidade:</strong> Na filosofia, felicidade é entendida como o fim último da vida humana. Aristóteles a definiu como eudaimonia — viver de acordo com a virtude e realizar plenamente o potencial humano.
+                    <strong>Busca pela Felicidade:</strong> O que significa viver uma vida plena? Investigue o conceito de eudaimonia e as diferentes visões filosóficas sobre a satisfação humana.
                 </li>
             </ul>
         </article>
