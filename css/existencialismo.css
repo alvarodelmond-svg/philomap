@@ -1,15 +1,10 @@
 /* EXISTENCIALISMO.CSS - CLASSIC STYLE */
 @import url('style.css');
 
-.container-flex {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
+.existencialismo-main { padding: 40px 0; }
 
 h3 {
-    font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: var(--accent);
 }
