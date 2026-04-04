@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Ética</title>
-    <link rel="stylesheet" href="../css/etica.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -25,58 +25,57 @@
                     <li><a href="estetica.html">Estética</a></li>
                     <li><a href="metafisica.html">Metafísica</a></li>
                     <li><a href="epistemologia.html">Epistemologia</a></li>
+                    <li><a href="politica.html">Política</a></li>
+                    <li><a href="linguagem.html">Linguagem</a></li>
                     <li><a href="INSCRICAO.html">Inscrição</a></li>
                 </ul>
+                <div style="text-align: center;">
+                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+                </div>
             </nav>
         </div>
     </header>
 
-    <main class="container etica-main">
-        <article class="card-texto">
+    <main class="container">
+        <article class="card-texto reveal">
             <span class="subtitulo">Conceitos Fundamentais</span>
             <h1>Ética e Valores</h1>
             
-            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1000&q=80" alt="Justiça" class="imagem-banner">
+            <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80" alt="Balança da Justiça" class="imagem-banner">
 
-            <p>A ética é o ramo da filosofia que busca entender os princípios que orientam o <strong>comportamento humano</strong>. Diferente da moral, que se baseia em costumes e tradições específicas de um grupo, a ética é uma reflexão universal e crítica sobre o que é "bom", "justo" ou "correto". Ela não nos diz apenas o que fazer, mas nos desafia a perguntar <em>por que</em> devemos agir de determinada maneira.</p>
+            <p>A ética é o ramo da filosofia que busca entender os princípios que orientam o <strong>comportamento humano</strong>. Diferente da moral, que se baseia em costumes e tradições específicas de um grupo, a ética é uma reflexão universal e crítica sobre o que é "bom", "justo" ou "correto".</p>
 
             <blockquote class="citacao-destaque">
                 "A excelência não é um ato, mas um hábito." — Aristóteles
             </blockquote>
 
-            <p>Em nosso projeto, exploramos como esses valores moldam a sociedade contemporânea. A ética contemporânea enfrenta dilemas complexos, desde a bioética até a ética na inteligência artificial, exigindo que resgatemos as bases clássicas para construir um futuro mais humano e equilibrado.</p>
-            
             <div style="margin-top: 60px; display: grid; gap: 40px;">
                 <div style="border-top: 2px solid var(--border); padding-top: 30px;">
                     <h2 style="text-align: left; font-size: 2rem;">01. Deontologia</h2>
-                    <p style="font-size: 1.1rem;">O termo deriva do grego <em>deon</em> (dever). A ética deontológica, cujo principal expoente foi <strong>Immanuel Kant</strong>, argumenta que a moralidade de uma ação reside na própria ação, e não em suas consequências. Para Kant, devemos agir de acordo com o "Imperativo Categórico": agir apenas segundo aquela máxima através da qual possas querer, ao mesmo tempo, que ela se torne uma lei universal.</p>
+                    <p style="font-size: 1.1rem;">A ética deontológica, cujo principal expoente foi <strong>Immanuel Kant</strong>, argumenta que a moralidade de uma ação reside na própria ação.</p>
                 </div>
 
                 <div style="border-top: 2px solid var(--border); padding-top: 30px;">
                     <h2 style="text-align: left; font-size: 2rem;">02. Utilitarismo</h2>
-                    <p style="font-size: 1.1rem;">Em contraste com a deontologia, o utilitarismo foca nos resultados. Proposto por pensadores como <strong>Jeremy Bentham e John Stuart Mill</strong>, este sistema defende que a ação correta é aquela que maximiza o bem-estar geral. O lema central é "a maior felicidade para o maior número de pessoas".</p>
+                    <p style="font-size: 1.1rem;">Proposto por pensadores como <strong>John Stuart Mill</strong>, este sistema defende que a ação correta é aquela que maximiza o bem-estar geral.</p>
                 </div>
 
                 <div style="border-top: 2px solid var(--border); padding-top: 30px;">
                     <h2 style="text-align: left; font-size: 2rem;">03. Ética das Virtudes</h2>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg" alt="Aristóteles" class="foto-filosofo">
-                    <p style="font-size: 1.1rem;">Iniciada por <strong>Aristóteles</strong>, esta abordagem não foca em regras ou consequências, mas no caráter do indivíduo. A pergunta central não é "o que devo fazer?", mas "que tipo de pessoa devo ser?". A virtude é encontrada no equilíbrio — a "justa medida" entre o excesso e a falta.</p>
+                    <p style="font-size: 1.1rem;">Iniciada por <strong>Aristóteles</strong>, esta abordagem foca no caráter do indivíduo. A virtude é encontrada no equilíbrio.</p>
                 </div>
             </div>
-
-            <article style="margin-top: 60px;">
-                <h2>Ética na Era Digital</h2>
-                <p>Hoje, a ética expande suas fronteiras. Como devemos lidar com a privacidade de dados? Qual a responsabilidade moral dos algoritmos? O PhiloMap busca ser uma bússola nessas discussões, provando que a filosofia antiga é mais atual do que nunca para decifrar os enigmas da tecnologia moderna.</p>
-            </article>
         </article>
     </main>
 
     <footer>
-        <div class="container">
-            <p>2024 PHILOMAP — FILOSOFIA E TECNOLOGIA</p>
-        </div>
+        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Scripts -->
+    <script src="../js/db.js"></script>
+    <script src="../js/controller.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

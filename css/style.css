@@ -1,18 +1,18 @@
 /* 
- * PhiloMap - Classic Academic Style
+ * PhiloMap - Estilo Acadêmico Clássico Restaurado e Otimizado
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap');
 
 :root {
-    /* Classic Parchment Theme with Logo Ink Accents */
     --bg: #f4f1ea;
     --surface: #f4f1ea;
     --border: #d3cbb8;
-    --text-main: #1a1a1a; /* Logo Ink Black */
+    --text-main: #1a1a1a;
     --text-dim: #5d544b;
-    --accent: #1a1a1a; /* Replaced Brown with Logo Black */
-    --transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --accent: #1a1a1a;
+    --gold: #d2b48c;
+    --transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 body.dark-mode {
@@ -30,45 +30,27 @@ body.dark-mode {
     box-sizing: border-box;
 }
 
-/* ANIMATIONS */
+/* KEYFRAMES */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes lineGrow {
-    from { width: 0; }
-    to { width: 80px; }
-}
-
-@keyframes revealImage {
-    from { 
-        opacity: 0; 
-        transform: translateY(50px);
-        filter: blur(15px) grayscale(100%) brightness(0.5);
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0);
-        filter: blur(0) grayscale(0%) brightness(1);
-    }
-}
-
-@keyframes etherealFloat {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(0.5deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(210, 180, 140, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(210, 180, 140, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(210, 180, 140, 0); }
 }
 
 body {
@@ -77,37 +59,7 @@ body {
     color: var(--text-main);
     line-height: 1.8;
     -webkit-font-smoothing: antialiased;
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-p {
-    text-align: justify;
-    margin-bottom: 1.5rem;
-    animation: fadeIn 1.5s ease-out forwards;
-}
-
-.card-texto { 
-    background: var(--surface); 
-    padding: 60px; 
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    margin-bottom: 40px;
-    animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-.subtitulo { 
-    color: var(--accent); 
-    text-transform: uppercase; 
-    letter-spacing: 5px; 
-    font-size: 0.9rem; 
-    font-weight: 700;
-    margin-bottom: 15px; 
-    display: block; 
-}
-
-h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
+    transition: background-color 0.8s ease, color 0.8s ease;
 }
 
 .container {
@@ -116,13 +68,24 @@ h1, h2, h3 {
     margin: 0 auto;
 }
 
+/* REVEAL ANIMATION */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
 /* HEADER */
 header {
-    padding: 2rem 0;
+    padding: 3rem 0;
     border-bottom: 2px double var(--border);
     background: var(--bg);
-    z-index: 1000;
-    transition: var(--transition);
+    animation: fadeInDown 1s ease-out;
 }
 
 .header-container {
@@ -136,36 +99,28 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
     cursor: pointer;
     text-align: center;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.3s ease;
 }
 
 .logo-area:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .logo-header {
-    height: 150px;
+    height: 130px;
     margin-bottom: 1rem;
+    animation: float 4s ease-in-out infinite;
 }
 
 .logo-area h1 {
+    font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     text-transform: uppercase;
     color: var(--accent);
-    line-height: 1.2;
-}
-
-.logo-area p {
-    font-family: 'Lora', serif;
-    letter-spacing: 3px;
-    font-size: 0.85rem;
-    font-weight: 400;
-    margin-bottom: 0;
-    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
 }
 
 /* NAVEGAÇÃO */
@@ -175,213 +130,231 @@ nav ul {
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    padding: 20px 0;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    padding: 10px 0;
 }
 
 nav a {
-    position: relative;
-    background: none;
-    border: none;
+    text-decoration: none;
     color: var(--text-dim);
-    font-family: 'Lora', serif;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: var(--transition);
-    text-decoration: none;
-    padding-bottom: 5px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    position: relative;
 }
 
 nav a::after {
     content: '';
     position: absolute;
+    bottom: 0;
+    left: 50%;
     width: 0;
     height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--accent);
-    transition: width 0.3s ease;
+    background: var(--accent);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
 }
 
 nav a:hover::after, nav a.active::after {
-    width: 100%;
+    width: 80%;
 }
 
-nav a:hover, nav a.active {
+nav a:hover {
     color: var(--accent);
+    letter-spacing: 3px;
 }
 
-/* SEÇÕES */
-main {
-    padding: 60px 0;
-}
-
-article {
-    margin-bottom: 80px;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    position: relative;
-}
-
-h2::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 3px;
-    background: var(--accent);
-    margin: 15px auto;
-    animation: lineGrow 1.5s ease-out forwards;
-}
-
-.imagem-banner, .foto-filosofo, .phi-card img {
-    animation: 
-        revealImage 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards,
-        etherealFloat 6s ease-in-out infinite 1.5s;
-    
-    will-change: transform, opacity, filter;
-    cursor: pointer;
-    transition: 
-        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-        filter 0.4s ease, 
-        box-shadow 0.4s ease;
-}
-
-.imagem-banner:hover, .foto-filosofo:hover, .phi-card img:hover {
-    transform: scale(1.05) translateY(-15px) rotate(-1deg) !important;
-    filter: 
-        drop-shadow(0 20px 30px rgba(0,0,0,0.15)) 
-        brightness(1.1) 
-        saturate(1.2);
-    z-index: 10;
-}
-
-.imagem-banner:active, .foto-filosofo:active, .phi-card img:active {
-    transform: scale(0.92) !important;
-    filter: brightness(0.7) contrast(1.3) grayscale(0.3);
-    transition: transform 0.1s ease;
-}
-
-.imagem-banner {
-    width: 100%;
-    height: auto;
-    max-height: 500px;
-    object-fit: contain;
-    margin: 2.5rem 0;
-    mix-blend-mode: multiply;
-}
-
-/* GRID DE FILÓSOFOS */
-.philosophers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 3rem;
-}
-
+/* CARDS DE FILÓSOFOS */
 .phi-card {
-    background: var(--surface);
     border: 1px solid var(--border);
     padding: 3rem;
     text-align: center;
-    transition: var(--transition);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+}
+
+.phi-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(210, 180, 140, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .phi-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    transform: translateY(-15px) scale(1.03);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.phi-card:hover::before {
+    opacity: 1;
 }
 
 .phi-card img {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    mix-blend-mode: multiply;
-    margin-bottom: 2rem;
+    border: 3px solid transparent;
+    transition: all 0.5s ease;
 }
 
-.foto-filosofo {
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    object-fit: contain;
+.phi-card:hover img {
+    border-color: var(--gold);
+    transform: rotate(5deg);
+}
+
+/* BOTÕES INTERATIVOS */
+.theme-toggle, .btn-submit, #botaoRecomendacao {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 1;
+}
+
+.theme-toggle:hover, .btn-submit:hover, #botaoRecomendacao:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.theme-toggle:active, .btn-submit:active, #botaoRecomendacao:active {
+    transform: scale(0.95);
+}
+
+/* IMAGENS E MODO ESCURO */
+.logo-header {
     mix-blend-mode: multiply;
-    margin: 20px auto;
-    display: block;
     transition: var(--transition);
 }
 
-/* FORMULÁRIO CLÁSSICO */
+.imagem-banner, .foto-filosofo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 30px auto;
+    mix-blend-mode: multiply;
+    transition: all 0.6s ease;
+    border-radius: 4px;
+}
+
+.imagem-banner:hover, .foto-filosofo:hover {
+    transform: scale(1.02);
+    filter: brightness(1.05);
+}
+
+body.dark-mode .logo-header {
+    mix-blend-mode: normal;
+    filter: invert(82%) sepia(21%) saturate(655%) hue-rotate(353deg) brightness(91%) contrast(84%);
+}
+
+body.dark-mode .imagem-banner, 
+body.dark-mode .foto-filosofo, 
+body.dark-mode .phi-card img {
+    mix-blend-mode: normal;
+    filter: brightness(0.85) contrast(1.1);
+}
+
+/* FORMULÁRIOS */
+input, textarea {
+    transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(210, 180, 140, 0.2);
+    transform: translateX(5px);
+}
+
+/* BOTÃO DE TEMA */
+.theme-toggle {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-top: 1rem;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    filter: brightness(1.2);
+}
+
+/* FORMULÁRIO */
 .modern-form {
-    background: var(--surface);
-    padding: 40px;
     border: 1px solid var(--border);
+    padding: 40px;
+    background: var(--surface);
 }
 
 .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 input, textarea {
     width: 100%;
+    padding: 15px;
     background: var(--bg);
     border: 1px solid var(--border);
-    padding: 15px;
-    font-family: 'Lora', serif;
     color: var(--text-main);
+    font-family: 'Lora', serif;
 }
 
 .btn-submit {
     background: var(--accent);
     color: #fff;
     border: none;
-    padding: 20px 40px;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
+    padding: 18px;
     width: 100%;
-    transition: var(--transition);
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .btn-submit:hover {
     background: #000;
 }
 
-/* LISTA ESTILIZADA */
+/* LISTA ESTILIZADA E CITAÇÕES */
 .lista-estilizada {
     list-style: none;
 }
 
 .lista-estilizada li {
-    padding: 20px 0;
+    padding: 15px 0;
     border-bottom: 1px solid var(--border);
 }
 
-.lista-estilizada strong {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    color: var(--accent);
-    display: block;
-    margin-bottom: 5px;
-}
-
-.citacao-destaque { 
-    border-left: 4px solid var(--accent); 
-    padding-left: 40px; 
-    margin: 60px 0;
-    font-size: 1.8rem; 
-    font-weight: 400; 
-    font-style: italic; 
+.citacao-destaque {
+    border-left: 4px solid var(--accent);
+    padding-left: 30px;
+    margin: 50px 0;
+    font-style: italic;
+    font-size: 1.6rem;
     color: var(--text-dim);
     font-family: 'Playfair Display', serif;
+}
+
+footer {
+    text-align: center;
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--text-dim);
 }

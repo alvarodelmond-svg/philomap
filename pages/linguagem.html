@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiloMap | Filosofia da Linguagem</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo-area" onclick="location.href='../index.html'">
+                <img src="../logo-site.svg" alt="PhiloMap Logo" class="logo-header">
+                <h1>PhiloMap</h1>
+                <p>CONHECIMENTO & SABEDORIA</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="etica.html">Ética</a></li>
+                    <li><a href="logica.html">Lógica</a></li>
+                    <li><a href="moralismo.html">Moralismo</a></li>
+                    <li><a href="existencialismo.html">Existencialismo</a></li>
+                    <li><a href="estetica.html">Estética</a></li>
+                    <li><a href="metafisica.html">Metafísica</a></li>
+                    <li><a href="epistemologia.html">Epistemologia</a></li>
+                    <li><a href="politica.html">Política</a></li>
+                    <li><a href="linguagem.html" class="active">Linguagem</a></li>
+                    <li><a href="INSCRICAO.html">Inscrição</a></li>
+                </ul>
+                <div style="text-align: center;">
+                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="card-texto reveal">
+            <span class="subtitulo">A Estrutura do Significado</span>
+            <h1>Filosofia da Linguagem</h1>
+            
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80" alt="Linguagem e Escrita" class="imagem-banner">
+
+            <p>A <strong>Filosofia da Linguagem</strong> investiga a natureza da comunicação e a relação entre as palavras e as coisas.</p>
+
+            <blockquote class="citacao-destaque">
+                "Os limites da minha linguagem são os limites do meu mundo." — Ludwig Wittgenstein
+            </blockquote>
+
+            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
+
+            <span class="subtitulo">Pensadores</span>
+            <h2>Grandes Mentes da Linguagem</h2>
+            <div class="philosophers-grid">
+                <section class="phi-card">
+                    <h3>Ludwig Wittgenstein</h3>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Ludwig_Wittgenstein.jpg" alt="Wittgenstein" class="foto-filosofo">
+                    <p>Focou no uso prático da linguagem como "jogos de linguagem".</p>
+                </section>
+                <section class="phi-card">
+                    <h3>Ferdinand de Saussure</h3>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Ferdinand_de_Saussure.jpg" alt="Saussure" class="foto-filosofo">
+                    <p>Pai da linguística moderna, definiu o signo linguístico.</p>
+                </section>
+                <section class="phi-card">
+                    <h3>Noam Chomsky</h3>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Chomsky.jpg" alt="Chomsky" class="foto-filosofo">
+                    <p>Revolucionou a linguística com a gramática gerativa.</p>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/db.js"></script>
+    <script src="../js/controller.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

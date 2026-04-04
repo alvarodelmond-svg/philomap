@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Existencialismo</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/existencialismo.css">
 </head>
 <body>
 
@@ -24,18 +23,25 @@
                     <li><a href="moralismo.html">Moralismo</a></li>
                     <li><a href="existencialismo.html" class="active">Existencialismo</a></li>
                     <li><a href="estetica.html">Estética</a></li>
+                    <li><a href="metafisica.html">Metafísica</a></li>
+                    <li><a href="epistemologia.html">Epistemologia</a></li>
+                    <li><a href="politica.html">Política</a></li>
+                    <li><a href="linguagem.html">Linguagem</a></li>
                     <li><a href="INSCRICAO.html">Inscrição</a></li>
                 </ul>
+                <div style="text-align: center;">
+                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <article class="card-texto">
+        <article class="card-texto reveal">
             <span class="subtitulo">Ontologia Moderna</span>
             <h2>Existencialismo: A Liberdade e o Peso do Ser</h2>
             
-            <img src="https://img.freepik.com/premium-photo/man-standing-hill_965238-2928.jpg?w=740" class="imagem-banner">
+            <img src="https://images.unsplash.com/photo-1499209974431-9dac3adaf471?auto=format&fit=crop&w=1200&q=80" alt="Solidão e Reflexão" class="imagem-banner">
             
             <p>O <strong>Existencialismo</strong> é uma corrente filosófica que foca na experiência individual, na liberdade e na responsabilidade. Surgido com força no século XX, especialmente após as grandes guerras, ele propõe que "a existência precede a essência". Isso significa que não nascemos com um propósito pré-definido; nós nos criamos através de nossas escolhas.</p>
 
@@ -51,7 +57,7 @@
 
                 <div style="border-top: 2px solid var(--border); padding-top: 30px;">
                     <h3>02. O Absurdo e a Revolta</h3>
-                    <p>Albert Camus, um dos grandes nomes associados ao movimento, explorou o "Absurdo" — o conflito entre a busca humana por significado e o silêncio indiferente do universo. Sua resposta não era o niilismo, mas a revolta: viver intensamente apesar da falta de um sentido intrínseco.</p>
+                    <p><strong>Albert Camus</strong> explorou o "Absurdo" — o conflito entre a busca humana por significado e o silêncio indiferente do universo. Sua resposta não era o niilismo, mas a revolta: viver intensamente apesar da falta de um sentido intrínseco.</p>
                 </div>
 
                 <div style="border-top: 2px solid var(--border); padding-top: 30px;">
@@ -67,7 +73,7 @@
             <div class="philosophers-grid">
                 <section class="phi-card">
                     <h3>Søren Kierkegaard</h3>
-                    <img src="https://th.bing.com/th/id/OIP.eGynDHX3HmHbnTXyF_B19QHaFY?w=208&h=151&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Kierkegaard" class="foto-filosofo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Kierkegaard.jpg" alt="Kierkegaard" class="foto-filosofo">
                     <p>O "Pai do Existencialismo", focou no indivíduo subjetivo e no "salto da fé".</p>
                 </section>
                 <section class="phi-card">
@@ -77,16 +83,20 @@
                 </section>
                 <section class="phi-card">
                     <h3>Jean-Paul Sartre</h3>
-                    <img src="https://th.bing.com/th/id/OIP.FRjXAwF36c37wiGpxFsbWQHaFp?w=225&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Sartre" class="foto-filosofo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Sartre_1967_retouched.jpg" alt="Sartre" class="foto-filosofo">
                     <p>Sistematizou o existencialismo ateu, enfatizando a liberdade absoluta e a responsabilidade total.</p>
                 </section>
             </div>
         </article>
     </main>
 
-    <footer style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border);">
+    <footer>
         <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="../js/db.js"></script>
+    <script src="../js/controller.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

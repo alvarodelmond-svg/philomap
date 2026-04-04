@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Portal de Filosofia</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/java.css">
 </head>
 <body>
 
@@ -26,18 +27,23 @@
                     <li><a href="pages/estetica.html">Estética</a></li>
                     <li><a href="pages/metafisica.html">Metafísica</a></li>
                     <li><a href="pages/epistemologia.html">Epistemologia</a></li>
+                    <li><a href="pages/politica.html">Política</a></li>
+                    <li><a href="pages/linguagem.html">Linguagem</a></li>
                     <li><a href="pages/INSCRICAO.html">Inscrição</a></li>
                 </ul>
+                <div style="text-align: center;">
+                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <article class="card-texto">
+        <article class="card-texto reveal">
             <span class="subtitulo">Bem-vindo ao Portal</span>
             <h2>O Mapa da Filosofia</h2>
             
-            <img src="https://wallpaperaccess.com/full/2238939.jpg" alt="Banner PhiloMap" class="imagem-banner">
+            <img src="https://images.unsplash.com/photo-1521714161819-15534968fc5f?auto=format&fit=crop&w=1200&q=80" alt="Estátua Grega" class="imagem-banner">
             
             <p>Sejam bem-vindos ao <strong>Philomap</strong>, um portal dedicado à exploração profunda dos conceitos fundamentais que moldaram o pensamento humano ao longo dos séculos. Este projeto nasceu da necessidade de criar um espaço digital que não apenas catalogue ideias, mas que as conecte de forma intuitiva e visualmente rica. Desenvolvido pelos alunos do Instituto Federal do Tocantins Campus Araguaina (IFTO), <strong>Alvaro Lucas e Pedro Filho</strong>, sob a orientação do <strong>Professor Iury Gomes</strong>, o Philomap é o resultado de uma pesquisa acadêmica focada na democratização do conhecimento filosófico.</p>
             
@@ -45,10 +51,20 @@
 
             <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
 
+            <span class="subtitulo">Interatividade</span>
+            <h2>Recomendação Filosófica</h2>
+            <section style="text-align: center; border: 1px solid var(--border); padding: 40px; background: var(--surface);">
+                <p>Busca inspiração? Receba uma recomendação aleatória de leitura ou filme filosófico.</p>
+                <button id="botaoRecomendacao" class="theme-toggle" style="margin-top: 20px;">Gerar Recomendação</button>
+                <div id="recomendacao" style="margin-top: 20px; font-style: italic; font-family: 'Playfair Display', serif; font-size: 1.2rem;"></div>
+            </section>
+
+            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
+
             <span class="subtitulo">Institucional</span>
             <h2>Sobre Nosso Projeto e o IFTO</h2>
 
-             <img src="https://cdn.wallpapersafari.com/14/5/KdVhGy.jpg" alt="Banner PhiloMap" class="imagem-banner">
+             <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1200&q=80" alt="Biblioteca Clássica" class="imagem-banner">
             
             <div class="container-flex">
                 <div class="texto-flex">
@@ -79,13 +95,22 @@
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border: 1px solid var(--border); padding: 15px; background: var(--bg);">
                             <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Ética"> ÉTICA</label>
                             <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Lógica"> LÓGICA</label>
-                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Moral"> MORAL</label>
+                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Moralismo"> MORALISMO</label>
                             <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Existencialismo"> EXISTENCIALISMO</label>
+                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Estética"> ESTÉTICA</label>
+                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Metafísica"> METAFÍSICA</label>
+                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Epistemologia"> EPISTEMOLOGIA</label>
+                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Política"> POLÍTICA</label>
+                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Linguagem"> LINGUAGEM</label>
                         </div>
                     </div>
 
                     <button type="submit" class="btn-submit">REGISTRAR NO MAPA</button>
                 </form>
+
+                <div id="listaDados" style="margin-top: 60px;">
+                    <!-- Lista de membros carregada via JS -->
+                </div>
             </div>
 
             <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
@@ -111,5 +136,13 @@
         </article>
     </main>
 
+    <footer>
+        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/db.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

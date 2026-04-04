@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap - Lógica</title>
+    <title>PhiloMap | Lógica</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -24,20 +24,25 @@
                     <li><a href="estetica.html">Estética</a></li>
                     <li><a href="metafisica.html">Metafísica</a></li>
                     <li><a href="epistemologia.html">Epistemologia</a></li>
+                    <li><a href="politica.html">Política</a></li>
+                    <li><a href="linguagem.html">Linguagem</a></li>
                     <li><a href="INSCRICAO.html">Inscrição</a></li>
                 </ul>
+                <div style="text-align: center;">
+                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <article class="card-texto">
+        <article class="card-texto reveal">
             <span class="subtitulo">Raciocínio Formal</span>
             <h2>O Caminho do Pensamento Correto</h2>
             
-            <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1000&q=80" alt="Lógica e Estrutura" class="imagem-banner">
+            <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80" alt="Lógica e Estrutura" class="imagem-banner">
 
-            <p>A <strong>lógica</strong> é a ciência e a arte que estuda as leis do pensamento e as condições da verdade. Em um mundo saturado de informações e argumentos convincentes, a lógica atua como a ferramenta fundamental para separar o que é válido do que é apenas persuasivo. Ela não se preocupa com o <em>conteúdo</em> do que é dito, mas com a <em>forma</em> como o argumento é construído.</p>
+            <p>A <strong>lógica</strong> é a ciência e a arte que estuda as leis do pensamento e as condições da verdade. Em um world saturado de informações e argumentos convincentes, a lógica atua como a ferramenta fundamental para separar o que é válido do que é apenas persuasivo. Ela não se preocupa com o <em>conteúdo</em> do que é dito, mas com a <em>forma</em> como o argumento é construído.</p>
             
             <p>Seja na matemática, na programação de computadores ou em um debate jurídico, a estrutura lógica é o alicerce sobre o qual construímos o conhecimento sólido. No PhiloMap, exploramos as três grandes divisões do raciocínio lógico:</p>
 
@@ -66,23 +71,23 @@
             <section class="pensador">
                 <h3>Aristóteles</h3>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg" alt="Foto de Aristóteles" class="foto-filosofo">
-                <p>Considerado o <strong>Pai da Lógica</strong>, Aristóteles organizou o sistema que dominou o pensamento ocidental por mais de dois mil anos. Sua obra "Organon" estabeleceu as regras da inferência e as categorias do ser. Ele acreditava que a lógica era o instrumento (<em>organon</em>) essencial para qualquer ciência.</p>
+                <p>Considerado o <strong>Pai da Lógica</strong>, Aristóteles organizou o sistema que dominou o pensamento ocidental por mais de dois mil anos. Sua obra "Organon" estabeleceu as regras da inferência e as categorias do ser.</p>
             </section>
 
             <hr style="margin: 40px 0; border: none; border-top: 1px solid var(--border);">
 
             <section class="pensador">
                 <h3>Gottlob Frege</h3>
-                <img src="https://th.bing.com/th/id/OIP.M6vvVgTW3tXfQjiRivoXygAAAA?w=213&h=188&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Foto de Gottlob Frege" class="foto-filosofo">
-                <p>O matemático e filósofo alemão revolucionou a lógica no século XIX. Ele criou a <strong>Lógica de Predicados</strong>, permitindo que a lógica analisasse sentenças muito mais complexas do que as de Aristóteles. Sua obra é a base direta da lógica matemática e da computação moderna.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Gottlob_Frege.jpg" alt="Foto de Gottlob Frege" class="foto-filosofo">
+                <p>O matemático e filósofo alemão revolucionou a lógica no século XIX. Ele criou a <strong>Lógica de Predicados</strong>, permitindo que a lógica analisasse sentenças muito mais complexas do que as de Aristóteles.</p>
             </section>
 
             <hr style="margin: 40px 0; border: none; border-top: 1px solid var(--border);">
 
             <section class="pensador">
                 <h3>Ludwig Wittgenstein</h3>
-                <img src="https://th.bing.com/th/id/OIP.rb660XSukv9MSiPFQQZidwHaGl?w=208&h=184&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" class="foto-filosofo">
-                <p>Em sua obra "Tractatus Logico-Philosophicus", Wittgenstein argumentou que os limites da minha linguagem são os limites do meu mundo. Ele explorou como a estrutura lógica das proposições deve refletir a estrutura da realidade, redefinindo a relação entre lógica e linguagem.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Ludwig_Wittgenstein.jpg" alt="Foto de Ludwig Wittgenstein" class="foto-filosofo">
+                <p>Em sua obra "Tractatus Logico-Philosophicus", Wittgenstein argumentou que os limites da minha linguagem são os limites do meu mundo. Ele explorou como a estrutura lógica das proposições deve refletir a estrutura da realidade.</p>
             </section>
 
             <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
@@ -99,5 +104,14 @@
             </ul>
         </article>
     </main>
+
+    <footer>
+        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/db.js"></script>
+    <script src="../js/controller.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

@@ -1,25 +1,24 @@
 /**
  * PhiloMap - Controller
- * Gerencia a interatividade, navegação SPA e Modo Escuro.
+ * Gerencia a interatividade, persistência e Modo Escuro.
  */
 
 // --- CONFIGURAÇÃO INICIAL ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicia na página inicial
-    mostrarSecao('home');
-    
-    // Carrega a lista de dados salvos
-    atualizarListaUI();
-
     // Carregar tema preferido
-    if (localStorage.getItem('theme') === 'light') {
-        document.body.classList.add('light-mode');
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
     }
 
-    // Listener do formulário
+    // Listener do formulário (se existir na página)
     const form = document.getElementById('formCadastro');
     if (form) {
         form.addEventListener('submit', lidarComSubmissao);
+    }
+
+    // Carrega a lista de dados salvos (se existir o container)
+    if (document.getElementById('listaDados')) {
+        atualizarListaUI();
     }
 });
 
@@ -29,33 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function toggleTheme() {
     const body = document.body;
-    const isLight = body.classList.toggle('light-mode');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-}
-
-// --- NAVEGAÇÃO SPA ---
-/**
- * Alterna a visibilidade das seções para simular uma SPA.
- */
-function mostrarSecao(idSecao) {
-    const secoes = document.querySelectorAll('.content-section');
-    const buttons = document.querySelectorAll('.nav-btn');
-
-    secoes.forEach(secao => {
-        secao.classList.remove('active');
-        if (secao.id === idSecao) {
-            secao.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    });
-
-    // Destaca o botão ativo no menu
-    buttons.forEach(btn => {
-        btn.classList.remove('active-nav');
-        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${idSecao}'`)) {
-            btn.classList.add('active-nav');
-        }
-    });
+    const isDark = body.classList.toggle('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 }
 
 // --- LÓGICA DE DADOS (INDEXEDDB) ---
@@ -65,22 +39,30 @@ async function lidarComSubmissao(event) {
     const form = event.target;
     const formData = new FormData(form);
     
+    // Captura interesses (checkboxes)
+    const interesses = Array.from(form.querySelectorAll('input[name="interesse"]:checked')).map(cb => cb.value);
+
     const novoDado = {
-        nome: formData.get('nome'),
-        email: formData.get('email'),
-        nascimento: formData.get('nascimento'),
-        interesse: Array.from(form.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value),
+        nome: formData.get('nome') || form.querySelector('input[type="text"]').value,
+        email: formData.get('email') || form.querySelector('input[type="email"]').value,
+        nascimento: formData.get('nascimento') || form.querySelector('input[type="date"]').value,
+        interesse: interesses,
         dataCriacao: new Date().toLocaleString('pt-BR')
     };
 
     try {
-        await adicionarItem(novoDado);
-        form.reset();
-        
-        exibirFeedback('Pensamento registrado com sucesso!', 'success');
-        
-        await atualizarListaUI();
-        mostrarSecao('listagem');
+        if (typeof adicionarItem === 'function') {
+            await adicionarItem(novoDado);
+            form.reset();
+            
+            exibirFeedback('Inscrição realizada com sucesso!', 'success');
+            
+            if (document.getElementById('listaDados')) {
+                await atualizarListaUI();
+            }
+        } else {
+            console.error('db.js não carregado corretamente.');
+        }
     } catch (error) {
         console.error(error);
         exibirFeedback('Erro ao salvar no banco local.', 'error');
@@ -92,30 +74,34 @@ async function atualizarListaUI() {
     if (!container) return;
 
     try {
+        if (typeof buscarItens !== 'function') return;
+        
         const itens = await buscarItens();
         
         if (itens.length === 0) {
-            container.innerHTML = '<p style="text-align:center; color: var(--text-dim);">Nenhum registro encontrado na comunidade.</p>';
+            container.innerHTML = '<p style="text-align:center; color: var(--text-dim); padding: 20px;">Nenhum membro registrado ainda.</p>';
             return;
         }
 
-        container.innerHTML = itens.map(item => `
-            <div class="data-card">
-                <div class="card-info">
-                    <h3 style="text-transform: uppercase; font-size: 1rem;">${item.nome}</h3>
-                    <p style="font-size: 0.8rem; color: var(--text-dim);">${item.email}</p>
-                    <small style="color: var(--text-dim); opacity: 0.6;">Interesses: ${item.interesse.join(', ') || 'Geral'}</small>
-                </div>
-                <button class="btn-delete" onclick="removerRegistro(${item.id})">Remover</button>
+        container.innerHTML = `
+            <div style="display: grid; gap: 20px; margin-top: 30px;">
+                ${itens.map(item => `
+                    <div class="card-texto" style="padding: 20px; margin-bottom: 0;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 5px;">${item.nome}</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 10px;">${item.email}</p>
+                        <p style="font-size: 0.8rem; margin-bottom: 15px;"><strong>Interesses:</strong> ${item.interesse.join(', ') || 'Geral'}</p>
+                        <button class="theme-toggle" onclick="removerRegistro(${item.id})" style="font-size: 0.6rem;">REMOVER</button>
+                    </div>
+                `).join('')}
             </div>
-        `).join('');
+        `;
     } catch (error) {
         container.innerHTML = '<p>Erro ao carregar dados.</p>';
     }
 }
 
 async function removerRegistro(id) {
-    if (confirm('Deseja realmente remover este registro da comunidade?')) {
+    if (confirm('Deseja realmente remover este registro?')) {
         try {
             await deletarItem(id);
             exibirFeedback('Registro removido.', 'success');
@@ -126,41 +112,8 @@ async function removerRegistro(id) {
     }
 }
 
-// --- UTILITÁRIOS E INTERATIVIDADE ---
-function exibirFeedback(mensagem) {
-    const feedback = document.createElement('div');
-    feedback.className = `feedback-toast`;
-    feedback.innerText = mensagem;
-    
-    document.body.appendChild(feedback);
-    
-    setTimeout(() => {
-        feedback.classList.add('show');
-        setTimeout(() => {
-            feedback.classList.remove('show');
-            setTimeout(() => feedback.remove(), 300);
-        }, 3000);
-    }, 100);
-}
-
-// --- REFLEXÕES (INTERATIVIDADE) ---
-const reflexoes = [
-    "A vida não examinada não vale a pena ser vivida. — Sócrates",
-    "Penso, logo existo. — René Descartes",
-    "O homem é a medida de todas as coisas. — Protágoras",
-    "Não se pode banhar-se duas vezes no mesmo rio. — Heráclito",
-    "O conhecimento é o alimento da alma. — Platão",
-    "A felicidade é o único objetivo da vida. — Aristóteles",
-    "A liberdade é o que fazemos com o que nos foi feito. — Jean-Paul Sartre"
-];
-
-function mostrarRecomendacao() {
-    const area = document.getElementById("recomendacaoArea");
-    const reflexaoAleatoria = reflexoes[Math.floor(Math.random() * reflexoes.length)];
-    
-    area.style.opacity = 0;
-    setTimeout(() => {
-        area.innerHTML = `<p style="font-size: 0.9rem; text-align: center; font-style: italic;">"${reflexaoAleatoria}"</p>`;
-        area.style.opacity = 1;
-    }, 300);
+// --- UTILITÁRIOS ---
+function exibirFeedback(mensagem, tipo = 'info') {
+    // Usando alert por simplicidade, mas o 'tipo' pode ser usado para estilização futura
+    alert(`${tipo.toUpperCase()}: ${mensagem}`);
 }

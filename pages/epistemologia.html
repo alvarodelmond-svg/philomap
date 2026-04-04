@@ -25,42 +25,73 @@
                     <li><a href="estetica.html">Estética</a></li>
                     <li><a href="metafisica.html">Metafísica</a></li>
                     <li><a href="epistemologia.html" class="active">Epistemologia</a></li>
+                    <li><a href="politica.html">Política</a></li>
+                    <li><a href="linguagem.html">Linguagem</a></li>
                     <li><a href="INSCRICAO.html">Inscrição</a></li>
                 </ul>
+                <div style="text-align: center;">
+                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <article class="card-texto">
+        <article class="card-texto reveal">
             <span class="subtitulo">Teoria do Conhecimento</span>
             <h1>Epistemologia</h1>
             
-            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1000&q=80" alt="Livro e Conhecimento" class="imagem-banner">
+            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Livro e Conhecimento" class="imagem-banner">
 
-            <p>A <strong>Epistemologia</strong> é o estudo da natureza, origem e limites do conhecimento humano. Ela investiga as condições que tornam o conhecimento possível, perguntando o que é a verdade e como podemos justificar nossas crenças fundamentais.</p>
+            <p>A <strong>Epistemologia</strong> é o estudo da natureza, origem e limites do conhecimento humano. Ela investiga as condições que tornam o conhecimento possível.</p>
 
             <blockquote class="citacao-destaque">
                 "O que se sabe com certeza é pouco; o que se acredita é muito." — Bertrand Russell
             </blockquote>
 
             <div style="margin-top: 60px; display: grid; gap: 40px;">
-                <div style="border-top: 1px solid var(--border); padding-top: 30px;">
+                <div style="border-top: 2px solid var(--border); padding-top: 30px;">
                     <h2>01. Racionalismo vs. Empirismo</h2>
-                    <p>O racionalismo (como o de Descartes) argumenta que a razão é a principal fonte do conhecimento. Por outro lado, o empirismo (como o de John Locke) afirma que todo o conhecimento deriva da experiência sensorial. Esta é uma das distinções mais famosas na história da epistemologia.</p>
+                    <p>O racionalismo (como o de <strong>René Descartes</strong>) argumenta que a razão é a principal fonte do conhecimento. Por outro lado, o empirismo (como o de <strong>John Locke</strong>) afirma que todo o conhecimento deriva da experiência sensorial.</p>
                 </div>
 
-                <div style="border-top: 1px solid var(--border); padding-top: 30px;">
-                    <h2>02. O Problema da Justificação</h2>
-                    <p>Tradicionalmente, o conhecimento foi definido como "crença verdadeira justificada". Mas o que conta como uma justificativa válida? Através da epistemologia, aprendemos a questionar a solidez de nossas evidências e a lógica de nossas conclusões.</p>
+                <div style="border-top: 2px solid var(--border); padding-top: 30px;">
+                    <h2>02. O Ceticismo</h2>
+                    <p>O ceticismo desafia a possibilidade de alcançar o conhecimento certo, incentivando a dúvida constante sobre nossas percepções e conclusões.</p>
                 </div>
+            </div>
+
+            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
+
+            <span class="subtitulo">Pensadores Chave</span>
+            <h2>Explorando a Teoria do Conhecimento</h2>
+            <div class="philosophers-grid">
+                <section class="phi-card">
+                    <h3>René Descartes</h3>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg" alt="Descartes" class="foto-filosofo">
+                    <p>Pai da filosofia moderna, usou a dúvida metódica para chegar ao "Penso, logo existo".</p>
+                </section>
+                <section class="phi-card">
+                    <h3>David Hume</h3>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Alan_Ramsay_-_David_Hume%2C_1711_-_1776_-_Google_Art_Project.jpg" alt="Hume" class="foto-filosofo">
+                    <p>Empirista radical, questionou a causalidade e a indução.</p>
+                </section>
+                <section class="phi-card">
+                    <h3>Immanuel Kant</h3>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Immanuel_Kant_%28painted_portrait%29.jpg" alt="Kant" class="foto-filosofo">
+                    <p>Sintetizou racionalismo e empirismo em sua "Crítica da Razão Pura".</p>
+                </section>
             </div>
         </article>
     </main>
 
-    <footer style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border);">
-        <p>2024 PHILOMAP — FILOSOFIA E TECNOLOGIA</p>
+    <footer>
+        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="../js/db.js"></script>
+    <script src="../js/controller.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

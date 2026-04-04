@@ -23,80 +23,80 @@
                     <li><a href="moralismo.html">Moralismo</a></li>
                     <li><a href="existencialismo.html">Existencialismo</a></li>
                     <li><a href="estetica.html">Estética</a></li>
+                    <li><a href="metafisica.html">Metafísica</a></li>
+                    <li><a href="epistemologia.html">Epistemologia</a></li>
+                    <li><a href="politica.html">Política</a></li>
+                    <li><a href="linguagem.html">Linguagem</a></li>
                     <li><a href="INSCRICAO.html" class="active">Inscrição</a></li>
                 </ul>
+                <div style="text-align: center;">
+                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <article class="card-texto">
+        <article class="card-texto reveal">
             <span class="subtitulo">Adesão</span>
             <h2>Portal de Membros PhiloMap</h2>
             <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1000&q=80" alt="Estudo e Reflexão" class="imagem-banner">
             
-            <p>Seja bem-vindo ao processo de registro do PhiloMap. Ao se tornar um membro de nossa comunidade, você terá acesso a materiais exclusivos, fóruns de discussão sobre dilemas éticos contemporâneos e uma rede de estudantes de todo o país interessados no mapa da filosofia.</p>
+            <p>Seja bem-vindo ao processo de registro do PhiloMap. Ao se tornar um membro de nossa comunidade, você terá acesso a materiais exclusivos e fóruns de discussão.</p>
             
-            <p>Por favor, preencha o formulário abaixo com atenção. Seus dados serão utilizados apenas para fins acadêmicos e para a personalização de sua experiência em nosso portal.</p>
-
-            <form class="modern-form">
+            <form id="formCadastro" class="modern-form">
                 <fieldset style="border: none; padding: 0; margin-bottom: 40px;">
                     <legend style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent);">01. Informações Pessoais</legend>
                     
                     <div class="form-group">
                         <label>Nome Completo:</label>
-                        <input type="text" placeholder="Ex: Sócrates de Atenas">
+                        <input type="text" name="nome" placeholder="Ex: Sócrates de Atenas" required>
                     </div>
                     
                     <div class="form-group">
                         <label>E-mail Acadêmico:</label>
-                        <input type="email" placeholder="seu@email.com">
+                        <input type="email" name="email" placeholder="seu@email.com" required>
                     </div>
 
                     <div class="form-group">
                         <label>Data de Nascimento:</label>
-                        <input type="date">
+                        <input type="date" name="nascimento" required>
                     </div>
                 </fieldset>
 
                 <fieldset style="border: none; padding: 0; margin-bottom: 40px;">
                     <legend style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent);">02. Perfil Intelectual</legend>
 
-                    <p style="margin-bottom: 15px;">Quais áreas da filosofia mais despertam seu interesse?</p>
+                    <p style="margin-bottom: 15px;">Quais áreas despertam seu interesse?</p>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: var(--bg); padding: 20px; border: 1px solid var(--border);">
-                        <label><input type="checkbox"> ÉTICA</label>
-                        <label><input type="checkbox"> LÓGICA</label>
-                        <label><input type="checkbox"> METAFÍSICA</label>
-                        <label><input type="checkbox"> ESTÉTICA</label>
-                        <label><input type="checkbox"> POLÍTICA</label>
-                        <label><input type="checkbox"> EPISTEMOLOGIA</label>
-                    </div>
-
-                    <p style="margin-top: 20px; margin-bottom: 10px;">Qual seu nível de conhecimento na área?</p>
-                    <div style="display: flex; gap: 20px; margin-bottom: 20px;">
-                        <label><input type="radio" name="experiencia"> Iniciante</label>
-                        <label><input type="radio" name="experiencia"> Intermediário</label>
-                        <label><input type="radio" name="experiencia"> Avançado</label>
+                        <label><input type="checkbox" name="interesse" value="Ética"> ÉTICA</label>
+                        <label><input type="checkbox" name="interesse" value="Lógica"> LÓGICA</label>
+                        <label><input type="checkbox" name="interesse" value="Moralismo"> MORALISMO</label>
+                        <label><input type="checkbox" name="interesse" value="Existencialismo"> EXISTENCIALISMO</label>
+                        <label><input type="checkbox" name="interesse" value="Estética"> ESTÉTICA</label>
+                        <label><input type="checkbox" name="interesse" value="Metafísica"> METAFÍSICA</label>
+                        <label><input type="checkbox" name="interesse" value="Epistemologia"> EPISTEMOLOGIA</label>
+                        <label><input type="checkbox" name="interesse" value="Política"> POLÍTICA</label>
+                        <label><input type="checkbox" name="interesse" value="Linguagem"> LINGUAGEM</label>
                     </div>
                 </fieldset>
 
-                <fieldset style="border: none; padding: 0; margin-bottom: 40px;">
-                    <legend style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent);">03. Motivação</legend>
-                    
-                    <div class="form-group">
-                        <label>Escreva sua carta de intenção (O que você busca na filosofia?):</label>
-                        <textarea style="height: 150px;"></textarea>
-                    </div>
-                </fieldset>
-
-                <button type="submit" class="btn-submit">CONFIRMAR INSCRIÇÃO NO MAPA</button>
+                <button type="submit" class="btn-submit">CONFIRMAR INSCRIÇÃO</button>
             </form>
+
+            <div id="listaDados" style="margin-top: 60px;">
+                <!-- Lista de membros -->
+            </div>
         </article>
     </main>
 
-    <footer style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border);">
-        <p>&copy; 2024 PhiloMap — Todos os direitos reservados aos pensadores.</p>
+    <footer>
+        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="../js/db.js"></script>
+    <script src="../js/controller.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
