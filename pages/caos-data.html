@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafio PhiloMap | O Pesadelo da UX</title>
+    <title>PhiloMap | INFERNO DA UX</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
 
         :root {
             --bg: #000;
             --text: #fff;
-            --border: #333;
+            --neon: #ff0000;
         }
 
         body { 
@@ -23,280 +23,292 @@
             height: 100vh; 
             margin: 0; 
             overflow: hidden;
-            transition:  0.1s;
+            cursor: none; /* Cursor real oculto */
+        }
+
+        #fake-cursor {
+            width: 30px;
+            height: 30px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            color: yellow;
+            font-size: 2rem;
+            font-weight: bold;
+            transition: 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-shadow: 0 0 10px red;
         }
 
         .chaos-card { 
-            background: #111; 
-            border: 5px solid #ff00ff; 
-            padding: 40px; 
-            border-radius: 20px; 
-            max-width: 450px; 
+            background: #000; 
+            border: 10px ridge #444; 
+            padding: 30px; 
+            max-width: 550px; 
             width: 100%; 
             position: relative; 
-            box-shadow: 0 0 50px #ff00ff;
-            transform: rotate(-2deg);
-            z-index: 10;
+            box-shadow: 0 0 200px rgba(255, 0, 0, 0.5);
+            transform: perspective(1000px) rotateX(5deg);
+            transition: transform 0.1s;
         }
 
-        @keyframes shake {
-            0% { transform: translate(1px, 1px) rotate(0deg); }
-            10% { transform: translate(-1px, -2px) rotate(-1deg); }
-            20% { transform: translate(-3px, 0px) rotate(1deg); }
-            30% { transform: translate(3px, 2px) rotate(0deg); }
-            40% { transform: translate(1px, -1px) rotate(1deg); }
-            50% { transform: translate(-1px, 2px) rotate(-1deg); }
-            60% { transform: translate(-3px, 1px) rotate(0deg); }
-            70% { transform: translate(3px, 1px) rotate(-1deg); }
-            80% { transform: translate(-1px, -1px) rotate(1deg); }
-            90% { transform: translate(1px, 2px) rotate(0deg); }
-            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        .blackout {
+            position: fixed;
+            top:0; left:0; width: 100%; height: 100%;
+            background: black;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
         }
 
-        .shaking { animation: shake 0.5s; animation-iteration-count: infinite; }
+        @keyframes ultra-glitch {
+            0% { clip: rect(44px, 450px, 56px, 0); }
+            20% { clip: rect(12px, 450px, 100px, 0); }
+            100% { clip: rect(67px, 450px, 120px, 0); }
+        }
 
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-size: 1.2rem; color: #00ffff; text-shadow: 2px 2px #ff00ff; margin-bottom: 15px; text-transform: uppercase; text-align: center; }
+        .form-group { position: relative; }
         
-        .chaos-controls { display: flex; flex-direction: column; gap: 20px; }
-        .chaos-item { display: flex; align-items: center; gap: 15px; font-size: 1rem; color: #ffff00; }
-        
+        label { 
+            display: block; 
+            font-size: 1.8rem; 
+            color: #ff00ff; 
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            animation: ultra-glitch 0.2s infinite;
+        }
+
+        .chaos-item { 
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
+            color: #00ff00;
+            margin: 20px 0;
+        }
+
+        /* Slider Vertical e Invertido */
         input[type="range"] { 
-            width: 100%; 
-            cursor: help;
-            filter: hue-rotate(90deg);
+            appearance: slider-vertical;
+            width: 30px;
+            height: 150px;
+            filter: invert(1) hue-rotate(90deg);
         }
 
         .btn-chaos { 
-            background: #ff00ff; 
-            border: none; 
-            color: #fff; 
-            padding: 10px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            width: 100px;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+            background: #0000ff; 
+            color: white; 
+            border: 5px solid yellow;
+            padding: 15px;
+            font-weight: 900;
+            cursor: pointer;
+            position: relative;
         }
 
         .btn-chaos-move { 
-            position: relative; 
-            background: #ff4444; 
+            background: #ff0000; 
             color: #fff; 
-            border: 3px solid #fff; 
-            padding: 12px 20px; 
-            font-size: 0.9rem; 
-            font-weight: bold; 
-            cursor: pointer; 
-            box-shadow: 5px 5px 0px #000;
-            z-index: 100;
+            border: 2px solid #000; 
+            padding: 20px; 
+            font-size: 1.2rem; 
+            font-weight: bold;
+            box-shadow: -10px -10px 0 #fff;
         }
 
         .btn-chaos-move.tired {
-            background: #44ff44 !important;
-            color: #000 !important;
-            box-shadow: none;
-            transform: scale(1.2);
-            border-color: #000;
+            background: white !important;
+            color: black !important;
+            transform: scale(0.2);
+            animation: spin 0.1s infinite;
         }
 
-        .btn-chaos-move.spinning {
-            background: #ffff00 !important;
-            color: #000 !important;
-            animation: pulse 0.2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
+        @keyframes spin { to { transform: scale(0.2) rotate(360deg); } }
 
         .final-display { 
-            margin-top: 25px; 
-            padding: 15px; 
-            background: #000; 
+            background: #330000; 
+            padding: 20px; 
+            border: 5px solid #ff0000;
             font-family: 'Courier New', monospace; 
-            font-size: 1.1rem; 
-            text-align: center; 
-            border: 2px dashed #00ffff;
-            color: #00ffff;
-        }
-
-        .btn-save { 
-            background: #ffff00; 
-            color: #000; 
-            border: none; 
-            padding: 15px; 
-            width: 100%; 
-            font-weight: 900; 
-            text-transform: uppercase; 
-            letter-spacing: 5px; 
-            cursor: pointer; 
+            font-size: 1.5rem; 
+            text-align: center;
             margin-top: 20px;
         }
 
-        #attempts-text { font-size: 0.8rem; color: #ff0000; font-weight: bold; }
-
-        .taunt {
-            position: absolute;
-            color: #fff;
-            font-weight: bold;
-            pointer-events: none;
-            z-index: 1000;
-            animation: fadeOut 1s forwards;
-            text-shadow: 2px 2px #000;
+        .btn-save { 
+            background: #fff; 
+            color: #000; 
+            padding: 25px; 
+            width: 100%; 
+            font-size: 2rem;
+            cursor: pointer;
+            border: 10px solid #f0f;
         }
 
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(-50px); }
+        #maintenance-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: blue;
+            color: white;
+            z-index: 10001;
+            display: none;
+            padding: 50px;
+            font-family: monospace;
         }
     </style>
 </head>
 <body>
 
-    <div class="chaos-card" id="chaos-card">
+    <div id="fake-cursor">?</div>
+    <div id="blackout-screen" class="blackout">CONEXÃO PERDIDA...</div>
+    <div id="maintenance-overlay">
+        :( <br><br>
+        Ocorreu um erro crítico no PhiloMap.<br>
+        Estamos coletando informações de erro e depois reiniciaremos para você.<br><br>
+        0% completo...
+    </div>
+
+    <div class="chaos-card" id="card">
         <div class="form-group">
-            <label>ROLE SEU ANO DE NASCIMENTO!</label>
-            <div class="chaos-controls">
-                <div class="chaos-item">
+            <label>NUNCA VAI CONSEGUIR</label>
+            
+            <div style="display: flex; justify-content: space-around; align-items: center;">
+                <div class="chaos-item" style="flex-direction: column;">
                     <span>DIA:</span>
-                    <input type="range" id="chaos-day" min="1" max="31" value="1">
-                </div>
-                
-                <div class="chaos-item">
-                    <span>MÊS:</span>
-                    <button type="button" id="chaos-month-btn" class="btn-chaos">JAN</button>
+                    <input type="range" id="chaos-day" min="1" max="31" value="31">
                 </div>
 
-                <div class="chaos-item" style="flex-direction: column; align-items: center;">
-                    <div style="margin-bottom: 10px;">
-                        <span>ANO:</span>
-                        <span id="chaos-year-display" style="font-size: 2.5rem; color: #00ff00; font-family: 'Courier New', monospace;">1900</span>
-                    </div>
-                    <button type="button" id="chaos-year-btn" class="btn-chaos-move">ME CLICA!</button>
-                </div>
-                
-                <div style="text-align: center;">
-                    <span id="attempts-text">HUMILHAÇÕES: 0</span>
-                    <p id="hint-text" style="font-size: 0.7rem; color: #ff00ff; font-weight: bold; margin-top: 5px;"></p>
+                <div class="chaos-item" style="flex-direction: column;">
+                    <span>MÊS:</span>
+                    <button type="button" id="chaos-month-btn" class="btn-chaos">JAN</button>
+                    <div id="month-status" style="font-size: 0.6rem; color: red;">CAPTURA EM CURSO...</div>
                 </div>
             </div>
-            
-            <div class="final-display" id="display-container">
-                DATA FINAL: <span id="selected-date">01/JAN/1900</span>
+
+            <div class="chaos-item" style="flex-direction: column; text-align: center;">
+                <span>ANO (META: 100 HUMILHAÇÕES):</span>
+                <span id="chaos-year-display" style="font-size: 4rem; color: #ff00ff; text-shadow: 5px 5px #000;">2026</span>
+                <button type="button" id="chaos-year-btn" class="btn-chaos-move">TENTA A SORTE</button>
             </div>
             
-            <button class="btn-save" onclick="salvarData()">SALVAR ESTA OBRA DE ARTE</button>
+            <div style="text-align: center; margin: 10px;">
+                <span id="attempts-text" style="color: yellow; font-size: 1.2rem;">0</span>
+            </div>
+            
+            <div class="final-display">
+                <span id="selected-date">31/JAN/2026</span>
+            </div>
+            
+            <button id="btn-save" class="btn-save" onclick="iniciarSalvamento()">CONFIRMAR DESTINO</button>
         </div>
     </div>
 
     <script src="db.js"></script>
     <script>
-        let dia = 1; let mesIdx = 0; let ano = 1900; let tentativas = 0;
+        let dia = 31; let mesIdx = 0; let ano = 2026; let tentativas = 0;
         let isTired = false;
         let isSpinning = false;
         let spinInterval;
+        const TARGET = 100;
 
         const meses = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"];
-        const taunts = ["ERROU!", "QUASE!", "TÁ LENTO!", "TENTA DE NOVO!", "KKKKKKKK", "DÁ PENA...", "MEU PET CLICA MELHOR", "OPS!", "NÃO FOI DESSA VEZ"];
-
-        const card = document.getElementById('chaos-card');
+        const fakeCursor = document.getElementById('fake-cursor');
+        const card = document.getElementById('card');
+        const monthBtn = document.getElementById('chaos-month-btn');
         const yearBtn = document.getElementById('chaos-year-btn');
         const yearDisplay = document.getElementById('chaos-year-display');
-        const body = document.body;
-        const hint = document.getElementById('hint-text');
+        const blackout = document.getElementById('blackout-screen');
+        const maintenance = document.getElementById('maintenance-overlay');
 
-        document.getElementById('chaos-day').oninput = (e) => { 
-            dia = e.target.value; 
-            update(); 
-            body.style.filter = `invert(${Math.random() * 0.2})`;
-            setTimeout(() => body.style.filter = 'none', 50);
+        // Cursor Fantasma
+        window.onmousemove = (e) => {
+            fakeCursor.style.left = e.clientX + 'px';
+            fakeCursor.style.top = e.clientY + 'px';
+            
+            // Inclina o card conforme o mouse
+            const x = (window.innerWidth / 2 - e.clientX) / 20;
+            const y = (window.innerHeight / 2 - e.clientY) / 20;
+            card.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${y}deg)`;
         };
-        
-        document.getElementById('chaos-month-btn').onclick = function() {
-            if (isSpinning) return;
+
+        // Mecânica do Mês: Foge ao se aproximar (não precisa clicar)
+        monthBtn.onmousemove = function() {
+            const rect = card.getBoundingClientRect();
+            this.style.position = 'absolute';
+            this.style.left = Math.random() * (rect.width - 100) + 'px';
+            this.style.top = Math.random() * (rect.height - 100) + 'px';
+            document.getElementById('month-status').innerText = "STATUS: FORA DE ALCANCE";
+        };
+
+        monthBtn.onclick = function() {
             mesIdx = (mesIdx + 1) % 12;
             this.innerText = meses[mesIdx];
             update();
         };
 
-        yearBtn.onmouseover = function(e) {
-            if (isTired || isSpinning) return; 
+        // Mecânica do Dia: Invertido
+        document.getElementById('chaos-day').oninput = function() {
+            dia = 32 - this.value; // Inverte o valor
+            update();
+            if(Math.random() > 0.9) this.value = Math.random() * 31;
+        };
 
+        // Mecânica do Ano: 100 humilhações
+        yearBtn.onmouseover = function() {
+            if (isTired || isSpinning) return;
             tentativas++;
-            document.getElementById('attempts-text').innerText = `HUMILHAÇÕES: ${tentativas}`;
+            document.getElementById('attempts-text').innerText = `${tentativas} / ${TARGET}`;
             
-            if (tentativas % 10 === 0) {
+            if (tentativas >= TARGET) {
                 becomeTired();
                 return;
             }
 
-            card.classList.add('shaking');
-            body.style.background = `rgb(${Math.random()*50}, ${Math.random()*50}, ${Math.random()*50})`;
-            
             const rect = card.getBoundingClientRect();
-            const newX = Math.random() * (rect.width - this.offsetWidth - 40) + 20;
-            const newY = Math.random() * (rect.height - this.offsetHeight - 40) + 20;
-            
             this.style.position = 'absolute';
-            this.style.left = `${newX}px`;
-            this.style.top = `${newY}px`;
-
-            setTimeout(() => card.classList.remove('shaking'), 500);
+            this.style.left = Math.random() * (rect.width - 150) + 'px';
+            this.style.top = Math.random() * (rect.height - 150) + 'px';
         };
 
         function becomeTired() {
             isTired = true;
             yearBtn.classList.add('tired');
-            yearBtn.innerText = "CLICA AGORA!";
-            hint.innerText = "O BOTÃO CANSOu! GIRE A ROLETA!";
-            
+            yearBtn.innerText = "!!!";
             setTimeout(() => {
-                if (!isSpinning) {
+                if(!isSpinning) {
                     isTired = false;
                     yearBtn.classList.remove('tired');
-                    yearBtn.innerText = "ME CLICA!";
-                    hint.innerText = "";
+                    yearBtn.innerText = "TENTA A SORTE";
+                    tentativas = 0;
+                    document.getElementById('attempts-text').innerText = `0 / ${TARGET}`;
                 }
-            }, 3000); 
+            }, 500); // Só 500ms para clicar!
         }
 
         yearBtn.onclick = function() {
             if (!isTired && !isSpinning) return;
-
             if (!isSpinning) {
-                // Inicia a Roleta
                 isSpinning = true;
                 isTired = false;
                 yearBtn.classList.remove('tired');
-                yearBtn.classList.add('spinning');
-                yearBtn.innerText = "PARAR!!";
-                hint.innerText = "CLIQUE NO MOMENTO CERTO!";
-                
+                yearBtn.innerText = "STOP";
                 spinInterval = setInterval(() => {
-                    ano++;
-                    if (ano > 2024) ano = 1900;
+                    ano -= Math.floor(Math.random() * 5);
+                    if (ano < 1900) ano = 2026;
                     yearDisplay.innerText = ano;
                     update();
-                }, 200); // 200ms para ser humanamente possível
+                }, 30);
             } else {
-                // Para a Roleta
                 clearInterval(spinInterval);
+                // Deslize final cruel
+                let extra = Math.floor(Math.random() * 20);
+                ano -= extra;
+                yearDisplay.innerText = ano;
                 isSpinning = false;
-                yearBtn.classList.remove('spinning');
-                yearBtn.innerText = "GIRAR DE NOVO?";
+                yearBtn.innerText = "DENOVO?";
                 yearBtn.style.position = 'static';
-                hint.innerText = "CONSEGUIU? SE NÃO, TENTE DE NOVO!";
-                
-                // Forçar o botão a voltar a fugir após 2 segundos
-                setTimeout(() => {
-                    if (!isSpinning) {
-                        tentativas = 0;
-                        document.getElementById('attempts-text').innerText = `HUMILHAÇÕES: 0`;
-                        yearBtn.innerText = "ME CLICA!";
-                    }
-                }, 2000);
+                update();
             }
         };
 
@@ -305,28 +317,45 @@
             document.getElementById('selected-date').innerText = `${d}/${meses[mesIdx]}/${ano}`;
         }
 
-        async function salvarData() {
-            if (isSpinning) {
-                alert("PARE A ROLETA PRIMEIRO, APRESSADINHO!");
-                return;
-            }
-            const dataObjeto = {
-                tipo: "Atividade Roleta do Caos",
-                dataNascimento: `${ano}-${String(mesIdx + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`,
-                tentativas: tentativas,
-                dataRegistro: new Date().toLocaleString('pt-BR')
-            };
-
-            try {
-                if(typeof adicionarItem === 'function') {
-                    await adicionarItem(dataObjeto);
-                    alert("FINALMENTE! Sua data foi salva. Você é um mestre da paciência.");
-                    location.reload();
-                } else {
-                    alert("Erro: db.js não encontrado.");
+        // Sistema de Salvamento Cruel
+        async function iniciarSalvamento() {
+            if (confirm("VOCÊ TEM CERTEZA?")) {
+                if (confirm("CERTEZA ABSOLUTA? ISSO NÃO TEM VOLTA.")) {
+                    if (confirm("ÚLTIMA CHANCE: CLIQUE EM CANCELAR PARA SALVAR. 'OK' VAI RESETAR TUDO.")) {
+                        alert("VOCÊ CLICOU EM OK. REINICIANDO...");
+                        location.reload();
+                    } else {
+                        realmenteSalvar();
+                    }
                 }
-            } catch (e) { alert("Erro ao salvar."); }
+            }
         }
+
+        async function realmenteSalvar() {
+            const dataObjeto = {
+                tipo: "Sobrevivente do Inferno",
+                data: `${ano}-${mesIdx + 1}-${dia}`,
+                pericia: "Deus da Paciência"
+            };
+            try {
+                await adicionarItem(dataObjeto);
+                alert("COMO? Você é um deus entre os homens. Salvo.");
+                location.reload();
+            } catch(e) { alert("O banco de dados se recusou a aceitar sua vitória."); }
+        }
+
+        // Blecautes e Erros Aleatórios
+        setInterval(() => {
+            blackout.style.display = 'flex';
+            setTimeout(() => blackout.style.display = 'none', 800);
+        }, 12000);
+
+        setInterval(() => {
+            if(Math.random() > 0.98) {
+                maintenance.style.display = 'block';
+                setTimeout(() => maintenance.style.display = 'none', 3000);
+            }
+        }, 5000);
     </script>
 </body>
 </html>
