@@ -8,86 +8,117 @@
 </head>
 <body>
 
-    <header>
-        <div class="container header-container">
-            <div class="logo-area" onclick="location.href='../index.html'">
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
                 <img src="../logo-site.svg" alt="PhiloMap Logo" class="logo-header">
-                <h1>PhiloMap</h1>
-                <p>CONHECIMENTO & SABEDORIA</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Início</a></li>
-                    <li><a href="etica.html">Ética</a></li>
-                    <li><a href="logica.html">Lógica</a></li>
-                    <li><a href="moralismo.html">Moralismo</a></li>
-                    <li><a href="existencialismo.html">Existencialismo</a></li>
-                    <li><a href="estetica.html">Estética</a></li>
-                    <li><a href="metafisica.html" class="active">Metafísica</a></li>
-                    <li><a href="epistemologia.html">Epistemologia</a></li>
-                    <li><a href="politica.html">Política</a></li>
-                    <li><a href="linguagem.html">Linguagem</a></li>
-                    <li><a href="INSCRICAO.html">Inscrição</a></li>
+                <h2>PhiloMap</h2>
+            </a>
+
+            <nav class="nav-group">
+                <span class="nav-label">Conceitos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="etica.html">Ética</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética</a></li>
+                    <li class="nav-item"><a href="metafisica.html" class="active">Metafísica</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
                 </ul>
-                <div style="text-align: center;">
-                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-                </div>
             </nav>
-        </div>
-    </header>
 
-    <main class="container">
-        <article class="card-texto reveal">
-            <span class="subtitulo">A Natureza do Ser</span>
-            <h1>Metafísica</h1>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="INSCRICAO.html">Inscrição</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
             
-            <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=1200&q=80" alt="Cosmos e Realidade" class="imagem-banner">
-
-            <p>A <strong>Metafísica</strong> é o ramo fundamental da filosofia que estuda a natureza última da realidade. Ela vai além das observações físicas imediatas.</p>
-
-            <blockquote class="citacao-destaque">
-                "Todos os homens, por natureza, desejam saber." — Aristóteles
-            </blockquote>
-
-            <div style="margin-top: 60px; display: grid; gap: 40px;">
-                <div style="border-top: 2px solid var(--border); padding-top: 30px;">
-                    <h2>01. Ontologia</h2>
-                    <p>O estudo do <em>ser</em> enquanto ser. Ela pergunta: o que significa existir?</p>
+            <section class="card reveal active">
+                <header class="card-header">
+                    <span class="subtitulo">A Natureza do Ser</span>
+                    <h1>Metafísica</h1>
+                </header>
+                
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=1200&q=80" alt="Cosmos e Realidade">
                 </div>
+                
+                <p>A <strong>Metafísica</strong> é o ramo fundamental da filosofia que estuda a natureza última da realidade. Ela vai além das observações físicas imediatas para investigar os primeiros princípios de todas as coisas.</p>
 
-                <div style="border-top: 2px solid var(--border); padding-top: 30px;">
-                    <h2>02. Dualismo vs. Monismo</h2>
-                    <p>O dualismo (Descartes) afirma que existem duas substâncias: mente e corpo. O monismo defende uma única substância.</p>
+                <blockquote class="citacao-destaque">
+                    "Todos os homens, por natureza, desejam saber." — Aristóteles
+                </blockquote>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Fundamentos</span>
+                    <h2>Pilares Metafísicos</h2>
+                </header>
+
+                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--gold);">01. Ontologia</h3>
+                        <p>O estudo do <em>ser</em> enquanto ser. Ela pergunta: o que significa existir? Quais são as categorias fundamentais de tudo o que há no universo?</p>
+                    </div>
+
+                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--gold);">02. Mente e Corpo</h3>
+                        <p>O dualismo (como o de <strong>René Descartes</strong>) afirma que existem duas substâncias distintas. O monismo, por outro lado, defende que tudo provém de uma única substância fundamental.</p>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Pensadores Metafísicos</span>
+                    <h2>Grandes Mentes da Realidade</h2>
+                </header>
 
-            <span class="subtitulo">Pensadores Metafísicos</span>
-            <h2>Grandes Mentes da Realidade</h2>
-            <div class="philosophers-grid">
-                <section class="phi-card">
-                    <h3>Platão</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg" alt="Platão" class="foto-filosofo">
-                    <p>Propôs o Mundo das Ideias, a realidade perfeita por trás do sensível.</p>
-                </section>
-                <section class="phi-card">
-                    <h3>G.W. Leibniz</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Gottfried_Wilhelm_von_Leibniz.jpg" alt="Leibniz" class="foto-filosofo">
-                    <p>Desenvolveu a teoria das Mônadas, as substâncias simples do universo.</p>
-                </section>
-                <section class="phi-card">
-                    <h3>Aristóteles</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg" alt="Aristóteles" class="foto-filosofo">
-                    <p>Sistematizou a metafísica como "filosofia primeira".</p>
-                </section>
-            </div>
-        </article>
-    </main>
+                <div class="philosophers-grid">
+                    <section class="phi-card">
+                        <h3>Platão</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg" alt="Platão" class="foto-filosofo">
+                        </div>
+                        <p>Propôs o Mundo das Ideias, a realidade perfeita e imutável por trás do mundo sensível.</p>
+                    </section>
+                    <section class="phi-card">
+                        <h3>G.W. Leibniz</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Gottfried_Wilhelm_von_Leibniz.jpg" alt="Leibniz" class="foto-filosofo">
+                        </div>
+                        <p>Desenvolveu a teoria das Mônadas, as substâncias simples e inextensas que compõem o universo.</p>
+                    </section>
+                    <section class="phi-card">
+                        <h3>Aristóteles</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg" alt="Aristóteles" class="foto-filosofo">
+                        </div>
+                        <p>Sistematizou a metafísica como "filosofia primeira", focando na substância, essência e causa.</p>
+                    </section>
+                </div>
+            </section>
 
-    <footer>
-        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
-    </footer>
+            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
+                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            </footer>
+        </main>
+    </div>
 
     <!-- Scripts -->
     <script src="../js/db.js"></script>

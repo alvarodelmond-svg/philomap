@@ -7,107 +7,134 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header>
-        <div class="container header-container">
-            <div class="logo-area" onclick="location.href='../index.html'">
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
                 <img src="../logo-site.svg" alt="PhiloMap Logo" class="logo-header">
-                <h1>PhiloMap</h1>
-                <p>CONHECIMENTO & SABEDORIA</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Início</a></li>
-                    <li><a href="etica.html">Ética</a></li>
-                    <li><a href="logica.html" class="active">Lógica</a></li>
-                    <li><a href="moralismo.html">Moralismo</a></li>
-                    <li><a href="existencialismo.html">Existencialismo</a></li>
-                    <li><a href="estetica.html">Estética</a></li>
-                    <li><a href="metafisica.html">Metafísica</a></li>
-                    <li><a href="epistemologia.html">Epistemologia</a></li>
-                    <li><a href="politica.html">Política</a></li>
-                    <li><a href="linguagem.html">Linguagem</a></li>
-                    <li><a href="INSCRICAO.html">Inscrição</a></li>
+                <h2>PhiloMap</h2>
+            </a>
+
+            <nav class="nav-group">
+                <span class="nav-label">Conceitos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="etica.html">Ética</a></li>
+                    <li class="nav-item"><a href="logica.html" class="active">Lógica</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
                 </ul>
-                <div style="text-align: center;">
-                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-                </div>
             </nav>
-        </div>
-    </header>
 
-    <main class="container">
-        <article class="card-texto reveal">
-            <span class="subtitulo">Raciocínio Formal</span>
-            <h2>O Caminho do Pensamento Correto</h2>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="INSCRICAO.html">Inscrição</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
             
-            <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80" alt="Lógica e Estrutura" class="imagem-banner">
+            <section class="card reveal active">
+                <header class="card-header">
+                    <span class="subtitulo">Raciocínio Formal</span>
+                    <h1>O Caminho do Pensamento Correto</h1>
+                </header>
+                
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80" alt="Lógica e Estrutura">
+                </div>
+                
+                <p>A <strong>lógica</strong> é a ciência e a arte que estuda as leis do pensamento e as condições da verdade. Em um world saturado de informações e argumentos convincentes, a lógica atua como a ferramenta fundamental para separar o que é válido do que é apenas persuasivo. Ela não se preocupa com o <em>conteúdo</em> do que é dito, mas com a <em>forma</em> como o argumento é construído.</p>
+            </section>
 
-            <p>A <strong>lógica</strong> é a ciência e a arte que estuda as leis do pensamento e as condições da verdade. Em um world saturado de informações e argumentos convincentes, a lógica atua como a ferramenta fundamental para separar o que é válido do que é apenas persuasivo. Ela não se preocupa com o <em>conteúdo</em> do que é dito, mas com a <em>forma</em> como o argumento é construído.</p>
-            
-            <p>Seja na matemática, na programação de computadores ou em um debate jurídico, a estrutura lógica é o alicerce sobre o qual construímos o conhecimento sólido. No PhiloMap, exploramos as três grandes divisões do raciocínio lógico:</p>
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Estruturas</span>
+                    <h2>Tipos de Raciocínio</h2>
+                </header>
 
-            <div style="display: grid; gap: 40px; margin-top: 50px;">
-                <div style="background: var(--bg); padding: 40px; border: 1px solid var(--border);">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Dedução: Do Geral para o Particular</h3>
-                    <p>O raciocínio dedutivo é aquele em que, se as premissas forem verdadeiras, a conclusão será necessariamente verdadeira. O clássico silogismo aristotélico é o exemplo perfeito: "Todos os homens são mortais. Sócrates é homem. Logo, Sócrates é mortal." Aqui, a verdade está contida na estrutura.</p>
+                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--gold);">Dedução</h3>
+                        <p>O raciocínio dedutivo é aquele em que, se as premissas forem verdadeiras, a conclusão será necessariamente verdadeira. O clássico silogismo aristotélico é o exemplo perfeito: "Todos os homens são mortais. Sócrates é homem. Logo, Sócrates é mortal."</p>
+                    </div>
+
+                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--gold);">Indução</h3>
+                        <p>A indução parte de observações repetidas para sugerir uma lei geral. É a base do método científico. Se observamos mil cisnes brancos, induzimos que todos os cisnes são brancos. Lida com probabilidades e previsões.</p>
+                    </div>
                 </div>
 
-                <div style="background: var(--bg); padding: 40px; border: 1px solid var(--border);">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Indução: Do Particular para o Geral</h3>
-                    <p>Diferente da dedução, a indução parte de observações repetidas para sugerir uma lei geral. É a base do método científico. Se observamos mil cisnes brancos, induzimos que todos os cisnes são brancos. A lógica indutiva lida com probabilidades e previsões, sendo essencial para o progresso da ciência experimental.</p>
-                </div>
-
-                <div style="background: var(--bg); padding: 40px; border: 1px solid var(--border);">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Abdução: A Busca pela Melhor Explicação</h3>
+                <div style="margin-top: 2rem; padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                    <h3 style="margin-bottom: 1rem; color: var(--gold);">Abdução</h3>
                     <p>Frequentemente usada no diagnóstico médico e na investigação criminal, a abdução formula uma hipótese para explicar um fenômeno observado. É o processo de escolher a explicação que melhor se ajusta aos fatos disponíveis.</p>
                 </div>
-            </div>
-
-            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
-
-            <span class="subtitulo">Grandes Mestres</span>
-            <h2>Os Grandes Mestres da Lógica</h2>
-
-            <section class="pensador">
-                <h3>Aristóteles</h3>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg" alt="Foto de Aristóteles" class="foto-filosofo">
-                <p>Considerado o <strong>Pai da Lógica</strong>, Aristóteles organizou o sistema que dominou o pensamento ocidental por mais de dois mil anos. Sua obra "Organon" estabeleceu as regras da inferência e as categorias do ser.</p>
             </section>
 
-            <hr style="margin: 40px 0; border: none; border-top: 1px solid var(--border);">
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Grandes Mestres</span>
+                    <h2>Os Grandes Mestres da Lógica</h2>
+                </header>
 
-            <section class="pensador">
-                <h3>Gottlob Frege</h3>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Gottlob_Frege.jpg" alt="Foto de Gottlob Frege" class="foto-filosofo">
-                <p>O matemático e filósofo alemão revolucionou a lógica no século XIX. Ele criou a <strong>Lógica de Predicados</strong>, permitindo que a lógica analisasse sentenças muito mais complexas do que as de Aristóteles.</p>
+                <div class="philosophers-grid">
+                    <section class="phi-card">
+                        <h3>Aristóteles</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg" alt="Aristóteles" class="foto-filosofo">
+                        </div>
+                        <p>O <strong>Pai da Lógica</strong>, organizou o sistema que dominou o pensamento ocidental por milênios. Sua obra "Organon" estabeleceu as regras da inferência.</p>
+                    </section>
+                    <section class="phi-card">
+                        <h3>Gottlob Frege</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Gottlob_Frege.jpg" alt="Gottlob Frege" class="foto-filosofo">
+                        </div>
+                        <p>Revolucionou a lógica no século XIX ao criar a <strong>Lógica de Predicados</strong>, permitindo análises matemáticas complexas.</p>
+                    </section>
+                    <section class="phi-card">
+                        <h3>Ludwig Wittgenstein</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Ludwig_Wittgenstein.jpg" alt="Ludwig Wittgenstein" class="foto-filosofo">
+                        </div>
+                        <p>No "Tractatus", explorou como a estrutura lógica das proposições deve refletir a estrutura da própria realidade.</p>
+                    </section>
+                </div>
             </section>
 
-            <hr style="margin: 40px 0; border: none; border-top: 1px solid var(--border);">
-
-            <section class="pensador">
-                <h3>Ludwig Wittgenstein</h3>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Ludwig_Wittgenstein.jpg" alt="Foto de Ludwig Wittgenstein" class="foto-filosofo">
-                <p>Em sua obra "Tractatus Logico-Philosophicus", Wittgenstein argumentou que os limites da minha linguagem são os limites do meu mundo. Ele explorou como a estrutura lógica das proposições deve refletir a estrutura da realidade.</p>
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Alerta Crítico</span>
+                    <h2>Cuidado com as Falácias</h2>
+                </header>
+                <p>Uma parte vital do estudo da lógica é a identificação de falácias — argumentos que parecem válidos, mas contêm erros ocultos de raciocínio:</p>
+                
+                <ul class="lista-estilizada" style="margin-top: 20px;">
+                    <li><strong>Ad Hominem:</strong> Atacar o caráter da pessoa em vez do argumento.</li>
+                    <li><strong>Espantalho:</strong> Distorcer a posição do oponente para facilitar o ataque.</li>
+                    <li><strong>Apelo à Autoridade:</strong> Validar algo apenas pela voz de uma autoridade.</li>
+                    <li><strong>Falsa Causa:</strong> Assumir causalidade por mera correlação temporal.</li>
+                </ul>
             </section>
 
-            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
-
-            <span class="subtitulo">Alerta Crítico</span>
-            <h2>Cuidado com as Falácias</h2>
-            <p>Uma parte vital do estudo da lógica é a identificação de falácias — argumentos que parecem válidos, mas contêm erros ocultos de raciocínio. Algumas das mais comuns incluem:</p>
-            
-            <ul class="lista-estilizada" style="margin-top: 20px;">
-                <li><strong>Ad Hominem:</strong> Atacar o caráter da pessoa que faz o argumento em vez do argumento em si.</li>
-                <li><strong>Espantalho:</strong> Distorcer a posição do oponente para torná-la mais fácil de atacar.</li>
-                <li><strong>Apelo à Autoridade:</strong> Afirmar que algo é verdade apenas porque uma autoridade disse que era.</li>
-                <li><strong>Falsa Causa:</strong> Assumir que, como dois eventos ocorreram juntos, um causou o outro.</li>
-            </ul>
-        </article>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
-    </footer>
+            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
+                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            </footer>
+        </main>
+    </div>
 
     <!-- Scripts -->
     <script src="../js/db.js"></script>

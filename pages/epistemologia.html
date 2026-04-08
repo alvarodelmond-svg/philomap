@@ -8,86 +8,117 @@
 </head>
 <body>
 
-    <header>
-        <div class="container header-container">
-            <div class="logo-area" onclick="location.href='../index.html'">
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
                 <img src="../logo-site.svg" alt="PhiloMap Logo" class="logo-header">
-                <h1>PhiloMap</h1>
-                <p>CONHECIMENTO & SABEDORIA</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Início</a></li>
-                    <li><a href="etica.html">Ética</a></li>
-                    <li><a href="logica.html">Lógica</a></li>
-                    <li><a href="moralismo.html">Moralismo</a></li>
-                    <li><a href="existencialismo.html">Existencialismo</a></li>
-                    <li><a href="estetica.html">Estética</a></li>
-                    <li><a href="metafisica.html">Metafísica</a></li>
-                    <li><a href="epistemologia.html" class="active">Epistemologia</a></li>
-                    <li><a href="politica.html">Política</a></li>
-                    <li><a href="linguagem.html">Linguagem</a></li>
-                    <li><a href="INSCRICAO.html">Inscrição</a></li>
+                <h2>PhiloMap</h2>
+            </a>
+
+            <nav class="nav-group">
+                <span class="nav-label">Conceitos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="etica.html">Ética</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica</a></li>
+                    <li class="nav-item"><a href="epistemologia.html" class="active">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
                 </ul>
-                <div style="text-align: center;">
-                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-                </div>
             </nav>
-        </div>
-    </header>
 
-    <main class="container">
-        <article class="card-texto reveal">
-            <span class="subtitulo">Teoria do Conhecimento</span>
-            <h1>Epistemologia</h1>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="INSCRICAO.html">Inscrição</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
             
-            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Livro e Conhecimento" class="imagem-banner">
-
-            <p>A <strong>Epistemologia</strong> é o estudo da natureza, origem e limites do conhecimento humano. Ela investiga as condições que tornam o conhecimento possível.</p>
-
-            <blockquote class="citacao-destaque">
-                "O que se sabe com certeza é pouco; o que se acredita é muito." — Bertrand Russell
-            </blockquote>
-
-            <div style="margin-top: 60px; display: grid; gap: 40px;">
-                <div style="border-top: 2px solid var(--border); padding-top: 30px;">
-                    <h2>01. Racionalismo vs. Empirismo</h2>
-                    <p>O racionalismo (como o de <strong>René Descartes</strong>) argumenta que a razão é a principal fonte do conhecimento. Por outro lado, o empirismo (como o de <strong>John Locke</strong>) afirma que todo o conhecimento deriva da experiência sensorial.</p>
+            <section class="card reveal active">
+                <header class="card-header">
+                    <span class="subtitulo">Teoria do Conhecimento</span>
+                    <h1>Epistemologia</h1>
+                </header>
+                
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Livro e Conhecimento">
                 </div>
+                
+                <p>A <strong>Epistemologia</strong> é o estudo da natureza, origem e limites do conhecimento humano. Ela investiga as condições que tornam o conhecimento possível.</p>
 
-                <div style="border-top: 2px solid var(--border); padding-top: 30px;">
-                    <h2>02. O Ceticismo</h2>
-                    <p>O ceticismo desafia a possibilidade de alcançar o conhecimento certo, incentivando a dúvida constante sobre nossas percepções e conclusões.</p>
+                <blockquote class="citacao-destaque">
+                    "O que se sabe com certeza é pouco; o que se acredita é muito." — Bertrand Russell
+                </blockquote>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Fundamentos</span>
+                    <h2>Origens do Conhecimento</h2>
+                </header>
+
+                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--gold);">01. Racionalismo vs. Empirismo</h3>
+                        <p>O racionalismo (como o de <strong>René Descartes</strong>) argumenta que a razão é a principal fonte do conhecimento. Por outro lado, o empirismo (como o de <strong>John Locke</strong>) afirma que todo o conhecimento deriva da experiência sensorial.</p>
+                    </div>
+
+                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--gold);">02. O Ceticismo</h3>
+                        <p>O ceticismo desafia a possibilidade de alcançar o conhecimento certo, incentivando a dúvida constante sobre nossas percepções e conclusões.</p>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Pensadores Chave</span>
+                    <h2>Explorando a Teoria do Conhecimento</h2>
+                </header>
 
-            <span class="subtitulo">Pensadores Chave</span>
-            <h2>Explorando a Teoria do Conhecimento</h2>
-            <div class="philosophers-grid">
-                <section class="phi-card">
-                    <h3>René Descartes</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg" alt="Descartes" class="foto-filosofo">
-                    <p>Pai da filosofia moderna, usou a dúvida metódica para chegar ao "Penso, logo existo".</p>
-                </section>
-                <section class="phi-card">
-                    <h3>David Hume</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Alan_Ramsay_-_David_Hume%2C_1711_-_1776_-_Google_Art_Project.jpg" alt="Hume" class="foto-filosofo">
-                    <p>Empirista radical, questionou a causalidade e a indução.</p>
-                </section>
-                <section class="phi-card">
-                    <h3>Immanuel Kant</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Immanuel_Kant_%28painted_portrait%29.jpg" alt="Kant" class="foto-filosofo">
-                    <p>Sintetizou racionalismo e empirismo em sua "Crítica da Razão Pura".</p>
-                </section>
-            </div>
-        </article>
-    </main>
+                <div class="philosophers-grid">
+                    <section class="phi-card">
+                        <h3>René Descartes</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg" alt="Descartes" class="foto-filosofo">
+                        </div>
+                        <p>Pai da filosofia moderna, usou a dúvida metódica para chegar ao "Penso, logo existo".</p>
+                    </section>
+                    <section class="phi-card">
+                        <h3>David Hume</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Alan_Ramsay_-_David_Hume%2C_1711_-_1776_-_Google_Art_Project.jpg" alt="Hume" class="foto-filosofo">
+                        </div>
+                        <p>Empirista radical, questionou a causalidade e a indução.</p>
+                    </section>
+                    <section class="phi-card">
+                        <h3>Immanuel Kant</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Immanuel_Kant_%28painted_portrait%29.jpg" alt="Kant" class="foto-filosofo">
+                        </div>
+                        <p>Sintetizou racionalismo e empirismo em sua "Crítica da Razão Pura".</p>
+                    </section>
+                </div>
+            </section>
 
-    <footer>
-        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
-    </footer>
+            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
+                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            </footer>
+        </main>
+    </div>
 
     <!-- Scripts -->
     <script src="../js/db.js"></script>

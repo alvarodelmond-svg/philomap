@@ -5,140 +5,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Portal de Filosofia</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/java.css">
 </head>
 <body>
 
-    <header>
-        <div class="container header-container">
-            <div class="logo-area" onclick="location.href='index.html'">
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <a href="index.html" class="sidebar-logo">
                 <img src="logo-site.svg" alt="PhiloMap Logo" class="logo-header">
-                <h1>PhiloMap</h1>
-                <p>CONHECIMENTO & SABEDORIA</p>
-            </div>
+                <h2>PhiloMap</h2>
+            </a>
 
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Início</a></li>
-                    <li><a href="pages/etica.html">Ética</a></li>
-                    <li><a href="pages/logica.html">Lógica</a></li>
-                    <li><a href="pages/moralismo.html">Moralismo</a></li>
-                    <li><a href="pages/existencialismo.html">Existencialismo</a></li>
-                    <li><a href="pages/estetica.html">Estética</a></li>
-                    <li><a href="pages/metafisica.html">Metafísica</a></li>
-                    <li><a href="pages/epistemologia.html">Epistemologia</a></li>
-                    <li><a href="pages/politica.html">Política</a></li>
-                    <li><a href="pages/linguagem.html">Linguagem</a></li>
-                    <li><a href="pages/INSCRICAO.html">Inscrição</a></li>
+            <nav class="nav-group">
+                <span class="nav-label">Conceitos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="pages/etica.html">Ética</a></li>
+                    <li class="nav-item"><a href="pages/logica.html">Lógica</a></li>
+                    <li class="nav-item"><a href="pages/moralismo.html">Moralismo</a></li>
+                    <li class="nav-item"><a href="pages/existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="pages/estetica.html">Estética</a></li>
+                    <li class="nav-item"><a href="pages/metafisica.html">Metafísica</a></li>
+                    <li class="nav-item"><a href="pages/epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="pages/politica.html">Política</a></li>
+                    <li class="nav-item"><a href="pages/linguagem.html">Linguagem</a></li>
                 </ul>
-                <div style="text-align: center;">
-                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-                </div>
             </nav>
-        </div>
-    </header>
 
-    <main class="container">
-        <article class="card-texto reveal">
-            <span class="subtitulo">Bem-vindo ao Portal</span>
-            <h2>O Mapa da Filosofia</h2>
-            
-            <img src="https://images.unsplash.com/photo-1521714161819-15534968fc5f?auto=format&fit=crop&w=1200&q=80" alt="Estátua Grega" class="imagem-banner">
-            
-            <p>Sejam bem-vindos ao <strong>Philomap</strong>, um portal dedicado à exploração profunda dos conceitos fundamentais que moldaram o pensamento humano ao longo dos séculos. Este projeto nasceu da necessidade de criar um espaço digital que não apenas catalogue ideias, mas que as conecte de forma intuitiva e visualmente rica. Desenvolvido pelos alunos do Instituto Federal do Tocantins Campus Araguaina (IFTO), <strong>Alvaro Lucas e Pedro Filho</strong>, sob a orientação do <strong>Professor Iury Gomes</strong>, o Philomap é o resultado de uma pesquisa acadêmica focada na democratização do conhecimento filosófico.</p>
-            
-            <p>Nossa missão é transformar a complexidade da filosofia em um caminho acessível para estudantes, pesquisadores e curiosos. Através de uma interface que remete aos grandes clássicos da literatura acadêmica, buscamos proporcionar uma experiêcia de leitura que convida à reflexão e ao questionamento constante.</p>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="active">Início</a></li>
+                    <li class="nav-item"><a href="pages/INSCRICAO.html">Inscrição</a></li>
+                </ul>
+            </nav>
 
-            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
+            <div class="sidebar-footer">
+                <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+            </div>
+        </aside>
 
-            <span class="subtitulo">Interatividade</span>
-            <h2>Recomendação Filosófica</h2>
-            <section style="text-align: center; border: 1px solid var(--border); padding: 40px; background: var(--surface);">
-                <p>Busca inspiração? Receba uma recomendação aleatória de leitura ou filme filosófico.</p>
-                <button id="botaoRecomendacao" class="theme-toggle" style="margin-top: 20px;">Gerar Recomendação</button>
-                <div id="recomendacao" style="margin-top: 20px; font-style: italic; font-family: 'Playfair Display', serif; font-size: 1.2rem;"></div>
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            
+            <section class="card reveal active">
+                <header class="card-header">
+                    <span class="subtitulo">Bem-vindo ao Portal</span>
+                    <h1>O Mapa da Filosofia</h1>
+                </header>
+                
+                <div class="image-container">
+                    <img src="data:image/jpeg;base64,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" alt="Estátua Grega">
+                </div>
+                
+                <p>Sejam bem-vindos ao <strong>Philomap</strong>, um portal dedicado à exploração profunda dos conceitos fundamentais que moldaram o pensamento humano ao longo dos séculos. Este projeto nasceu da necessidade de criar um espaço digital que não apenas catalogue ideias, mas que as conecte de forma intuitiva e visualmente rica. Desenvolvido pelos alunos do Instituto Federal do Tocantins Campus Araguaina (IFTO), <strong>Alvaro Lucas e Pedro Filho</strong>, sob a orientação do <strong>Professor Iury Gomes</strong>, o Philomap é o resultado de uma pesquisa acadêmica focada na democratização do conhecimento filosófico.</p>
+                
+                <p style="margin-top: 1.5rem;">Nossa missão é transformar a complexidade da filosofia em um caminho acessível para estudantes, pesquisadores e curiosos. Através de uma interface que remete aos grandes clássicos da literatura acadêmica, buscamos proporcionar uma experiêcia de leitura que convida à reflexão e ao questionamento constante.</p>
             </section>
 
-            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Interatividade</span>
+                    <h2>Recomendação Filosófica</h2>
+                </header>
+                <div style="text-align: center; padding: 20px;">
+                    <p>Busca inspiração? Receba uma recomendação aleatória de leitura ou filme filosófico.</p>
+                    <button id="botaoRecomendacao" class="theme-toggle" style="margin-top: 20px; width: auto; padding: 12px 40px;">Gerar Recomendação</button>
+                    <div id="recomendacao" style="margin-top: 20px; font-style: italic; font-family: 'Playfair Display', serif; font-size: 1.2rem; min-height: 3rem;"></div>
+                </div>
+            </section>
 
-            <span class="subtitulo">Institucional</span>
-            <h2>Sobre Nosso Projeto e o IFTO</h2>
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Institucional</span>
+                    <h2>Sobre Nosso Projeto e o IFTO</h2>
+                </header>
 
-             <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1200&q=80" alt="Biblioteca Clássica" class="imagem-banner">
-            
-            <div class="container-flex">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1200&q=80" alt="Biblioteca Clássica">
+                </div>
+                
                 <div class="texto-flex">
                     <p>O Instituto Federal do Tocantins (IFTO) Campus Araguaína é um polo de excelência em educação tecnológica e científica na região norte do Brasil. Dentro deste contexto de inovação, o Philomap surge como uma ferramenta interdisciplinar, unindo tecnologia da informação e ciências humanas. O objetivo principal deste site é reunir diversos conceitos — da Ética à Lógica, do Moralismo à Estética — em um único repositório digital de fácil navegação.</p>
                     
-                    <p>Acreditamos que a filosofia é a base para o desenvolvimento do pensamento crítico necessário na era da informação. Por isso, cada aba deste portal foi cuidadosamente curada para oferecer não apenas definições, mas contextos históricos e citações de grandes pensadores que ajudam a fundamentar o aprendizado.</p>
+                    <p style="margin-top: 1rem;">Acreditamos que a filosofia é a base para o desenvolvimento do pensamento crítico necessário na era da informação. Por isso, cada aba deste portal foi cuidadosamente curada para oferecer não apenas definições, mas contextos históricos e citações de grandes pensadores que ajudam a fundamentar o aprendizado.</p>
                 </div>
                 
-                <h3 style="margin-top: 40px; text-align: center;">Junte-se à nossa Comunidade</h3>
-                <p style="text-align: center; margin-bottom: 20px;">Cadastre-se para receber atualizações e participar de nossas discussões filosóficas.</p>
-
-                <form id="formCadastro" class="modern-form">
-                    <div class="form-group">
-                        <input type="text" id="nome" name="nome" required placeholder="NOME COMPLETO">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" required placeholder="E-MAIL">
-                    </div>
-
-                    <div class="form-group">
-                        <label style="font-size: 0.8rem; letter-spacing: 1px; color: var(--text-dim);">DATA DE NASCIMENTO</label>
-                        <input type="date" id="nascimento" name="nascimento" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label style="font-size: 0.8rem; letter-spacing: 1px; color: var(--text-dim);">INTERESSES FILOSÓFICOS</label>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border: 1px solid var(--border); padding: 15px; background: var(--bg);">
-                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Ética"> ÉTICA</label>
-                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Lógica"> LÓGICA</label>
-                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Moralismo"> MORALISMO</label>
-                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Existencialismo"> EXISTENCIALISMO</label>
-                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Estética"> ESTÉTICA</label>
-                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Metafísica"> METAFÍSICA</label>
-                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Epistemologia"> EPISTEMOLOGIA</label>
-                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Política"> POLÍTICA</label>
-                            <label style="font-size: 0.9rem;"><input type="checkbox" name="interesse" value="Linguagem"> LINGUAGEM</label>
+                <div style="margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 3rem;">
+                    <h3 style="text-align: center; margin-bottom: 2rem;">Junte-se à nossa Comunidade</h3>
+                    
+                    <form id="formCadastro" class="modern-form">
+                        <div class="form-group">
+                            <label>NOME COMPLETO</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Ex: Sócrates de Atenas">
                         </div>
+
+                        <div class="form-group">
+                            <label>E-MAIL</label>
+                            <input type="email" id="email" name="email" required placeholder="socrates@academia.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>DATA DE NASCIMENTO</label>
+                            <input type="date" id="nascimento" name="nascimento" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>INTERESSES FILOSÓFICOS</label>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; border: 1px solid var(--border); padding: 20px; border-radius: 8px; background: var(--bg);">
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Ética"> ÉTICA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Lógica"> LÓGICA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Moralismo"> MORALISMO</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Existencialismo"> EXISTENCIALISMO</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Estética"> ESTÉTICA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Metafísica"> METAFÍSICA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Epistemologia"> EPISTEMOLOGIA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Política"> POLÍTICA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Linguagem"> LINGUAGEM</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit">REGISTRAR NO MAPA</button>
+                    </form>
+
+                    <div id="listaDados" style="margin-top: 40px;">
+                        <!-- Lista de membros carregada via JS -->
                     </div>
-
-                    <button type="submit" class="btn-submit">REGISTRAR NO MAPA</button>
-                </form>
-
-                <div id="listaDados" style="margin-top: 60px;">
-                    <!-- Lista de membros carregada via JS -->
                 </div>
-            </div>
+            </section>
 
-            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Explorar</span>
+                    <h2>Pilares do Conhecimento</h2>
+                </header>
+                
+                <div style="display: grid; gap: 1.5rem;">
+                    <div style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px;">
+                        <strong style="color: var(--gold); display: block; margin-bottom: 0.5rem;">Ética e Valores:</strong>
+                        <p style="font-size: 0.95rem;">Um estudo sobre o comportamento humano, a justiça e a busca pelo "bem viver". Descubra as diferenças entre ética deontológica e utilitarista.</p>
+                    </div>
+                    <div style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px;">
+                        <strong style="color: var(--gold); display: block; margin-bottom: 0.5rem;">Lógica e Razão:</strong>
+                        <p style="font-size: 0.95rem;">Explore as estruturas do pensamento correto. De Aristóteles à lógica matemática moderna, entenda como construímos argumentos válidos.</p>
+                    </div>
+                    <div style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px;">
+                        <strong style="color: var(--gold); display: block; margin-bottom: 0.5rem;">Moralismo e Sociedade:</strong>
+                        <p style="font-size: 0.95rem;">Analise as normas que regem as comunidades e como a moralidade se diferencia da reflexão ética crítica.</p>
+                    </div>
+                </div>
+            </section>
 
-            <span class="subtitulo">Explorar</span>
-            <h2>Explorar o Conhecimento</h2>
-            <p>Navegue pelas nossas abas especializadas e mergulhe em estudos detalhados sobre os pilares da filosofia ocidental:</p>
-            
-            <ul class="lista-estilizada">
-                <li>
-                    <strong>Ética e Valores:</strong> Um estudo sobre o comportamento humano, a justiça e a busca pelo "bem viver". Descubra as diferenças entre ética deontológica e utilitarista.
-                </li>
-                <li>
-                    <strong>Lógica e Razão:</strong> Explore as estruturas do pensamento correto. De Aristóteles à lógica matemática moderna, entenda como construímos argumentos válidos.
-                </li>
-                <li>
-                    <strong>Moralismo e Sociedade:</strong> Analise as normas que regem as comunidades e como a moralidade se diferencia da reflexão ética crítica.
-                </li>
-                <li>
-                    <strong>Busca pela Felicidade:</strong> O que significa viver uma vida plena? Investigue o conceito de eudaimonia e as diferentes visões filosóficas sobre a satisfação humana.
-                </li>
-            </ul>
-        </article>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
-    </footer>
+            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
+                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            </footer>
+        </main>
+    </div>
 
     <!-- Scripts -->
     <script src="js/db.js"></script>

@@ -8,70 +8,94 @@
 </head>
 <body>
 
-    <header>
-        <div class="container header-container">
-            <div class="logo-area" onclick="location.href='../index.html'">
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
                 <img src="../logo-site.svg" alt="PhiloMap Logo" class="logo-header">
-                <h1>PhiloMap</h1>
-                <p>CONHECIMENTO & SABEDORIA</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Início</a></li>
-                    <li><a href="etica.html" class="active">Ética</a></li>
-                    <li><a href="logica.html">Lógica</a></li>
-                    <li><a href="moralismo.html">Moralismo</a></li>
-                    <li><a href="existencialismo.html">Existencialismo</a></li>
-                    <li><a href="estetica.html">Estética</a></li>
-                    <li><a href="metafisica.html">Metafísica</a></li>
-                    <li><a href="epistemologia.html">Epistemologia</a></li>
-                    <li><a href="politica.html">Política</a></li>
-                    <li><a href="linguagem.html">Linguagem</a></li>
-                    <li><a href="INSCRICAO.html">Inscrição</a></li>
+                <h2>PhiloMap</h2>
+            </a>
+
+            <nav class="nav-group">
+                <span class="nav-label">Conceitos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="etica.html" class="active">Ética</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
                 </ul>
-                <div style="text-align: center;">
-                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-                </div>
             </nav>
-        </div>
-    </header>
 
-    <main class="container">
-        <article class="card-texto reveal">
-            <span class="subtitulo">Conceitos Fundamentais</span>
-            <h1>Ética e Valores</h1>
-            
-            <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80" alt="Balança da Justiça" class="imagem-banner">
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="INSCRICAO.html">Inscrição</a></li>
+                </ul>
+            </nav>
 
-            <p>A ética é o ramo da filosofia que busca entender os princípios que orientam o <strong>comportamento humano</strong>. Diferente da moral, que se baseia em costumes e tradições específicas de um grupo, a ética é uma reflexão universal e crítica sobre o que é "bom", "justo" ou "correto".</p>
-
-            <blockquote class="citacao-destaque">
-                "A excelência não é um ato, mas um hábito." — Aristóteles
-            </blockquote>
-
-            <div style="margin-top: 60px; display: grid; gap: 40px;">
-                <div style="border-top: 2px solid var(--border); padding-top: 30px;">
-                    <h2 style="text-align: left; font-size: 2rem;">01. Deontologia</h2>
-                    <p style="font-size: 1.1rem;">A ética deontológica, cujo principal expoente foi <strong>Immanuel Kant</strong>, argumenta que a moralidade de uma ação reside na própria ação.</p>
-                </div>
-
-                <div style="border-top: 2px solid var(--border); padding-top: 30px;">
-                    <h2 style="text-align: left; font-size: 2rem;">02. Utilitarismo</h2>
-                    <p style="font-size: 1.1rem;">Proposto por pensadores como <strong>John Stuart Mill</strong>, este sistema defende que a ação correta é aquela que maximiza o bem-estar geral.</p>
-                </div>
-
-                <div style="border-top: 2px solid var(--border); padding-top: 30px;">
-                    <h2 style="text-align: left; font-size: 2rem;">03. Ética das Virtudes</h2>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg" alt="Aristóteles" class="foto-filosofo">
-                    <p style="font-size: 1.1rem;">Iniciada por <strong>Aristóteles</strong>, esta abordagem foca no caráter do indivíduo. A virtude é encontrada no equilíbrio.</p>
-                </div>
+            <div class="sidebar-footer">
+                <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
             </div>
-        </article>
-    </main>
+        </aside>
 
-    <footer>
-        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
-    </footer>
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            
+            <section class="card reveal active">
+                <header class="card-header">
+                    <span class="subtitulo">Conceito Fundamental</span>
+                    <h1>Ética e Valores</h1>
+                </header>
+                
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80" alt="Balança da Justiça">
+                </div>
+                
+                <p>A ética é o ramo da filosofia que busca entender os princípios que orientam o <strong>comportamento humano</strong>. Diferente da moral, que se baseia em costumes e tradições específicas de um grupo, a ética é uma reflexão universal e crítica sobre o que é "bom", "justo" ou "correto".</p>
+
+                <blockquote class="citacao-destaque">
+                    "A excelência não é um ato, mas um hábito." — Aristóteles
+                </blockquote>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Sistemas Éticos</span>
+                    <h2>Principais Correntes</h2>
+                </header>
+
+                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--gold);">01. Deontologia</h3>
+                        <p>A ética deontológica, cujo principal expoente foi <strong>Immanuel Kant</strong>, argumenta que a moralidade de uma ação reside na própria ação, independentemente das consequências.</p>
+                    </div>
+
+                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--gold);">02. Utilitarismo</h3>
+                        <p>Proposto por pensadores como <strong>John Stuart Mill</strong>, este sistema defende que a ação correta é aquela que maximiza o bem-estar geral e a felicidade do maior número de pessoas.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 2rem; border: 1px solid var(--border); border-radius: 12px; display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg" alt="Aristóteles" class="foto-filosofo" style="margin: 0;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <h3 style="margin-bottom: 1rem; color: var(--gold);">03. Ética das Virtudes</h3>
+                        <p>Iniciada por <strong>Aristóteles</strong>, esta abordagem foca no caráter do indivíduo. A virtude é encontrada no equilíbrio (o "justo meio") entre dois extremos viciosos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
+                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            </footer>
+        </main>
+    </div>
 
     <!-- Scripts -->
     <script src="../js/db.js"></script>

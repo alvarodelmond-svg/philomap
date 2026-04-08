@@ -3,96 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap | Inscrição no Portal</title>
+    <title>PhiloMap | Inscrição</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-    <header>
-        <div class="container header-container">
-            <div class="logo-area" onclick="location.href='../index.html'">
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
                 <img src="../logo-site.svg" alt="PhiloMap Logo" class="logo-header">
-                <h1>PhiloMap</h1>
-                <p>CONHECIMENTO & SABEDORIA</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Início</a></li>
-                    <li><a href="etica.html">Ética</a></li>
-                    <li><a href="logica.html">Lógica</a></li>
-                    <li><a href="moralismo.html">Moralismo</a></li>
-                    <li><a href="existencialismo.html">Existencialismo</a></li>
-                    <li><a href="estetica.html">Estética</a></li>
-                    <li><a href="metafisica.html">Metafísica</a></li>
-                    <li><a href="epistemologia.html">Epistemologia</a></li>
-                    <li><a href="politica.html">Política</a></li>
-                    <li><a href="linguagem.html">Linguagem</a></li>
-                    <li><a href="INSCRICAO.html" class="active">Inscrição</a></li>
+                <h2>PhiloMap</h2>
+            </a>
+
+            <nav class="nav-group">
+                <span class="nav-label">Conceitos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="etica.html">Ética</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
                 </ul>
-                <div style="text-align: center;">
-                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-                </div>
             </nav>
-        </div>
-    </header>
 
-    <main class="container">
-        <article class="card-texto reveal">
-            <span class="subtitulo">Adesão</span>
-            <h2>Portal de Membros PhiloMap</h2>
-            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1000&q=80" alt="Estudo e Reflexão" class="imagem-banner">
-            
-            <p>Seja bem-vindo ao processo de registro do PhiloMap. Ao se tornar um membro de nossa comunidade, você terá acesso a materiais exclusivos e fóruns de discussão.</p>
-            
-            <form id="formCadastro" class="modern-form">
-                <fieldset style="border: none; padding: 0; margin-bottom: 40px;">
-                    <legend style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent);">01. Informações Pessoais</legend>
-                    
-                    <div class="form-group">
-                        <label>Nome Completo:</label>
-                        <input type="text" name="nome" placeholder="Ex: Sócrates de Atenas" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>E-mail Acadêmico:</label>
-                        <input type="email" name="email" placeholder="seu@email.com" required>
-                    </div>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="INSCRICAO.html" class="active">Inscrição</a></li>
+                </ul>
+            </nav>
 
-                    <div class="form-group">
-                        <label>Data de Nascimento:</label>
-                        <input type="date" name="nascimento" required>
-                    </div>
-                </fieldset>
-
-                <fieldset style="border: none; padding: 0; margin-bottom: 40px;">
-                    <legend style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent);">02. Perfil Intelectual</legend>
-
-                    <p style="margin-bottom: 15px;">Quais áreas despertam seu interesse?</p>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: var(--bg); padding: 20px; border: 1px solid var(--border);">
-                        <label><input type="checkbox" name="interesse" value="Ética"> ÉTICA</label>
-                        <label><input type="checkbox" name="interesse" value="Lógica"> LÓGICA</label>
-                        <label><input type="checkbox" name="interesse" value="Moralismo"> MORALISMO</label>
-                        <label><input type="checkbox" name="interesse" value="Existencialismo"> EXISTENCIALISMO</label>
-                        <label><input type="checkbox" name="interesse" value="Estética"> ESTÉTICA</label>
-                        <label><input type="checkbox" name="interesse" value="Metafísica"> METAFÍSICA</label>
-                        <label><input type="checkbox" name="interesse" value="Epistemologia"> EPISTEMOLOGIA</label>
-                        <label><input type="checkbox" name="interesse" value="Política"> POLÍTICA</label>
-                        <label><input type="checkbox" name="interesse" value="Linguagem"> LINGUAGEM</label>
-                    </div>
-                </fieldset>
-
-                <button type="submit" class="btn-submit">CONFIRMAR INSCRIÇÃO</button>
-            </form>
-
-            <div id="listaDados" style="margin-top: 60px;">
-                <!-- Lista de membros -->
+            <div class="sidebar-footer">
+                <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
             </div>
-        </article>
-    </main>
+        </aside>
 
-    <footer>
-        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
-    </footer>
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            
+            <section class="card reveal active">
+                <header class="card-header">
+                    <span class="subtitulo">Adesão</span>
+                    <h1>Portal de Membros PhiloMap</h1>
+                </header>
+                
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Estudo e Reflexão">
+                </div>
+                
+                <p>Seja bem-vindo ao processo de registro do PhiloMap. Ao se tornar um membro de nossa comunidade, você terá acesso a materiais exclusivos e fóruns de discussão sobre os grandes temas da filosofia clássica e contemporânea.</p>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Cadastro</span>
+                    <h2>Formulário de Inscrição</h2>
+                </header>
+
+                <form id="formCadastro" class="modern-form">
+                    <div class="form-group">
+                        <label>NOME COMPLETO</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Ex: Sócrates de Atenas">
+                    </div>
+
+                    <div class="form-group">
+                        <label>E-MAIL ACADÊMICO</label>
+                        <input type="email" id="email" name="email" required placeholder="socrates@academia.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>DATA DE NASCIMENTO</label>
+                        <input type="date" id="nascimento" name="nascimento" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>INTERESSES FILOSÓFICOS</label>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; border: 1px solid var(--border); padding: 20px; border-radius: 8px; background: var(--bg);">
+                            <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Ética"> ÉTICA</label>
+                            <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Lógica"> LÓGICA</label>
+                            <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Moralismo"> MORALISMO</label>
+                            <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Existencialismo"> EXISTENCIALISMO</label>
+                            <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Estética"> ESTÉTICA</label>
+                            <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Metafísica"> METAFÍSICA</label>
+                            <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Epistemologia"> EPISTEMOLOGIA</label>
+                            <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Política"> POLÍTICA</label>
+                            <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Linguagem"> LINGUAGEM</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">CONFIRMAR INSCRIÇÃO</button>
+                </form>
+
+                <div id="listaDados" style="margin-top: 40px;">
+                    <!-- Lista de membros carregada via JS -->
+                </div>
+            </section>
+
+            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
+                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            </footer>
+        </main>
+    </div>
 
     <!-- Scripts -->
     <script src="../js/db.js"></script>

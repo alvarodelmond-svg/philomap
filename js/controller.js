@@ -86,11 +86,11 @@ async function atualizarListaUI() {
         container.innerHTML = `
             <div style="display: grid; gap: 20px; margin-top: 30px;">
                 ${itens.map(item => `
-                    <div class="card-texto" style="padding: 20px; margin-bottom: 0;">
+                    <div class="card reveal active" style="padding: 20px; margin-bottom: 0;">
                         <h3 style="font-size: 1.2rem; margin-bottom: 5px;">${item.nome}</h3>
                         <p style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 10px;">${item.email}</p>
                         <p style="font-size: 0.8rem; margin-bottom: 15px;"><strong>Interesses:</strong> ${item.interesse.join(', ') || 'Geral'}</p>
-                        <button class="theme-toggle" onclick="removerRegistro(${item.id})" style="font-size: 0.6rem;">REMOVER</button>
+                        <button class="theme-toggle" onclick="removerRegistro(${item.id})" style="font-size: 0.6rem; width: auto;">REMOVER</button>
                     </div>
                 `).join('')}
             </div>

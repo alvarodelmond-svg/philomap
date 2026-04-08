@@ -3,91 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap | Filosofia Política</title>
+    <title>PhiloMap | Política</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-    <header>
-        <div class="container header-container">
-            <div class="logo-area" onclick="location.href='../index.html'">
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
                 <img src="../logo-site.svg" alt="PhiloMap Logo" class="logo-header">
-                <h1>PhiloMap</h1>
-                <p>CONHECIMENTO & SABEDORIA</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Início</a></li>
-                    <li><a href="etica.html">Ética</a></li>
-                    <li><a href="logica.html">Lógica</a></li>
-                    <li><a href="moralismo.html">Moralismo</a></li>
-                    <li><a href="existencialismo.html">Existencialismo</a></li>
-                    <li><a href="estetica.html">Estética</a></li>
-                    <li><a href="metafisica.html">Metafísica</a></li>
-                    <li><a href="epistemologia.html">Epistemologia</a></li>
-                    <li><a href="politica.html" class="active">Política</a></li>
-                    <li><a href="linguagem.html">Linguagem</a></li>
-                    <li><a href="INSCRICAO.html">Inscrição</a></li>
+                <h2>PhiloMap</h2>
+            </a>
+
+            <nav class="nav-group">
+                <span class="nav-label">Conceitos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="etica.html">Ética</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html" class="active">Política</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
                 </ul>
-                <div style="text-align: center;">
-                    <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-                </div>
             </nav>
-        </div>
-    </header>
 
-    <main class="container">
-        <article class="card-texto reveal">
-            <span class="subtitulo">O Poder e a Sociedade</span>
-            <h1>Filosofia Política</h1>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="INSCRICAO.html">Inscrição</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
             
-            <img src="https://images.unsplash.com/photo-1541872703-74c5e443d1fe?auto=format&fit=crop&w=1200&q=80" alt="Política e Estado" class="imagem-banner">
-
-            <p>A <strong>Filosofia Política</strong> é o estudo da organização das sociedades, do poder e da justiça.</p>
-
-            <blockquote class="citacao-destaque">
-                "O homem é, por natureza, um animal político." — Aristóteles
-            </blockquote>
-
-            <div style="margin-top: 60px; display: grid; gap: 40px;">
-                <div style="border-top: 2px solid var(--border); padding-top: 30px;">
-                    <h2>01. O Contratualismo</h2>
-                    <p>Investigação sobre a origem do Estado e do contrato social (Hobbes, Locke, Rousseau).</p>
+            <section class="card reveal active">
+                <header class="card-header">
+                    <span class="subtitulo">O Poder e a Sociedade</span>
+                    <h1>Filosofia Política</h1>
+                </header>
+                
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1541872703-74c5e443d1fe?auto=format&fit=crop&w=1200&q=80" alt="Política e Estado">
                 </div>
+                
+                <p>A <strong>Filosofia Política</strong> é o estudo da organização das sociedades, da natureza do poder, da autoridade, do Estado e da justiça. Ela busca responder como devemos viver juntos e qual é a melhor forma de governo para garantir o bem comum.</p>
 
-                <div style="border-top: 2px solid var(--border); padding-top: 30px;">
-                    <h2>02. Realismo Político</h2>
-                    <p>Análise do poder como ele é exercido na realidade, desassociado da moral privada.</p>
+                <blockquote class="citacao-destaque">
+                    "O homem é, por natureza, um animal político." — Aristóteles
+                </blockquote>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Fundamentos</span>
+                    <h2>Teoria do Estado</h2>
+                </header>
+
+                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--gold);">01. O Contratualismo</h3>
+                        <p>Investigação sobre a origem do Estado e do contrato social. Pensadores como <strong>Hobbes, Locke e Rousseau</strong> discutiram como os indivíduos cedem parte de sua liberdade em troca de segurança e ordem.</p>
+                    </div>
+
+                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--gold);">02. Realismo Político</h3>
+                        <p>Análise do poder como ele é exercido na realidade. <strong>Nicolau Maquiavel</strong> foi pioneiro ao desassociar a política da moral privada, focando na eficácia do governo.</p>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <hr style="margin: 60px 0; border: none; border-top: 1px solid var(--border);">
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Pensadores Chave</span>
+                    <h2>Grandes Nomes da Política</h2>
+                </header>
 
-            <span class="subtitulo">Pensadores Chave</span>
-            <h2>Grandes Nomes da Política</h2>
-            <div class="philosophers-grid">
-                <section class="phi-card">
-                    <h3>Thomas Hobbes</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Thomas_Hobbes_%28portrait%29.jpg" alt="Hobbes" class="foto-filosofo">
-                    <p>Defensor do poder soberano absoluto para garantir a ordem.</p>
-                </section>
-                <section class="phi-card">
-                    <h3>John Locke</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/JohnLocke.png" alt="Locke" class="foto-filosofo">
-                    <p>Defensor dos direitos naturais: vida, liberdade e propriedade.</p>
-                </section>
-                <section class="phi-card">
-                    <h3>Niccolò Machiavelli</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Niccolo_Machiavelli_Uffizi.jpg" alt="Maquiavel" class="foto-filosofo">
-                    <p>Pai da ciência política moderna.</p>
-                </section>
-            </div>
-        </article>
-    </main>
+                <div class="philosophers-grid">
+                    <section class="phi-card">
+                        <h3>Thomas Hobbes</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Thomas_Hobbes_%28portrait%29.jpg" alt="Thomas Hobbes" class="foto-filosofo">
+                        </div>
+                        <p>No "Leviatã", defendeu um poder soberano absoluto para evitar o estado de guerra de todos contra todos.</p>
+                    </section>
+                    <section class="phi-card">
+                        <h3>John Locke</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/JohnLocke.png" alt="John Locke" class="foto-filosofo">
+                        </div>
+                        <p>Pai do liberalismo, defendeu os direitos naturais inalienáveis: vida, liberdade e propriedade.</p>
+                    </section>
+                    <section class="phi-card">
+                        <h3>Niccolò Machiavelli</h3>
+                        <div class="image-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Niccolo_Machiavelli_Uffizi.jpg" alt="Maquiavel" class="foto-filosofo">
+                        </div>
+                        <p>Considerado o pai da ciência política moderna, autor de "O Príncipe".</p>
+                    </section>
+                </div>
+            </section>
 
-    <footer>
-        <p>&copy; 2024 PhiloMap — Todos os direitos reservados.</p>
-    </footer>
+            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
+                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            </footer>
+        </main>
+    </div>
 
     <!-- Scripts -->
     <script src="../js/db.js"></script>
