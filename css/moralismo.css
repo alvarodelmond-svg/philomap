@@ -2,7 +2,7 @@
 @import url('style.css');
 
 .hero-moralismo { 
-    height: 400px; 
+    height: 320px; 
     width: 100%; 
     background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7)), 
     url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=80');
