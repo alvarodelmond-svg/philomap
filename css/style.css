@@ -1,363 +1,329 @@
 /* 
- * PhiloMap - Design Moderno e Estruturado
+ * PhiloMap - Experiência Visual Premium
+ * Tema: A Fluidez da Razão
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;600;800&display=swap');
 
 :root {
-    --bg: #f8f6f0;
+    --bg: #fdfcf9;
     --surface: #ffffff;
-    --border: #e0dbcf;
-    --text-main: #2c2c2c;
-    --text-dim: #66615a;
-    --accent: #1a1a1a;
+    --border: #e8e2d8;
+    --text-main: #1a1a1a;
+    --text-dim: #706c61;
+    --accent: #0f0f0f;
     --gold: #c5a059;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --sidebar-width: 280px;
-    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gold-glow: rgba(197, 160, 89, 0.4);
+    --sidebar-width: 320px;
+    --transition-smooth: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 body.dark-mode {
-    --bg: #121212;
-    --surface: #1e1e1e;
-    --border: #333333;
-    --text-main: #e8e1d5;
-    --text-dim: #a0988e;
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --border: #2a2a2a;
+    --text-main: #f0ede5;
+    --text-dim: #a09c94;
     --accent: #d2b48c;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --gold-glow: rgba(210, 180, 140, 0.3);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* BASE */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg);
     color: var(--text-main);
-    line-height: 1.6;
+    line-height: 1.7;
     overflow-x: hidden;
-    transition: background-color 0.5s ease;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-}
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-h1, h2, h3, .playfair {
-    font-family: 'Playfair Display', serif;
-}
-
-/* LAYOUT STRUCTURE */
-.app-container {
-    display: flex;
-    min-height: 100vh;
-}
-
-/* SIDEBAR */
+/* SIDEBAR REVOLUTION */
 .sidebar {
     width: var(--sidebar-width);
     background: var(--surface);
     border-right: 1px solid var(--border);
-    padding: 2rem 1.5rem;
+    padding: 3.5rem 1.5rem;
     position: fixed;
     height: 100vh;
     overflow-y: auto;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     flex-direction: column;
-    transition: var(--transition);
+    box-shadow: 15px 0 60px rgba(0,0,0,0.03);
 }
 
+/* LOGO MAGNIFICADA E FILOSÓFICA */
 .sidebar-logo {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 3rem;
-    cursor: pointer;
     text-decoration: none;
+    margin-bottom: 5rem;
+    perspective: 1000px;
+    position: relative;
 }
 
 .sidebar-logo img {
-    height: 40px;
+    height: 150px; /* Magnitude máxima */
+    width: auto;
+    margin-bottom: 25px;
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+    animation: dialectic-cycle 8s infinite ease-in-out;
+    transform-style: preserve-3d;
+}
+
+/* Transmutação: Mármore Estoico (Light) */
+body:not(.dark-mode) .sidebar-logo img {
+    filter: grayscale(1) contrast(1.1) drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+}
+
+/* Transmutação: Fogo Prometeico (Dark) */
+body.dark-mode .sidebar-logo img {
+    filter: invert(0.8) sepia(1) saturate(3) hue-rotate(340deg) 
+            drop-shadow(0 0 20px var(--gold)) 
+            drop-shadow(0 0 40px rgba(197, 160, 89, 0.2));
+}
+
+/* Animação Dialética (Tese, Antítese, Síntese) */
+@keyframes dialectic-cycle {
+    0%, 100% { transform: translateY(0) scale(1) rotateY(0deg); } /* Tese */
+    33% { transform: translateY(-20px) scale(1.05) rotateY(15deg); } /* Antítese */
+    66% { transform: translateY(-10px) scale(1.1) rotateY(-15deg); filter: brightness(1.3); } /* Síntese */
+}
+
+.sidebar-logo:hover img {
+    transform: rotateY(180deg) scale(1.2);
+    cursor: pointer;
+}
+
+/* Easter Egg: O Oráculo */
+.sidebar-logo::after {
+    content: 'ΓΝΩΘΙ ΣΑΥΤΟΝ'; /* Conhece-te a ti mesmo em Grego */
+    position: absolute;
+    bottom: -20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 5px;
+    opacity: 0;
+    transition: all 0.8s ease;
+    pointer-events: none;
+}
+
+.sidebar-logo:hover::after {
+    opacity: 0.6;
+    bottom: -10px;
 }
 
 .sidebar-logo h2 {
-    font-size: 1.5rem;
+    font-size: 2.6rem;
     color: var(--accent);
-    letter-spacing: 2px;
-}
-
-.nav-group {
-    margin-bottom: 2rem;
-}
-
-.nav-label {
-    font-size: 0.7rem;
+    letter-spacing: 6px;
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-dim);
-    margin-bottom: 1rem;
-    display: block;
-    font-weight: 600;
+    background: linear-gradient(45deg, var(--accent), var(--gold), var(--accent));
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 8s linear infinite;
+    transition: var(--transition-smooth);
+}
+
+.sidebar-logo:hover h2 {
+    letter-spacing: 10px;
+    filter: brightness(1.2);
+}
+
+@keyframes shine { to { background-position: 200% center; } }
+
+/* ABAS ESTILOSAS (TABS) */
+.nav-group { margin-bottom: 3rem; }
+.nav-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--gold);
+    letter-spacing: 4px;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    opacity: 0.8;
 }
 
 .nav-list {
-    list-style: none;
+    list-style: none; /* Remove pontos da lista */
+    padding: 0;
+    margin: 0;
 }
 
+.nav-item { margin-bottom: 12px; list-style: none; }
+
 .nav-item a {
-    display: block;
-    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
     text-decoration: none;
     color: var(--text-main);
-    font-size: 0.9rem;
-    border-radius: 8px;
-    transition: var(--transition);
-    margin-bottom: 5px;
-    font-weight: 500;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    position: relative;
+    border: 1px solid transparent;
 }
 
 .nav-item a:hover, .nav-item a.active {
-    background: var(--bg);
+    background: var(--surface);
     color: var(--gold);
-    transform: translateX(5px);
+    transform: scale(1.02) translateX(10px);
+    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.1);
+    border-color: var(--border);
 }
 
-.sidebar-footer {
-    margin-top: auto;
-    padding-top: 2rem;
+.nav-item a::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    width: 4px;
+    height: 0; /* Começa com altura zero total */
+    background: var(--gold);
+    border-radius: 10px;
+    transition: var(--transition-smooth);
+    box-shadow: 0 0 15px var(--gold);
+    opacity: 0; /* Invisível por padrão */
 }
 
-/* MAIN CONTENT */
+.nav-item a:hover::before, .nav-item a.active::before {
+    height: 60%;
+    opacity: 1;
+}
+
+/* CONTEÚDO PRINCIPAL */
 .main-content {
     flex: 1;
     margin-left: var(--sidebar-width);
-    padding: 3rem;
-    max-width: calc(1400px - var(--sidebar-width));
-    margin-right: auto;
+    padding: 6rem;
+    max-width: 1500px;
+    animation: fadeIn 1.5s ease;
 }
 
-/* CARDS */
-.card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-.card:hover {
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-
-.card-header {
-    margin-bottom: 2rem;
-}
-
-.subtitulo {
-    display: inline-block;
-    color: var(--gold);
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-h1 { font-size: 3rem; margin-bottom: 1rem; }
-h2 { font-size: 2rem; margin-bottom: 1.5rem; }
-
-/* IMAGES */
+/* IMAGENS: HORIZONTES DA MENTE */
 .image-container {
     width: 100%;
-    height: 320px;
-    border-radius: 12px;
+    height: 380px;
+    border-radius: 25px;
     overflow: hidden;
-    margin: 2rem 0;
-    border: 1px solid var(--border);
+    margin: 3rem 0;
     background: var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 1px solid var(--border);
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
 }
 
 .image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.image-container .foto-filosofo {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
+.card:hover .image-container img {
+    transform: scale(1.08);
 }
 
-.image-container:has(.foto-filosofo) {
-    height: auto;
-    padding: 1rem 0;
-    border: none;
-    background: transparent;
+/* Legenda Animada - Removida para limpeza visual */
+.image-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.2) 100%);
+    opacity: 0;
+    transition: var(--transition-smooth);
+    pointer-events: none;
 }
 
-.image-container:hover img:not(.foto-filosofo) {
-    transform: scale(1.05);
+.image-container:hover::after {
+    opacity: 1;
 }
 
+/* FILÓSOFOS: EQUILÍBRIO E FORMA */
 .foto-filosofo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 180px !important;
+    height: 180px !important;
+    min-width: 180px;
+    min-height: 180px;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-    margin: 1.5rem 0;
-    border: 3px solid var(--gold);
+    border-radius: 50% !important;
+    border: 5px solid var(--gold);
+    display: block;
+    margin: 1.5rem auto;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     flex-shrink: 0;
 }
 
-/* COMPONENTS */
-.citacao-destaque {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-style: italic;
-    padding: 2rem;
-    border-left: 4px solid var(--gold);
-    background: var(--bg);
-    margin: 2rem 0;
-    border-radius: 0 12px 12px 0;
+/* Ajuste para quando a foto está dentro de um container de imagem genérico */
+.image-container:has(.foto-filosofo) {
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible !important;
 }
 
+.phi-card:hover .foto-filosofo {
+    transform: scale(1.1) rotate(3deg);
+    border-color: var(--accent);
+    box-shadow: 0 15px 30px var(--gold-glow);
+    animation: gentle-pulse 2s infinite ease-in-out;
+}
+
+@keyframes gentle-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 var(--gold-glow); }
+    50% { box-shadow: 0 0 0 15px transparent; }
+}
+
+/* BOTÕES E TEMA */
 .theme-toggle {
     background: var(--accent);
     color: var(--bg);
     border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: 18px;
+    border-radius: 20px;
     cursor: pointer;
-    font-weight: 600;
-    font-size: 0.8rem;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: var(--transition);
+    letter-spacing: 3px;
+    transition: var(--transition-smooth);
     width: 100%;
 }
 
 .theme-toggle:hover {
-    filter: brightness(1.2);
-    transform: translateY(-2px);
-}
-
-/* REVEAL ANIMATION */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* FORMS */
-.modern-form {
-    display: grid;
-    gap: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--text-dim);
-}
-
-input, select, textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--bg);
-    color: var(--text-main);
-    font-family: inherit;
-    transition: var(--transition);
-}
-
-input:focus {
-    outline: none;
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
-}
-
-.btn-submit {
     background: var(--gold);
-    color: white;
-    border: none;
-    padding: 16px;
-    border-radius: 8px;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: var(--transition);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px var(--gold-glow);
 }
 
-.btn-submit:hover {
-    filter: brightness(1.1);
-    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-    .sidebar {
-        width: 80px;
-        padding: 2rem 0.5rem;
-    }
-    .sidebar-logo h2, .nav-label, .nav-item span {
-        display: none;
-    }
-    .main-content {
-        margin-left: 80px;
-    }
+/* RESPONSIVIDADE */
+@media (max-width: 1200px) {
+    .sidebar { width: 110px; padding: 2.5rem 0.5rem; }
+    .sidebar-logo h2, .nav-label, .nav-item span { display: none; }
+    .main-content { margin-left: 110px; padding: 4rem; }
 }
 
 @media (max-width: 768px) {
-    .app-container {
-        flex-direction: column;
-    }
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        padding: 1rem;
-    }
-    .main-content {
-        margin-left: 0;
-        padding: 1.5rem;
-    }
-    .image-container {
-        height: 250px;
-    }
-    h1 { font-size: 2rem; }
+    .app-container { flex-direction: column; }
+    .sidebar { position: relative; width: 100%; height: auto; padding: 2rem; border-right: none; }
+    .main-content { margin-left: 0; padding: 2rem; }
+    .image-container { height: 250px; }
 }
-
-/* ANIMATIONS */
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.logo-header {
-    animation: float 4s ease-in-out infinite;
-}
-
