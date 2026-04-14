@@ -3,359 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap | INFERNO DA UX</title>
+    <title>Caos Data 2.0</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
-
-        :root {
-            --bg: #000;
-            --text: #fff;
-            --neon: #ff0000;
-        }
-
-        body { 
-            font-family: 'Comic Neue', cursive; 
-            background: var(--bg); 
-            color: var(--text); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            height: 100vh; 
-            margin: 0; 
-            overflow: hidden;
-            cursor: none; /* Cursor real oculto */
-        }
-
-        #fake-cursor {
-            width: 30px;
-            height: 30px;
-            position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-            color: yellow;
-            font-size: 2rem;
-            font-weight: bold;
-            transition: 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-shadow: 0 0 10px red;
-        }
-
-        .chaos-card { 
-            background: #000; 
-            border: 10px ridge #444; 
-            padding: 30px; 
-            max-width: 550px; 
-            width: 100%; 
-            position: relative; 
-            box-shadow: 0 0 200px rgba(255, 0, 0, 0.5);
-            transform: perspective(1000px) rotateX(5deg);
-            transition: transform 0.1s;
-        }
-
-        .blackout {
-            position: fixed;
-            top:0; left:0; width: 100%; height: 100%;
-            background: black;
-            z-index: 9999;
-            display: none;
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1a1a1a;
+            color: #dcdde1;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 3rem;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
         }
 
-        @keyframes ultra-glitch {
-            0% { clip: rect(44px, 450px, 56px, 0); }
-            20% { clip: rect(12px, 450px, 100px, 0); }
-            100% { clip: rect(67px, 450px, 120px, 0); }
-        }
-
-        .form-group { position: relative; }
-        
-        label { 
-            display: block; 
-            font-size: 1.8rem; 
-            color: #ff00ff; 
+        .container {
+            border: 2px solid #e84118;
+            padding: 30px;
+            background: #2f3640;
+            box-shadow: 0 0 20px rgba(232, 65, 24, 0.5);
+            max-width: 450px;
+            width: 100%;
             text-align: center;
-            margin-bottom: 30px;
-            letter-spacing: -2px;
-            animation: ultra-glitch 0.2s infinite;
         }
 
-        .chaos-item { 
-            display: flex; 
-            align-items: center; 
-            gap: 20px; 
-            color: #00ff00;
-            margin: 20px 0;
-        }
+        h2 { color: #e84118; text-transform: uppercase; letter-spacing: 2px;}
 
-        /* Slider Vertical e Invertido */
-        input[type="range"] { 
-            appearance: slider-vertical;
-            width: 30px;
-            height: 150px;
-            filter: invert(1) hue-rotate(90deg);
-        }
-
-        .btn-chaos { 
-            background: #0000ff; 
-            color: white; 
-            border: 5px solid yellow;
+        .form-group {
+            margin: 25px 0;
             padding: 15px;
-            font-weight: 900;
-            cursor: pointer;
-            position: relative;
+            border: 1px dashed #7f8fa6;
+            background: rgba(0,0,0,0.2);
         }
 
-        .btn-chaos-move { 
-            background: #ff0000; 
-            color: #fff; 
-            border: 2px solid #000; 
-            padding: 20px; 
-            font-size: 1.2rem; 
-            font-weight: bold;
-            box-shadow: -10px -10px 0 #fff;
-        }
-
-        .btn-chaos-move.tired {
-            background: white !important;
-            color: black !important;
-            transform: scale(0.2);
-            animation: spin 0.1s infinite;
-        }
-
-        @keyframes spin { to { transform: scale(0.2) rotate(360deg); } }
-
-        .final-display { 
-            background: #330000; 
-            padding: 20px; 
-            border: 5px solid #ff0000;
-            font-family: 'Courier New', monospace; 
-            font-size: 1.5rem; 
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .btn-save { 
-            background: #fff; 
-            color: #000; 
-            padding: 25px; 
-            width: 100%; 
-            font-size: 2rem;
-            cursor: pointer;
-            border: 10px solid #f0f;
-        }
-
-        #maintenance-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: blue;
+        select {
+            padding: 8px;
+            background-color: #353b48;
             color: white;
-            z-index: 10001;
-            display: none;
-            padding: 50px;
-            font-family: monospace;
+            border: 1px solid #e84118;
+            cursor: pointer;
+            font-family: inherit;
         }
+
+        /* O Mês Voador */
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            background: #192a56;
+            padding: 10px 0;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: voar 4s linear infinite alternate;
+        }
+
+        .marquee-content button {
+            background: #4cd137;
+            border: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+        
+        .marquee-content button.selecionado {
+            background: #e84118;
+            color: white;
+        }
+
+        @keyframes voar {
+            0% { transform: translateX(50%); }
+            100% { transform: translateX(-150%); }
+        }
+
+        /* Teclado Amnésico */
+        .numpad {
+            display: flex;
+            flex-wrap: wrap;
+            width: 160px;
+            margin: 10px auto;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .numpad button {
+            width: 45px;
+            height: 45px;
+            font-size: 1.2em;
+            background: #718093;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .numpad button:hover {
+            background: #e84118;
+        }
+
+        #ano-input {
+            width: 100px;
+            text-align: center;
+            font-size: 1.5em;
+            padding: 5px;
+            margin-bottom: 10px;
+            background: #2f3640;
+            color: #e84118;
+            border: 1px solid #7f8fa6;
+            pointer-events: none; /* Impede de digitar no teclado físico */
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            padding: 15px;
+            width: 100%;
+            background-color: #00a8ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .dica {
+            font-size: 0.6em;
+            color: #7f8fa6;
+            margin-top: 5px;
+            display: block;
+        }
+
     </style>
 </head>
 <body>
 
-    <div id="fake-cursor">?</div>
-    <div id="blackout-screen" class="blackout">CONEXÃO PERDIDA...</div>
-    <div id="maintenance-overlay">
-        :( <br><br>
-        Ocorreu um erro crítico no PhiloMap.<br>
-        Estamos coletando informações de erro e depois reiniciaremos para você.<br><br>
-        0% completo...
-    </div>
+    <div class="container">
+        <h2>Caos Data 2.0</h2>
 
-    <div class="chaos-card" id="card">
         <div class="form-group">
-            <label>NUNCA VAI CONSEGUIR</label>
-            
-            <div style="display: flex; justify-content: space-around; align-items: center;">
-                <div class="chaos-item" style="flex-direction: column;">
-                    <span>DIA:</span>
-                    <input type="range" id="chaos-day" min="1" max="31" value="31">
-                </div>
-
-                <div class="chaos-item" style="flex-direction: column;">
-                    <span>MÊS:</span>
-                    <button type="button" id="chaos-month-btn" class="btn-chaos">JAN</button>
-                    <div id="month-status" style="font-size: 0.6rem; color: red;">CAPTURA EM CURSO...</div>
-                </div>
-            </div>
-
-            <div class="chaos-item" style="flex-direction: column; text-align: center;">
-                <span>ANO (META: 100 HUMILHAÇÕES):</span>
-                <span id="chaos-year-display" style="font-size: 4rem; color: #ff00ff; text-shadow: 5px 5px #000;">2026</span>
-                <button type="button" id="chaos-year-btn" class="btn-chaos-move">TENTA A SORTE</button>
-            </div>
-            
-            <div style="text-align: center; margin: 10px;">
-                <span id="attempts-text" style="color: yellow; font-size: 1.2rem;">0</span>
-            </div>
-            
-            <div class="final-display">
-                <span id="selected-date">31/JAN/2026</span>
-            </div>
-            
-            <button id="btn-save" class="btn-save" onclick="iniciarSalvamento()">CONFIRMAR DESTINO</button>
+            <label>Dia (Boa sorte):</label><br>
+            <select id="dia"></select>
         </div>
+
+        <div class="form-group">
+            <label>Mês (Acerte o alvo):</label>
+            <div class="marquee-container">
+                <div class="marquee-content" id="mes-container">
+                    <button value="01">Jan</button>
+                    <button value="02">Fev</button>
+                    <button value="03">Mar</button>
+                    <button value="04">Abr</button>
+                    <button value="05">Mai</button>
+                    <button value="06">Jun</button>
+                    <button value="07">Jul</button>
+                    <button value="08">Ago</button>
+                    <button value="09">Set</button>
+                    <button value="10">Out</button>
+                    <button value="11">Nov</button>
+                    <button value="12">Dez</button>
+                </div>
+            </div>
+            <span id="mes-display" style="color:#4cd137; font-size:0.8em;">Nenhum selecionado</span>
+        </div>
+
+        <div class="form-group">
+            <label>Ano (Digite rápido):</label><br>
+            <input type="text" id="ano-input" value="" readonly placeholder="YYYY">
+            <div class="numpad" id="numpad">
+                <button class="num-key">1</button>
+                <button class="num-key">2</button>
+                <button class="num-key">3</button>
+                <button class="num-key">4</button>
+                <button class="num-key">5</button>
+                <button class="num-key">6</button>
+                <button class="num-key">7</button>
+                <button class="num-key">8</button>
+                <button class="num-key">9</button>
+                <button class="num-key">0</button>
+                <button id="clear-btn" style="width: 100px; background:#c23616;">Limpar</button>
+            </div>
+        </div>
+
+        <button class="submit-btn" id="btn-submit">Registrar Data</button>
+        <span class="dica">Dica: Às vezes é preciso mudar (shift) a atitude para confirmar.</span>
     </div>
 
-    <script src="db.js"></script>
     <script>
-        let dia = 31; let mesIdx = 0; let ano = 2026; let tentativas = 0;
-        let isTired = false;
-        let isSpinning = false;
-        let spinInterval;
-        const TARGET = 100;
+        // 1. Dias em Romanos e Embaralhados
+        const romanos = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI"];
+        // Mapeia o valor real para o romano
+        let diasObj = romanos.map((rom, index) => ({ val: index + 1, text: rom }));
+        // Embaralha o array
+        diasObj.sort(() => Math.random() - 0.5);
 
-        const meses = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"];
-        const fakeCursor = document.getElementById('fake-cursor');
-        const card = document.getElementById('card');
-        const monthBtn = document.getElementById('chaos-month-btn');
-        const yearBtn = document.getElementById('chaos-year-btn');
-        const yearDisplay = document.getElementById('chaos-year-display');
-        const blackout = document.getElementById('blackout-screen');
-        const maintenance = document.getElementById('maintenance-overlay');
+        const selectDia = document.getElementById('dia');
+        diasObj.forEach(d => {
+            let opt = document.createElement('option');
+            opt.value = d.val.toString().padStart(2, '0');
+            opt.textContent = d.text;
+            selectDia.appendChild(opt);
+        });
 
-        // Cursor Fantasma
-        window.onmousemove = (e) => {
-            fakeCursor.style.left = e.clientX + 'px';
-            fakeCursor.style.top = e.clientY + 'px';
-            
-            // Inclina o card conforme o mouse
-            const x = (window.innerWidth / 2 - e.clientX) / 20;
-            const y = (window.innerHeight / 2 - e.clientY) / 20;
-            card.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${y}deg)`;
-        };
+        // 2. Mês Voador
+        let mesSelecionado = null;
+        const botoesMes = document.querySelectorAll('.marquee-content button');
+        const mesDisplay = document.getElementById('mes-display');
 
-        // Mecânica do Mês: Foge ao se aproximar (não precisa clicar)
-        monthBtn.onmousemove = function() {
-            const rect = card.getBoundingClientRect();
-            this.style.position = 'absolute';
-            this.style.left = Math.random() * (rect.width - 100) + 'px';
-            this.style.top = Math.random() * (rect.height - 100) + 'px';
-            document.getElementById('month-status').innerText = "STATUS: FORA DE ALCANCE";
-        };
+        botoesMes.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                botoesMes.forEach(b => b.classList.remove('selecionado'));
+                this.classList.add('selecionado');
+                mesSelecionado = this.value;
+                mesDisplay.textContent = `Mês selecionado: ${this.textContent}`;
+            });
+        });
 
-        monthBtn.onclick = function() {
-            mesIdx = (mesIdx + 1) % 12;
-            this.innerText = meses[mesIdx];
-            update();
-        };
+        // 3. Teclado Amnésico
+        const numpad = document.getElementById('numpad');
+        const numKeys = document.querySelectorAll('.num-key');
+        const anoInput = document.getElementById('ano-input');
+        const clearBtn = document.getElementById('clear-btn');
 
-        // Mecânica do Dia: Invertido
-        document.getElementById('chaos-day').oninput = function() {
-            dia = 32 - this.value; // Inverte o valor
-            update();
-            if(Math.random() > 0.9) this.value = Math.random() * 31;
-        };
+        // Embaralha sempre que o mouse entra na área do teclado
+        numpad.addEventListener('mouseenter', () => {
+            numKeys.forEach(btn => {
+                btn.style.order = Math.floor(Math.random() * 10);
+            });
+        });
 
-        // Mecânica do Ano: 100 humilhações
-        yearBtn.onmouseover = function() {
-            if (isTired || isSpinning) return;
-            tentativas++;
-            document.getElementById('attempts-text').innerText = `${tentativas} / ${TARGET}`;
-            
-            if (tentativas >= TARGET) {
-                becomeTired();
+        numKeys.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(anoInput.value.length < 4) {
+                    anoInput.value += this.textContent;
+                }
+            });
+        });
+
+        clearBtn.addEventListener('click', () => {
+            anoInput.value = "";
+        });
+
+        // 4. Confirmação Exigente
+        const btnSubmit = document.getElementById('btn-submit');
+        btnSubmit.addEventListener('click', (e) => {
+            // Verifica se a tecla Shift está pressionada
+            if (!e.shiftKey) {
+                alert("Erro: Você clicou fraco demais. Leia as entrelinhas.");
                 return;
             }
 
-            const rect = card.getBoundingClientRect();
-            this.style.position = 'absolute';
-            this.style.left = Math.random() * (rect.width - 150) + 'px';
-            this.style.top = Math.random() * (rect.height - 150) + 'px';
-        };
+            const dia = selectDia.value;
+            const ano = anoInput.value;
 
-        function becomeTired() {
-            isTired = true;
-            yearBtn.classList.add('tired');
-            yearBtn.innerText = "!!!";
-            setTimeout(() => {
-                if(!isSpinning) {
-                    isTired = false;
-                    yearBtn.classList.remove('tired');
-                    yearBtn.innerText = "TENTA A SORTE";
-                    tentativas = 0;
-                    document.getElementById('attempts-text').innerText = `0 / ${TARGET}`;
-                }
-            }, 500); // Só 500ms para clicar!
-        }
-
-        yearBtn.onclick = function() {
-            if (!isTired && !isSpinning) return;
-            if (!isSpinning) {
-                isSpinning = true;
-                isTired = false;
-                yearBtn.classList.remove('tired');
-                yearBtn.innerText = "STOP";
-                spinInterval = setInterval(() => {
-                    ano -= Math.floor(Math.random() * 5);
-                    if (ano < 1900) ano = 2026;
-                    yearDisplay.innerText = ano;
-                    update();
-                }, 30);
-            } else {
-                clearInterval(spinInterval);
-                // Deslize final cruel
-                let extra = Math.floor(Math.random() * 20);
-                ano -= extra;
-                yearDisplay.innerText = ano;
-                isSpinning = false;
-                yearBtn.innerText = "DENOVO?";
-                yearBtn.style.position = 'static';
-                update();
+            if (!mesSelecionado) {
+                alert("Você esqueceu de caçar o mês voador!");
+                return;
             }
-        };
-
-        function update() {
-            const d = String(dia).padStart(2, '0');
-            document.getElementById('selected-date').innerText = `${d}/${meses[mesIdx]}/${ano}`;
-        }
-
-        // Sistema de Salvamento Cruel
-        async function iniciarSalvamento() {
-            if (confirm("VOCÊ TEM CERTEZA?")) {
-                if (confirm("CERTEZA ABSOLUTA? ISSO NÃO TEM VOLTA.")) {
-                    if (confirm("ÚLTIMA CHANCE: CLIQUE EM CANCELAR PARA SALVAR. 'OK' VAI RESETAR TUDO.")) {
-                        alert("VOCÊ CLICOU EM OK. REINICIANDO...");
-                        location.reload();
-                    } else {
-                        realmenteSalvar();
-                    }
-                }
+            if (ano.length !== 4) {
+                alert("O ano precisa ter 4 dígitos!");
+                return;
             }
-        }
 
-        async function realmenteSalvar() {
-            const dataObjeto = {
-                tipo: "Sobrevivente do Inferno",
-                data: `${ano}-${mesIdx + 1}-${dia}`,
-                pericia: "Deus da Paciência"
-            };
-            try {
-                await adicionarItem(dataObjeto);
-                alert("COMO? Você é um deus entre os homens. Salvo.");
-                location.reload();
-            } catch(e) { alert("O banco de dados se recusou a aceitar sua vitória."); }
-        }
-
-        // Blecautes e Erros Aleatórios
-        setInterval(() => {
-            blackout.style.display = 'flex';
-            setTimeout(() => blackout.style.display = 'none', 800);
-        }, 12000);
-
-        setInterval(() => {
-            if(Math.random() > 0.98) {
-                maintenance.style.display = 'block';
-                setTimeout(() => maintenance.style.display = 'none', 3000);
-            }
-        }, 5000);
+            alert(`🏆 MISSÃO IMPOSSÍVEL CONCLUÍDA!\nData: ${dia}/${mesSelecionado}/${ano}`);
+        });
     </script>
+
 </body>
 </html>
