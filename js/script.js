@@ -11,6 +11,142 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
     console.log(`%c${oracleQuotes[Math.floor(Math.random() * oracleQuotes.length)]}`, "color: #c5a059; font-size: 1.2rem; font-weight: bold;");
 
+    // --- BUSCA FILOSÓFICA PRO (A Busca pela Verdade) ---
+    const searchInput = document.getElementById('searchConcepts');
+    const conceptsList = document.getElementById('conceptsList');
+    
+    if (searchInput && conceptsList) {
+        // Inserir elementos dinâmicos
+        const clearBtn = document.createElement('span');
+        clearBtn.className = 'search-clear';
+        clearBtn.innerHTML = '&times;';
+        
+        const searchCount = document.createElement('span');
+        searchCount.className = 'search-count';
+        
+        searchInput.parentNode.appendChild(clearBtn);
+        searchInput.parentNode.appendChild(searchCount);
+
+        // Placeholders dinâmicos (Ciclo da Sabedoria)
+        const placeholders = ["Buscar verdade...", "Buscar sabedoria...", "Buscar caminhos...", "Buscar a essência..."];
+        let pIndex = 0;
+        setInterval(() => {
+            if (document.activeElement !== searchInput && !searchInput.value) {
+                pIndex = (pIndex + 1) % placeholders.length;
+                searchInput.placeholder = placeholders[pIndex];
+            }
+        }, 4000);
+
+        // Mapeamento de palavras-chave para busca inteligente
+        const keywordsMap = {
+            "etica.html": "dever moral virtude aristoteles kant certo errado agir",
+            "logica.html": "razao pensamento silogismo verdade falacia calculo",
+            "moralismo.html": "costumes tradicao valores sociedade conduta",
+            "existencialismo.html": "liberdade angustia sartre camus escolha ser",
+            "estetica.html": "belo arte sensivel juizo feio aparencia",
+            "metafisica.html": "ser realidade ontologia deus alma essencia",
+            "epistemologia.html": "conhecimento ciencia crença verdade razao",
+            "politica.html": "estado poder democracia justiça cidadania",
+            "linguagem.html": "signo significado fala comunicacao wittgenstein"
+        };
+
+        const conceptItems = Array.from(conceptsList.getElementsByClassName('nav-item'));
+        
+        // Guardar o texto original para restaurar após o highlight
+        conceptItems.forEach(item => {
+            const link = item.querySelector('a');
+            item.dataset.originalText = link.innerText;
+            const href = link.getAttribute('href').split('/').pop();
+            item.dataset.keywords = keywordsMap[href] || "";
+        });
+
+        const filterConcepts = () => {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            // Mostrar/Esconder botão de limpar
+            clearBtn.style.display = searchTerm ? 'block' : 'none';
+
+            let visibleCount = 0;
+            conceptItems.forEach(item => {
+                const originalText = item.dataset.originalText;
+                const keywords = item.dataset.keywords;
+                const link = item.querySelector('a');
+
+                const matchesText = originalText.toLowerCase().includes(searchTerm);
+                const matchesKeywords = keywords.toLowerCase().includes(searchTerm);
+
+                if (matchesText || matchesKeywords) {
+                    item.classList.remove('hidden');
+                    visibleCount++;
+                    
+                    // Highlight apenas se houver termo de busca e se o texto em si der match
+                    if (searchTerm && matchesText) {
+                        const regex = new RegExp(`(${searchTerm})`, 'gi');
+                        link.innerHTML = originalText.replace(regex, '<span class="search-match">$1</span>');
+                    } else {
+                        link.innerText = originalText;
+                    }
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            // Atualizar Contador de Resultados
+            if (searchTerm && visibleCount > 0) {
+                searchCount.innerText = visibleCount;
+                searchCount.classList.add('visible');
+            } else {
+                searchCount.classList.remove('visible');
+            }
+
+            // Mensagem de "No Results"
+            let noResults = document.getElementById('noResults');
+            if (visibleCount === 0 && searchTerm !== '') {
+                if (!noResults) {
+                    noResults = document.createElement('li');
+                    noResults.id = 'noResults';
+                    noResults.style.cssText = 'color: var(--text-dim); font-size: 0.8rem; text-align: center; margin-top: 20px; font-style: italic; animation: fadeIn 0.5s forwards;';
+                    noResults.innerText = 'A verdade não foi encontrada...';
+                    conceptsList.appendChild(noResults);
+                }
+            } else if (noResults) {
+                noResults.remove();
+            }
+        };
+
+        searchInput.addEventListener('input', filterConcepts);
+
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            filterConcepts();
+            searchInput.focus();
+        });
+
+        // Atalhos de Teclado
+        document.addEventListener('keydown', (e) => {
+            // '/' focar na busca
+            if (e.key === '/' && document.activeElement !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+
+            // 'Enter' navegar se houver apenas um resultado
+            if (e.key === 'Enter' && document.activeElement === searchInput) {
+                const visibleLinks = conceptsList.querySelectorAll('.nav-item:not(.hidden) a');
+                if (visibleLinks.length === 1) {
+                    window.location.href = visibleLinks[0].href;
+                }
+            }
+
+            // 'Escape' limpar e sair da busca
+            if (e.key === 'Escape' && document.activeElement === searchInput) {
+                searchInput.value = '';
+                filterConcepts();
+                searchInput.blur();
+            }
+        });
+    }
+
     // --- TEMPORIZADOR DE INATIVIDADE (Angústia Existencial) ---
     let idleTime = 0;
     const idleInterval = setInterval(() => {
