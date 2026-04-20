@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiloMap | Portal de Filosofia</title>
+    
+    <!-- PRECONNECT PARA VELOCIDADE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
+    <!-- PRELOAD DA IMAGEM PRINCIPAL (LCP) -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=60">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- SCRIPTS DEFER (NÃO BLOQUEANTES) -->
+    <script src="js/db.js" defer></script>
+    <script src="js/controller.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <!-- LOADING SCREEN OPTIMIZED -->
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
+        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px; animation: pulse 1.5s infinite;">PHILOMAP</div>
+        <div style="width: 150px; height: 1px; background: #e8e2d8; position: relative; overflow: hidden;">
+            <div style="position: absolute; width: 40px; height: 100%; background: #c5a059; animation: loading 1.5s infinite linear;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Script de segurança para remover o loader caso o JS principal demore
+        window.addEventListener('load', function() {
+            var loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(function() { loader.style.display = 'none'; }, 500);
+            }
+        });
+        // Fallback de 3 segundos
+        setTimeout(function() {
+            var loader = document.getElementById('loader');
+            if (loader && loader.style.display !== 'none') {
+                loader.style.opacity = '0';
+                setTimeout(function() { loader.style.display = 'none'; }, 500);
+            }
+        }, 3000);
+    </script>
+
+    <style>
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        @keyframes loading { 0% { left: -40px; } 100% { left: 150px; } }
+        /* Font-display swap via inline style if possible, but we'll do in CSS */
+    </style>
+
+    <div class="reading-progress"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo-site.svg" alt="PhiloMap Logo" class="logo-header" loading="eager" width="280" height="280">
+            </a>
+
+            <nav class="nav-group">
+                <span class="nav-label">Explorar</span>
+                <div class="search-container">
+                    <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
+                    <span class="search-icon">⚲</span>
+                </div>
+                
+                <span class="nav-label">Conceitos</span>
+                <ul class="nav-list" id="conceptsList">
+                    <li class="nav-item"><a href="pages/etica.html">Ética</a></li>
+                    <li class="nav-item"><a href="pages/logica.html">Lógica</a></li>
+                    <li class="nav-item"><a href="pages/moralismo.html">Moralismo</a></li>
+                    <li class="nav-item"><a href="pages/existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="pages/estetica.html">Estética</a></li>
+                    <li class="nav-item"><a href="pages/metafisica.html">Metafísica</a></li>
+                    <li class="nav-item"><a href="pages/epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="pages/politica.html">Política</a></li>
+                    <li class="nav-item"><a href="pages/linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="pages/estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="pages/fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="pages/cinismo.html">Cinismo</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-group">
+                <span class="nav-label">Estudos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="pages/literatura.html">Literatura</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="active">Início</a></li>
+                    <li class="nav-item"><a href="pages/INSCRICAO.html">Inscrição</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-extra reveal">
+                <span class="nav-label">Palavra do Dia</span>
+                <div id="wordOfTheDay" class="word-card">
+                    <strong id="dailyWord">Eudaimonia</strong>
+                    <p id="dailyWordMeaning" style="font-size: 0.75rem; margin-top: 5px;">A plenitude do ser e a felicidade através da virtude.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="accessibility-controls">
+                    <span class="nav-label" style="margin-bottom: 10px; display: block;">Acessibilidade</span>
+                    <div class="font-controls">
+                        <button onclick="changeFontSize('small')" title="Fonte Pequena" aria-label="Diminuir fonte">A-</button>
+                        <button onclick="changeFontSize('medium')" title="Fonte Normal" aria-label="Fonte normal">A</button>
+                        <button onclick="changeFontSize('large')" title="Fonte Grande" aria-label="Aumentar fonte">A+</button>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                        <button class="theme-toggle" onclick="toggleDyslexiaFont()" style="font-size: 0.6rem; padding: 10px;" aria-label="Alternar fonte para dislexia">Fonte Dislexia</button>
+                        <button class="theme-toggle" onclick="toggleReadingRuler()" style="font-size: 0.6rem; padding: 10px;" aria-label="Alternar régua de leitura">Régua Leitura</button>
+                    </div>
+                    <button class="theme-toggle" onclick="toggleZenMode()" style="margin-top: 10px; font-size: 0.7rem; background: var(--gold);" aria-label="Ativar modo foco total">Modo Zen (Foco)</button>
+                    <button class="theme-toggle" onclick="toggleHighContrast()" style="margin-top: 10px; font-size: 0.7rem;" aria-label="Alternar alto contraste">Alto Contraste</button>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()" style="margin-top: 10px;" aria-label="Alternar tema claro e escuro">Mudar Tema</button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content" id="main-content" role="main">
+            <div class="content-actions">
+                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
+            </div>
+            
+            <!-- CITAÇÃO DO DIA -->
+            <div class="daily-quote-card reveal active">
+                <div class="quote-icon">“</div>
+                <p id="dailyQuoteText">"A vida não examinada não vale a pena ser vivida."</p>
+                <cite id="dailyQuoteAuthor">— Sócrates</cite>
+            </div>
+
+            <section class="card reveal active">
+                <header class="card-header">
+                    <span class="subtitulo">Bem-vindo ao Portal</span>
+                    <h1>PhiloMap: O Mapa da Filosofia</h1>
+                </header>
+                
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=60" alt="Biblioteca Clássica" loading="lazy" width="800" height="500">
+                </div>
+                
+                <p>Sejam bem-vindos ao <strong>Philomap</strong>, um portal dedicado à exploração profunda dos conceitos fundamentais que moldaram o pensamento humano ao longo dos séculos. Este projeto nasceu da necessidade de criar um espaço digital que não apenas catalogue ideias, mas que as conecte de forma intuitiva, visualmente rica e academicamente rigorosa.</p>
+                
+                <p style="margin-top: 1.5rem;">Nossa missão é transformar a complexidade da filosofia em um caminho acessível. Navegue pelo nosso menu lateral para explorar os pilares do conhecimento — da Ética à Lógica, da Metafísica à Linguagem. Cada página foi cuidadosamente expandida para oferecer não apenas definições, mas contextos históricos, biografias de grandes pensadores e reflexões sobre os dilemas do mundo contemporâneo.</p>
+            </section>
+
+            <!-- LINHA DO TEMPO FILOSÓFICA -->
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">História</span>
+                    <h2>A Linha do Tempo da Razão</h2>
+                </header>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Filosofia Antiga</h3>
+                            <span class="timeline-date">Século VI a.C. - Século V d.C.</span>
+                            <p>O nascimento do pensamento racional com os Pré-socráticos, Platão e Aristóteles.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Filosofia Medieval</h3>
+                            <span class="timeline-date">Século V - Século XV</span>
+                            <p>A síntese entre a fé cristã e a razão grega. Santo Agostinho e São Tomás de Aquino.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Filosofia Moderna</h3>
+                            <span class="timeline-date">Século XVI - Século XVIII</span>
+                            <p>O foco no sujeito, na ciência e no iluminismo. Descartes, Kant e Hume.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Filosofia Contemporânea</h3>
+                            <span class="timeline-date">Século XIX - Presente</span>
+                            <p>Existencialismo, fenomenologia e a crítica à modernidade. Nietzsche, Sartre e Foucault.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Interatividade</span>
+                    <h2>O Oráculo Filosófico</h2>
+                </header>
+                <div style="text-align: center; padding: 20px;">
+                    <p>Busca inspiração para seus estudos? Deixe que o oráculo recomende uma obra fundamental ou um clássico do cinema filosófico para você.</p>
+                    <button id="botaoRecomendacao" class="theme-toggle" style="margin-top: 20px; width: auto; padding: 12px 40px;">Consultar o Oráculo</button>
+                    <div id="recomendacao" style="margin-top: 20px; font-style: italic; font-family: 'Playfair Display', serif; font-size: 1.2rem; min-height: 3rem;"></div>
+                </div>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Exploração</span>
+                    <h2>Pilares do Conhecimento</h2>
+                </header>
+                
+                <div style="display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <strong style="color: var(--gold); display: block; margin-bottom: 0.5rem;">Ética e Ação:</strong>
+                        <p style="font-size: 0.95rem;">Como devemos agir? Explore o dever em Kant, a utilidade em Mill e a virtude em Aristóteles.</p>
+                        <a href="pages/etica.html" style="color: var(--gold); text-decoration: none; font-size: 0.8rem; font-weight: bold; display: block; margin-top: 10px;">LER MAIS →</a>
+                    </div>
+                    <div style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <strong style="color: var(--gold); display: block; margin-bottom: 0.5rem;">Lógica e Razão:</strong>
+                        <p style="font-size: 0.95rem;">Entenda as leis do pensamento correto, das falácias do dia a dia às bases da computação moderna.</p>
+                        <a href="pages/logica.html" style="color: var(--gold); text-decoration: none; font-size: 0.8rem; font-weight: bold; display: block; margin-top: 10px;">LER MAIS →</a>
+                    </div>
+                    <div style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
+                        <strong style="color: var(--gold); display: block; margin-bottom: 0.5rem;">Ser e Realidade:</strong>
+                        <p style="font-size: 0.95rem;">Mergulhe na Metafísica e no Existencialismo para questionar a natureza da existência e a liberdade humana.</p>
+                        <a href="pages/metafisica.html" style="color: var(--gold); text-decoration: none; font-size: 0.8rem; font-weight: bold; display: block; margin-top: 10px;">LER MAIS →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONCEITOS EM DESTAQUE -->
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Novas Fronteiras</span>
+                    <h2>Conceitos em Destaque</h2>
+                </header>
+                <div style="display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="destaque-card" style="padding: 2rem; background: var(--surface); border: 1px solid var(--gold); border-radius: 20px; transition: 0.3s;">
+                        <h3 style="color: var(--gold); margin-bottom: 1rem;">Estoicismo</h3>
+                        <p style="font-size: 0.9rem; margin-bottom: 1rem;">A arte de manter a imperturbabilidade da alma (ataraxia) diante das adversidades da vida. Foca no controle sobre nossos próprios julgamentos e ações.</p>
+                        <ul style="font-size: 0.8rem; list-style: none; color: var(--text-dim);">
+                            <li>• Sêneca: A brevidade da vida</li>
+                            <li>• Marco Aurélio: Meditações</li>
+                            <li>• Epicteto: Manual da vida</li>
+                        </ul>
+                    </div>
+                    <div class="destaque-card" style="padding: 2rem; background: var(--surface); border: 1px solid var(--gold); border-radius: 20px; transition: 0.3s;">
+                        <h3 style="color: var(--gold); margin-bottom: 1rem;">Fenomenologia</h3>
+                        <p style="font-size: 0.9rem; margin-bottom: 1rem;">O estudo da experiência consciente como ela se apresenta a nós. Busca "voltar às coisas mesmas" através da percepção e da consciência.</p>
+                        <ul style="font-size: 0.8rem; list-style: none; color: var(--text-dim);">
+                            <li>• Edmund Husserl: Lógica</li>
+                            <li>• Merleau-Ponty: Percepção</li>
+                            <li>• Heidegger: Ser e Tempo</li>
+                        </ul>
+                    </div>
+                    <div class="destaque-card" style="padding: 2rem; background: var(--surface); border: 1px solid var(--gold); border-radius: 20px; transition: 0.3s;">
+                        <h3 style="color: var(--gold); margin-bottom: 1rem;">Cinismo</h3>
+                        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Uma filosofia de vida que prega a virtude através da simplicidade absoluta e da rejeição de todas as convenções sociais artificiais.</p>
+                        <ul style="font-size: 0.8rem; list-style: none; color: var(--text-dim);">
+                            <li>• Diógenes: O cão da cidade</li>
+                            <li>• Antístenes: O fundador</li>
+                            <li>• Autossuficiência radical</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Institucional</span>
+                    <h2>Nossa Origem: IFTO Campus Araguaína</h2>
+                </header>
+
+                <div class="image-container">
+                    <img src="https://www.arsmundi.de/media/b3/ea/40/1673270018/amMagazin_CDFriedrich_Teaser.jpg?ts=1673270018" alt="O Caminhante sobre o Mar de Névoa" loading="lazy" width="800" height="450">
+                </div>
+                
+                <div class="texto-flex">
+                    <p>O Instituto Federal do Tocantins (IFTO) Campus Araguaína é um polo de excelência em educação tecnológica e científica. O PhiloMap surge como uma ferramenta interdisciplinar desenvolvida pelos alunos <strong>Alvaro Lucas e Pedro Filho</strong>, sob a orientação do <strong>Professor Iury Gomes</strong>. Unimos tecnologia e humanidades para democratizar o acesso ao pensamento crítico.</p>
+                    
+                    <p style="margin-top: 1rem;">Acreditamos que a filosofia é a bússola necessária para navegar no mar de informações da era digital. Por isso, convidamos você a registrar-se em nossa comunidade e participar ativamente desta jornada intelectual.</p>
+                </div>
+                
+                <div style="margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 3rem;">
+                    <h3 style="text-align: center; margin-bottom: 2rem;">Junte-se ao Mapa de Membros</h3>
+                    <p style="text-align: center; margin-bottom: 2rem;">Cadastre-se para receber atualizações e materiais exclusivos.</p>
+                    
+                    <form id="formCadastro" class="modern-form">
+                        <div class="form-group">
+                            <label>NOME COMPLETO</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Ex: Sócrates de Atenas">
+                        </div>
+
+                        <div class="form-group">
+                            <label>E-MAIL</label>
+                            <input type="email" id="email" name="email" required placeholder="socrates@academia.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>DATA DE NASCIMENTO</label>
+                            <input type="date" id="nascimento" name="nascimento" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>INTERESSES FILOSÓFICOS</label>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; border: 1px solid var(--border); padding: 20px; border-radius: 8px; background: var(--bg);">
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Ética"> ÉTICA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Lógica"> LÓGICA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Moralismo"> MORALISMO</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Existencialismo"> EXISTENCIALISMO</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Estética"> ESTÉTICA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Metafísica"> METAFÍSICA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Epistemologia"> EPISTEMOLOGIA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Política"> POLÍTICA</label>
+                                <label style="display: flex; gap: 8px; font-size: 0.8rem; cursor: pointer;"><input type="checkbox" name="interesse" value="Linguagem"> LINGUAGEM</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit">REGISTRAR NO MAPA</button>
+                    </form>
+
+                    <div id="listaDados" style="margin-top: 40px;">
+                        <!-- Lista de membros carregada via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- CURIOSIDADES FILOSÓFICAS -->
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Você Sabia?</span>
+                    <h2>Curiosidades do Pensamento</h2>
+                </header>
+                <div style="display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div style="padding: 1.5rem; background: var(--surface); border-radius: 15px; border-left: 5px solid var(--gold);">
+                        <p style="font-size: 0.9rem;"><strong>Diógenes e o Barril:</strong> O filósofo cínico Diógenes vivia dentro de um grande barril de barro e andava com uma lanterna acesa durante o dia procurando por "um homem honesto".</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: var(--surface); border-radius: 15px; border-left: 5px solid var(--gold);">
+                        <p style="font-size: 0.9rem;"><strong>O Relógio Humano:</strong> Immanuel Kant era tão metódico que as pessoas de sua cidade, Königsberg, acertavam seus relógios baseando-se no horário em que ele passava para sua caminhada diária.</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: var(--surface); border-radius: 15px; border-left: 5px solid var(--gold);">
+                        <p style="font-size: 0.9rem;"><strong>A Morte de Sócrates:</strong> Sócrates foi condenado à morte por "corromper a juventude" e "não acreditar nos deuses da cidade", sendo obrigado a beber um veneno chamado cicuta.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- OBRAS FUNDAMENTAIS -->
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Biblioteca</span>
+                    <h2>Obras Fundamentais</h2>
+                </header>
+                <div style="display: grid; gap: 1rem;">
+                    <div class="obra-item" style="padding: 1rem; border: 1px solid var(--border); border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong style="color: var(--gold);">A República</strong>
+                            <span style="color: var(--text-dim); margin-left: 10px;">— Platão</span>
+                        </div>
+                        <span style="font-size: 0.8rem; background: var(--border); padding: 4px 8px; border-radius: 5px;">Política</span>
+                    </div>
+                    <div class="obra-item" style="padding: 1rem; border: 1px solid var(--border); border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong style="color: var(--gold);">Crítica da Razão Pura</strong>
+                            <span style="color: var(--text-dim); margin-left: 10px;">— Immanuel Kant</span>
+                        </div>
+                        <span style="font-size: 0.8rem; background: var(--border); padding: 4px 8px; border-radius: 5px;">Epistemologia</span>
+                    </div>
+                    <div class="obra-item" style="padding: 1rem; border: 1px solid var(--border); border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong style="color: var(--gold);">Assim Falou Zaratustra</strong>
+                            <span style="color: var(--text-dim); margin-left: 10px;">— Friedrich Nietzsche</span>
+                        </div>
+                        <span style="font-size: 0.8rem; background: var(--border); padding: 4px 8px; border-radius: 5px;">Existencialismo</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Autoconhecimento</span>
+                    <h2>Qual Filósofo Você é Hoje?</h2>
+                </header>
+                <div id="quiz-container" style="text-align: center; padding: 20px;">
+                    <div id="quiz-question">
+                        <p id="question-text" style="font-size: 1.2rem; margin-bottom: 2rem;">Como você encara um desafio inesperado?</p>
+                        <div id="quiz-options" style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto;">
+                            <!-- Opções serão carregadas via JS -->
+                        </div>
+                    </div>
+                    <div id="quiz-result" style="display: none; animation: fadeIn 1s;">
+                        <h3 id="result-philosopher" style="color: var(--gold); font-size: 2rem; margin-bottom: 1rem;"></h3>
+                        <p id="result-text" style="font-style: italic;"></p>
+                        <button onclick="resetQuiz()" class="theme-toggle" style="margin-top: 2rem; width: auto; padding: 10px 30px;">Refazer Reflexão</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
+                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+</body>
+</html>

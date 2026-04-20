@@ -1,0 +1,13 @@
+﻿IDEIAS DE MELHORIAS PARA O PROJETO PHILOMAP
+
+
+
+
+Integrantes: Alvaro Lucas e Pedro Filho
+
+
+
+
+1. Carregar conteúdo das páginas sem necessidade de rolagem 
+2. Utilizar o css para adequar o tamanho das imagens
+3. Implementar sidebar com dois níveis

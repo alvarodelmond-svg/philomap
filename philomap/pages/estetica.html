@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <!-- LOADING SCREEN -->
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 1s ease;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); margin-bottom: 20px; letter-spacing: 5px; animation: pulse 2s infinite;">PHILOMAP</div>
+        <div style="width: 200px; height: 1px; background: var(--border); position: relative; overflow: hidden;">
+            <div style="position: absolute; width: 50px; height: 100%; background: var(--gold); animation: loading 2s infinite linear;"></div>
+        </div>
+        <p style="margin-top: 20px; font-style: italic; font-size: 0.8rem; color: var(--text-dim);">"A paciência é amarga, mas seu fruto é doce." — Rousseau</p>
+    </div>
+
+    <style>
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        @keyframes loading { 0% { left: -50px; } 100% { left: 200px; } }
+    </style>
+
+    <div class="reading-progress"></div>
 
     <div class="app-container">
         <!-- SIDEBAR -->
@@ -32,6 +47,16 @@
                     <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
                     <li class="nav-item"><a href="politica.html">Política</a></li>
                     <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="cinismo.html">Cinismo</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-group">
+                <span class="nav-label">Estudos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="literatura.html">Literatura</a></li>
                 </ul>
             </nav>
 
@@ -50,6 +75,7 @@
 
         <!-- MAIN CONTENT -->
         <main class="main-content">
+            <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Estética</span></div>
             
             <section class="card reveal active">
                 <header class="card-header">

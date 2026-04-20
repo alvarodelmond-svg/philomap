@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <!-- LOADING SCREEN -->
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 1s ease;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); margin-bottom: 20px; letter-spacing: 5px; animation: pulse 2s infinite;">PHILOMAP</div>
+        <div style="width: 200px; height: 1px; background: var(--border); position: relative; overflow: hidden;">
+            <div style="position: absolute; width: 50px; height: 100%; background: var(--gold); animation: loading 2s infinite linear;"></div>
+        </div>
+        <p style="margin-top: 20px; font-style: italic; font-size: 0.8rem; color: var(--text-dim);">"A paciência é amarga, mas seu fruto é doce." — Rousseau</p>
+    </div>
+
+    <style>
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        @keyframes loading { 0% { left: -50px; } 100% { left: 200px; } }
+    </style>
+
+    <div class="reading-progress"></div>
 
     <div class="app-container">
         <!-- SIDEBAR -->
@@ -32,6 +47,16 @@
                     <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
                     <li class="nav-item"><a href="politica.html">Política</a></li>
                     <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="cinismo.html">Cinismo</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-group">
+                <span class="nav-label">Estudos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="literatura.html">Literatura</a></li>
                 </ul>
             </nav>
 
@@ -50,6 +75,7 @@
 
         <!-- MAIN CONTENT -->
         <main class="main-content">
+            <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Lógica</span></div>
             
             <section class="card reveal active">
                 <header class="card-header">
@@ -113,19 +139,19 @@
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Gottlob_Frege.jpg" alt="Gottlob Frege" class="foto-filosofo">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.0uu3onGYmBRL4u8TANHMhAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Gottlob Frege" class="foto-filosofo">
                         <h3 style="color: var(--gold);">Gottlob Frege</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">O arquiteto da lógica moderna. Criou o sistema de predicados e quantificadores, ligando a lógica profundamente à matemática.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Kurt_g%C3%B6del.jpg" alt="Kurt Gödel" class="foto-filosofo">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.IiAE26HZqs9XwVmqANf0fQHaJy?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Kurt Gödel" class="foto-filosofo">
                         <h3 style="color: var(--gold);">Kurt Gödel</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">Provou que existem verdades na matemática que não podem ser demonstradas por sistemas lógicos (Teorema da Incompletude).</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg" alt="Alan Turing" class="foto-filosofo">
+                        <img src="https://th.bing.com/th/id/OIP.SGYKFaGDtijXUr9yNhEzgQHaFQ?w=238&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Alan Turing" class="foto-filosofo">
                         <h3 style="color: var(--gold);">Alan Turing</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">Traduziu a lógica para máquinas físicas, criando a base teórica da computação e da Inteligência Artificial moderna.</p>
                     </div>

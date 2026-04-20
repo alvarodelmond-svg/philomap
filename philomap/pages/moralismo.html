@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <!-- LOADING SCREEN -->
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 1s ease;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); margin-bottom: 20px; letter-spacing: 5px; animation: pulse 2s infinite;">PHILOMAP</div>
+        <div style="width: 200px; height: 1px; background: var(--border); position: relative; overflow: hidden;">
+            <div style="position: absolute; width: 50px; height: 100%; background: var(--gold); animation: loading 2s infinite linear;"></div>
+        </div>
+        <p style="margin-top: 20px; font-style: italic; font-size: 0.8rem; color: var(--text-dim);">"A paciência é amarga, mas seu fruto é doce." — Rousseau</p>
+    </div>
+
+    <style>
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        @keyframes loading { 0% { left: -50px; } 100% { left: 200px; } }
+    </style>
+
+    <div class="reading-progress"></div>
 
     <div class="app-container">
         <!-- SIDEBAR -->
@@ -32,6 +47,16 @@
                     <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
                     <li class="nav-item"><a href="politica.html">Política</a></li>
                     <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="cinismo.html">Cinismo</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-group">
+                <span class="nav-label">Estudos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="literatura.html">Literatura</a></li>
                 </ul>
             </nav>
 
@@ -50,6 +75,7 @@
 
         <!-- MAIN CONTENT -->
         <main class="main-content">
+            <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Moralismo</span></div>
             
             <section class="card reveal active">
                 <header class="card-header">
@@ -58,7 +84,7 @@
                 </header>
                 
                 <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1543322748-33df6d3db8bc?auto=format&fit=crop&w=1200&q=80" alt="Estátua Clássica">
+                    <img src="https://www.analisidellopera.it/wp-content/uploads/2022/10/a_fontanesi_novembre-1024x677.jpg" alt="Estátua Clássica">
                 </div>
                 
                 <p>O <strong>moralismo</strong> é frequentemente confundido com a ética, mas possui matizes distintos. Enquanto a ética busca fundamentos racionais universais, o moralismo pode referir-se tanto à aplicação rigorosa de normas sociais quanto à tradição dos "Moralistas" — pensadores que se dedicaram a observar e descrever os costumes, o caráter e as contradições do coração humano.</p>
@@ -107,25 +133,25 @@
 
                 <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/L_Annaeus_Seneca.jpg" alt="Sêneca" class="foto-filosofo">
+                        <img src="https://th.bing.com/th/id/OIP.TIwbQAHyyc95vkVM53U9lgHaLO?w=123&h=186&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Sêneca" class="foto-filosofo">
                         <h3 style="color: var(--gold);">Sêneca</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">Filósofo estoico que ensinou como manter a serenidade diante da adversidade e a importância da autodisciplina moral.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Portrait_of_the_Emperor_Marcus_Aurelius_at_the_Metropolitan_Museum_of_Art.jpg" alt="Marco Aurélio" class="foto-filosofo">
+                        <img src="https://th.bing.com/th/id/OIP.zN57xrx3mua0HroEfMQRFQHaEK?w=333&h=187&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Marco Aurélio" class="foto-filosofo">
                         <h3 style="color: var(--gold);">Marco Aurélio</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">Imperador romano e estoico. Suas "Meditações" são um guia de autoexame moral e resiliência psicológica.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Michel_de_Montaigne_1.jpg" alt="Michel de Montaigne" class="foto-filosofo">
+                        <img src="https://th.bing.com/th/id/OIP.84VArtha--y-uTCpESEbXAHaJB?w=208&h=254&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Michel de Montaigne" class="foto-filosofo">
                         <h3 style="color: var(--gold);">Montaigne</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">Criador do gênero "Ensaio". Observou com ceticismo e tolerância as variações dos costumes humanos e a fragilidade do julgamento.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Blaise_Pascal_Versailles.jpg" alt="Blaise Pascal" class="foto-filosofo">
+                        <img src="https://th.bing.com/th/id/OIP.nzIE2FmxpTfnYWreI-rxUAHaEK?w=284&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Blaise Pascal" class="foto-filosofo">
                         <h3 style="color: var(--gold);">Blaise Pascal</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">Cientista e filósofo que explorou a miséria e a grandeza do homem, destacando o papel da fé e da intuição moral.</p>
                     </div>
@@ -139,7 +165,7 @@
                 </header>
 
                 <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?auto=format&fit=crop&w=1200&q=80" alt="Sociedade Moderna">
+                    <img src="https://media.mutualart.com/Images/2016_01/04/08/083521053/d809672b-1d5f-48c9-b18c-c723c16fbe79.Jpeg?w=768" alt="Sociedade Moderna">
                 </div>
 
                 <div class="texto-flex">
