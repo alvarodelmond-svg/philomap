@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Matrícula Acadêmica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #818cf8;
+            --success: #10b981;
+            --error: #ef4444;
+            --bg: #fdfdfd;
+            --card: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.05) 0, transparent 50%), 
+                              radial-gradient(at 50% 0%, rgba(79, 70, 229, 0.05) 0, transparent 50%);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            perspective: 1000px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            text-align: center;
+            color: var(--primary);
+            letter-spacing: -0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group { margin-bottom: 1.5rem; }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            background: #fafafa;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+        }
+
+        button:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.4);
+        }
+
+        button:active { transform: translateY(0); }
+
+        /* Estilos do Resultado */
+        .result-section {
+            display: none;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 2px dashed var(--border);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .alert-success { background: #dcfce7; color: #166534; }
+        .alert-error { background: #fee2e2; color: #991b1b; }
+
+        .receipt-card {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .receipt-label { color: var(--text-muted); font-weight: 600; }
+        .receipt-value { font-weight: 800; color: var(--text); }
+
+        .protocol-badge {
+            background: var(--text);
+            color: #fff;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card" id="mainCard">
+            <h1>Portal Acadêmico</h1>
+            <p class="subtitle">Inscreva-se hoje e comece sua jornada.</p>
+
+            <form id="matriculaForm">
+                <div class="form-group">
+                    <label for="nome">Nome do Candidato</label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="idade">Idade Atual</label>
+                    <input type="number" id="idade" name="idade" min="1" placeholder="Ex: 22" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="curso">Curso Desejado</label>
+                    <select id="curso" name="curso" required>
+                        <option value="" disabled selected>Selecione um curso...</option>
+                        <option value="Sistemas de Informação">Sistemas de Informação</option>
+                        <option value="Ciência da Computação">Ciência da Computação</option>
+                        <option value="Inteligência Artificial">Inteligência Artificial</option>
+                        <option value="CyberSegurança">CyberSegurança</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="submitBtn">Finalizar Inscrição</button>
+            </form>
+
+            <!-- Seção de Resultado Dinâmico -->
+            <div id="resultSection" class="result-section">
+                <div id="alertBox" class="alert"></div>
+                
+                <div id="receiptDetails" class="receipt-card">
+                    <div class="receipt-row">
+                        <span class="receipt-label">Aluno:</span>
+                        <span class="receipt-value" id="resNome"></span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Curso:</span>
+                        <span class="receipt-value" id="resCurso"></span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Data:</span>
+                        <span class="receipt-value" id="resData"></span>
+                    </div>
+                    <div class="protocol-badge" id="resProtocolo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('matriculaForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const resultSection = document.getElementById('resultSection');
+        const alertBox = document.getElementById('alertBox');
+        const receiptDetails = document.getElementById('receiptDetails');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // UI State: Loading
+            submitBtn.textContent = 'Processando...';
+            submitBtn.classList.add('loading');
+            resultSection.style.display = 'none';
+
+            const formData = new FormData(form);
+
+            try {
+                // Enviando para o Router do PHP (index.php) na rota /store
+                const response = await fetch('/philomap/sistema_matricula/store', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.status === 'success') {
+                    // SUCESSO
+                    alertBox.textContent = result.message;
+                    alertBox.className = 'alert alert-success';
+                    
+                    document.getElementById('resNome').textContent = result.data.nome;
+                    document.getElementById('resCurso').textContent = result.data.curso;
+                    document.getElementById('resData').textContent = result.data.data;
+                    document.getElementById('resProtocolo').textContent = result.data.protocolo;
+                    
+                    receiptDetails.style.display = 'block';
+                    form.reset();
+                } else {
+                    // ERRO (Validação ou Servidor)
+                    alertBox.textContent = result.message || 'Erro inesperado.';
+                    alertBox.className = 'alert alert-error';
+                    receiptDetails.style.display = 'none';
+                }
+            } catch (error) {
+                alertBox.textContent = 'Não foi possível conectar ao servidor.';
+                alertBox.className = 'alert alert-error';
+                receiptDetails.style.display = 'none';
+            } finally {
+                submitBtn.textContent = 'Finalizar Inscrição';
+                submitBtn.classList.remove('loading');
+                resultSection.style.display = 'block';
+                
+                // Scroll suave para o resultado
+                resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    </script>
+</body>
+</html>
