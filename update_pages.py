@@ -1,7 +1,7 @@
 import os
 import re
 
-pages_dir = r'C:\Users\pedro\philomap\philomap\philomap\pages'
+pages_dir = 'pages'
 files = [f for f in os.listdir(pages_dir) if f.endswith('.html')]
 
 # New Loader & Security Script Block
