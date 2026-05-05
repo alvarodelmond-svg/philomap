@@ -10,12 +10,12 @@ loader_block = """    <!-- PRECONNECT PARA VELOCIDADE -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com">
     
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     
     <!-- SCRIPTS DEFER (NÃO BLOQUEANTES) -->
-    <script src="../js/db.js" defer></script>
-    <script src="../js/controller.js" defer></script>
-    <script src="../js/script.js" defer></script>
+    <script src="../assets/js/db.js" defer></script>
+    <script src="../assets/js/controller.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
 </head>
 <body>
     <!-- LOADING SCREEN OPTIMIZED -->
@@ -81,12 +81,12 @@ for filename in files:
 
     # 1. Update Head and Loader
     # Replace from <link rel="stylesheet" ...> to </style>
-    pattern_head = re.compile(r'<link rel="stylesheet" href="\.\./css/style\.css">.*?</style>', re.DOTALL)
+    pattern_head = re.compile(r'<link rel="stylesheet" href="\.\./assets/css/style\.css">.*?</style>', re.DOTALL)
     content = pattern_head.sub(loader_block, content)
 
     # 2. Update Sidebar Logo
-    content = content.replace('<img src="../logo-site.svg" alt="PhiloMap Logo" class="logo-header">', 
-                              '<img src="../logo-site.svg" alt="PhiloMap Logo" class="logo-header" loading="eager" width="280" height="280">')
+    content = content.replace('<img src="../assets/img/logo-site.svg" alt="PhiloMap Logo" class="logo-header">', 
+                              '<img src="../assets/img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" loading="eager" width="280" height="280">')
 
     # 3. Update Sidebar Footer (Accessibility)
     pattern_footer = re.compile(r'<div class="sidebar-footer">.*?</div>', re.DOTALL)
@@ -107,9 +107,9 @@ for filename in files:
     # 5. Update Scripts at Bottom
     pattern_scripts = re.compile(r'<!-- Scripts -->.*?</body>', re.DOTALL)
     new_scripts = """    <!-- Scripts -->
-    <script src="../js/db.js" defer></script>
-    <script src="../js/controller.js" defer></script>
-    <script src="../js/script.js" defer></script>
+    <script src="../assets/js/db.js" defer></script>
+    <script src="../assets/js/controller.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
 </body>"""
     content = pattern_scripts.sub(new_scripts, content)
 

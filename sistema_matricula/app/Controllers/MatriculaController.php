@@ -1,40 +1,31 @@
 <?php
-namespace App\Controllers;
-
 class MatriculaController {
-    
-    public function index() {
-        $exibirResumo = false;
-        require __DIR__ . '/../../views/form.php';
+    private $service;
+
+    // O Controller recebe o Service pronto
+    public function __construct($service) {
+        $this->service = $service;
     }
 
-    public function store() {
-        // Define o cabeçalho para JSON
-        header('Content-Type: application/json');
-
-        $nome = htmlspecialchars($_POST['nome'] ?? '');
-        $idade = intval($_POST['idade'] ?? 0);
-        $curso = htmlspecialchars($_POST['curso'] ?? '');
-        $dataMatricula = date("d/m/Y H:i");
-
-        if (!empty($nome) && $idade >= 16 && !empty($curso)) {
-            echo json_encode([
-                'status' => 'success',
-                'message' => 'Matrícula realizada com sucesso!',
-                'data' => [
-                    'nome' => $nome,
-                    'idade' => $idade,
-                    'curso' => $curso,
-                    'data' => $dataMatricula,
-                    'protocolo' => strtoupper(uniqid('MAT-'))
-                ]
-            ]);
-        } else {
-            http_response_code(400);
-            echo json_encode([
-                'status' => 'error',
-                'message' => 'Erro: Verifique se todos os campos estão preenchidos corretamente (Idade mínima: 16 anos).'
-            ]);
+    public function store($request) {
+        try {
+            // Tenta realizar a matrícula através do Service
+            $this->service->matricular($request);
+            
+            // Se der certo, redireciona (exemplo)
+            header('Location: index.php?success=1');
+            exit;
+            
+        } catch (BusinessRuleException $e) {
+            // Se houver erro de regra de negócio, capturamos a mensagem
+            $erroMensagem = $e->getMessage();
+            
+            // Renderiza a view passando o erro (ajuste o caminho da sua view)
+            include __DIR__ . '/../../views/form.php';
+        } catch (Exception $e) {
+            // Erro genérico (ex: banco de dados fora do ar)
+            $erroMensagem = "Ocorreu um erro inesperado. Tente novamente.";
+            include __DIR__ . '/../../views/form.php';
         }
     }
 }
