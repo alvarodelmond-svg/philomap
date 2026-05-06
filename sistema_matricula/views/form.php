@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Matrícula Acadêmica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --success: #10b981;
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
+            --bg: #fdfcf9;
+            --surface: #ffffff;
+            --border: #e8e2d8;
+            --text-main: #1a1a1a;
+            --text-dim: #706c61;
+            --accent: #0f0f0f;
+            --gold: #c5a059;
+            --gold-glow: rgba(197, 160, 89, 0.4);
+            --transition-smooth: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg);
             color: var(--text-main);
             display: flex;
@@ -27,12 +29,13 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            line-height: 1.7;
         }
 
         .container {
             width: 100%;
-            max-width: 480px;
-            animation: fadeIn 0.6s ease-out;
+            max-width: 550px;
+            animation: fadeIn 1.2s ease-out;
         }
 
         @keyframes fadeIn {
@@ -41,81 +44,91 @@
         }
 
         .card {
-            background: var(--card);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            background: var(--surface);
+            padding: 4rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border);
         }
 
         h1 {
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
             text-align: center;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-            letter-spacing: -0.025em;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+            letter-spacing: -1px;
         }
 
         p.subtitle {
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            margin-bottom: 2rem;
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin-bottom: 3rem;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
         }
 
-        .form-group { margin-bottom: 1.25rem; }
+        .form-group { margin-bottom: 2rem; }
 
         label {
             display: block;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
         }
 
         input, select {
             width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1.5px solid var(--border);
-            border-radius: 10px;
+            padding: 1.2rem;
+            border: 1px solid var(--border);
+            border-radius: 15px;
             font-size: 1rem;
-            transition: all 0.2s;
-            background: #fdfdfd;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition-smooth);
+            background: var(--bg);
+            color: var(--text-main);
+            outline: none;
         }
 
         input:focus, select:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-            background: #fff;
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px var(--gold-glow);
+            transform: translateY(-2px);
         }
 
         button {
             width: 100%;
-            padding: 0.875rem;
-            background: var(--primary);
-            color: white;
+            padding: 1.2rem;
+            background: var(--accent);
+            color: var(--bg);
             border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 700;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+            transition: var(--transition-smooth);
+            margin-top: 1.5rem;
         }
 
         button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+            background: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px var(--gold-glow);
         }
 
         /* Estilo do Comprovante (Summary) */
         .receipt {
-            margin-top: 2.5rem;
-            border-top: 2px dashed var(--border);
-            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+            padding-top: 2.5rem;
             position: relative;
         }
 
@@ -123,48 +136,59 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .status-badge {
-            background: #dcfce7;
-            color: #166534;
-            padding: 4px 12px;
+            background: rgba(197, 160, 89, 0.1);
+            color: var(--gold);
+            padding: 6px 16px;
             border-radius: 99px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            font-size: 0.7rem;
+            font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--gold);
         }
 
         .receipt-item {
             display: flex;
             flex-direction: column;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .receipt-label {
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: var(--text-dim);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
         }
 
         .receipt-value {
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 800;
+            font-size: 1.1rem;
             color: var(--text-main);
+            font-family: 'Playfair Display', serif;
         }
 
         .protocol {
-            background: #f1f5f9;
-            padding: 1rem;
-            border-radius: 8px;
+            background: var(--accent);
+            padding: 1.5rem;
+            border-radius: 15px;
             text-align: center;
-            font-family: monospace;
-            font-size: 1.1rem;
-            margin-top: 1.5rem;
-            border: 1px solid var(--border);
+            color: var(--bg);
+            margin-top: 2rem;
+            border: 1px solid var(--gold);
+            letter-spacing: 2px;
+            font-weight: 800;
         }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
     </style>
 </head>
 <body>
