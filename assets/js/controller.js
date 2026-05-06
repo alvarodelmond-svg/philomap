@@ -1,42 +1,53 @@
 /**
- * PhiloMap - Controller 3.0
+ * PhiloMap - Controller 3.1
  * Gerencia a interatividade, persistência, Modo Escuro e Notificações.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    // --- INICIALIZAÇÃO DE TEMA ---
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-    }
+const PhiloController = {
+    init() {
+        // --- INICIALIZAÇÃO DE TEMA (Uma única vez) ---
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
 
-    // --- LISTENER DO FORMULÁRIO ---
-    const form = document.getElementById('formCadastro');
-    if (form) {
-        form.addEventListener('submit', lidarComSubmissao);
-    }
+        // Criar container de Toasts se não existir
+        if (!document.getElementById('toast-container')) {
+            const container = document.createElement('div');
+            container.id = 'toast-container';
+            container.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 9999;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            `;
+            document.body.appendChild(container);
+        }
 
-    // --- LISTA DE DADOS ---
-    if (document.getElementById('listaDados')) {
-        atualizarListaUI();
-    }
+        this.initDynamicComponents();
+    },
 
-    // Criar container de Toasts se não existir
-    if (!document.getElementById('toast-container')) {
-        const container = document.createElement('div');
-        container.id = 'toast-container';
-        container.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        `;
-        document.body.appendChild(container);
+    initDynamicComponents() {
+        console.log('Initializing Controller Dynamic Components...');
+        
+        // --- LISTENER DO FORMULÁRIO ---
+        const form = document.getElementById('formCadastro');
+        if (form && !form.dataset.listenerAttached) {
+            form.addEventListener('submit', lidarComSubmissao);
+            form.dataset.listenerAttached = 'true';
+        }
+
+        // --- LISTA DE DADOS ---
+        if (document.getElementById('listaDados')) {
+            atualizarListaUI();
+        }
     }
-});
+};
+
+document.addEventListener('DOMContentLoaded', () => PhiloController.init());
 
 /**
  * Alterna entre o modo escuro e claro.
@@ -175,3 +186,5 @@ async function removerRegistro(id) {
         }
     }
 }
+
+window.PhiloController = PhiloController;

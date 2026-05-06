@@ -138,6 +138,13 @@
         }
 
     </style>
+    <script src="../assets/js/router.js" defer></script>
+
+<style>
+    #main-content {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+</style>
 </head>
 <body>
     <!-- LOADING SCREEN -->
@@ -156,7 +163,18 @@
 
     <div class="reading-progress"></div>
 
-    <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Caos Data</span></div>
+    <main class="main-content" id="main-content">
+                
+                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
+            </div>
+
+            <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Caos Data</span></div>
+
+                        <div class="content-actions">
+                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
+            </div>
 
     <div class="container">
         <h2>Caos Data 2.0</h2>
@@ -208,6 +226,7 @@
         <button class="submit-btn" id="btn-submit">Registrar Data</button>
         <span class="dica">Dica: Às vezes é preciso mudar (shift) a atitude para confirmar.</span>
     </div>
+    </main>
 
     <script>
         // 1. Dias em Romanos e Embaralhados

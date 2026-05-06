@@ -4,21 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Estética</title>
+        <!-- PRECONNECT PARA VELOCIDADE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
     <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- SCRIPTS DEFER (NÃO BLOQUEANTES) -->
+    <script src="../assets/js/db.js" defer></script>
+    <script src="../assets/js/controller.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
 </head>
 <body>
-    <!-- LOADING SCREEN -->
-    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 1s ease;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); margin-bottom: 20px; letter-spacing: 5px; animation: pulse 2s infinite;">PHILOMAP</div>
-        <div style="width: 200px; height: 1px; background: var(--border); position: relative; overflow: hidden;">
-            <div style="position: absolute; width: 50px; height: 100%; background: var(--gold); animation: loading 2s infinite linear;"></div>
+    <!-- LOADING SCREEN OPTIMIZED -->
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
+        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px; animation: pulse 1.5s infinite;">PHILOMAP</div>
+        <div style="width: 150px; height: 1px; background: #e8e2d8; position: relative; overflow: hidden;">
+            <div style="position: absolute; width: 40px; height: 100%; background: #c5a059; animation: loading 1.5s infinite linear;"></div>
         </div>
-        <p style="margin-top: 20px; font-style: italic; font-size: 0.8rem; color: var(--text-dim);">"A paciência é amarga, mas seu fruto é doce." — Rousseau</p>
     </div>
 
+    <script>
+        // Script de segurança para remover o loader caso o JS principal demore
+        window.addEventListener('load', function() {
+            var loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(function() { loader.style.display = 'none'; }, 500);
+            }
+        });
+        // Fallback de 3 segundos
+        setTimeout(function() {
+            var loader = document.getElementById('loader');
+            if (loader && loader.style.display !== 'none') {
+                loader.style.opacity = '0';
+                setTimeout(function() { loader.style.display = 'none'; }, 500);
+            }
+        }, 3000);
+    </script>
+
     <style>
-        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-        @keyframes loading { 0% { left: -50px; } 100% { left: 200px; } }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        @keyframes loading { 0% { left: -40px; } 100% { left: 150px; } }
     </style>
 
     <div class="reading-progress"></div>
@@ -27,7 +55,7 @@
         <!-- SIDEBAR -->
         <aside class="sidebar">
             <a href="../index.html" class="sidebar-logo">
-                <img src="../assets/img/logo-site.svg" alt="PhiloMap Logo" class="logo-header">
+                <img src="../assets/img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" loading="eager" width="280" height="280">
             </a>
 
             <nav class="nav-group">
@@ -68,14 +96,33 @@
                 </ul>
             </nav>
 
-            <div class="sidebar-footer">
-                <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+                        <div class="sidebar-footer">
+                <div class="accessibility-controls">
+                    <span class="nav-label" style="margin-bottom: 10px; display: block;">Acessibilidade</span>
+                    <div class="font-controls">
+                        <button onclick="changeFontSize('small')" title="Fonte Pequena">A-</button>
+                        <button onclick="changeFontSize('medium')" title="Fonte Normal">A</button>
+                        <button onclick="changeFontSize('large')" title="Fonte Grande">A+</button>
+                    </div>
+                    <button class="theme-toggle" onclick="toggleHighContrast()" style="margin-top: 10px; font-size: 0.7rem;">Alto Contraste</button>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()" style="margin-top: 10px;">Mudar Tema</button>
             </div>
         </aside>
 
         <!-- MAIN CONTENT -->
         <main class="main-content">
+                        
+                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
+            </div>
+
             <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Estética</span></div>
+
+                        <div class="content-actions">
+                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
+            </div>
             
             <section class="card reveal active">
                 <header class="card-header">
@@ -84,7 +131,7 @@
                 </header>
                 
                 <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1200&q=80" alt="Estética e Arte Clássica">
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1200&q=80" alt="Estética e Arte Clássica" loading="lazy" width="1200" height="800">
                 </div>
                 
                 <p>A <strong>Estética</strong> é o ramo da filosofia que se dedica a pensar sobre a natureza do belo, os critérios de apreciação artística e a experiência do sublime. Originada do grego <em>aisthésis</em> (percepção, sensação), ela investiga como percebemos o mundo através dos nossos sentidos e como atribuímos valor estético ao que nos cerca. Não se trata apenas de "beleza", mas de toda a gama de sensações que a arte e a natureza despertam em nós.</p>
@@ -133,25 +180,25 @@
 
                 <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg" alt="Platão" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg" alt="Platão" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">Platão</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">O primeiro grande crítico da arte. Via a estética subordinada à moral e à verdade, alertando sobre o poder sedutor e enganoso das imagens.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Immanuel_Kant_3.jpg" alt="Immanuel Kant" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Immanuel_Kant_3.jpg" alt="Immanuel Kant" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">Immanuel Kant</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">Sistematizou a estética moderna. Definiu o belo como o prazer da livre harmonia entre a imaginação e o entendimento.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Walter_Benjamin_1928.jpg" alt="Walter Benjamin" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Walter_Benjamin_1928.jpg" alt="Walter Benjamin" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">Walter Benjamin</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">Ponte entre a filosofia e a modernidade tecnológica. Analisou como os novos meios de comunicação transformaram a nossa percepção da arte.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/TheodorAdorno.jpg" alt="Theodor Adorno" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/TheodorAdorno.jpg" alt="Theodor Adorno" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">Theodor Adorno</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">Defensor da "Estética Negativa". Acreditava que a arte moderna deve ser difícil e dissonante para refletir as feridas de um mundo fragmentado.</p>
                     </div>
@@ -165,7 +212,7 @@
                 </header>
 
                 <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1547891261-50d813e489c9?auto=format&fit=crop&w=1200&q=80" alt="Arte Digital e Abstração">
+                    <img src="https://images.unsplash.com/photo-1547891261-50d813e489c9?auto=format&fit=crop&w=1200&q=80" alt="Arte Digital e Abstração" loading="lazy" width="1200" height="800">
                 </div>
 
                 <div class="texto-flex">
@@ -181,10 +228,10 @@
         </main>
     </div>
 
-    <!-- Scripts -->
-    <script src="../assets/js/db.js"></script>
-    <script src="../assets/js/controller.js"></script>
-    <script src="../assets/js/script.js"></script>
+        <!-- Scripts -->
+    <script src="../assets/js/db.js" defer></script>
+    <script src="../assets/js/controller.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
 </body>
 </html>
 

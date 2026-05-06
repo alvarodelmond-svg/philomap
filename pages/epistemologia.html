@@ -4,21 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Epistemologia</title>
+        <!-- PRECONNECT PARA VELOCIDADE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
     <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- SCRIPTS DEFER (NÃO BLOQUEANTES) -->
+    <script src="../assets/js/db.js" defer></script>
+    <script src="../assets/js/controller.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
 </head>
 <body>
-    <!-- LOADING SCREEN -->
-    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 1s ease;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); margin-bottom: 20px; letter-spacing: 5px; animation: pulse 2s infinite;">PHILOMAP</div>
-        <div style="width: 200px; height: 1px; background: var(--border); position: relative; overflow: hidden;">
-            <div style="position: absolute; width: 50px; height: 100%; background: var(--gold); animation: loading 2s infinite linear;"></div>
+    <!-- LOADING SCREEN OPTIMIZED -->
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
+        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px; animation: pulse 1.5s infinite;">PHILOMAP</div>
+        <div style="width: 150px; height: 1px; background: #e8e2d8; position: relative; overflow: hidden;">
+            <div style="position: absolute; width: 40px; height: 100%; background: #c5a059; animation: loading 1.5s infinite linear;"></div>
         </div>
-        <p style="margin-top: 20px; font-style: italic; font-size: 0.8rem; color: var(--text-dim);">"A paciência é amarga, mas seu fruto é doce." — Rousseau</p>
     </div>
 
+    <script>
+        // Script de segurança para remover o loader caso o JS principal demore
+        window.addEventListener('load', function() {
+            var loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(function() { loader.style.display = 'none'; }, 500);
+            }
+        });
+        // Fallback de 3 segundos
+        setTimeout(function() {
+            var loader = document.getElementById('loader');
+            if (loader && loader.style.display !== 'none') {
+                loader.style.opacity = '0';
+                setTimeout(function() { loader.style.display = 'none'; }, 500);
+            }
+        }, 3000);
+    </script>
+
     <style>
-        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-        @keyframes loading { 0% { left: -50px; } 100% { left: 200px; } }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        @keyframes loading { 0% { left: -40px; } 100% { left: 150px; } }
     </style>
 
     <div class="reading-progress"></div>
@@ -27,7 +55,7 @@
         <!-- SIDEBAR -->
         <aside class="sidebar">
             <a href="../index.html" class="sidebar-logo">
-                <img src="../assets/img/logo-site.svg" alt="PhiloMap Logo" class="logo-header">
+                <img src="../assets/img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" loading="eager" width="280" height="280">
             </a>
 
             <nav class="nav-group">
@@ -68,14 +96,33 @@
                 </ul>
             </nav>
 
-            <div class="sidebar-footer">
-                <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+                        <div class="sidebar-footer">
+                <div class="accessibility-controls">
+                    <span class="nav-label" style="margin-bottom: 10px; display: block;">Acessibilidade</span>
+                    <div class="font-controls">
+                        <button onclick="changeFontSize('small')" title="Fonte Pequena">A-</button>
+                        <button onclick="changeFontSize('medium')" title="Fonte Normal">A</button>
+                        <button onclick="changeFontSize('large')" title="Fonte Grande">A+</button>
+                    </div>
+                    <button class="theme-toggle" onclick="toggleHighContrast()" style="margin-top: 10px; font-size: 0.7rem;">Alto Contraste</button>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()" style="margin-top: 10px;">Mudar Tema</button>
             </div>
         </aside>
 
         <!-- MAIN CONTENT -->
         <main class="main-content">
+                        
+                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
+            </div>
+
             <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Epistemologia</span></div>
+
+                        <div class="content-actions">
+                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
+            </div>
             
             <section class="card reveal active">
                 <header class="card-header">
@@ -84,7 +131,7 @@
                 </header>
                 
                 <div class="image-container">
-                    <img src="https://img.elo7.com.br/product/zoom/3C239B3/quadro-reflexo-tranquilo-pintura-a-oleo-arte-natureza-arte.jpg" alt="Estudo e Conhecimento">
+                    <img src="https://img.elo7.com.br/product/zoom/3C239B3/quadro-reflexo-tranquilo-pintura-a-oleo-arte-natureza-arte.jpg" alt="Estudo e Conhecimento" loading="lazy" width="1200" height="800">
                 </div>
                 
                 <p>A <strong>Epistemologia</strong> é o estudo da natureza, origem e limites do conhecimento humano. Ela investiga as condições que tornam o conhecimento possível e as bases sobre as quais construímos nossas certezas. Em um mundo de "fatos alternativos" e excesso de informação, a epistemologia nos ensina a distinguir entre opinião (<em>doxa</em>) e conhecimento fundamentado (<em>episteme</em>).</p>
@@ -133,25 +180,25 @@
 
                 <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg" alt="Descartes" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg" alt="Descartes" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">René Descartes</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">O racionalista que buscou uma base indestrutível para o saber, encontrando-a na própria consciência pensante.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/JohnLocke.png" alt="John Locke" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/JohnLocke.png" alt="John Locke" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">John Locke</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">O pai do empirismo moderno. Defendeu que nossas ideias são formadas por impressões sensoriais e reflexão sobre elas.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/David_Hume.jpg" alt="David Hume" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/David_Hume.jpg" alt="David Hume" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">David Hume</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">O cético radical que questionou até a causalidade, forçando a filosofia a repensar a validade das leis científicas.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Karl_Popper.jpg" alt="Karl Popper" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Karl_Popper.jpg" alt="Karl Popper" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">Karl Popper</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">O filósofo da ciência que definiu o critério de demarcação entre o que é ciência e o que é pseudociência.</p>
                     </div>
@@ -165,7 +212,7 @@
                 </header>
 
                 <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80" alt="Laboratório e Descoberta">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80" alt="Laboratório e Descoberta" loading="lazy" width="1200" height="800">
                 </div>
 
                 <div class="texto-flex">
@@ -181,10 +228,10 @@
         </main>
     </div>
 
-    <!-- Scripts -->
-    <script src="../assets/js/db.js"></script>
-    <script src="../assets/js/controller.js"></script>
-    <script src="../assets/js/script.js"></script>
+        <!-- Scripts -->
+    <script src="../assets/js/db.js" defer></script>
+    <script src="../assets/js/controller.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
 </body>
 </html>
 

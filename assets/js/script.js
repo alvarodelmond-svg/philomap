@@ -1,129 +1,38 @@
 /**
- * PhiloMap - Core Interactivity and Animations 3.5
+ * PhiloMap - Core Interactivity and Animations 3.6
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    // --- HIDE LOADER ---
-    const hideLoader = () => {
-        const loader = document.getElementById('loader');
-        if (loader) {
-            loader.style.opacity = '0';
-            setTimeout(() => loader.style.display = 'none', 500);
+const PhiloMap = {
+    initPage() {
+        console.log('Initializing Page Components...');
+        
+        // --- SCROLL & REVEAL ---
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // --- TEXT SCRAMBLE ---
+        const mainHeader = document.querySelector('h1');
+        if (mainHeader) {
+            const fx = new this.TextScramble(mainHeader);
+            fx.setText(mainHeader.innerText);
         }
-    };
-    
-    if (document.readyState === 'complete') {
-        hideLoader();
-    } else {
-        window.addEventListener('load', hideLoader);
-    }
-    setTimeout(hideLoader, 2000);
 
-    // --- ACESSIBILIDADE AVANÇADA 3.5 ---
-    
-    // 1. Zen Mode (Foco Total)
-    window.toggleZenMode = () => {
-        const active = document.body.classList.toggle('zen-mode');
-        localStorage.setItem('zenMode', active);
-        announceToScreenReader(active ? 'Modo Zen Ativado. Foco na leitura.' : 'Modo Zen Desativado.');
-        if (typeof exibirFeedback === 'function') {
-            exibirFeedback(active ? 'Modo Zen: Foco na Razão' : 'Modo Normal Ativado', 'info');
-        }
-    };
+        // --- BUSCA FILOSÓFICA (Re-vincular se necessário ou garantir que funciona globalmente) ---
+        this.setupSearch();
 
-    // 2. Announcer para Leitores de Tela
-    const announceToScreenReader = (msg) => {
-        let announcer = document.getElementById('aria-announcer');
-        if (!announcer) {
-            announcer = document.createElement('div');
-            announcer.id = 'aria-announcer';
-            announcer.setAttribute('aria-live', 'polite');
-            announcer.style.cssText = 'position: absolute; left: -9999px;';
-            document.body.appendChild(announcer);
-        }
-        announcer.innerText = msg;
-    };
+        // --- CITAÇÃO DO DIA ---
+        this.setupQuotes();
+        
+        // --- OUTROS COMPONENTES ---
+        // (Adicione aqui outras inicializações necessárias após a troca de conteúdo)
+    },
 
-    // 3. Mouse Glow Interaction
-    const glow = document.createElement('div');
-    glow.className = 'mouse-glow';
-    document.body.appendChild(glow);
-
-    document.addEventListener('mousemove', (e) => {
-        glow.style.left = e.clientX + 'px';
-        glow.style.top = e.clientY + 'px';
-    });
-
-    // 4. Partículas de Pensamento (Background)
-    const bgContainer = document.createElement('div');
-    bgContainer.className = 'philosophy-bg';
-    document.body.appendChild(bgContainer);
-
-    for (let i = 0; i < 5; i++) {
-        const shape = document.createElement('div');
-        shape.className = 'shape';
-        const size = Math.random() * 300 + 100;
-        shape.style.width = size + 'px';
-        shape.style.height = size + 'px';
-        shape.style.left = Math.random() * 100 + '%';
-        shape.style.top = Math.random() * 100 + '%';
-        shape.style.animationDelay = (Math.random() * 10) + 's';
-        bgContainer.appendChild(shape);
-    }
-
-    // --- ACESSIBILIDADE EXISTENTE ---
-    window.changeFontSize = (size) => {
-        const scales = { 'small': 0.85, 'medium': 1, 'large': 1.25 };
-        const scale = scales[size] || 1;
-        document.documentElement.style.setProperty('--font-scale', scale);
-        localStorage.setItem('fontScale', scale);
-        document.querySelectorAll('.font-controls button').forEach(btn => btn.classList.remove('active'));
-        const activeBtn = document.querySelector(`.font-controls button[onclick*="${size}"]`);
-        if (activeBtn) activeBtn.classList.add('active');
-        announceToScreenReader(`Tamanho da fonte ajustado para ${size}`);
-    };
-
-    window.toggleDyslexiaFont = () => {
-        const active = document.body.classList.toggle('dyslexia-font');
-        localStorage.setItem('dyslexiaFont', active);
-        announceToScreenReader(active ? 'Fonte para dislexia ativada' : 'Fonte padrão ativada');
-        if (typeof exibirFeedback === 'function') {
-            exibirFeedback(active ? 'Fonte para Dislexia Ativada' : 'Fonte Padrão Ativada', 'info');
-        }
-    };
-
-    let ruler = document.querySelector('.reading-ruler');
-    if (!ruler) {
-        ruler = document.createElement('div');
-        ruler.className = 'reading-ruler';
-        document.body.appendChild(ruler);
-    }
-
-    window.toggleReadingRuler = () => {
-        const isVisible = ruler.style.display === 'block';
-        ruler.style.display = isVisible ? 'none' : 'block';
-        localStorage.setItem('readingRuler', !isVisible);
-        if (!isVisible) {
-            document.addEventListener('mousemove', moveRuler);
-        } else {
-            document.removeEventListener('mousemove', moveRuler);
-        }
-        announceToScreenReader(isVisible ? 'Régua de leitura desativada' : 'Régua de leitura ativada');
-    };
-
-    const moveRuler = (e) => {
-        ruler.style.top = (e.clientY - 15) + 'px';
-    };
-
-    // Restaurar Configurações
-    const savedScale = localStorage.getItem('fontScale');
-    if (savedScale) document.documentElement.style.setProperty('--font-scale', savedScale);
-    if (localStorage.getItem('dyslexiaFont') === 'true') document.body.classList.add('dyslexia-font');
-    if (localStorage.getItem('readingRuler') === 'true') toggleReadingRuler();
-    if (localStorage.getItem('zenMode') === 'true') toggleZenMode();
-
-    // --- TEXT SCRAMBLE ---
-    class TextScramble {
+    // Movemos TextScramble para dentro do objeto
+    TextScramble: class {
         constructor(el) {
             this.el = el;
             this.chars = '!<>-_\\/[]{}—=+*^?#________';
@@ -175,54 +84,37 @@ document.addEventListener('DOMContentLoaded', () => {
         randomChar() {
             return this.chars[Math.floor(Math.random() * this.chars.length)];
         }
-    }
+    },
 
-    const mainHeader = document.querySelector('h1');
-    if (mainHeader) {
-        const fx = new TextScramble(mainHeader);
-        fx.setText(mainHeader.innerText);
-    }
+    setupSearch() {
+        const searchInput = document.getElementById('searchConcepts');
+        if (!searchInput || searchInput.dataset.initialized) return;
 
-    // --- BUSCA FILOSÓFICA ---
-    const searchInput = document.getElementById('searchConcepts');
-    const conceptsList = document.getElementById('conceptsList');
-    
-    let searchOverlay = document.querySelector('.search-overlay');
-    if (!searchOverlay) {
-        searchOverlay = document.createElement('div');
-        searchOverlay.className = 'search-overlay';
-        searchOverlay.innerHTML = `
-            <div class="search-overlay-content">
-                <div class="search-overlay-header">
-                    <h3>Resultados da Busca</h3>
-                    <span class="close-overlay" aria-label="Fechar busca">&times;</span>
-                </div>
-                <div class="search-results-grid" id="searchResultsGrid" role="region" aria-live="polite"></div>
-            </div>
-        `;
-        document.body.appendChild(searchOverlay);
-    }
+        // Marcar como inicializado para não duplicar eventos no sidebar persistente
+        searchInput.dataset.initialized = 'true';
+        
+        const conceptsList = document.getElementById('conceptsList');
+        let searchOverlay = document.querySelector('.search-overlay');
+        
+        const keywordsMap = {
+            "etica.html": { title: "Ética", desc: "O estudo da conduta humana e dos valores morais.", keywords: "dever moral virtude aristoteles kant certo errado agir" },
+            "logica.html": { title: "Lógica", desc: "As leis do pensamento racional e da argumentação.", keywords: "razao pensamento silogismo verdade falacia calculo" },
+            "moralismo.html": { title: "Moralismo", desc: "A aplicação rigorosa de normas morais na sociedade.", keywords: "costumes tradicao values sociedade conduta" },
+            "existencialismo.html": { title: "Existencialismo", desc: "A liberdade individual, a escolha e a busca de sentido.", keywords: "liberdade angustia sartre camus escolha ser" },
+            "estetica.html": { title: "Estética", desc: "A natureza do belo, da arte e da sensibilidade.", keywords: "belo arte sensivel juizo feio aparencia" },
+            "metafisica.html": { title: "Metafísica", desc: "Os princípios fundamentais da realidade e do ser.", keywords: "ser realidade ontologia deus alma essencia" },
+            "epistemologia.html": { title: "Epistemologia", desc: "A teoria do conhecimento e seus limites.", keywords: "conhecimento ciencia crença verdade razao" },
+            "politica.html": { title: "Política", desc: "A organização da sociedade, o poder e a justiça.", keywords: "estado poder democracia justiça cidadania" },
+            "linguagem.html": { title: "Linguagem", desc: "A relação entre pensamento, palavra e mundo.", keywords: "signo significado fala comunicacao wittgenstein" },
+            "estoicismo.html": { title: "Estoicismo", desc: "A busca pela paz interior através da razão e virtude.", keywords: "senecca marco aurelio controle indiferença virtude" },
+            "fenomenologia.html": { title: "Fenomenologia", desc: "O estudo das estruturas da consciência e experiência.", keywords: "husserl merleau-ponty consciencia percepcao fenomeno" },
+            "cinismo.html": { title: "Cinismo", desc: "A vida em conformidade com a natureza e desprezo por convenções.", keywords: "diogenes natureza simplicidade honestidade" },
+            "literatura.html": { title: "Literatura Filosófica", desc: "Obras essenciais, manuais e guias de estudo.", keywords: "livros leitura canone republica aristoteles manuais bibliografia" }
+        };
 
-    const resultsGrid = document.getElementById('searchResultsGrid');
-    const closeOverlay = searchOverlay.querySelector('.close-overlay');
-    
-    const keywordsMap = {
-        "etica.html": { title: "Ética", desc: "O estudo da conduta humana e dos valores morais.", keywords: "dever moral virtude aristoteles kant certo errado agir" },
-        "logica.html": { title: "Lógica", desc: "As leis do pensamento racional e da argumentação.", keywords: "razao pensamento silogismo verdade falacia calculo" },
-        "moralismo.html": { title: "Moralismo", desc: "A aplicação rigorosa de normas morais na sociedade.", keywords: "costumes tradicao values sociedade conduta" },
-        "existencialismo.html": { title: "Existencialismo", desc: "A liberdade individual, a escolha e a busca de sentido.", keywords: "liberdade angustia sartre camus escolha ser" },
-        "estetica.html": { title: "Estética", desc: "A natureza do belo, da arte e da sensibilidade.", keywords: "belo arte sensivel juizo feio aparencia" },
-        "metafisica.html": { title: "Metafísica", desc: "Os princípios fundamentais da realidade e do ser.", keywords: "ser realidade ontologia deus alma essencia" },
-        "epistemologia.html": { title: "Epistemologia", desc: "A teoria do conhecimento e seus limites.", keywords: "conhecimento ciencia crença verdade razao" },
-        "politica.html": { title: "Política", desc: "A organização da sociedade, o poder e a justiça.", keywords: "estado poder democracia justiça cidadania" },
-        "linguagem.html": { title: "Linguagem", desc: "A relação entre pensamento, palavra e mundo.", keywords: "signo significado fala comunicacao wittgenstein" },
-        "estoicismo.html": { title: "Estoicismo", desc: "A busca pela paz interior através da razão e virtude.", keywords: "senecca marco aurelio controle indiferença virtude" },
-        "fenomenologia.html": { title: "Fenomenologia", desc: "O estudo das estruturas da consciência e experiência.", keywords: "husserl merleau-ponty consciencia percepcao fenomeno" },
-        "cinismo.html": { title: "Cinismo", desc: "A vida em conformidade com a natureza e desprezo por convenções.", keywords: "diogenes natureza simplicidade honestidade" },
-        "literatura.html": { title: "Literatura Filosófica", desc: "Obras essenciais, manuais e guias de estudo.", keywords: "livros leitura canone republica aristoteles manuais bibliografia" }
-    };
-
-    if (searchInput && conceptsList) {
+        const resultsGrid = document.getElementById('searchResultsGrid');
+        const closeOverlay = searchOverlay.querySelector('.close-overlay');
+        
         const clearBtn = document.createElement('span');
         clearBtn.className = 'search-clear';
         clearBtn.innerHTML = '&times;';
@@ -258,7 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const desc = item.dataset.desc;
                 const link = item.querySelector('a');
                 const hrefFile = link.getAttribute('href').split('/').pop();
-                const absoluteHref = (window.location.pathname.includes('/pages/') ? '' : 'pages/') + hrefFile;
+                
+                // Melhoria na resolução do path para o roteador SPA
+                const isRoot = !window.location.pathname.includes('/pages/');
+                const absoluteHref = (isRoot ? 'pages/' : '') + hrefFile.replace('../', '');
 
                 if (originalText.toLowerCase().includes(searchTerm) || keywords.toLowerCase().includes(searchTerm)) {
                     item.classList.remove('hidden');
@@ -278,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 searchOverlay.classList.add('active');
                 searchCount.innerText = visibleCount;
                 searchCount.classList.add('visible');
-                announceToScreenReader(`${visibleCount} resultados encontrados para ${searchTerm}`);
             } else {
                 searchOverlay.classList.remove('active');
                 searchCount.classList.remove('visible');
@@ -288,32 +182,116 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.addEventListener('input', filterConcepts);
         clearBtn.addEventListener('click', () => { searchInput.value = ''; filterConcepts(); searchInput.focus(); });
         closeOverlay.addEventListener('click', () => searchOverlay.classList.remove('active'));
-    }
+    },
 
-    // --- SCROLL & REVEAL ---
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
+    setupQuotes() {
+        const quotes = [
+            { text: "A vida não examinada não vale a pena ser vivida.", author: "Sócrates" },
+            { text: "Penso, logo existo.", author: "Descartes" },
+            { text: "Não se pode banhar duas vezes no mesmo rio.", author: "Heráclito" },
+            { text: "A felicidade é o único fim em si mesma.", author: "Aristóteles" }
+        ];
+
+        const quoteText = document.getElementById('dailyQuoteText');
+        const quoteAuthor = document.getElementById('dailyQuoteAuthor');
+        if (quoteText && quoteAuthor) {
+            const quote = quotes[Math.floor(Math.random() * quotes.length)];
+            quoteText.innerText = `"${quote.text}"`;
+            quoteAuthor.innerText = `— ${quote.author}`;
+        }
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    // --- HIDE LOADER ---
+    const hideLoader = () => {
+        const loader = document.getElementById('loader');
+        if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 500);
+        }
+    };
+    
+    if (document.readyState === 'complete') {
+        hideLoader();
+    } else {
+        window.addEventListener('load', hideLoader);
+    }
+    setTimeout(hideLoader, 2000);
+
+    // --- GLOBAL SETUP (ONLY ONCE) ---
+    const setupGlobal = () => {
+        // Mouse Glow Interaction
+        const glow = document.createElement('div');
+        glow.className = 'mouse-glow';
+        document.body.appendChild(glow);
+
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
         });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // --- OUTROS ---
-    const quotes = [
-        { text: "A vida não examinada não vale a pena ser vivida.", author: "Sócrates" },
-        { text: "Penso, logo existo.", author: "Descartes" },
-        { text: "Não se pode banhar duas vezes no mesmo rio.", author: "Heráclito" },
-        { text: "A felicidade é o único fim em si mesma.", author: "Aristóteles" }
-    ];
+        // Partículas de Pensamento (Background)
+        const bgContainer = document.createElement('div');
+        bgContainer.className = 'philosophy-bg';
+        document.body.appendChild(bgContainer);
 
-    const quoteText = document.getElementById('dailyQuoteText');
-    const quoteAuthor = document.getElementById('dailyQuoteAuthor');
-    if (quoteText && quoteAuthor) {
-        const quote = quotes[Math.floor(Math.random() * quotes.length)];
-        quoteText.innerText = `"${quote.text}"`;
-        quoteAuthor.innerText = `— ${quote.author}`;
-    }
+        for (let i = 0; i < 5; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'shape';
+            const size = Math.random() * 300 + 100;
+            shape.style.width = size + 'px';
+            shape.style.height = size + 'px';
+            shape.style.left = Math.random() * 100 + '%';
+            shape.style.top = Math.random() * 100 + '%';
+            shape.style.animationDelay = (Math.random() * 10) + 's';
+            bgContainer.appendChild(shape);
+        }
 
-    // Inicializar Configurações Salvas
-    if (localStorage.getItem('highContrast') === 'true') document.body.classList.add('high-contrast');
+        // Search Overlay (Garantir que existe)
+        if (!document.querySelector('.search-overlay')) {
+            const searchOverlay = document.createElement('div');
+            searchOverlay.className = 'search-overlay';
+            searchOverlay.innerHTML = `
+                <div class="search-overlay-content">
+                    <div class="search-overlay-header">
+                        <h3>Resultados da Busca</h3>
+                        <span class="close-overlay" aria-label="Fechar busca">&times;</span>
+                    </div>
+                    <div class="search-results-grid" id="searchResultsGrid" role="region" aria-live="polite"></div>
+                </div>
+            `;
+            document.body.appendChild(searchOverlay);
+        }
+    };
+
+    setupGlobal();
+    PhiloMap.initPage();
+
+    // --- ACESSIBILIDADE AVANÇADA ---
+    window.toggleZenMode = () => {
+        const active = document.body.classList.toggle('zen-mode');
+        localStorage.setItem('zenMode', active);
+    };
+
+    window.changeFontSize = (size) => {
+        const scales = { 'small': 0.85, 'medium': 1, 'large': 1.25 };
+        const scale = scales[size] || 1;
+        document.documentElement.style.setProperty('--font-scale', scale);
+        localStorage.setItem('fontScale', scale);
+    };
+
+    window.toggleDyslexiaFont = () => {
+        const active = document.body.classList.toggle('dyslexia-font');
+        localStorage.setItem('dyslexiaFont', active);
+    };
+
+    // Restaurar Configurações
+    const savedScale = localStorage.getItem('fontScale');
+    if (savedScale) document.documentElement.style.setProperty('--font-scale', savedScale);
+    if (localStorage.getItem('dyslexiaFont') === 'true') document.body.classList.add('dyslexia-font');
+    if (localStorage.getItem('zenMode') === 'true') document.body.classList.add('zen-mode');
 });
+
+window.PhiloMap = PhiloMap;
+

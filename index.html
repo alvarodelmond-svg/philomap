@@ -14,11 +14,14 @@
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=60">
     
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/inscricao.css">
+    <link rel="stylesheet" href="assets/css/sidebar-modern.css">
     
     <!-- SCRIPTS DEFER (NÃO BLOQUEANTES) -->
     <script src="assets/js/db.js" defer></script>
     <script src="assets/js/controller.js" defer></script>
     <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/sidebar.js" defer></script>
 </head>
 <body>
     <!-- LOADING SCREEN OPTIMIZED -->
@@ -70,8 +73,11 @@
                     <span class="search-icon">⚲</span>
                 </div>
                 
-                <span class="nav-label">Conceitos</span>
-                <ul class="nav-list" id="conceptsList">
+                <div class="nav-collapsible-header" id="conceptsToggle">
+                    <span class="nav-label">Conceitos</span>
+                    <span class="chevron">▼</span>
+                </div>
+                <ul class="nav-list collapsible-content" id="conceptsList">
                     <li class="nav-item"><a href="pages/etica.html">Ética</a></li>
                     <li class="nav-item"><a href="pages/logica.html">Lógica</a></li>
                     <li class="nav-item"><a href="pages/moralismo.html">Moralismo</a></li>

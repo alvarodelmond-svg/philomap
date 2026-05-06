@@ -27,7 +27,7 @@ class Router {
         $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         
         // Ajuste para rodar em subpastas se necessário
-        $path = str_replace('/philomap/sistema_matricula', '', $path);
+        $path = str_replace('/sistema_matricula', '', $path);
         if ($path == '') $path = '/';
 
         if (!isset($this->routes[$method][$path])) {

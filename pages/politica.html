@@ -4,21 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Política</title>
+        <!-- PRECONNECT PARA VELOCIDADE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
     <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- SCRIPTS DEFER (NÃO BLOQUEANTES) -->
+    <script src="../assets/js/db.js" defer></script>
+    <script src="../assets/js/controller.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
 </head>
 <body>
-    <!-- LOADING SCREEN -->
-    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 1s ease;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); margin-bottom: 20px; letter-spacing: 5px; animation: pulse 2s infinite;">PHILOMAP</div>
-        <div style="width: 200px; height: 1px; background: var(--border); position: relative; overflow: hidden;">
-            <div style="position: absolute; width: 50px; height: 100%; background: var(--gold); animation: loading 2s infinite linear;"></div>
+    <!-- LOADING SCREEN OPTIMIZED -->
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
+        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px; animation: pulse 1.5s infinite;">PHILOMAP</div>
+        <div style="width: 150px; height: 1px; background: #e8e2d8; position: relative; overflow: hidden;">
+            <div style="position: absolute; width: 40px; height: 100%; background: #c5a059; animation: loading 1.5s infinite linear;"></div>
         </div>
-        <p style="margin-top: 20px; font-style: italic; font-size: 0.8rem; color: var(--text-dim);">"A paciência é amarga, mas seu fruto é doce." — Rousseau</p>
     </div>
 
+    <script>
+        // Script de segurança para remover o loader caso o JS principal demore
+        window.addEventListener('load', function() {
+            var loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(function() { loader.style.display = 'none'; }, 500);
+            }
+        });
+        // Fallback de 3 segundos
+        setTimeout(function() {
+            var loader = document.getElementById('loader');
+            if (loader && loader.style.display !== 'none') {
+                loader.style.opacity = '0';
+                setTimeout(function() { loader.style.display = 'none'; }, 500);
+            }
+        }, 3000);
+    </script>
+
     <style>
-        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-        @keyframes loading { 0% { left: -50px; } 100% { left: 200px; } }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        @keyframes loading { 0% { left: -40px; } 100% { left: 150px; } }
     </style>
 
     <div class="reading-progress"></div>
@@ -27,7 +55,7 @@
         <!-- SIDEBAR -->
         <aside class="sidebar">
             <a href="../index.html" class="sidebar-logo">
-                <img src="../assets/img/logo-site.svg" alt="PhiloMap Logo" class="logo-header">
+                <img src="../assets/img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" loading="eager" width="280" height="280">
             </a>
 
             <nav class="nav-group">
@@ -68,14 +96,33 @@
                 </ul>
             </nav>
 
-            <div class="sidebar-footer">
-                <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+                        <div class="sidebar-footer">
+                <div class="accessibility-controls">
+                    <span class="nav-label" style="margin-bottom: 10px; display: block;">Acessibilidade</span>
+                    <div class="font-controls">
+                        <button onclick="changeFontSize('small')" title="Fonte Pequena">A-</button>
+                        <button onclick="changeFontSize('medium')" title="Fonte Normal">A</button>
+                        <button onclick="changeFontSize('large')" title="Fonte Grande">A+</button>
+                    </div>
+                    <button class="theme-toggle" onclick="toggleHighContrast()" style="margin-top: 10px; font-size: 0.7rem;">Alto Contraste</button>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()" style="margin-top: 10px;">Mudar Tema</button>
             </div>
         </aside>
 
         <!-- MAIN CONTENT -->
         <main class="main-content">
+                        
+                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
+            </div>
+
             <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Política</span></div>
+
+                        <div class="content-actions">
+                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
+            </div>
             
             <section class="card reveal active">
                 <header class="card-header">
@@ -84,7 +131,7 @@
                 </header>
                 
                 <div class="image-container">
-                    <img src="https://aventurasnahistoria.com.br/wp-content/uploads/hard_news/guernic3.jpg" alt="Política e Estado">
+                    <img src="https://aventurasnahistoria.com.br/wp-content/uploads/hard_news/guernic3.jpg" alt="Política e Estado" loading="lazy" width="1200" height="800">
                 </div>
                 
                 <p>A <strong>Filosofia Política</strong> é o estudo da organização das sociedades, da natureza do poder, da autoridade, do Estado, das leis e da justiça. Ela busca responder à pergunta fundamental: como devemos organizar nossa vida em comum? Desde a <em>Polis</em> grega até as democracias digitais modernas, a política é o campo onde negociamos nossos conflitos e definimos o que é o "bem comum".</p>
@@ -133,25 +180,25 @@
 
                 <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Niccol%C3%B2_Machiavelli_clasa.jpg" alt="Maquiavel" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Niccol%C3%B2_Machiavelli_clasa.jpg" alt="Maquiavel" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">Maquiavel</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">O primeiro a ver a política como um campo autônomo. Ensinou que o governante deve ser temido e amado, mas nunca odiado.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Thomas_Hobbes_%28portrait_by_John_Michael_Wright%29.jpg" alt="Thomas Hobbes" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Thomas_Hobbes_%28portrait_by_John_Michael_Wright%29.jpg" alt="Thomas Hobbes" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">Thomas Hobbes</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">O defensor do Leviatã. Argumentou que sem um poder soberano forte, a vida humana seria "solitária, pobre, sórdida, brutal e curta".</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Jean-Jacques_Rousseau_%28painted_portrait%29.jpg" alt="Rousseau" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Jean-Jacques_Rousseau_%28painted_portrait%29.jpg" alt="Rousseau" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">J.J. Rousseau</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">O filósofo da liberdade e da igualdade. Acreditava que o povo deve ser o verdadeiro soberano através da Vontade Geral.</p>
                     </div>
 
                     <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Karl_Marx_001.jpg" alt="Karl Marx" class="foto-filosofo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Karl_Marx_001.jpg" alt="Karl Marx" class="foto-filosofo" loading="lazy" width="200" height="250">
                         <h3 style="color: var(--gold);">Karl Marx</h3>
                         <p style="font-size: 0.9rem; margin-top: 1rem;">O crítico radical do capitalismo. Propôs uma transformação revolucionária da sociedade para acabar com a exploração do homem pelo homem.</p>
                     </div>
@@ -165,7 +212,7 @@
                 </header>
 
                 <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80" alt="Protestos e Democracia">
+                    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80" alt="Protestos e Democracia" loading="lazy" width="1200" height="800">
                 </div>
 
                 <div class="texto-flex">
@@ -181,10 +228,10 @@
         </main>
     </div>
 
-    <!-- Scripts -->
-    <script src="../assets/js/db.js"></script>
-    <script src="../assets/js/controller.js"></script>
-    <script src="../assets/js/script.js"></script>
+        <!-- Scripts -->
+    <script src="../assets/js/db.js" defer></script>
+    <script src="../assets/js/controller.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
 </body>
 </html>
 

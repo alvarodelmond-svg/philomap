@@ -198,7 +198,7 @@
             <h1>Sistema de Matrícula</h1>
             <p class="subtitle">Portal do Candidato - Ingresso 2026</p>
 
-            <form action="/philomap/sistema_matricula/store" method="POST">
+            <form action="/sistema_matricula/store" method="POST">
                 <div class="form-group">
                     <label for="nome">Nome do Aluno</label>
                     <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
