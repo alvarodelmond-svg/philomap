@@ -77,7 +77,7 @@
                 </ul>
             </nav>
 
-                        <div class="sidebar-footer">
+            <div class="sidebar-footer">
                 <div class="accessibility-controls">
                     <span class="nav-label" style="margin-bottom: 10px; display: block;">Acessibilidade</span>
                     <div class="font-controls">
@@ -89,22 +89,13 @@
                 </div>
                 <button class="theme-toggle" onclick="toggleTheme()" style="margin-top: 10px;">Mudar Tema</button>
             </div>
-                    <button class="theme-toggle" onclick="toggleHighContrast()" style="margin-top: 10px; font-size: 0.7rem;">Alto Contraste</button>
-                </div>
-                <button class="theme-toggle" onclick="toggleTheme()" style="margin-top: 10px;">Mudar Tema</button>
-            </div>
         </aside>
 
         <!-- MAIN CONTENT -->
         <main class="main-content">
-                        
-                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
-                <div id="readingTime" class="reading-time"></div>
-            </div>
-
             <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Inscrição</span></div>
 
-                        <div class="content-actions">
+            <div class="content-actions">
                 <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
                 <div id="readingTime" class="reading-time"></div>
             </div>
@@ -217,14 +208,24 @@
                             const formData = new FormData(form);
 
                             try {
-                                const response = await fetch('/sistema_matricula/store', {
+                                // Apontando para o arquivo real e adicionando Headers para JSON
+                                const response = await fetch('../sistema_matricula/index.php', {
                                     method: 'POST',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'X-Requested-With': 'XMLHttpRequest'
+                                    },
                                     body: formData
                                 });
 
+                                if (!response.ok) {
+                                    const errorData = await response.json();
+                                    throw new Error(errorData.message || 'Erro no servidor.');
+                                }
+
                                 const result = await response.json();
 
-                                if (response.ok && result.status === 'success') {
+                                if (result.status === 'success') {
                                     alertBox.textContent = result.message;
                                     alertBox.className = 'alert-success';
                                     
@@ -241,7 +242,9 @@
                                     receiptDetails.style.display = 'none';
                                 }
                             } catch (error) {
-                                alertBox.textContent = 'Não foi possível conectar ao servidor PHP.';
+                                alertBox.textContent = error.message === 'Failed to fetch' 
+                                    ? 'Não foi possível conectar ao servidor PHP. Certifique-se de estar usando um servidor local (localhost).' 
+                                    : error.message;
                                 alertBox.className = 'alert-error';
                                 receiptDetails.style.display = 'none';
                             } finally {

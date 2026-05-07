@@ -10,10 +10,12 @@
     <link rel="preconnect" href="https://images.unsplash.com">
     
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/sidebar-modern.css">
     
     <script src="../assets/js/db.js" defer></script>
     <script src="../assets/js/controller.js" defer></script>
     <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/sidebar.js" defer></script>
 </head>
 <body>
     <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
@@ -37,8 +39,12 @@
                     <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
                     <span class="search-icon">⚲</span>
                 </div>
-                <span class="nav-label">Conceitos</span>
-                <ul class="nav-list" id="conceptsList">
+                
+                <div class="nav-collapsible-header" id="conceptsToggle">
+                    <span class="nav-label">Conceitos</span>
+                    <span class="chevron">▼</span>
+                </div>
+                <ul class="nav-list collapsible-content" id="conceptsList">
                     <li class="nav-item"><a href="etica.html">Ética</a></li>
                     <li class="nav-item"><a href="logica.html">Lógica</a></li>
                     <li class="nav-item"><a href="moralismo.html">Moralismo</a></li>

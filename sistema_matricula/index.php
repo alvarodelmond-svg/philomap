@@ -16,8 +16,8 @@ $controller = new MatriculaController($service); // Passo 4
 // 3. Simulação de captura do formulário (Passo 5 - Sanitização)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dados = [
-        // Sanitização contra XSS
-        'aluno' => filter_input(INPUT_POST, 'aluno', FILTER_SANITIZE_SPECIAL_CHARS),
+        // Suporta tanto 'aluno' (interno) quanto 'nome' (frontend PhiloMap)
+        'aluno' => filter_input(INPUT_POST, 'aluno', FILTER_SANITIZE_SPECIAL_CHARS) ?: filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS),
         'curso' => filter_input(INPUT_POST, 'curso', FILTER_SANITIZE_SPECIAL_CHARS)
     ];
     

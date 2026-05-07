@@ -15,11 +15,13 @@
     <link rel="preconnect" href="https://images.unsplash.com">
     
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/sidebar-modern.css">
     
     <!-- SCRIPTS DEFER (NÃO BLOQUEANTES) -->
     <script src="../assets/js/db.js" defer></script>
     <script src="../assets/js/controller.js" defer></script>
     <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/sidebar.js" defer></script>
 </head>
 <body>
     <!-- LOADING SCREEN OPTIMIZED -->
@@ -60,6 +62,7 @@
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
 </style>
+    <script src="../assets/js/sidebar.js" defer></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
@@ -87,8 +90,11 @@
                     <span class="search-icon">⚲</span>
                 </div>
                 
-                <span class="nav-label">Conceitos</span>
-                <ul class="nav-list" id="conceptsList">
+                <div class="nav-collapsible-header" id="conceptsToggle">
+                    <span class="nav-label">Conceitos</span>
+                    <span class="chevron">▼</span>
+                </div>
+                <ul class="nav-list collapsible-content" id="conceptsList">
                     <li class="nav-item"><a href="etica.html">Ética</a></li>
                     <li class="nav-item"><a href="logica.html">Lógica</a></li>
                     <li class="nav-item"><a href="moralismo.html">Moralismo</a></li>
@@ -119,7 +125,7 @@
                 </ul>
             </nav>
 
-                        <div class="sidebar-footer">
+            <div class="sidebar-footer">
                 <div class="accessibility-controls">
                     <span class="nav-label" style="margin-bottom: 10px; display: block;">Acessibilidade</span>
                     <div class="font-controls">
@@ -131,27 +137,13 @@
                 </div>
                 <button class="theme-toggle" onclick="toggleTheme()" style="margin-top: 10px;">Mudar Tema</button>
             </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
-                        <button class="theme-toggle" onclick="toggleDyslexiaFont()" style="font-size: 0.6rem; padding: 10px;">Fonte Dislexia</button>
-                        <button class="theme-toggle" onclick="toggleReadingRuler()" style="font-size: 0.6rem; padding: 10px;">Régua Leitura</button>
-                    </div>
-                    <button class="theme-toggle" onclick="toggleZenMode()" style="margin-top: 10px; font-size: 0.7rem; background: var(--gold);">Modo Zen (Foco)</button>
-                    <button class="theme-toggle" onclick="toggleHighContrast()" style="margin-top: 10px; font-size: 0.7rem;">Alto Contraste</button>
-                </div>
-                <button class="theme-toggle" onclick="toggleTheme()" style="margin-top: 10px;">Mudar Tema</button>
-            </div>
         </aside>
 
         <!-- MAIN CONTENT -->
         <main class="main-content" id="main-content" role="main">
-                        
-                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
-                <div id="readingTime" class="reading-time"></div>
-            </div>
-
             <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Literatura Filosófica</span></div>
 
-                        <div class="content-actions">
+            <div class="content-actions">
                 <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
                 <div id="readingTime" class="reading-time"></div>
             </div>

@@ -83,6 +83,9 @@
     border-radius: 10px !important;
     text-transform: none !important; /* Mais moderno */
     letter-spacing: 1px !important;
+    color: var(--gold) !important;
+    -webkit-text-fill-color: var(--gold) !important;
+    transition: var(--sidebar-transition);
 }
 
 .collapsible-content .nav-item a:hover {
@@ -90,6 +93,13 @@
     border-color: var(--gold) !important;
     transform: translateX(5px) !important;
     box-shadow: 0 5px 15px var(--glow-color) !important;
+}
+
+.collapsible-content .nav-item a.active {
+    background: var(--gold) !important;
+    color: var(--sidebar-bg) !important;
+    -webkit-text-fill-color: var(--sidebar-bg) !important;
+    font-weight: 800;
 }
 
 /* Ajustes no Sidebar Logo para fundo preto */

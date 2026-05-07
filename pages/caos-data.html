@@ -145,6 +145,7 @@
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
 </style>
+    <script src="../assets/js/sidebar.js" defer></script>
 </head>
 <body>
     <!-- LOADING SCREEN -->
@@ -163,7 +164,69 @@
 
     <div class="reading-progress"></div>
 
-    <main class="main-content" id="main-content">
+    
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
+                <img src="../assets/img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" loading="eager" width="280" height="280">
+            </a>
+
+            <nav class="nav-group">
+                <span class="nav-label">Explorar</span>
+                <div class="search-container">
+                    <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
+                    <span class="search-icon">⚲</span>
+                </div>
+                
+                <div class="nav-collapsible-header" id="conceptsToggle">
+                    <span class="nav-label">Conceitos</span>
+                    <span class="chevron">▼</span>
+                </div>
+                <ul class="nav-list collapsible-content" id="conceptsList">
+                    <li class="nav-item"><a href="etica.html">Ética</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="cinismo.html">Cinismo</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-group">
+                <span class="nav-label">Estudos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="literatura.html">Literatura</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="inscricao.html">Inscrição</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="accessibility-controls">
+                    <span class="nav-label" style="margin-bottom: 10px; display: block;">Acessibilidade</span>
+                    <div class="font-controls">
+                        <button onclick="changeFontSize('small')" title="Fonte Pequena">A-</button>
+                        <button onclick="changeFontSize('medium')" title="Fonte Normal">A</button>
+                        <button onclick="changeFontSize('large')" title="Fonte Grande">A+</button>
+                    </div>
+                    <button class="theme-toggle" onclick="toggleHighContrast()" style="margin-top: 10px; font-size: 0.7rem;">Alto Contraste</button>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()" style="margin-top: 10px;">Mudar Tema</button>
+            </div>
+        </aside>
+<main class="main-content" id="main-content">
                 
                 <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
                 <div id="readingTime" class="reading-time"></div>
