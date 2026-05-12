@@ -1,0 +1,31 @@
+<?php header('Content-Type: text/css'); ?>
+/* ETICA.CSS - CLASSIC STYLE */
+@import url('style.php');
+
+.etica-main { padding: 40px 0; }
+
+h1 { 
+    font-size: 4rem; 
+    margin-bottom: 30px; 
+    text-align: center;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--accent);
+    margin: 20px auto;
+}
+
+.card-texto { 
+    /* Padding already defined in style.php, but we can ensure consistency */
+    padding: 60px; 
+}
+
+p { 
+    font-size: 1.15rem; 
+}
+
+strong { color: var(--accent); }

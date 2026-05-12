@@ -6,21 +6,24 @@ require_once 'app/appRepository/MatriculaRepository.php';
 require_once 'app/appService/BusinessRuleException.php';
 require_once 'app/appService/MatriculaService.php';
 require_once 'app/Controllers/MatriculaController.php';
+require_once 'app/Middlewares/SanitizeMiddleware.php';
 
-// 2. MONTAGEM (Injeção de Dependência de baixo para cima)
-$db = Database::getConnection(); // Passo 1
-$repository = new MatriculaRepository($db); // Passo 2
-$service = new MatriculaService($repository); // Passo 3
-$controller = new MatriculaController($service); // Passo 4
+// 2. MIDDLEWARE (Segurança e Sanitização - Passo 5)
+$sanitize = new SanitizeMiddleware();
+$sanitize->handle();
 
-// 3. Simulação de captura do formulário (Passo 5 - Sanitização)
+// 3. MONTAGEM / CONTAINER DE DI (Passo 5)
+$db = Database::getConnection(); 
+$repository = new MatriculaRepository($db);
+$service = new MatriculaService($repository);
+$controller = new MatriculaController($service);
+
+// 4. ROTEAMENTO SIMPLIFICADO
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dados = [
-        // Suporta tanto 'aluno' (interno) quanto 'nome' (frontend PhiloMap)
-        'aluno' => filter_input(INPUT_POST, 'aluno', FILTER_SANITIZE_SPECIAL_CHARS) ?: filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS),
-        'curso' => filter_input(INPUT_POST, 'curso', FILTER_SANITIZE_SPECIAL_CHARS)
+        'aluno' => $_POST['nome'] ?? $_POST['aluno'] ?? '',
+        'curso' => $_POST['curso'] ?? ''
     ];
-    
     $controller->store($dados);
 } else {
     // Se não for POST, apenas mostra o formulário
