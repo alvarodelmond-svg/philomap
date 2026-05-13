@@ -282,7 +282,7 @@
                     }
                 });
 
-                const result = await response.phpon();
+                const result = await response.json();
 
                 if (response.ok && result.status === 'success') {
                     // SUCESSO

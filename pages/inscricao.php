@@ -219,11 +219,11 @@
                                 });
 
                                 if (!response.ok) {
-                                    const errorData = await response.phpon();
+                                    const errorData = await response.json();
                                     throw new Error(errorData.message || 'Erro no servidor.');
                                 }
 
-                                const result = await response.phpon();
+                                const result = await response.json();
 
                                 if (result.status === 'success') {
                                     alertBox.textContent = result.message;
