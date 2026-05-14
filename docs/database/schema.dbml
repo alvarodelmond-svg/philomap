@@ -1,0 +1,26 @@
+﻿// Use este código no dbdiagram.io para gerar o gráfico
+
+Table usuarios {
+  id integer [primary key, increment]
+  nome varchar [not null]
+  email varchar [unique, not null]
+  criado_em timestamp [default: `now()`]
+}
+
+Table cursos {
+  id integer [primary key, increment]
+  nome varchar [not null]
+  descricao text
+  carga_horaria integer
+}
+
+Table matriculas {
+  id integer [primary key, increment]
+  usuario_id integer [not null]
+  curso_id integer [not null]
+  data_matricula timestamp [default: `now()`]
+}
+
+// Relacionamentos (Passo 4)
+Ref: matriculas.usuario_id > usuarios.id // Muitos para um
+Ref: matriculas.curso_id > cursos.id // Muitos para um
