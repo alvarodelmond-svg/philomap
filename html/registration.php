@@ -71,7 +71,7 @@
                 <span class="nav-label">Institucional</span>
                 <ul class="nav-list">
                     <li class="nav-item"><a href="../index.php">Início</a></li>
-                    <li class="nav-item"><a href="inscricao.php" class="active">Inscrição</a></li>
+                    <li class="nav-item"><a href="registration.php" class="active">Inscrição</a></li>
                 </ul>
             </nav>
 

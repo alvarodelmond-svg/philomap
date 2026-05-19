@@ -2,10 +2,12 @@
 class MatriculaService {
     private $repo;
     private $validCourses = [
-        'Engenharia de Software',
-        'Ciência de Dados',
-        'Arquitetura Digital',
-        'Gestão de TI'
+        'Ética e Moralismo',
+        'Metafísica e Ontologia',
+        'Lógica e Razão',
+        'Existencialismo',
+        'Estética e Arte',
+        'Política e Sociedade'
     ];
 
     public function __construct(IMatriculaRepository $repo) {
