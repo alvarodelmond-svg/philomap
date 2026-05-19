@@ -1,0 +1,33 @@
+try {
+    require_once 'config.php';
+    require_once 'autoload.html';
+
+    $sanitize = new SanitizeMiddleware();
+    $sanitize->handle();
+
+    $db = Database::getConnection();
+    $repository = new MatriculaRepository($db);
+    $service = new MatriculaService($repository);
+    $controller = new MatriculaController($service);
+
+    $router = new Router();
+    $router->get('/', function () {
+        include 'ew/form.html';
+    });
+    $router->get('/index.html', function () {
+        include 'ew/form.html';
+    });
+    $router->post('/register', function () use ($controller) {
+        $dados = [
+            'nome' => $_POST['nome'] ?? '',
+            'idade' => $_POST['idade'] ?? '',
+            'curso' => $_POST['curso'] ?? ''
+        ];
+        $controller->store($dados);
+    });
+
+    $router->run();
+} catch (Throwable $e) {
+    $message = $e->getMessage();
+    include 'ew/error.html';
+}

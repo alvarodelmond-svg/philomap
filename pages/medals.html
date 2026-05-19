@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiloMap | Medalhas Exclusivas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/main.js" defer></script>
+</head>
+<body>
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
+        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px;">PHILOMAP</div>
+    </div>
+    <div class="app-container">
+<aside class="sidebar">
+    <a href="../index.html" class="sidebar-logo">
+        <img src="../img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" width="280">
+    </a>
+    <nav class="nav-group">
+        <span class="nav-label">Explorar</span>
+        <div class="search-container">
+            <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
+            <span class="search-icon">⚲</span>
+        </div>
+        <div class="nav-collapsible-header" id="conceptsToggle">
+            <span class="nav-label">Conceitos</span>
+            <span class="chevron">▼</span>
+        </div>
+        <ul class="nav-list collapsible-content" id="conceptsList">
+            <li class="nav-item"><a href="../pages/etica.html">Ética</a></li>
+<li class="nav-item"><a href="../pages/logica.html">Lógica</a></li>
+<li class="nav-item"><a href="../pages/moralismo.html">Moralismo</a></li>
+<li class="nav-item"><a href="../pages/existencialismo.html">Existencialismo</a></li>
+<li class="nav-item"><a href="../pages/estetica.html">Estética</a></li>
+<li class="nav-item"><a href="../pages/metafisica.html">Metafísica</a></li>
+<li class="nav-item"><a href="../pages/epistemologia.html">Epistemologia</a></li>
+<li class="nav-item"><a href="../pages/politica.html">Política</a></li>
+<li class="nav-item"><a href="../pages/linguagem.html">Linguagem</a></li>
+<li class="nav-item"><a href="../pages/estoicismo.html">Estoicismo</a></li>
+<li class="nav-item"><a href="../pages/fenomenologia.html">Fenomenologia</a></li>
+<li class="nav-item"><a href="../pages/cinismo.html">Cinismo</a></li>
+
+        </ul>
+    </nav>
+    <nav class="nav-group">
+        <span class="nav-label">Estudos</span>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="../pages/literatura.html">Literatura</a></li>
+        </ul>
+    </nav>
+    <nav class="nav-group">
+        <span class="nav-label">Institucional</span>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="../index.html">Início</a></li>
+            <li class="nav-item"><a href="../pages/registration.html">Inscrição</a></li>
+            <li class="nav-item"><a href="../pages/login.html">Portal do Aluno</a></li>
+        </ul>
+    </nav>
+    <div class="sidebar-footer">
+        <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+    </div>
+</aside>
+
+<section style="text-align: center; padding-top: 5rem;" class="fade-in">
+            <h2 style="font-size: 3rem; color: var(--text-color); font-weight: 900;">Galeria de Honrarias</h2>
+            <p style="color: #666;">Cada conquista na olunic é coroada com um design único e atemporal.</p>
+        </section>
+
+        <div class="medals-grid fade-in">
+            <!-- Nebula Math -->
+            <div class="medal-card">
+                <svg class="medal-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#f8f9fa" stroke="#4a90e2" stroke-width="2"/>
+                    <path d="M30 50 L50 20 L70 50 L50 80 Z" fill="none" stroke="#4a90e2" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="6" fill="#00cec9"/>
+                </svg>
+                <h3>Medalha Nebula</h3>
+                <p class="medal-desc">Simboliza a precisão geométrica e o equilíbrio dos números primos.</p>
+            </div>
+
+            <!-- Cyber Code -->
+            <div class="medal-card">
+                <svg class="medal-svg" viewBox="0 0 100 100">
+                    <rect x="15" y="15" width="70" height="70" rx="8" fill="#f8f9fa" stroke="#4a90e2" stroke-width="2"/>
+                    <path d="M35 40 L45 50 L35 60 M55 40 L65 50 L55 60" fill="none" stroke="#00cec9" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+                <h3>Medalha Cyber</h3>
+                <p class="medal-desc">Inspirada na arquitetura de software e no fluxo da lógica binária.</p>
+            </div>
+
+            <!-- Eco Future -->
+            <div class="medal-card">
+                <svg class="medal-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#f8f9fa" stroke="#4a90e2" stroke-width="2"/>
+                    <path d="M50 25 Q70 40 50 75 Q30 40 50 25" fill="#00cec9" opacity="0.4"/>
+                    <path d="M50 30 C65 45 65 55 50 70 C35 55 35 45 50 30" fill="none" stroke="#4a90e2" stroke-width="3"/>
+                </svg>
+                <h3>Medalha Eco</h3>
+                <p class="medal-desc">Representa a simbiose entre tecnologia e a preservação da vida.</p>
+            </div>
+
+            <!-- History Explorer -->
+            <div class="medal-card">
+                <svg class="medal-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#f8f9fa" stroke="#4a90e2" stroke-width="2"/>
+                    <path d="M30 30 L70 30 M30 50 L70 50 M30 70 L60 70" stroke="#4a90e2" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="75" cy="75" r="10" stroke="#00cec9" stroke-width="2" fill="none"/>
+                </svg>
+                <h3>Medalha Explorer</h3>
+                <p class="medal-desc">Homenagem aos registros históricos e à bússola do conhecimento humano.</p>
+            </div>
+
+            <!-- Astro Physics -->
+            <div class="medal-card">
+                <svg class="medal-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#f8f9fa" stroke="#4a90e2" stroke-width="2"/>
+                    <ellipse cx="50" cy="50" rx="35" ry="12" stroke="#00cec9" stroke-width="2" fill="none" transform="rotate(-20 50 50)"/>
+                    <circle cx="50" cy="50" r="10" fill="#4a90e2"/>
+                </svg>
+                <h3>Medalha Astro</h3>
+                <p class="medal-desc">Representa os corpos celestes e a órbita do entendimento universal.</p>
+            </div>
+
+            <!-- AI Revolution -->
+            <div class="medal-card">
+                <svg class="medal-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#f8f9fa" stroke="#4a90e2" stroke-width="2"/>
+                    <circle cx="35" cy="35" r="5" fill="#00cec9"/>
+                    <circle cx="65" cy="35" r="5" fill="#00cec9"/>
+                    <circle cx="50" cy="65" r="5" fill="#00cec9"/>
+                    <path d="M35 35 L65 35 L50 65 Z" fill="none" stroke="#4a90e2" stroke-width="2"/>
+                </svg>
+                <h3>Medalha AI</h3>
+                <p class="medal-desc">Simboliza as redes neurais e a conexão exponencial da inteligência.</p>
+            </div>
+        </div>
+
+
+        <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">
+            <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

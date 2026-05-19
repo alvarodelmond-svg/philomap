@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Trata arquivos .html como PHP no Apache
+AddType application/x-httpd-php .html
+
+# Garante que index.html seja prioridade e processado como PHP
+DirectoryIndex index.html index.php
+
+# Regras de redirecionamento caso o arquivo PHP físico ainda seja tentado
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]

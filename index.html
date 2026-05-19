@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiloMap | Início</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
+        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px;">PHILOMAP</div>
+    </div>
+    <div class="app-container">
+<aside class="sidebar">
+    <a href="index.html" class="sidebar-logo">
+        <img src="img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" width="280">
+    </a>
+    <nav class="nav-group">
+        <span class="nav-label">Explorar</span>
+        <div class="search-container">
+            <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
+            <span class="search-icon">⚲</span>
+        </div>
+        <div class="nav-collapsible-header" id="conceptsToggle">
+            <span class="nav-label">Conceitos</span>
+            <span class="chevron">▼</span>
+        </div>
+        <ul class="nav-list collapsible-content" id="conceptsList">
+            <li class="nav-item"><a href="pages/etica.html">Ética</a></li>
+<li class="nav-item"><a href="pages/logica.html">Lógica</a></li>
+<li class="nav-item"><a href="pages/moralismo.html">Moralismo</a></li>
+<li class="nav-item"><a href="pages/existencialismo.html">Existencialismo</a></li>
+<li class="nav-item"><a href="pages/estetica.html">Estética</a></li>
+<li class="nav-item"><a href="pages/metafisica.html">Metafísica</a></li>
+<li class="nav-item"><a href="pages/epistemologia.html">Epistemologia</a></li>
+<li class="nav-item"><a href="pages/politica.html">Política</a></li>
+<li class="nav-item"><a href="pages/linguagem.html">Linguagem</a></li>
+<li class="nav-item"><a href="pages/estoicismo.html">Estoicismo</a></li>
+<li class="nav-item"><a href="pages/fenomenologia.html">Fenomenologia</a></li>
+<li class="nav-item"><a href="pages/cinismo.html">Cinismo</a></li>
+
+        </ul>
+    </nav>
+    <nav class="nav-group">
+        <span class="nav-label">Estudos</span>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="pages/literatura.html">Literatura</a></li>
+        </ul>
+    </nav>
+    <nav class="nav-group">
+        <span class="nav-label">Institucional</span>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="active">Início</a></li>
+            <li class="nav-item"><a href="pages/registration.html">Inscrição</a></li>
+            <li class="nav-item"><a href="pages/login.html">Portal do Aluno</a></li>
+        </ul>
+    </nav>
+    <div class="sidebar-footer">
+        <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+    </div>
+</aside>
+
+<main class="main-content" id="main-content">
+    <section class="card reveal active">
+        <header class="card-header">
+            <span class="subtitulo">Conheça o Projeto</span>
+            <h1>PhiloMap: Arquitetura do Pensamento Humano</h1>
+        </header>
+        
+        <p>O <strong>PhiloMap</strong> é uma plataforma imersiva desenhada para mapear as complexas estruturas da filosofia universal. Nosso intuito é transformar o estudo passivo em uma jornada ativa de descoberta e construção intelectual.</p>
+
+        <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 3rem;">
+            <div style="padding: 2rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-sunken);">
+                <h3 style="color: var(--gold); margin-bottom: 1rem;">Mapeamento Conceitual</h3>
+                <p style="font-size: 0.95rem;">Navegue por um mapa interativo que conecta conceitos clássicos (como o Cinismo e o Estoicismo) às fronteiras da tecnologia e ética contemporânea.</p>
+            </div>
+            <div style="padding: 2rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-sunken);">
+                <h3 style="color: var(--gold); margin-bottom: 1rem;">Olimpíadas de Conhecimento</h3>
+                <p style="font-size: 0.95rem;">Participe de exames e desafios intelectuais que testam sua capacidade de raciocínio e compreensão das grandes correntes filosóficas.</p>
+            </div>
+            <div style="padding: 2rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-sunken);">
+                <h3 style="color: var(--gold); margin-bottom: 1rem;">Biblioteca e Literatura</h3>
+                <p style="font-size: 0.95rem;">Acesse manuais de estudo, obras fundamentais e guias de leitura curados por especialistas para aprofundar seu saber.</p>
+            </div>
+            <div style="padding: 2rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface-sunken);">
+                <h3 style="color: var(--gold); margin-bottom: 1rem;">Acessibilidade e Imersão</h3>
+                <p style="font-size: 0.95rem;">Ferramentas como a Régua de Leitura, modo de alto contraste e efeitos visuais criam uma experiência de leitura focada e inclusiva.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card reveal">
+        <header class="card-header">
+            <span class="subtitulo">Nossa Missão</span>
+            <h2>O Conhecimento como Libertação</h2>
+        </header>
+        <p>Acreditamos que a inteligência é um potencial latente que aguarda a ferramenta certa para ser despertado. No PhiloMap, buscamos forjar mentes capazes de questionar a realidade e arquitetar o futuro através do rigor acadêmico e da interdisciplinaridade.</p>
+        
+        <blockquote class="citacao-destaque">
+            "ΓΝΩΘΙ ΣΑΥΤΟΝ — Conhece-te a ti mesmo."
+        </blockquote>
+    </section>
+
+    <section class="card reveal" style="text-align: center;">
+        <header class="card-header">
+            <span class="subtitulo">Faça Parte</span>
+            <h2>Inicie sua Jornada Intelectual</h2>
+        </header>
+        <p>Junte-se à nossa comunidade de exploradores e tenha acesso ao Portal do Aluno, materiais exclusivos e muito mais.</p>
+        
+        <div style="margin-top: 2rem;">
+            <a href="pages/registration.html" class="btn-submit">Fazer Inscrição Agora</a>
+        </div>
+    </section>
+</main>
+
+
+        <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">
+            <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
