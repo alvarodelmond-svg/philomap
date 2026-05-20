@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiloMap | Inscrição</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: var(--surface);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg);
+            color: var(--text-main);
+            font-family: inherit;
+        }
+        .btn-submit {
+            background: var(--gold);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <main class="main-content" style="margin-left: 0; padding: 40px;">
+            <div class="form-container reveal active">
+                <header style="text-align: center; margin-bottom: 30px;">
+                    <span class="subtitulo">Faça parte da nossa jornada</span>
+                    <h1>Inscrição de Estudante</h1>
+                </header>
+                
+                <form id="formInscricao">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Ex: Sócrates de Atenas">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="idade">Idade</label>
+                        <input type="number" id="idade" name="idade" required min="1" max="150" placeholder="Ex: 25">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="estudo">O que deseja estudar?</label>
+                        <textarea id="estudo" name="estudo" rows="4" required placeholder="Ex: Ética e Metafísica"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Enviar Inscrição</button>
+                </form>
+                
+                <div id="feedback" style="margin-top: 20px; text-align: center; font-weight: 600;"></div>
+                
+                <div style="margin-top: 30px; text-align: center;">
+                    <a href="../index.html" style="color: var(--gold); text-decoration: none; font-size: 0.9rem;">← Voltar para o início</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/registration.js"></script>
+</body>
+</html>
