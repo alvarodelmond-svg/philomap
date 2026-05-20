@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap | Sistema de Prova</title>
+    <title>PhiloMap | Conceito</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/main.css">
@@ -63,24 +63,18 @@
     </div>
 </aside>
 
-<!-- Barra de Progresso Visual -->
-        <div id="exam-progress-bar" style="width: 100%; height: 8px; background: #eee; border-radius: 4px; margin-bottom: 15px; overflow: hidden; border: 1px solid #ddd;">
-            <div id="progress-fill" style="width: 0%; height: 100%; background: var(--accent-secondary); transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);"></div>
-        </div>
+$configFile = __DIR__ . '/config.ini';
+if (!file_exists($configFile)) {
+    throw new RuntimeException('Arquivo de configuração config.ini não encontrado.');
+}
 
-        <div class="timer-bar">
-            <span>Tempo Restante: <span id="timer">03:00:00</span></span>
-            <span id="question-counter">Questão 1 de 40</span>
-        </div>
+$configData = parse_ini_file($configFile, true, INI_SCANNER_TYPED);
+if ($configData === false || !isset($configData['database'])) {
+    throw new RuntimeException('Configuração inválida em config.ini.');
+}
 
-        <div id="quiz-area">
-            <!-- Questões dinâmicas -->
-        </div>
+$config = $configData['database'];
 
-        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
-            <button id="prev-btn" class="btn-secondary">← Anterior</button>
-            <button id="next-btn" class="btn-primary">Próxima →</button>
-        </div>
 
 
         <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">

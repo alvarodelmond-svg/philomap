@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap | Comitê Científico</title>
+    <title>PhiloMap | Caos Data 2.0</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/main.css">
@@ -63,51 +63,67 @@
     </div>
 </aside>
 
-<section class="committee-hero fade-in">
-            <h1 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem;">Comitê Científico</h1>
-            <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto; opacity: 0.9;">Conheça os especialistas e pesquisadores responsáveis pela curadoria pedagógica e excelência acadêmica da Olunic.</p>
-        </section>
-
-        <section class="profiles-grid">
-            <div class="profile-card fade-in">
-                <div class="profile-img">👨‍🔬</div>
-                <div class="profile-info">
-                    <h3 class="profile-name">Dr. Augusto Schliemann</h3>
-                    <p class="profile-title">Ph.D. em Inteligência Artificial (MIT)</p>
-                    <p class="profile-bio">Pesquisador sênior com foco em ética algorítmica e redes neurais. Responsável pela curadoria da Olimpíada de IA.</p>
-                    <div class="expertise-tags">
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Ética Digital</span>
-                    </div>
-                </div>
+<button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
             </div>
 
-            <div class="profile-card fade-in" style="animation-delay: 0.1s;">
-                <div class="profile-img">👩‍💻</div>
-                <div class="profile-info">
-                    <h3 class="profile-name">Dra. Helena Varejão</h3>
-                    <p class="profile-title">Doutora em Matemática Aplicada (Oxford)</p>
-                    <p class="profile-bio">Especialista em teoria das probabilidades e modelos estocásticos. Coordena o desenvolvimento da Nebula Math.</p>
-                    <div class="expertise-tags">
-                        <span class="tag">Estatística</span>
-                        <span class="tag">Sistemas Dinâmicos</span>
-                    </div>
-                </div>
+            <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Caos Data</span></div>
+
+                        <div class="content-actions">
+                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
             </div>
 
-            <div class="profile-card fade-in" style="animation-delay: 0.2s;">
-                <div class="profile-img">👨‍🎨</div>
-                <div class="profile-info">
-                    <h3 class="profile-name">Dr. Marcus Vinícius</h3>
-                    <p class="profile-title">Ph.D. em História da Arte (Sorbonne)</p>
-                    <p class="profile-bio">Historiador focado nas relações entre arte e tecnologia durante o Renascimento. Lidera a curadoria de Pinturas Artísticas.</p>
-                    <div class="expertise-tags">
-                        <span class="tag">Renascimento</span>
-                        <span class="tag">Museologia</span>
-                    </div>
+    <div class="container">
+        <h2>Caos Data 2.0</h2>
+
+        <div class="form-group">
+            <label>Dia (Boa sorte):</label><br>
+            <select id="dia"></select>
+        </div>
+
+        <div class="form-group">
+            <label>Mês (Acerte o alvo):</label>
+            <div class="marquee-container">
+                <div class="marquee-content" id="mes-container">
+                    <button value="01">Jan</button>
+                    <button value="02">Fev</button>
+                    <button value="03">Mar</button>
+                    <button value="04">Abr</button>
+                    <button value="05">Mai</button>
+                    <button value="06">Jun</button>
+                    <button value="07">Jul</button>
+                    <button value="08">Ago</button>
+                    <button value="09">Set</button>
+                    <button value="10">Out</button>
+                    <button value="11">Nov</button>
+                    <button value="12">Dez</button>
                 </div>
             </div>
-        </section>
+            <span id="mes-display" style="color:#4cd137; font-size:0.8em;">Nenhum selecionado</span>
+        </div>
+
+        <div class="form-group">
+            <label>Ano (Digite rápido):</label><br>
+            <input type="text" id="ano-input" value="" readonly placeholder="YYYY">
+            <div class="numpad" id="numpad">
+                <button class="num-key">1</button>
+                <button class="num-key">2</button>
+                <button class="num-key">3</button>
+                <button class="num-key">4</button>
+                <button class="num-key">5</button>
+                <button class="num-key">6</button>
+                <button class="num-key">7</button>
+                <button class="num-key">8</button>
+                <button class="num-key">9</button>
+                <button class="num-key">0</button>
+                <button id="clear-btn" style="width: 100px; background:#c23616;">Limpar</button>
+            </div>
+        </div>
+
+        <button class="submit-btn" id="btn-submit">Registrar Data</button>
+        <span class="dica">Dica: Às vezes é preciso mudar (shift) a atitude para confirmar.</span>
+    </div>
 
 
         <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap | Mapping Philosophical Architecture</title>
+    <title>PhiloMap | Portal do Aluno</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/main.css">
@@ -63,50 +63,30 @@
     </div>
 </aside>
 
-<section class="card reveal active">
-                <header class="card-header">
-                    <span class="subtitulo">A Jornada do Pensamento</span>
-                    <h1>PhiloMap: Arquitetura Filosófica</h1>
-                </header>
-                
-                <p>Bem-vindo ao <strong>PhiloMap</strong>. Explore o mapa interativo do conhecimento humano, desde as raízes da lógica clássica até as fronteiras da ética contemporânea e inteligência artificial.</p>
+<div style="max-width: 500px; margin: 0 auto; padding: 4rem 2rem;">
+                <section class="card active" style="text-align: center;">
+                    <header class="card-header">
+                        <span class="subtitulo">Acesso Restrito</span>
+                        <h1>Portal do Explorador</h1>
+                    </header>
+                    
+                    <p>Entre com suas credenciais para acessar seu mapa de progresso e resultados.</p>
 
-                <div style="display: flex; gap: 15px; margin-top: 2rem;">
-                    <a href="../pages/inscricao.html" class="btn-submit" style="text-decoration: none; text-align: center; width: auto; padding: 1.2rem 2.5rem;">Nova Inscrição</a>
-                    <a href="login.html" class="btn-submit" style="text-decoration: none; text-align: center; width: auto; padding: 1.2rem 2.5rem; background: transparent; border: 2px solid var(--gold); color: var(--gold);">Portal do Aluno</a>
-                </div>
-            </section>
-
-            <section class="card reveal">
-                <header class="card-header">
-                    <span class="subtitulo">Mergulho Profundo</span>
-                    <h2>Nossos Pilares</h2>
-                </header>
-                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px;">
-                        <h3 style="color: var(--gold); margin-bottom: 1rem;">Conceitos</h3>
-                        <p style="font-size: 0.9rem;">Explore Ética, Lógica, Metafísica e muito mais através de nossos mapas detalhados.</p>
-                        <a href="etica.html" style="color: var(--gold); text-decoration: none; font-weight: bold; font-size: 0.8rem;">Começar por Ética →</a>
-                    </div>
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px;">
-                        <h3 style="color: var(--gold); margin-bottom: 1rem;">Estudos</h3>
-                        <p style="font-size: 0.9rem;">Acesse nossa biblioteca de literatura filosófica e manuais de estudo.</p>
-                        <a href="literatura.html" style="color: var(--gold); text-decoration: none; font-weight: bold; font-size: 0.8rem;">Ver Literatura →</a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="card reveal">
-                <header class="card-header">
-                    <span class="subtitulo">Inspiração</span>
-                    <h2 id="dailyQuoteAuthor">Filósofos</h2>
-                </header>
-                <p id="dailyQuoteText" style="font-style: italic; font-size: 1.5rem; text-align: center; color: var(--gold);"></p>
-            </section>
-
-            <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">
-                <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
-            </footer>
+                    <form id="login-form" class="modern-form">
+                        <div class="form-group">
+                            <label for="login-email">E-mail</label>
+                            <input type="email" id="login-email" required placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Senha</label>
+                            <input type="password" id="login-password" required placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn-submit">Acessar Portal</button>
+                    </form>
+                    
+                    <p style="margin-top: 2rem; font-size: 0.9rem;">Ainda não faz parte? <a href="../pages/inscricao.html" style="color: var(--gold); font-weight: bold;">Realizar Inscrição</a></p>
+                </section>
+            </div>
 
 
         <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">
