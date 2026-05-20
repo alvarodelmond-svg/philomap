@@ -1,0 +1,44 @@
+/*
+ * PhiloMap - Modular CSS: LAYOUT
+ * Estrutura Blindada: Sidebar Fixa e Conteúdo Centralizado.
+ */
+
+.app-container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    background: #fff;
+    border-right: 2px solid var(--gold);
+    padding: 4rem 1.5rem;
+    overflow-y: auto;
+    z-index: 2000;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    padding: 12rem 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* CENTRALIZAÇÃO REAL */
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1200px) {
+    :root { --sidebar-width: 100px; }
+    .sidebar { padding: 2rem 0.5rem; width: 100px; }
+    .nav-label, .nav-item span, .nav-item a, .search-container, .sidebar-footer { display: none; }
+    .main-content { margin-left: 100px; width: calc(100% - 100px); }
+}
+
+@media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main-content { margin-left: 0; width: 100%; padding: 4rem 5%; }
+}

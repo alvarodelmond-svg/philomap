@@ -3,72 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap | Inscrição</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/main.css">
+    <title>PhiloMap | Inscrição Oficial</title>
+    
+    <!-- CSS Modular v8.0 (Sincronizado) -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    
     <script src="../js/main.js" defer></script>
 </head>
 <body>
-    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
-        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px;">PHILOMAP</div>
+    <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s;">Pular para o conteúdo principal</a>
+    
+    <div id="loader" class="loader-container">
+        <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900;">PHILOMAP</div>
     </div>
+
     <div class="app-container">
-<aside class="sidebar">
-    <a href="../index.html" class="sidebar-logo">
-        <img src="../img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" width="280">
-    </a>
-    <nav class="nav-group">
-        <span class="nav-label">Explorar</span>
-        <div class="search-container">
-            <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
-            <span class="search-icon">⚲</span>
-        </div>
-        <div class="nav-collapsible-header" id="conceptsToggle">
-            <span class="nav-label">Conceitos</span>
-            <span class="chevron">▼</span>
-        </div>
-        <ul class="nav-list collapsible-content" id="conceptsList">
-            <li class="nav-item"><a href="../pages/etica.html">Ética</a></li>
-<li class="nav-item"><a href="../pages/logica.html">Lógica</a></li>
-<li class="nav-item"><a href="../pages/moralismo.html">Moralismo</a></li>
-<li class="nav-item"><a href="../pages/existencialismo.html">Existencialismo</a></li>
-<li class="nav-item"><a href="../pages/estetica.html">Estética</a></li>
-<li class="nav-item"><a href="../pages/metafisica.html">Metafísica</a></li>
-<li class="nav-item"><a href="../pages/epistemologia.html">Epistemologia</a></li>
-<li class="nav-item"><a href="../pages/politica.html">Política</a></li>
-<li class="nav-item"><a href="../pages/linguagem.html">Linguagem</a></li>
-<li class="nav-item"><a href="../pages/estoicismo.html">Estoicismo</a></li>
-<li class="nav-item"><a href="../pages/fenomenologia.html">Fenomenologia</a></li>
-<li class="nav-item"><a href="../pages/cinismo.html">Cinismo</a></li>
-
-        </ul>
-    </nav>
-    <nav class="nav-group">
-        <span class="nav-label">Estudos</span>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../pages/literatura.html">Literatura</a></li>
-        </ul>
-    </nav>
-    <nav class="nav-group">
-        <span class="nav-label">Institucional</span>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../index.html">Início</a></li>
-            <li class="nav-item"><a href="../pages/registration.html">Inscrição</a></li>
-            <li class="nav-item"><a href="../pages/login.html">Portal do Aluno</a></li>
-        </ul>
-    </nav>
-    <div class="sidebar-footer">
-        <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-    </div>
-</aside>
-
-<div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Inscrição</span></div>
-
-            <div class="content-actions">
-                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
-                <div id="readingTime" class="reading-time"></div>
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
+                <img src="../img/logo-site.svg" alt="PhiloMap Logo" width="280">
+            </a>
+            <nav class="nav-group">
+                <span class="nav-label">Explorar</span>
+                <div class="search-container">
+                    <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
+                    <span class="search-icon">⚲</span>
+                </div>
+                <div class="nav-collapsible-header" id="conceptsToggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; margin-bottom: 2rem;">
+                    <span class="nav-label" style="margin-bottom: 0;">Grandes Conceitos</span>
+                    <span class="chevron" style="color: var(--gold); font-size: 1.2rem;">▼</span>
+                </div>
+                <ul class="nav-list" id="conceptsList">
+                    <li class="nav-item"><a href="etica.html">Ética e Valores</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica e Razão</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo Social</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética e Arte</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica do Ser</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política e Estado</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="cinismo.html">Cinismo e Natureza</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="registration.html" class="active">Inscrição</a></li>
+                    <li class="nav-item"><a href="login.html">Portal do Aluno</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                <div class="accessibility-controls">
+                    <span class="nav-label">Acessibilidade</span>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="changeFontSize('small')">A-</button>
+                        <button class="acc-btn" onclick="changeFontSize('medium')">A</button>
+                        <button class="acc-btn" onclick="changeFontSize('large')">A+</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn theme-master" onclick="toggleTheme()">Mudar Tema</button>
+                        <button class="acc-btn" onclick="toggleHighContrast()">Contraste</button>
+                    </div>
+                </div>
             </div>
+        </aside>
+
+        <main class="main-content" id="main-content">
+            <div class="breadcrumbs" style="width: 100%; max-width: 850px; margin-bottom: 2rem;"><a href="../index.html" style="color: var(--gold); text-decoration: none; font-weight: 700;">Início</a> / <span>Inscrição</span></div>
 
             <section class="card reveal active">
                 <header class="card-header">
@@ -77,161 +84,50 @@
                 </header>
                 
                 <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Estudo e Reflexão" loading="lazy" width="1200" height="800">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Estudo e Reflexão">
                 </div>
                 
-                <p>Seja bem-vindo ao processo de registro do PhiloMap. Ao se tornar um membro de nossa comunidade, você terá acesso a materiais exclusivos e fóruns de discussão sobre os grandes temas da filosofia clássica e contemporânea.</p>
+                <p>Ao se tornar um membro do PhiloMap, você inicia uma jornada de rigor intelectual e aplicação prática da sabedoria milenar.</p>
             </section>
 
             <section class="card reveal" id="matriculaSection">
                 <header class="card-header">
                     <span class="subtitulo">O Oráculo</span>
-                    <h2>O que deseja estudar, filósofo?</h2>
+                    <h2>Inicie sua Jornada</h2>
                 </header>
 
-                <form id="matriculaForm" class="modern-form">
+                <form id="matriculaForm" class="modern-form" style="width: 100%; max-width: 600px; display: flex; flex-direction: column; gap: 2rem;">
                     <div class="form-group">
-                        <label for="nome">COMO DEVEMOS CHAMÁ-LO, BUSCADOR?</label>
-                        <input type="text" id="nome" name="nome" placeholder="Seu nome ou pseudônimo" required>
+                        <label for="nome" style="display: block; margin-bottom: 0.8rem; font-weight: 800; color: var(--gold); text-transform: uppercase;">COMO DEVEMOS CHAMÁ-LO, BUSCADOR?</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required style="width: 100%; padding: 1.5rem; border: 2px solid var(--border); border-radius: 15px; background: var(--surface-sunken); font-size: 1.1rem;">
                     </div>
-
-                    <div class="form-group">
-                        <label for="idade">QUANTO TEMPO DE JORNADA NESTA EXISTÊNCIA?</label>
-                        <input type="number" id="idade" name="idade" min="1" placeholder="Sua idade atual" required>
+                    <div class="cta-container">
+                        <button type="submit" id="submitBtn" class="btn-submit">CONFIRMAR MINHA JORNADA</button>
                     </div>
-
-                    <div class="form-group">
-                        <label for="curso">QUAL CAMINHO DA SABEDORIA VOCÊ ESCOLHE?</label>
-                        <select id="curso" name="curso" required>
-                            <option value="" disabled selected>Escolha sua trilha...</option>
-                            <option value="Ética e Moralismo">Ética e a Arte de Viver</option>
-                            <option value="Metafísica e Ontologia">O Mistério do Ser (Metafísica)</option>
-                            <option value="Lógica e Razão">As Leis do Pensamento (Lógica)</option>
-                            <option value="Existencialismo">A Liberdade e o Absurdo (Existencialismo)</option>
-                            <option value="Estética e Arte">A Natureza do Belo (Estética)</option>
-                            <option value="Política e Sociedade">O Contrato Social (Política)</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" id="submitBtn" class="btn-submit">CONFIRMAR MINHA JORNADA</button>
                 </form>
 
-                <!-- Seção de Resultado Dinâmico -->
-                <div id="resultSection" style="display: none;">
-                    <div id="alertBox"></div>
-
-                    <div class="certificate-container" id="receiptDetails">
-                        <div class="cert-header">
-                            <h3>Decreto de Admissão</h3>
-                            <h2>Certificado de Iniciação</h2>
-                        </div>
-                        
-                        <div class="cert-body">
-                            <div class="cert-row">
-                                <span class="cert-label">Buscador da Verdade</span>
-                                <span class="cert-value" id="resNome"></span>
-                            </div>
-                            <div class="cert-row">
-                                <span class="cert-label">Trilha do Conhecimento</span>
-                                <span class="cert-value" id="resCurso" style="color: var(--gold);"></span>
-                            </div>
-                            <div class="cert-row">
-                                <span class="cert-label">Data da Iluminação</span>
-                                <span class="cert-value" id="resData"></span>
-                            </div>
-                        </div>
-
-                        <div class="cert-footer">
-                            <div class="cert-signature">
-                                Conselho PhiloMap
-                            </div>
-                            <div class="cert-seal">
-                                <div id="resProtocolo" style="font-size: 1rem; letter-spacing: 1px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="listaDados" style="margin-top: 40px;">
+                <div id="resultSection" style="display: none; margin-top: 4rem; width: 100%; text-align: center;">
+                    <div id="alertBox" style="padding: 2rem; background: var(--gold-soft); color: var(--gold); border-radius: 20px; font-weight: 900; font-size: 1.5rem;">REGISTRO CONCLUÍDO!</div>
                 </div>
             </section>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const form = document.getElementById('matriculaForm');
-                    const submitBtn = document.getElementById('submitBtn');
-                    const resultSection = document.getElementById('resultSection');
-                    const alertBox = document.getElementById('alertBox');
-                    const receiptDetails = document.getElementById('receiptDetails');
-
-                    if (form) {
-                        form.addEventListener('submit', async (e) => {
-                            e.preventDefault();
-                            
-                            submitBtn.textContent = 'PROCESSANDO...';
-                            submitBtn.style.opacity = '0.7';
-                            submitBtn.disabled = true;
-                            resultSection.style.display = 'none';
-
-                            const formData = new FormData(form);
-
-                            try {
-                                const response = await fetch('../index.html', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Accept': 'application/json',
-                                        'X-Requested-With': 'XMLHttpRequest'
-                                    },
-                                    body: formData
-                                });
-
-                                if (!response.ok) {
-                                    const errorData = await response.json();
-                                    throw new Error(errorData.message || 'Erro no servidor.');
-                                }
-
-                                const result = await response.json();
-
-                                if (result.status === 'success') {
-                                    alertBox.textContent = result.message;
-                                    alertBox.className = 'alert-success';
-                                    
-                                    document.getElementById('resNome').textContent = result.data.nome;
-                                    document.getElementById('resCurso').textContent = result.data.curso;
-                                    document.getElementById('resData').textContent = result.data.data;
-                                    document.getElementById('resProtocolo').textContent = result.data.protocolo;
-                                    
-                                    receiptDetails.style.display = 'block';
-                                    form.reset();
-                                } else {
-                                    alertBox.textContent = result.message || 'Erro inesperado.';
-                                    alertBox.className = 'alert-error';
-                                    receiptDetails.style.display = 'none';
-                                }
-                            } catch (error) {
-                                alertBox.textContent = error.message;
-                                alertBox.className = 'alert-error';
-                                receiptDetails.style.display = 'none';
-                            } finally {
-                                submitBtn.textContent = 'CONFIRMAR MINHA JORNADA';
-                                submitBtn.style.opacity = '1';
-                                submitBtn.disabled = false;
-                                resultSection.style.display = 'block';
-                                resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }
-                        });
-                    }
-                });
-            </script>
-
-            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
-                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            <footer class="app-footer">
+                <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
             </footer>
-
-
-        <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">
-            <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
-        </footer>
+        </main>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('matriculaForm');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    document.getElementById('resultSection').style.display = 'block';
+                    form.reset();
+                });
+            }
+        });
+    </script>
 </body>
 </html>

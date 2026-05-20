@@ -270,19 +270,19 @@ const PhiloMap = {
         let searchOverlay = document.querySelector('.search-overlay');
 
         const keywordsMap = {
-            "etica.php": { title: "Ética", desc: "O estudo da conduta humana e dos valores morais.", keywords: "dever moral virtude aristoteles kant certo errado agir" },
-            "logica.php": { title: "Lógica", desc: "As leis do pensamento racional e da argumentação.", keywords: "razao pensamento silogismo verdade falacia calculo" },
-            "moralismo.php": { title: "Moralismo", desc: "A aplicação rigorosa de normas morais na sociedade.", keywords: "costumes tradicao values sociedade conduta" },
-            "existencialismo.php": { title: "Existencialismo", desc: "A liberdade individual, a escolha e a busca de sentido.", keywords: "liberdade angustia sartre camus escolha ser" },
-            "estetica.php": { title: "Estética", desc: "A natureza do belo, da arte e da sensibilidade.", keywords: "belo arte sensivel juizo feio aparencia" },
-            "metafisica.php": { title: "Metafísica", desc: "Os princípios fundamentais da realidade e do ser.", keywords: "ser realidade ontologia deus alma essencia" },
-            "epistemologia.php": { title: "Epistemologia", desc: "A teoria do conhecimento e seus limites.", keywords: "conhecimento ciencia crença verdade razao" },
-            "politica.php": { title: "Política", desc: "A organização da sociedade, o poder e a justiça.", keywords: "estado poder democracia justiça cidadania" },
-            "linguagem.php": { title: "Linguagem", desc: "A relação entre pensamento, palavra e mundo.", keywords: "signo significado fala comunicacao wittgenstein" },
-            "estoicismo.php": { title: "Estoicismo", desc: "A busca pela paz interior através da razão e virtude.", keywords: "senecca marco aurelio controle indiferença virtude" },
-            "fenomenologia.php": { title: "Fenomenologia", desc: "O estudo das estruturas da consciência e experiência.", keywords: "husserl merleau-ponty consciencia percepcao fenomeno" },
-            "cinismo.php": { title: "Cinismo", desc: "A vida em conformidade com a natureza e desprezo por convenções.", keywords: "diogenes natureza simplicidade honestidade" },
-            "literatura.php": { title: "Literatura Filosófica", desc: "Obras essenciais, manuais e guias de estudo.", keywords: "livros leitura canone republica aristoteles manuais bibliografia" }
+            "etica.html": { title: "Ética", desc: "O estudo da conduta humana e dos valores morais.", keywords: "dever moral virtude aristoteles kant certo errado agir" },
+            "logica.html": { title: "Lógica", desc: "As leis do pensamento racional e da argumentação.", keywords: "razao pensamento silogismo verdade falacia calculo" },
+            "moralismo.html": { title: "Moralismo", desc: "A aplicação rigorosa de normas morais na sociedade.", keywords: "costumes tradicao values sociedade conduta" },
+            "existencialismo.html": { title: "Existencialismo", desc: "A liberdade individual, a escolha e a busca de sentido.", keywords: "liberdade angustia sartre camus escolha ser" },
+            "estetica.html": { title: "Estética", desc: "A natureza do belo, da arte e da sensibilidade.", keywords: "belo arte sensivel juizo feio aparencia" },
+            "metafisica.html": { title: "Metafísica", desc: "Os princípios fundamentais da realidade e do ser.", keywords: "ser realidade ontologia deus alma essencia" },
+            "epistemologia.html": { title: "Epistemologia", desc: "A teoria do conhecimento e seus limites.", keywords: "conhecimento ciencia crença verdade razao" },
+            "politica.html": { title: "Política", desc: "A organização da sociedade, o poder e a justiça.", keywords: "estado poder democracia justiça cidadania" },
+            "linguagem.html": { title: "Linguagem", desc: "A relação entre pensamento, palavra e mundo.", keywords: "signo significado fala comunicacao wittgenstein" },
+            "estoicismo.html": { title: "Estoicismo", desc: "A busca pela paz interior através da razão e virtude.", keywords: "senecca marco aurelio controle indiferença virtude" },
+            "fenomenologia.html": { title: "Fenomenologia", desc: "O estudo das estruturas da consciência e experiência.", keywords: "husserl merleau-ponty consciencia percepcao fenomeno" },
+            "cinismo.html": { title: "Cinismo", desc: "A vida em conformidade com a natureza e desprezo por convenções.", keywords: "diogenes natureza simplicidade honestidade" },
+            "literatura.html": { title: "Literatura Filosófica", desc: "Obras essenciais, manuais e guias de estudo.", keywords: "livros leitura canone republica aristoteles manuais bibliografia" }
         };
 
         const resultsGrid = document.getElementById('searchResultsGrid');
@@ -432,7 +432,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     setupGlobal();
-    PhiloMap.initPage();
+    PhiloMap.initPage(); // Inicia as animações e componentes na primeira carga
+    
+    // Fallback para garantir que reveal funcione se houver delay
+    setTimeout(() => {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+    }, 2000);
 
     window.toggleZenMode = () => {
         const active = document.body.classList.toggle('zen-mode');
@@ -511,12 +516,17 @@ const Router = {
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
             const newMain = doc.querySelector('#main-content');
+            const newSidebar = doc.querySelector('.sidebar');
             const newTitle = doc.title;
 
             if (!newMain) throw new Error('Conteúdo principal não encontrado na página de destino');
 
             setTimeout(() => {
                 mainContent.innerHTML = newMain.innerHTML;
+                if (newSidebar) {
+                    const currentSidebar = document.querySelector('.sidebar');
+                    if (currentSidebar) currentSidebar.innerHTML = newSidebar.innerHTML;
+                }
                 document.title = newTitle;
 
                 if (addToHistory) {
