@@ -1,40 +1,33 @@
 <?php
+// index.php
+require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/autoload.php';
 
-require_once __DIR__ . '/src/Database/Database.php';
-require_once __DIR__ . '/src/Models/Favorito.php';
-require_once __DIR__ . '/src/Models/Inscricao.php';
-require_once __DIR__ . '/src/Repositories/IConteudoRepository.php';
-require_once __DIR__ . '/src/Repositories/ConteudoRepository.php';
-require_once __DIR__ . '/src/Repositories/IInscricaoRepository.php';
-require_once __DIR__ . '/src/Repositories/InscricaoRepository.php';
-require_once __DIR__ . '/src/Exceptions/BusinessRuleException.php';
-require_once __DIR__ . '/src/Services/ConteudoService.php';
-require_once __DIR__ . '/src/Services/InscricaoService.php';
-require_once __DIR__ . '/src/Controllers/ConteudoController.php';
-require_once __DIR__ . '/src/Controllers/InscricaoController.php';
-require_once __DIR__ . '/src/Middleware/Middleware.php';
+session_start();
 
-use App\Database\Database;
-use App\Repositories\ConteudoRepository;
-use App\Repositories\InscricaoRepository;
-use App\Services\ConteudoService;
-use App\Services\InscricaoService;
-use App\Controllers\ConteudoController;
-use App\Controllers\InscricaoController;
-use App\Middleware\Middleware;
+// 1. Roteamento de Páginas Visuais (HTML/Interface)
+$pagina = $_GET['url'] ?? '';
 
+if ($pagina === 'login') {
+    require_once __DIR__ . '/view/login.html';
+    exit;
+} elseif ($pagina === 'dashboard') {
+    require_once __DIR__ . '/view/index.html';
+    exit;
+}
+
+// 2. Roteamento de Ações do Sistema (Processamento de Formulários/API)
 header('Content-Type: application/json');
 
 try {
-    $db = Database::getInstance()->getConnection();
-    
-    // Routing logic
+    // Abre a conexão com o banco via Singleton
+    $db = \App\Database\Database::getInstance()->getConnection();
     $action = $_GET['action'] ?? '';
 
     switch ($action) {
         case 'favoritar':
-            Middleware::validatePostRequest();
-            $data = Middleware::sanitizeInput($_POST);
+            \App\Middleware\Middleware::validatePostRequest();
+            $data = \App\Middleware\Middleware::sanitizeInput($_POST);
             $controller = new ConteudoController(new ConteudoService(new ConteudoRepository($db)));
             $controller->store($data);
             break;
@@ -46,24 +39,25 @@ try {
             break;
 
         case 'remover':
-            Middleware::validatePostRequest();
-            $data = Middleware::sanitizeInput($_POST);
+            \App\Middleware\Middleware::validatePostRequest();
+            $data = \App\Middleware\Middleware::sanitizeInput($_POST);
             $controller = new ConteudoController(new ConteudoService(new ConteudoRepository($db)));
             $controller->destroy($data);
             break;
 
         case 'inscrever':
-            Middleware::validatePostRequest();
-            $data = Middleware::sanitizeInput($_POST);
+            \App\Middleware\Middleware::validatePostRequest();
+            $data = \App\Middleware\Middleware::sanitizeInput($_POST);
             $controller = new InscricaoController(new InscricaoService(new InscricaoRepository($db)));
             $controller->store($data);
             break;
 
         default:
             http_response_code(404);
-            echo json_encode(['success' => false, 'message' => 'Rota não encontrada.']);
+            echo json_encode(['success' => false, 'message' => 'Rota ou ação não encontrada.']);
             break;
     }
+
 } catch (\PDOException $e) {
     http_response_code(500);
     echo json_encode(['success' => false, 'message' => 'Erro de conexão com o banco de dados.', 'debug' => $e->getMessage()]);
