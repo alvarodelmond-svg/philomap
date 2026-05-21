@@ -8,11 +8,13 @@ session_start();
 // 1. Roteamento de Páginas Visuais (HTML/Interface)
 $pagina = $_GET['url'] ?? '';
 
-if ($pagina === 'login') {
-    require_once __DIR__ . '/view/login.html';
+if ($pagina === 'login' || $pagina === '') {
+    // Sai da pasta backend e acede à pasta view
+    require_once __DIR__ . '/../view/login.html';
     exit;
 } elseif ($pagina === 'dashboard') {
-    require_once __DIR__ . '/view/index.html';
+    // Sai da pasta backend e acede à pasta view
+    require_once __DIR__ . '/../view/index.html';
     exit;
 }
 
