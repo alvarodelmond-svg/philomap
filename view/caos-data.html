@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiloMap | Caos Data 2.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/main.js" defer></script>
+</head>
+<body>
+    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
+        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px;">PHILOMAP</div>
+    </div>
+    <div class="app-container">
+<aside class="sidebar">
+    <a href="../index.html" class="sidebar-logo">
+        <img src="../img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" width="280">
+    </a>
+    <nav class="nav-group">
+        <span class="nav-label">Explorar</span>
+        <div class="search-container">
+            <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
+            <span class="search-icon">⚲</span>
+        </div>
+        <div class="nav-collapsible-header" id="conceptsToggle">
+            <span class="nav-label">Conceitos</span>
+            <span class="chevron">▼</span>
+        </div>
+        <ul class="nav-list collapsible-content" id="conceptsList">
+            <li class="nav-item"><a href="../pages/etica.html">Ética</a></li>
+<li class="nav-item"><a href="../pages/logica.html">Lógica</a></li>
+<li class="nav-item"><a href="../pages/moralismo.html">Moralismo</a></li>
+<li class="nav-item"><a href="../pages/existencialismo.html">Existencialismo</a></li>
+<li class="nav-item"><a href="../pages/estetica.html">Estética</a></li>
+<li class="nav-item"><a href="../pages/metafisica.html">Metafísica</a></li>
+<li class="nav-item"><a href="../pages/epistemologia.html">Epistemologia</a></li>
+<li class="nav-item"><a href="../pages/politica.html">Política</a></li>
+<li class="nav-item"><a href="../pages/linguagem.html">Linguagem</a></li>
+<li class="nav-item"><a href="../pages/estoicismo.html">Estoicismo</a></li>
+<li class="nav-item"><a href="../pages/fenomenologia.html">Fenomenologia</a></li>
+<li class="nav-item"><a href="../pages/cinismo.html">Cinismo</a></li>
+
+        </ul>
+    </nav>
+    <nav class="nav-group">
+        <span class="nav-label">Estudos</span>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="../pages/literatura.html">Literatura</a></li>
+        </ul>
+    </nav>
+    <nav class="nav-group">
+        <span class="nav-label">Institucional</span>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="../index.html">Início</a></li>
+            <li class="nav-item"><a href="../public/inscricao.html">Inscrição</a></li>
+            <li class="nav-item"><a href="../pages/login.html">Portal do Aluno</a></li>
+        </ul>
+    </nav>
+    <div class="sidebar-footer">
+        <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
+    </div>
+</aside>
+
+<button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
+            </div>
+
+            <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Caos Data</span></div>
+
+                        <div class="content-actions">
+                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
+                <div id="readingTime" class="reading-time"></div>
+            </div>
+
+    <div class="container">
+        <h2>Caos Data 2.0</h2>
+
+        <div class="form-group">
+            <label>Dia (Boa sorte):</label><br>
+            <select id="dia"></select>
+        </div>
+
+        <div class="form-group">
+            <label>Mês (Acerte o alvo):</label>
+            <div class="marquee-container">
+                <div class="marquee-content" id="mes-container">
+                    <button value="01">Jan</button>
+                    <button value="02">Fev</button>
+                    <button value="03">Mar</button>
+                    <button value="04">Abr</button>
+                    <button value="05">Mai</button>
+                    <button value="06">Jun</button>
+                    <button value="07">Jul</button>
+                    <button value="08">Ago</button>
+                    <button value="09">Set</button>
+                    <button value="10">Out</button>
+                    <button value="11">Nov</button>
+                    <button value="12">Dez</button>
+                </div>
+            </div>
+            <span id="mes-display" style="color:#4cd137; font-size:0.8em;">Nenhum selecionado</span>
+        </div>
+
+        <div class="form-group">
+            <label>Ano (Digite rápido):</label><br>
+            <input type="text" id="ano-input" value="" readonly placeholder="YYYY">
+            <div class="numpad" id="numpad">
+                <button class="num-key">1</button>
+                <button class="num-key">2</button>
+                <button class="num-key">3</button>
+                <button class="num-key">4</button>
+                <button class="num-key">5</button>
+                <button class="num-key">6</button>
+                <button class="num-key">7</button>
+                <button class="num-key">8</button>
+                <button class="num-key">9</button>
+                <button class="num-key">0</button>
+                <button id="clear-btn" style="width: 100px; background:#c23616;">Limpar</button>
+            </div>
+        </div>
+
+        <button class="submit-btn" id="btn-submit">Registrar Data</button>
+        <span class="dica">Dica: Às vezes é preciso mudar (shift) a atitude para confirmar.</span>
+    </div>
+
+
+        <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">
+            <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
