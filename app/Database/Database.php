@@ -5,30 +5,24 @@ namespace App\Database;
 use PDO;
 use PDOException;
 
+/**
+ * Classe Database - Gerencia a conexão com o banco de dados SQLite (Singleton).
+ */
 class Database {
     private static $instance = null;
     private $conn;
 
     private function __construct() {
-        $config = parse_ini_file(__DIR__ . '/../../config.ini');
-        
-        $host = $config['host'];
-        $db   = $config['database'];
-        $user = $config['user'];
-        $pass = $config['password'];
-        $charset = 'utf8mb4';
-
-        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-        $options = [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false,
-        ];
-
         try {
-            $this->conn = new PDO($dsn, $user, $pass, $options);
+            // Usa o caminho definido no config.php
+            $dsn = "sqlite:" . DB_PATH;
+            
+            $this->conn = new PDO($dsn);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            
         } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
+            throw new PDOException("Erro ao conectar ao SQLite: " . $e->getMessage());
         }
     }
 
