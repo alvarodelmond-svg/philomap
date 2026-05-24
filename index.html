@@ -6,24 +6,24 @@
     <title>PhiloMap | Início</title>
     
     <!-- CSS Modular v8.0 (Organizado) -->
-    <link rel="stylesheet" href="/html/base.css">
-    <link rel="stylesheet" href="/html/layout.css">
-    <link rel="stylesheet" href="/html/style.css">
-    <link rel="stylesheet" href="/html/animations.css">
+    <link rel="stylesheet" href="html/base.css">
+    <link rel="stylesheet" href="html/layout.css">
+    <link rel="stylesheet" href="html/style.css">
+    <link rel="stylesheet" href="html/animations.css">
     
-    <script src="/html/main.js" defer></script>
+    <script src="html/main.js" defer></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s;">Pular para o conteúdo principal</a>
     
-    <div id="loader" class="loader-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fcfaf5; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease;">
+    <div id="loader" class="loader-container">
         <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900;">PHILOMAP</div>
     </div>
 
     <div class="app-container">
         <aside class="sidebar">
-            <a href="/index.html" class="sidebar-logo">
-                <img src="/img/logo-site.svg" alt="PhiloMap Logo" width="280">
+            <a href="index.html" class="sidebar-logo">
+                <img src="img/logo-site.svg" alt="PhiloMap Logo" width="280" class="float-animation">
             </a>
             <nav class="nav-group">
                 <span class="nav-label">Explorar</span>
@@ -35,46 +35,55 @@
                     <span class="nav-label" style="margin-bottom: 0;">Grandes Conceitos</span>
                     <span class="chevron" style="color: var(--gold); font-size: 1.2rem;">▼</span>
                 </div>
-                <ul class="nav-list collapsible-content" id="conceptsList" style="display: flex; flex-direction: column; gap: 1rem; padding: 0 1rem;">
-                    <li class="nav-item"><a href="/conteúdo/etica.html">Ética e Valores</a></li>
-                    <li class="nav-item"><a href="/conteúdo/logica.html">Lógica e Razão</a></li>
-                    <li class="nav-item"><a href="/conteúdo/moralismo.html">Moralismo Social</a></li>
-                    <li class="nav-item"><a href="/conteúdo/existencialismo.html">Existencialismo</a></li>
-                    <li class="nav-item"><a href="/conteúdo/estetica.html">Estética e Arte</a></li>
-                    <li class="nav-item"><a href="/conteúdo/metafisica.html">Metafísica do Ser</a></li>
-                    <li class="nav-item"><a href="/conteúdo/epistemologia.html">Epistemologia</a></li>
-                    <li class="nav-item"><a href="/conteúdo/politica.html">Política e Estado</a></li>
-                    <li class="nav-item"><a href="/conteúdo/linguagem.html">Linguagem</a></li>
-                    <li class="nav-item"><a href="/conteúdo/estoicismo.html">Estoicismo</a></li>
-                    <li class="nav-item"><a href="/conteúdo/fenomenologia.html">Fenomenologia</a></li>
-                    <li class="nav-item"><a href="/conteúdo/cinismo.html">Cinismo e Natureza</a></li>
+                <ul class="nav-list" id="conceptsList">
+                    <li class="nav-item"><a href="index.html">Página Inicial</a></li>
+                    <li class="nav-item"><a href="html/etica.html">Ética e Valores</a></li>
+                    <li class="nav-item"><a href="html/logica.html">Lógica e Razão</a></li>
+                    <li class="nav-item"><a href="html/moralismo.html">Moralismo Social</a></li>
+                    <li class="nav-item"><a href="html/existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="html/estetica.html">Estética e Arte</a></li>
+                    <li class="nav-item"><a href="html/metafisica.html">Metafísica do Ser</a></li>
+                    <li class="nav-item"><a href="html/epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="html/politica.html">Política e Estado</a></li>
+                    <li class="nav-item"><a href="html/linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="html/estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="html/fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="html/cinismo.html">Cinismo e Natureza</a></li>
                 </ul>
             </nav>
             <nav class="nav-group">
                 <span class="nav-label">Estudos</span>
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="/conteúdo/literatura.html">Literatura</a></li>
+                    <li class="nav-item"><a href="html/literatura.html">Literatura</a></li>
                 </ul>
             </nav>
             <nav class="nav-group">
                 <span class="nav-label">Institucional</span>
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="/index.html" class="active">Início</a></li>
-                    <li class="nav-item"><a href="/html/registration.html">Inscrição</a></li>
-                    <li class="nav-item"><a href="/html/login.html">Portal do Aluno</a></li>
+                    <li class="nav-item"><a href="index.html" class="active">Início</a></li>
+                    <li class="nav-item"><a href="html/registration.html">Inscrição</a></li>
+                    <li class="nav-item"><a href="html/login.html">Portal do Aluno</a></li>
                 </ul>
             </nav>
             <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
                 <div class="accessibility-controls">
                     <span class="nav-label">Acessibilidade</span>
                     <div class="acc-btn-group">
-                        <button class="acc-btn" onclick="changeFontSize('small')">A-</button>
-                        <button class="acc-btn" onclick="changeFontSize('medium')">A</button>
-                        <button class="acc-btn" onclick="changeFontSize('large')">A+</button>
+                        <button class="acc-btn" onclick="changeFontSize('small')" title="Diminuir fonte">A-</button>
+                        <button class="acc-btn" onclick="changeFontSize('medium')" title="Fonte padrão">A</button>
+                        <button class="acc-btn" onclick="changeFontSize('large')" title="Aumentar fonte">A+</button>
                     </div>
                     <div class="acc-btn-group">
-                        <button class="acc-btn theme-master" onclick="toggleTheme()">Mudar Tema</button>
-                        <button class="acc-btn" onclick="toggleHighContrast()">Contraste</button>
+                        <button class="acc-btn theme-master" onclick="toggleTheme()" title="Alternar entre modo claro e escuro">Mudar Tema</button>
+                        <button class="acc-btn" onclick="toggleHighContrast()" title="Ativar modo de alto contraste">Contraste</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleZenMode()" title="Ocultar elementos de distração">Modo Zen</button>
+                        <button class="acc-btn" onclick="toggleDyslexiaFont()" title="Usar fonte amigável para dislexia">Dislexia</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleOriginalFonts()" title="Restaurar fontes originais do projeto">Fonte Original</button>
+                        <button class="acc-btn" onclick="toggleReadingRuler()" title="Ativar régua de leitura que segue o mouse">Régua</button>
                     </div>
                 </div>
             </div>
@@ -87,24 +96,114 @@
                     <h1>PhiloMap: Arquitetura do Pensamento Humano</h1>
                 </header>
                 
-                <p>O <strong>PhiloMap</strong> é uma plataforma imersiva desenhada para mapear as complexas estruturas da filosofia universal. Nosso intuito é transformar o estudo passivo em uma jornada ativa de descoberta e construção intelectual através de ferramentas modernas de visualização e interatividade.</p>
+                <p>O <strong>PhiloMap</strong> é uma plataforma imersiva desenhada para mapear as complexas estruturas da filosofia universal através de uma abordagem transdisciplinar. Nosso intuito é transformar o estudo passivo em uma jornada ativa de descoberta e construção intelectual, utilizando metodologias que conectam o rigor da tradição clássica com as demandas da era digital.</p>
+                
+                <p>Aqui, a filosofia não é vista apenas como um conjunto de dados históricos, mas como uma ferramenta viva de análise crítica. Ao explorar nossa plataforma, você encontrará conexões profundas entre a metafísica antiga e os dilemas éticos da inteligência artificial, ou entre a política aristotélica e as estruturas de governança contemporâneas. Nossa arquitetura de informação foi projetada para facilitar a visualização de como grandes ideias moldaram e continuam a moldar a realidade humana.</p>
 
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <h3>Mapeamento Conceitual</h3>
-                        <p style="text-align: center; font-size: 1.1rem; margin-top: 1rem;">Navegue por um mapa interativo que conecta conceitos clássicos às fronteiras da tecnologia e ética contemporânea.</p>
+                <div class="features-grid" style="grid-template-columns: 1fr; gap: 3rem; width: 100%;">
+                    <div class="feature-item reveal" style="text-align: justify; padding: 4rem; width: 100%; border: none; background: var(--surface-sunken);">
+                        <h3 style="font-size: 2.2rem; margin-bottom: 2.5rem; text-align: center; font-family: 'Libre Baskerville', serif;">Uma Nova Perspectiva Educacional e Filosófica</h3>
+                        <p>O PhiloMap rompe com a linearidade engessada dos currículos acadêmicos tradicionais. Propomos uma navegação rizomática, inspirada na complexidade das redes neurais e sociais, onde cada ideia não é um ponto isolado, mas uma conexão viva dentro de uma vasta rede de saberes interdisciplinares. Através de nossa interface imersiva, o usuário pode traçar a genealogia de um pensamento, identificando como as sementes lançadas pelos filósofos clássicos floresceram em correntes contemporâneas e continuam a ressoar nas discussões éticas sobre tecnologia, sociedade e o futuro da humanidade.</p>
+                        
+                        <p>Nosso sistema de curadoria não apenas apresenta o conteúdo, mas o contextualiza historicamente, oferecendo uma visão panorâmica que permite ao estudante compreender o impacto real de cada conceito. Acreditamos que a verdadeira compreensão nasce da percepção de como as ideias reagem umas às outras, em um diálogo incessante que atravessa milênios e molda a arquitetura invisível do nosso mundo cotidiano.</p>
+
+                        <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 4rem;">
+                            <li style="border-left: 4px solid var(--gold); padding-left: 1.5rem;" class="reveal">
+                                <strong style="display: block; font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--gold);">Interatividade Radical</strong> 
+                                Elementos visuais dinâmicos que se transformam conforme seu progresso, tornando a abstração filosófica algo tangível e visualizável em tempo real.
+                            </li>
+                            <li style="border-left: 4px solid var(--gold); padding-left: 1.5rem;" class="reveal">
+                                <strong style="display: block; font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--gold);">Curadoria Acadêmica</strong> 
+                                Conteúdos rigorosamente validados por especialistas e pesquisadores, garantindo que a facilidade de acesso nunca comprometa a profundidade e a precisão do conhecimento.
+                            </li>
+                            <li style="border-left: 4px solid var(--gold); padding-left: 1.5rem;" class="reveal">
+                                <strong style="display: block; font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--gold);">Abordagem Transdisciplinar</strong> 
+                                Integração orgânica entre as artes, as ciências exatas e os fundamentos da lógica, revelando como a filosofia é o alicerce comum de todas as grandes realizações humanas.
+                            </li>
+                            <li style="border-left: 4px solid var(--gold); padding-left: 1.5rem;" class="reveal">
+                                <strong style="display: block; font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--gold);">Desenvolvimento Crítico</strong> 
+                                Ferramentas focadas no aprimoramento da capacidade analítica, permitindo que o usuário identifique falácias e construa argumentos sólidos em qualquer campo de atuação.
+                            </li>
+                        </ul>
                     </div>
-                    <div class="feature-item">
-                        <h3>Olimpíadas</h3>
-                        <p style="text-align: center; font-size: 1.1rem; margin-top: 1rem;">Participe de exames e desafios intelectuais que testam sua capacidade de raciocínio e compreensão filosófica.</p>
+                </div>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Estrutura</span>
+                    <h2>Os Pilares da Arquitetura Filosófica</h2>
+                </header>
+                <div class="features-grid" style="display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); width: 100%;">
+                    <div class="feature-item reveal" style="padding: 2.5rem; background: var(--surface-sunken); border-radius: 20px; border: 1px solid var(--border);">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1.5rem;">Ética e Valores</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.6;">O estudo dos fundamentos da ação humana, do bem e da justiça nas relações interpessoais.</p>
                     </div>
-                    <div class="feature-item">
-                        <h3>Biblioteca</h3>
-                        <p style="text-align: center; font-size: 1.1rem; margin-top: 1rem;">Acesse manuais de estudo, obras fundamentais e guias de leitura curados por especialistas em cada área.</p>
+                    <div class="feature-item reveal" style="padding: 2.5rem; background: var(--surface-sunken); border-radius: 20px; border: 1px solid var(--border);">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1.5rem;">Lógica e Razão</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.6;">A análise rigorosa das leis do pensamento e das estruturas que validam o conhecimento e o discurso.</p>
                     </div>
-                    <div class="feature-item">
-                        <h3>Acessibilidade</h3>
-                        <p style="text-align: center; font-size: 1.1rem; margin-top: 1rem;">Ferramentas como a Régua de Leitura e modo de alto contraste criam uma experiência inclusiva para todos.</p>
+                    <div class="feature-item reveal" style="padding: 2.5rem; background: var(--surface-sunken); border-radius: 20px; border: 1px solid var(--border);">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1.5rem;">Metafísica</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.6;">A investigação das realidades que transcendem o físico, buscando o sentido da existência e do ser.</p>
+                    </div>
+                    <div class="feature-item reveal" style="padding: 2.5rem; background: var(--surface-sunken); border-radius: 20px; border: 1px solid var(--border);">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1.5rem;">Política</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.6;">O mapeamento das estruturas de poder, governança e as bases éticas da vida em comunidade.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Contemporaneidade</span>
+                    <h2>Filosofia na Era Digital</h2>
+                </header>
+                <p>O PhiloMap nasce da convicção de que os dilemas da <strong>Inteligência Artificial</strong>, da privacidade de dados e da pós-verdade não são problemas puramente técnicos, mas crises profundamente filosóficas. Ao mapearmos o pensamento clássico, fornecemos o alicerce necessário para que pesquisadores e entusiastas possam desenvolver uma ética digital sólida, capaz de humanizar a tecnologia e orientar o progresso com sabedoria e responsabilidade.</p>
+                
+                <p>Nossa plataforma conecta as discussões sobre a <em>tabula rasa</em> de Locke com os modernos algoritmos de aprendizado de máquina, e a política de Maquiavel com as estruturas de poder das redes sociais, revelando que as respostas para o futuro muitas vezes estão escondidas na reinterpretação crítica do nosso passado intelectual.</p>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Metodologia</span>
+                    <h2>A Genealogia das Ideias</h2>
+                </header>
+                <p>Nossa abordagem baseia-se na <strong>arqueologia do saber</strong>. Não nos limitamos a descrever conceitos; buscamos suas raízes, os conflitos que os geraram e as transformações que sofreram ao longo dos séculos. No PhiloMap, você não apenas lê sobre o racionalismo, você visualiza como ele emergiu como uma resposta às crises de autoridade do século XVII e como seus ecos ainda definem nossa confiança na ciência e no progresso.</p>
+                
+                <p>Cada nó em nosso mapa filosófico é uma porta de entrada para uma rede de influências. Ao estudar a Ética de Espinoza, o sistema automaticamente aponta conexões com o estoicismo antigo e com as neurociências modernas, permitindo que você compreenda a perenidade das questões fundamentais sobre a natureza da emoção e da liberdade humana.</p>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Perspectiva</span>
+                    <h2>Por que Mapear a Filosofia?</h2>
+                </header>
+                <p>Vivemos em uma era de fragmentação da informação. O excesso de dados muitas vezes nos impede de enxergar a <strong>totalidade</strong>. Mapear a filosofia é, portanto, um ato de resistência contra a superficialidade. Ao visualizar as conexões entre diferentes correntes de pensamento, recuperamos a capacidade de síntese e a visão sistêmica necessária para enfrentar os desafios globais contemporâneas.</p>
+                
+                <p>O mapa não é o território, mas é o guia indispensável para quem deseja navegar pelas águas profundas do intelecto humano sem se perder no mar do relativismo. Com o PhiloMap, você constrói sua própria bússola intelectual, fundamentada nos pilares mais sólidos da sabedoria universal.</p>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Progressão</span>
+                    <h2>A Jornada PhiloMap</h2>
+                </header>
+                <div class="features-grid" style="display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); width: 100%;">
+                    <div class="feature-item reveal" style="padding: 2.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 20px; text-align: center;">
+                        <span style="font-size: 3rem; color: var(--gold); display: block; margin-bottom: 1.5rem;">Ⅰ</span>
+                        <h3 style="font-family: var(--font-heading); margin-bottom: 1rem;">Descoberta Imersiva</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.6;">Navegue pelos grandes conceitos e visualize suas conexões históricas através de nossa interface interativa e rizomática.</p>
+                    </div>
+                    <div class="feature-item reveal" style="padding: 2.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 20px; text-align: center;">
+                        <span style="font-size: 3rem; color: var(--gold); display: block; margin-bottom: 1.5rem;">Ⅱ</span>
+                        <h3 style="font-family: var(--font-heading); margin-bottom: 1rem;">Análise Crítica</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.6;">Mergulhe nas fontes originais e utilize nossas ferramentas de exegese para desconstruir e compreender argumentos complexos.</p>
+                    </div>
+                    <div class="feature-item reveal" style="padding: 2.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 20px; text-align: center;">
+                        <span style="font-size: 3rem; color: var(--gold); display: block; margin-bottom: 1.5rem;">Ⅲ</span>
+                        <h3 style="font-family: var(--font-heading); margin-bottom: 1rem;">Síntese Intelectual</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.6;">Construa sua própria arquitetura de pensamento, aplicando a sabedoria filosófica na resolução de problemas contemporâneos.</p>
                     </div>
                 </div>
             </section>
@@ -112,24 +211,68 @@
             <section class="card reveal">
                 <header class="card-header">
                     <span class="subtitulo">Nossa Missão</span>
-                    <h2>O Conhecimento como Libertação</h2>
+                    <h2>O Conhecimento como Libertação e Práxis</h2>
                 </header>
-                <p>Acreditamos que a inteligência é um potencial latente que aguarda a ferramenta certa para ser despertado. No PhiloMap, buscamos forjar mentes capazes de questionar a realidade e arquitetar o futuro com base no rigor acadêmico e na sensibilidade artística.</p>
+                <p>Acreditamos que a inteligência é um potencial latente que aguarda a ferramenta certa para ser despertado em sua plenitude. No PhiloMap, buscamos forjar mentes capazes de questionar as estruturas de poder, analisar criticamente a informação e arquitetar o futuro com base no rigor acadêmico e na sensibilidade estética.</p>
                 
+                <p>Nossa missão estende-se para além da mera transferência de informações. Buscamos promover a <em>phronesis</em> (sabedoria prática), capacitando os indivíduos a tomarem decisões éticas fundamentadas em um mundo cada vez mais complexo e polarizado. A filosofia, em nossa visão, é a arquitetura invisível que sustenta todas as decisões humanas, e compreendê-la é o primeiro passo para a verdadeira autonomia intelectual.</p>
+
                 <blockquote class="citacao-destaque">
-                    ΓΝΩΘΙ ΣΑΥΤΟΝ — Conhece-te a ti mesmo.
+                    ΓΝΩΘΙ ΣΑΥΤΟΝ — Conhece-te a ti mesmo e conhecerás o universo e os deuses.
                 </blockquote>
             </section>
 
             <section class="card reveal">
                 <header class="card-header">
-                    <span class="subtitulo">Faça Parte</span>
-                    <h2>Inicie sua Jornada Intelectual</h2>
+                    <span class="subtitulo">Recursos Avançados</span>
+                    <h2>Aprofundamento e Ferramentas Intelectuais</h2>
                 </header>
-                <p>Junte-se à nossa comunidade de exploradores e tenha acesso ao Portal do Aluno, materiais exclusivos e uma rede de mentoria dedicada ao seu crescimento intelectual.</p>
                 
-                <div class="cta-container" style="margin-top: 2rem;">
-                    <a href="/html/registration.html" class="btn-submit">Fazer Inscrição Agora</a>
+                <div class="features-grid" style="margin-top: 4rem; width: 100%;">
+                    <div class="feature-item reveal" id="biblioteca-info" style="padding: 3rem; background: var(--bg); border: 1px solid var(--border); border-radius: 20px;">
+                        <h3 style="margin-bottom: 2rem; color: var(--gold); text-align: center; font-family: 'Libre Baskerville', serif;">Biblioteca Universal PhiloMap</h3>
+                        <p style="text-align: justify;">Nossa biblioteca transcende o conceito de um simples repositório digital. É um ecossistema de aprendizado curado, onde cada obra foi selecionada por sua relevância histórica e potencial transformador. Oferecemos acesso a manuscritos raros digitalizados, traduções comparadas e uma vasta gama de materiais de apoio que permitem ao estudante mergulhar na fonte direta do pensamento.</p>
+                        
+                        <ul style="text-align: left; font-size: 1.1rem; margin-top: 2rem; color: var(--text-dim); line-height: 1.8; list-style: none;">
+                            <li style="margin-bottom: 1rem;"><strong style="color: var(--gold);">• Manuais Críticos e Exegeses:</strong> Guias exclusivos que desconstroem parágrafo por parágrafo obras densas, como a "Crítica da Razão Pura" ou "Ser e Tempo", tornando-as acessíveis sem perder o rigor.</li>
+                            <li style="margin-bottom: 1rem;"><strong style="color: var(--gold);">• Edições Bilíngues e Comentadas:</strong> Textos clássicos em suas línguas originais (Grego, Latim, Alemão, Francês) acompanhados de comentários contextuais que explicam as nuances terminológicas.</li>
+                            <li style="margin-bottom: 1rem;"><strong style="color: var(--gold);">• Trilhas de Leitura Temáticas:</strong> Percursos de estudo que conectam diferentes autores sob um mesmo problema filosófico, como "A Natureza do Mal" ou "O Conceito de Justiça através dos Tempos".</li>
+                            <li style="margin-bottom: 1rem;"><strong style="color: var(--gold);">• Seminários em Áudio e Vídeo:</strong> Palestras com especialistas contemporâneos que discutem as interpretações mais recentes das grandes obras.</li>
+                        </ul>
+                        <div style="margin-top: 3rem; text-align: center;">
+                            <a href="html/literatura.html" class="acc-btn" style="display: inline-block; padding: 1.2rem 3rem; text-decoration: none; border-radius: 50px; background: var(--gold); color: white; border: none; font-weight: 800;">Acessar Biblioteca Completa</a>
+                        </div>
+                    </div>
+
+                    <div class="feature-item reveal" id="acessibilidade-info" style="padding: 3rem; background: var(--bg); border: 1px solid var(--border); border-radius: 20px;">
+                        <h3 style="margin-bottom: 2rem; color: var(--gold); text-align: center; font-family: 'Libre Baskerville', serif;">Compromisso Ético com a Acessibilidade</h3>
+                        <p style="text-align: justify;">Acreditamos que o acesso à sabedoria filosófica é um direito universal. No PhiloMap, a acessibilidade não é apenas uma funcionalidade técnica, mas um pilar ético central. Desenvolvemos nossa plataforma para ser um ambiente verdadeiramente inclusivo, onde cada mente, independentemente de suas capacidades sensoriais ou cognitivas, possa florescer sem obstáculos.</p>
+                        
+                        <ul style="text-align: left; font-size: 1.1rem; margin-top: 2rem; color: var(--text-dim); line-height: 1.8; list-style: none;">
+                            <li style="margin-bottom: 1rem;"><strong style="color: var(--gold);">• Régua de Leitura Cognitiva:</strong> Uma ferramenta ajustável que auxilia no foco visual e na retenção de conteúdo, ideal para leituras longas e para usuários com TDAH ou dislexia.</li>
+                            <li style="border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1rem;"></li>
+                            <li style="margin-bottom: 1rem;"><strong style="color: var(--gold);">• Interface de Alto Contraste e Temas Adaptativos:</strong> Modos de visualização que protegem a visão e garantem legibilidade máxima em qualquer ambiente, respeitando as necessidades de usuários com baixa visão.</li>
+                            <li style="border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1rem;"></li>
+                            <li style="margin-bottom: 1rem;"><strong style="color: var(--gold);">• Otimização para Tecnologias Assistivas:</strong> Estrutura de código semântica e limpa, garantindo que leitores de tela possam navegar pela arquitetura do pensamento de forma fluida e organizada.</li>
+                            <li style="border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1rem;"></li>
+                            <li style="margin-bottom: 1rem;"><strong style="color: var(--gold);">• Personalização Tipográfica Total:</strong> Controle granular sobre o tamanho das fontes e espaçamento entre linhas, permitindo que cada usuário encontre seu equilíbrio ideal para o estudo profundo.</li>
+                        </ul>
+                        <p style="margin-top: 2rem; font-style: italic; font-size: 1rem; text-align: center;">Personalize sua experiênca utilizando o painel de controles localizado na base da nossa barra lateral.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Faça Parte</span>
+                    <h2>Inicie sua Transformação Intelectual</h2>
+                </header>
+                <p>O PhiloMap é mais do que uma plataforma de estudos; é uma comunidade vibrante de exploradores que buscam na filosofia as chaves para compreender e transformar o presente. Ao se tornar um membro, você não apenas acessa conteúdos, mas passa a fazer parte de uma rede dedicada à excelência intelectual e à busca pela verdade em todas as suas formas.</p>
+                
+                <p>Nossos membros contam com suporte dedicado, acesso a fóruns de discussão moderados por acadêmicos e a oportunidade de contribuir para o crescimento do PhiloMap, sugerindo novas áreas de mapeamento e temas para futuros estudos aprofundados. A sua jornada rumo à autonomia do pensamento começa com um simples passo: a vontade de questionar.</p>
+
+                <div class="cta-container reveal" style="margin-top: 4rem; text-align: center;">
+                    <a href="html/registration.html" class="btn-submit" style="font-size: 1.5rem; padding: 2rem 5rem; border-radius: 60px; box-shadow: 0 20px 50px var(--gold-glow); display: inline-block; text-decoration: none;">Efetuar Inscrição no PhiloMap</a>
                 </div>
             </section>
 

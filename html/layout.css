@@ -24,10 +24,16 @@
     flex: 1;
     margin-left: var(--sidebar-width);
     width: calc(100% - var(--sidebar-width));
-    padding: 12rem 5%;
+    padding: 8rem 5% 4rem 5%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* CENTRALIZAÇÃO REAL */
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+    max-width: var(--max-content);
+    margin-bottom: 6rem;
 }
 
 /* RESPONSIVIDADE */

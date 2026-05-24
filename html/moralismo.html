@@ -3,183 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap | Moralismo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/main.css">
-    <script src="../js/main.js" defer></script>
+    <title>PhiloMap | Moralismo Social</title>
+    
+    <!-- CSS Modular v8.0 (Sincronizado) -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    
+    <script src="main.js" defer></script>
 </head>
 <body>
-    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
-        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px;">PHILOMAP</div>
+    <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s;">Pular para o conteúdo principal</a>
+    
+    <div id="loader" class="loader-container">
+        <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900;">PHILOMAP</div>
     </div>
+
     <div class="app-container">
-<aside class="sidebar">
-    <a href="../index.html" class="sidebar-logo">
-        <img src="../img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" width="280">
-    </a>
-    <nav class="nav-group">
-        <span class="nav-label">Explorar</span>
-        <div class="search-container">
-            <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
-            <span class="search-icon">⚲</span>
-        </div>
-        <div class="nav-collapsible-header" id="conceptsToggle">
-            <span class="nav-label">Conceitos</span>
-            <span class="chevron">▼</span>
-        </div>
-        <ul class="nav-list collapsible-content" id="conceptsList">
-            <li class="nav-item"><a href="../pages/etica.html">Ética</a></li>
-<li class="nav-item"><a href="../pages/logica.html">Lógica</a></li>
-<li class="nav-item"><a href="../pages/moralismo.html">Moralismo</a></li>
-<li class="nav-item"><a href="../pages/existencialismo.html">Existencialismo</a></li>
-<li class="nav-item"><a href="../pages/estetica.html">Estética</a></li>
-<li class="nav-item"><a href="../pages/metafisica.html">Metafísica</a></li>
-<li class="nav-item"><a href="../pages/epistemologia.html">Epistemologia</a></li>
-<li class="nav-item"><a href="../pages/politica.html">Política</a></li>
-<li class="nav-item"><a href="../pages/linguagem.html">Linguagem</a></li>
-<li class="nav-item"><a href="../pages/estoicismo.html">Estoicismo</a></li>
-<li class="nav-item"><a href="../pages/fenomenologia.html">Fenomenologia</a></li>
-<li class="nav-item"><a href="../pages/cinismo.html">Cinismo</a></li>
-
-        </ul>
-    </nav>
-    <nav class="nav-group">
-        <span class="nav-label">Estudos</span>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../pages/literatura.html">Literatura</a></li>
-        </ul>
-    </nav>
-    <nav class="nav-group">
-        <span class="nav-label">Institucional</span>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../index.html">Início</a></li>
-            <li class="nav-item"><a href="../public/inscricao.html">Inscrição</a></li>
-            <li class="nav-item"><a href="../pages/login.html">Portal do Aluno</a></li>
-        </ul>
-    </nav>
-    <div class="sidebar-footer">
-        <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-    </div>
-</aside>
-
-<button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
-                <div id="readingTime" class="reading-time"></div>
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
+                <img src="../img/logo-site.svg" alt="PhiloMap Logo" width="280">
+            </a>
+            <nav class="nav-group">
+                <span class="nav-label">Explorar</span>
+                <div class="search-container">
+                    <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
+                    <span class="search-icon">⚲</span>
+                </div>
+                <div class="nav-collapsible-header" id="conceptsToggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; margin-bottom: 2rem;">
+                    <span class="nav-label" style="margin-bottom: 0;">Grandes Conceitos</span>
+                    <span class="chevron" style="color: var(--gold); font-size: 1.2rem;">▼</span>
+                </div>
+                <ul class="nav-list" id="conceptsList">
+                    <li class="nav-item"><a href="../index.html">Página Inicial</a></li>
+                    <li class="nav-item"><a href="etica.html">Ética e Valores</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica e Razão</a></li>
+                    <li class="nav-item"><a href="moralismo.html" class="active">Moralismo Social</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética e Arte</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica do Ser</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política e Estado</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="cinismo.html">Cinismo e Natureza</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-group">
+                <span class="nav-label">Estudos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="literatura.html">Literatura</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="../public/inscricao.html">Inscrição</a></li>
+                    <li class="nav-item"><a href="login.html">Portal do Aluno</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                <div class="accessibility-controls">
+                    <span class="nav-label">Acessibilidade</span>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="changeFontSize('small')" title="Diminuir fonte">A-</button>
+                        <button class="acc-btn" onclick="changeFontSize('medium')" title="Fonte padrão">A</button>
+                        <button class="acc-btn" onclick="changeFontSize('large')" title="Aumentar fonte">A+</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn theme-master" onclick="toggleTheme()" title="Alternar entre modo claro e escuro">Mudar Tema</button>
+                        <button class="acc-btn" onclick="toggleHighContrast()" title="Ativar modo de alto contraste">Contraste</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleZenMode()" title="Ocultar elementos de distração">Modo Zen</button>
+                        <button class="acc-btn" onclick="toggleDyslexiaFont()" title="Usar fonte amigável para dislexia">Dislexia</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleOriginalFonts()" title="Restaurar fontes originais do projeto">Fonte Original</button>
+                        <button class="acc-btn" onclick="toggleReadingRuler()" title="Ativar régua de leitura que segue o mouse">Régua</button>
+                    </div>
+                </div>
             </div>
+        </aside>
 
-            <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Moralismo</span></div>
-
-                        <div class="content-actions">
-                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
-                <div id="readingTime" class="reading-time"></div>
-            </div>
+        <main class="main-content" id="main-content">
+            <div class="breadcrumbs" style="width: 100%; max-width: 850px; margin-bottom: 2rem;"><a href="../index.html" style="color: var(--gold); text-decoration: none; font-weight: 700;">Início</a> / <span>Moralismo</span></div>
             
             <section class="card reveal active">
                 <header class="card-header">
-                    <span class="subtitulo">Normatividade e Caráter</span>
-                    <h1>O Rigor e a Observação: Moralismo</h1>
+                    <span class="subtitulo">A Natureza Humana</span>
+                    <h1>Moralismo Social</h1>
                 </header>
                 
                 <div class="image-container">
-                    <img src="https://www.analisidellopera.it/wp-content/uploads/2022/10/a_fontanesi_novembre-1024x677.jpg" alt="Estátua Clássica" loading="lazy" width="1200" height="800">
+                    <img src="https://images.unsplash.com/photo-1576402187878-974f70c890a5?auto=format&fit=crop&w=1200&q=80" class="float-animation" alt="Máscaras e Comportamento">
                 </div>
                 
-                <p>O <strong>moralismo</strong> é frequentemente confundido com a ética, mas possui matizes distintos. Enquanto a ética busca fundamentos racionais universais, o moralismo pode referir-se tanto à aplicação rigorosa de normas sociais quanto à tradição dos "Moralistas" — pensadores que se dedicaram a observar e descrever os costumes, o caráter e as contradições do coração humano.</p>
+                <p>O moralismo, no sentido filosófico clássico, refere-se ao estudo dos "costumes" e da conduta humana em sociedade. Diferente da moral normativa, os moralistas franceses do século XVII focavam na observação aguda das motivações humanas, frequentemente revelando o egoísmo por trás de atos aparentemente altruístas.</p>
 
-                <p>No sentido filosófico clássico, ser um moralista é ser um observador da condição humana. É a busca por entender por que fazemos o que fazemos, para além do que dizemos que deveríamos fazer.</p>
+                <p>Para o moralista, a sociedade é um palco onde os indivíduos vestem máscaras de virtude para ocultar seus interesses privados. Esta tradição não busca prescrever como o homem deve agir, mas sim descrever como ele age na realidade, utilizando o aforismo e o ensaio como ferramentas de dissecação psicológica.</p>
 
                 <blockquote class="citacao-destaque">
-                    "Ocupa-te com o que és, e não com o que os outros pensam que és." — Sêneca
+                    "Nossas virtudes são, na maioria das vezes, apenas vícios disfarçados." — La Rochefoucauld
                 </blockquote>
             </section>
 
             <section class="card reveal">
                 <header class="card-header">
-                    <span class="subtitulo">Tradições</span>
-                    <h2>As Facetas do Moralismo</h2>
+                    <span class="subtitulo">Análise</span>
+                    <h2>A Anatomia da Vaidade</h2>
                 </header>
-
-                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">01. Estoicismo</h3>
-                        <p>O estoicismo é uma forma de moralismo prático que foca no controle das emoções e no cultivo da virtude interior. Para os estoicos, a moralidade consiste em viver de acordo com a natureza e aceitar o que não podemos mudar, focando apenas em nossa própria vontade e caráter.</p>
-                    </div>
-
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">02. Moralismo Francês</h3>
-                        <p>No século XVII, surgiu na França uma linhagem de escritores conhecidos como "Moralistas". Eles não criavam sistemas éticos abstratos, mas usavam aforismos e ensaios para desmascarar a vaidade, a hipocrisia e as motivações ocultas das ações humanas.</p>
-                    </div>
-
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">03. Relativismo Moral</h3>
-                        <p>Questiona se as normas morais são verdades absolutas ou construções culturais. O moralismo aqui é visto como a imposição de uma cultura sobre outra, desafiando a ideia de uma moralidade única e imutável para todos os tempos.</p>
-                    </div>
-
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">04. Moralidade de Rebanho</h3>
-                        <p>Termo cunhado por Nietzsche para descrever o moralismo que busca a conformidade e a obediência às normas sociais em vez do desenvolvimento de uma individualidade forte e autêntica.</p>
-                    </div>
-                </div>
+                <p>O conceito de <strong>amour-propre</strong> (amor-próprio ou vaidade) é central para o moralismo social. La Rochefoucauld argumentava que quase todas as nossas ações, mesmo as mais heróicas ou caridosas, são movidas por um desejo oculto de reconhecimento e autoglorificação. Esta visão "desencantada" da humanidade serve como um espelho crítico, forçando o indivíduo a confrontar suas próprias hipocrisias.</p>
+                
+                <p>A vaidade não é vista apenas como um defeito individual, mas como a cola que mantém as estruturas sociais unidas. É a necessidade de aprovação que gera a etiqueta, o polimento das maneiras e a própria ordem pública, transformando vícios privados em benefícios públicos — um conceito que mais tarde influenciaria pensadores da economia e da sociologia.</p>
             </section>
 
             <section class="card reveal">
                 <header class="card-header">
-                    <span class="subtitulo">Galeria do Pensamento</span>
-                    <h2>Observadores da Natureza Humana</h2>
+                    <span class="subtitulo">Contexto</span>
+                    <h2>Ceticismo e Observação</h2>
                 </header>
-
-                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://th.bing.com/th/id/OIP.TIwbQAHyyc95vkVM53U9lgHaLO?w=123&h=186&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Sêneca" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">Sêneca</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">Filósofo estoico que ensinou como manter a serenidade diante da adversidade e a importância da autodisciplina moral.</p>
-                    </div>
-
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://th.bing.com/th/id/OIP.zN57xrx3mua0HroEfMQRFQHaEK?w=333&h=187&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Marco Aurélio" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">Marco Aurélio</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">Imperador romano e estoico. Suas "Meditações" são um guia de autoexame moral e resiliência psicológica.</p>
-                    </div>
-
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://th.bing.com/th/id/OIP.84VArtha--y-uTCpESEbXAHaJB?w=208&h=254&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Michel de Montaigne" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">Montaigne</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">Criador do gênero "Ensaio". Observou com ceticismo e tolerância as variações dos costumes humanos e a fragilidade do julgamento.</p>
-                    </div>
-
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://th.bing.com/th/id/OIP.nzIE2FmxpTfnYWreI-rxUAHaEK?w=284&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Blaise Pascal" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">Blaise Pascal</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">Cientista e filósofo que explorou a miséria e a grandeza do homem, destacando o papel da fé e da intuição moral.</p>
-                    </div>
-                </div>
+                <p>A tradição moralista floresceu em ambientes de corte e salões intelectuais, onde a observação do outro era uma questão de sobrevivência social. Pensadores como Montaigne trouxeram o ceticismo para o centro do debate, questionando a estabilidade da identidade humana. Para Montaigne, o homem é um objeto "variável e ondulante", cujas opiniões e caráter mudam conforme as circunstâncias.</p>
+                
+                <p>Esta honestidade intelectual sobre a inconstância humana pavimentou o caminho para a psicologia moderna e para o existencialismo, ao focar na experiência concreta do indivíduo em vez de em abstrações metafísicas distantes da realidade cotidiana.</p>
             </section>
 
             <section class="card reveal">
                 <header class="card-header">
-                    <span class="subtitulo">Contemporaneidade</span>
-                    <h2>O Dilema do Rigorismo na Era Digital</h2>
+                    <span class="subtitulo">Mestres do Moralismo</span>
+                    <h2>Grandes Pensadores</h2>
                 </header>
-
-                <div class="image-container">
-                    <img src="https://media.mutualart.com/Images/2016_01/04/08/083521053/d809672b-1d5f-48c9-b18c-c723c16fbe79.Jpeg?w=768" alt="Sociedade Moderna" loading="lazy" width="1200" height="800">
-                </div>
-
-                <div class="texto-flex">
-                    <p>Atualmente, o moralismo ressurge em novas formas, como a "cultura do cancelamento" e o policiamento das redes sociais. Esse novo rigorismo digital levanta questões sobre a linha tênue entre a defesa legítima de valores e a intolerância cega. O desafio moderno é equilibrar a necessidade de normas morais saudáveis com a liberdade de pensamento e a complexidade individual.</p>
-                    
-                    <p style="margin-top: 1rem;">A tradição moralista nos ensina que, antes de julgar os costumes alheios, devemos mergulhar no conhecimento de nós mesmos e na compreensão da natureza humana, sempre imperfeita e mutável.</p>
+                <div class="grid-pensadores" style="display: grid; gap: 4rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1555679512-236f6d0f507b?auto=format&fit=crop&w=300&q=80" alt="Michel de Montaigne" class="foto-filosofo">
+                        <h3>Michel de Montaigne</h3>
+                        <p>Pai do ensaio moderno, explorou a subjetividade e as contradições da condição humana com ceticismo e honestidade.</p>
+                    </div>
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1510520434124-5bc7e642b61d?auto=format&fit=crop&w=300&q=80" alt="François de La Rochefoucauld" class="foto-filosofo">
+                        <h3>François de La Rochefoucauld</h3>
+                        <p>Famoso por suas Máximas, dissecou a vaidade e o amor-próprio como motores ocultos do comportamento social.</p>
+                    </div>
                 </div>
             </section>
 
-            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
-                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            <footer class="app-footer">
+                <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
             </footer>
-
-
-        <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">
-            <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
-        </footer>
+        </main>
     </div>
 </body>
 </html>

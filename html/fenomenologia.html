@@ -4,71 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Fenomenologia</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/main.css">
-    <script src="../js/main.js" defer></script>
+    
+    <!-- CSS Modular v8.0 (Sincronizado) -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    
+    <script src="main.js" defer></script>
 </head>
 <body>
-    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
-        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px;">PHILOMAP</div>
+    <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s;">Pular para o conteúdo principal</a>
+    
+    <div id="loader" class="loader-container">
+        <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900;">PHILOMAP</div>
     </div>
+
     <div class="app-container">
-<aside class="sidebar">
-    <a href="../index.html" class="sidebar-logo">
-        <img src="../img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" width="280">
-    </a>
-    <nav class="nav-group">
-        <span class="nav-label">Explorar</span>
-        <div class="search-container">
-            <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
-            <span class="search-icon">⚲</span>
-        </div>
-        <div class="nav-collapsible-header" id="conceptsToggle">
-            <span class="nav-label">Conceitos</span>
-            <span class="chevron">▼</span>
-        </div>
-        <ul class="nav-list collapsible-content" id="conceptsList">
-            <li class="nav-item"><a href="../pages/etica.html">Ética</a></li>
-<li class="nav-item"><a href="../pages/logica.html">Lógica</a></li>
-<li class="nav-item"><a href="../pages/moralismo.html">Moralismo</a></li>
-<li class="nav-item"><a href="../pages/existencialismo.html">Existencialismo</a></li>
-<li class="nav-item"><a href="../pages/estetica.html">Estética</a></li>
-<li class="nav-item"><a href="../pages/metafisica.html">Metafísica</a></li>
-<li class="nav-item"><a href="../pages/epistemologia.html">Epistemologia</a></li>
-<li class="nav-item"><a href="../pages/politica.html">Política</a></li>
-<li class="nav-item"><a href="../pages/linguagem.html">Linguagem</a></li>
-<li class="nav-item"><a href="../pages/estoicismo.html">Estoicismo</a></li>
-<li class="nav-item"><a href="../pages/fenomenologia.html">Fenomenologia</a></li>
-<li class="nav-item"><a href="../pages/cinismo.html">Cinismo</a></li>
-
-        </ul>
-    </nav>
-    <nav class="nav-group">
-        <span class="nav-label">Estudos</span>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../pages/literatura.html">Literatura</a></li>
-        </ul>
-    </nav>
-    <nav class="nav-group">
-        <span class="nav-label">Institucional</span>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../index.html">Início</a></li>
-            <li class="nav-item"><a href="../public/inscricao.html">Inscrição</a></li>
-            <li class="nav-item"><a href="../pages/login.html">Portal do Aluno</a></li>
-        </ul>
-    </nav>
-    <div class="sidebar-footer">
-        <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-    </div>
-</aside>
-
-<div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Fenomenologia</span></div>
-
-            <div class="content-actions">
-                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
-                <div id="readingTime" class="reading-time"></div>
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
+                <img src="../img/logo-site.svg" alt="PhiloMap Logo" width="280">
+            </a>
+            <nav class="nav-group">
+                <span class="nav-label">Explorar</span>
+                <div class="search-container">
+                    <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
+                    <span class="search-icon">⚲</span>
+                </div>
+                <div class="nav-collapsible-header" id="conceptsToggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; margin-bottom: 2rem;">
+                    <span class="nav-label" style="margin-bottom: 0;">Grandes Conceitos</span>
+                    <span class="chevron" style="color: var(--gold); font-size: 1.2rem;">▼</span>
+                </div>
+                <ul class="nav-list" id="conceptsList">
+                    <li class="nav-item"><a href="etica.html">Ética e Valores</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica e Razão</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo Social</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética e Arte</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica do Ser</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política e Estado</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="fenomenologia.html" class="active">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="cinismo.html">Cinismo e Natureza</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-group">
+                <span class="nav-label">Estudos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="literatura.html">Literatura</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="../public/inscricao.html">Inscrição</a></li>
+                    <li class="nav-item"><a href="login.html">Portal do Aluno</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                <div class="accessibility-controls">
+                    <span class="nav-label">Acessibilidade</span>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="changeFontSize('small')" title="Diminuir fonte">A-</button>
+                        <button class="acc-btn" onclick="changeFontSize('medium')" title="Fonte padrão">A</button>
+                        <button class="acc-btn" onclick="changeFontSize('large')" title="Aumentar fonte">A+</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn theme-master" onclick="toggleTheme()" title="Alternar entre modo claro e escuro">Mudar Tema</button>
+                        <button class="acc-btn" onclick="toggleHighContrast()" title="Ativar modo de alto contraste">Contraste</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleZenMode()" title="Ocultar elementos de distração">Modo Zen</button>
+                        <button class="acc-btn" onclick="toggleDyslexiaFont()" title="Usar fonte amigável para dislexia">Dislexia</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleOriginalFonts()" title="Restaurar fontes originais do projeto">Fonte Original</button>
+                        <button class="acc-btn" onclick="toggleReadingRuler()" title="Ativar régua de leitura que segue o mouse">Régua</button>
+                    </div>
+                </div>
             </div>
+        </aside>
+
+        <main class="main-content" id="main-content">
+            <div class="breadcrumbs" style="width: 100%; max-width: 850px; margin-bottom: 2rem;"><a href="../index.html" style="color: var(--gold); text-decoration: none; font-weight: 700;">Início</a> / <span>Fenomenologia</span></div>
             
             <section class="card reveal active">
                 <header class="card-header">
@@ -77,10 +98,12 @@
                 </header>
                 
                 <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?auto=format&fit=crop&w=1200&q=80" alt="Nebulosa Espacial" loading="lazy" width="1200" height="800">
+                    <img src="https://images.unsplash.com/photo-1516339901601-2e1a62dc0c45?auto=format&fit=crop&w=1200&q=80" class="float-animation" alt="Nebulosa e Percepção">
                 </div>
                 
-                <p>A Fenomenologia, fundada por Edmund Husserl no início do século XX, é o estudo das estruturas da experiência e da consciência. Diferente das ciências naturais, que estudam o mundo como um objeto externo, a fenomenologia busca descrever as coisas como elas aparecem (o <strong>fenômeno</strong>) para a consciência humana, sem preconceitos ou teorias prévias.</p>
+                <p>A Fenomenologia é o estudo das estruturas da experiência e da consciência. Ela busca descrever os fenômenos tal como aparecem para a consciência, investigando a intencionalidade e o mundo-da-vida.</p>
+
+                <p>Ao contrário da ciência tradicional, que busca leis objetivas externas, a fenomenologia volta o olhar para o <strong>sujeito</strong> que percebe. Ela tenta suspender nossos preconceitos (epoché) para revelar a essência pura das nossas experiências, desde a percepção de uma cor até a sensação de tempo.</p>
 
                 <blockquote class="citacao-destaque">
                     "Toda consciência é consciência de alguma coisa." — Edmund Husserl
@@ -89,34 +112,52 @@
 
             <section class="card reveal">
                 <header class="card-header">
-                    <span class="subtitulo">Conceitos Chave</span>
-                    <h2>Fundamentos da Experiência</h2>
+                    <span class="subtitulo">Intencionalidade</span>
+                    <h2>Intencionalidade e Significado</h2>
                 </header>
+                <p>A <strong>Intencionalidade</strong> é o conceito de que a consciência está sempre "voltada para" algo. Não existe um "eu" isolado do mundo; estamos sempre em relação com objetos, pessoas e ideias. Este vínculo inquebrável é o que dá significado à nossa existência e orienta nossa atenção.</p>
+                
+                <p>Compreender a intencionalidade no PhiloMap permite ao usuário analisar como sua própria perspectiva molda o que ele considera real. É um convite para explorar a profundidade subjetiva que sustenta toda a objetividade científica e cotidiana.</p>
+            </section>
 
-                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">Epoché</h3>
-                        <p>O ato de "colocar entre parênteses" nossas crenças sobre a existência do mundo externo para focar puramente na experiência subjetiva.</p>
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Vivência</span>
+                    <h2>O Mundo-da-Vida</h2>
+                </header>
+                <p>Husserl introduziu o termo <strong>Lebenswelt</strong> (Mundo-da-Vida) para descrever o horizonte de experiências pré-científicas e intuitivas em que todos vivemos. É o mundo do senso comum, das emoções e das relações sociais que serve de alicerce para todas as constructions teóricas posteriores.</p>
+                
+                <p>A fenomenologia nos lembra que, antes de sermos analistas ou técnicos, somos seres-no-mundo que sentem, agem e valorizam. Resgatar a importância do mundo-da-vida é fundamental para humanizar o conhecimento e garantir que a filosofia permaneça conectada à realidade concreta da vida humana.</p>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Mestres da Fenomenologia</span>
+                    <h2>Grandes Pensadores</h2>
+                </header>
+                <div class="grid-pensadores" style="display: grid; gap: 4rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=300&q=80" alt="Edmund Husserl" class="foto-filosofo">
+                        <h3>Edmund Husserl</h3>
+                        <p>O fundador da fenomenologia, propôs a redução fenomenológica para chegar à essência da consciência.</p>
                     </div>
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">Intencionalidade</h3>
-                        <p>A característica fundamental da consciência de estar sempre dirigida a um objeto.</p>
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1543165365-072ca2622924?auto=format&fit=crop&w=300&q=80" alt="Martin Heidegger" class="foto-filosofo">
+                        <h3>Martin Heidegger</h3>
+                        <p>Dedicou-se à questão do Ser, analisando o Dasein (ser-no-mundo) e a temporalidade.</p>
                     </div>
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">Mundo-da-Vida (Lebenswelt)</h3>
-                        <p>O horizonte pré-científico de todas as nossas experiências e atividades práticas.</p>
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Maurice Merleau-Ponty" class="foto-filosofo">
+                        <h3>Maurice Merleau-Ponty</h3>
+                        <p>Focou na fenomenologia da percepção e no papel central do corpo na nossa experiência do mundo.</p>
                     </div>
                 </div>
             </section>
 
-            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
-                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            <footer class="app-footer">
+                <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
             </footer>
-
-
-        <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">
-            <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
-        </footer>
+        </main>
     </div>
 </body>
 </html>

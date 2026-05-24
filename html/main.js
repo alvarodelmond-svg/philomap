@@ -152,7 +152,7 @@ function exibirFeedback(mensagem, tipo = 'info') {
     const container = document.getElementById('toast-container');
     if (!container) return;
     const toast = document.createElement('div');
-    const cores = { success: 'var(--gold)', error: '#ff4444', info: 'var(--accent)' };
+    const cores = { success: 'var(--gold)', error: '#ff4444', info: '#8c6d31' };
     toast.style.cssText = `background: var(--surface); color: var(--text-main); padding: 15px 25px; border-radius: 12px; border-left: 5px solid ${cores[tipo] || cores.info}; box-shadow: 0 10px 30px rgba(0,0,0,0.1); font-size: 0.9rem; font-weight: 600; transform: translateX(120%); transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1); display: flex; align-items: center; gap: 10px; min-width: 250px;`;
     const icon = { success: '✓', error: '✕', info: 'ℹ' };
     toast.innerHTML = `<span>${icon[tipo] || '•'}</span> ${mensagem}`;
@@ -265,6 +265,50 @@ const PhiloMap = {
         const searchInput = document.getElementById('searchConcepts');
         if (!searchInput || searchInput.dataset.initialized) return;
         searchInput.dataset.initialized = 'true';
+
+        // --- Início da Animação do Placeholder ---
+        const phrases = [
+            "Buscar verdade...",
+            "Conhece-te a ti mesmo...",
+            "Penso, logo existo...",
+            "O que é a virtude?...",
+            "A vida não examinada...",
+            "Arquitetar o pensamento...",
+            "Mapear a sabedoria...",
+            "Explorar o Ser...",
+            "A caverna de Platão...",
+            "Amor ao conhecimento..."
+        ];
+        let currentPhraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        const typePlaceholder = () => {
+            const currentFullPhrase = phrases[currentPhraseIndex];
+            
+            if (isDeleting) {
+                searchInput.placeholder = currentFullPhrase.substring(0, charIndex--);
+                typingSpeed = 50;
+            } else {
+                searchInput.placeholder = currentFullPhrase.substring(0, charIndex++);
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex > currentFullPhrase.length) {
+                isDeleting = true;
+                typingSpeed = 2000; // Pausa no final da frase
+            } else if (isDeleting && charIndex < 0) {
+                isDeleting = false;
+                currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                charIndex = 0;
+                typingSpeed = 500; // Pausa antes de começar a próxima
+            }
+
+            setTimeout(typePlaceholder, typingSpeed);
+        };
+        typePlaceholder();
+        // --- Fim da Animação do Placeholder ---
 
         const conceptsList = document.getElementById('conceptsList');
         let searchOverlay = document.querySelector('.search-overlay');
@@ -456,9 +500,15 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('dyslexiaFont', active);
     };
 
+    window.toggleOriginalFonts = () => {
+        const active = document.body.classList.toggle('original-fonts');
+        localStorage.setItem('originalFonts', active);
+    };
+
     const savedScale = localStorage.getItem('fontScale');
     if (savedScale) document.documentElement.style.setProperty('--font-scale', savedScale);
     if (localStorage.getItem('dyslexiaFont') === 'true') document.body.classList.add('dyslexia-font');
+    if (localStorage.getItem('originalFonts') === 'true') document.body.classList.add('original-fonts');
     if (localStorage.getItem('zenMode') === 'true') document.body.classList.add('zen-mode');
 });
 

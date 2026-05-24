@@ -4,89 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Linguagem</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/main.css">
-    <script src="../js/main.js" defer></script>
+    
+    <!-- CSS Modular v8.0 (Sincronizado) -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    
+    <script src="main.js" defer></script>
 </head>
 <body>
-    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
-        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px;">PHILOMAP</div>
+    <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s;">Pular para o conteúdo principal</a>
+    
+    <div id="loader" class="loader-container">
+        <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900;">PHILOMAP</div>
     </div>
+
     <div class="app-container">
-<aside class="sidebar">
-    <a href="../index.html" class="sidebar-logo">
-        <img src="../img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" width="280">
-    </a>
-    <nav class="nav-group">
-        <span class="nav-label">Explorar</span>
-        <div class="search-container">
-            <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
-            <span class="search-icon">⚲</span>
-        </div>
-        <div class="nav-collapsible-header" id="conceptsToggle">
-            <span class="nav-label">Conceitos</span>
-            <span class="chevron">▼</span>
-        </div>
-        <ul class="nav-list collapsible-content" id="conceptsList">
-            <li class="nav-item"><a href="../pages/etica.html">Ética</a></li>
-<li class="nav-item"><a href="../pages/logica.html">Lógica</a></li>
-<li class="nav-item"><a href="../pages/moralismo.html">Moralismo</a></li>
-<li class="nav-item"><a href="../pages/existencialismo.html">Existencialismo</a></li>
-<li class="nav-item"><a href="../pages/estetica.html">Estética</a></li>
-<li class="nav-item"><a href="../pages/metafisica.html">Metafísica</a></li>
-<li class="nav-item"><a href="../pages/epistemologia.html">Epistemologia</a></li>
-<li class="nav-item"><a href="../pages/politica.html">Política</a></li>
-<li class="nav-item"><a href="../pages/linguagem.html">Linguagem</a></li>
-<li class="nav-item"><a href="../pages/estoicismo.html">Estoicismo</a></li>
-<li class="nav-item"><a href="../pages/fenomenologia.html">Fenomenologia</a></li>
-<li class="nav-item"><a href="../pages/cinismo.html">Cinismo</a></li>
-
-        </ul>
-    </nav>
-    <nav class="nav-group">
-        <span class="nav-label">Estudos</span>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../pages/literatura.html">Literatura</a></li>
-        </ul>
-    </nav>
-    <nav class="nav-group">
-        <span class="nav-label">Institucional</span>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../index.html">Início</a></li>
-            <li class="nav-item"><a href="../public/inscricao.html">Inscrição</a></li>
-            <li class="nav-item"><a href="../pages/login.html">Portal do Aluno</a></li>
-        </ul>
-    </nav>
-    <div class="sidebar-footer">
-        <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-    </div>
-</aside>
-
-<button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
-                <div id="readingTime" class="reading-time"></div>
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
+                <img src="../img/logo-site.svg" alt="PhiloMap Logo" width="280">
+            </a>
+            <nav class="nav-group">
+                <span class="nav-label">Explorar</span>
+                <div class="search-container">
+                    <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
+                    <span class="search-icon">⚲</span>
+                </div>
+                <div class="nav-collapsible-header" id="conceptsToggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; margin-bottom: 2rem;">
+                    <span class="nav-label" style="margin-bottom: 0;">Grandes Conceitos</span>
+                    <span class="chevron" style="color: var(--gold); font-size: 1.2rem;">▼</span>
+                </div>
+                <ul class="nav-list" id="conceptsList">
+                    <li class="nav-item"><a href="../index.html">Página Inicial</a></li>
+                    <li class="nav-item"><a href="etica.html">Ética e Valores</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica e Razão</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo Social</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética e Arte</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica do Ser</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política e Estado</a></li>
+                    <li class="nav-item"><a href="linguagem.html" class="active">Linguagem</a></li>
+                    <li class="nav-item"><a href="estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="cinismo.html">Cinismo e Natureza</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-group">
+                <span class="nav-label">Estudos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="literatura.html">Literatura</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="../public/inscricao.html">Inscrição</a></li>
+                    <li class="nav-item"><a href="login.html">Portal do Aluno</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                <div class="accessibility-controls">
+                    <span class="nav-label">Acessibilidade</span>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="changeFontSize('small')" title="Diminuir fonte">A-</button>
+                        <button class="acc-btn" onclick="changeFontSize('medium')" title="Fonte padrão">A</button>
+                        <button class="acc-btn" onclick="changeFontSize('large')" title="Aumentar fonte">A+</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn theme-master" onclick="toggleTheme()" title="Alternar entre modo claro e escuro">Mudar Tema</button>
+                        <button class="acc-btn" onclick="toggleHighContrast()" title="Ativar modo de alto contraste">Contraste</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleZenMode()" title="Ocultar elementos de distração">Modo Zen</button>
+                        <button class="acc-btn" onclick="toggleDyslexiaFont()" title="Usar fonte amigável para dislexia">Dislexia</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleOriginalFonts()" title="Restaurar fontes originais do projeto">Fonte Original</button>
+                        <button class="acc-btn" onclick="toggleReadingRuler()" title="Ativar régua de leitura que segue o mouse">Régua</button>
+                    </div>
+                </div>
             </div>
+        </aside>
 
-            <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Linguagem</span></div>
-
-                        <div class="content-actions">
-                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
-                <div id="readingTime" class="reading-time"></div>
-            </div>
+        <main class="main-content" id="main-content">
+            <div class="breadcrumbs" style="width: 100%; max-width: 850px; margin-bottom: 2rem;"><a href="../index.html" style="color: var(--gold); text-decoration: none; font-weight: 700;">Início</a> / <span>Linguagem</span></div>
             
             <section class="card reveal active">
                 <header class="card-header">
                     <span class="subtitulo">A Estrutura do Significado</span>
-                    <h1>Filosofia da Linguagem: O Mundo em Palavras</h1>
+                    <h1>Filosofia da Linguagem</h1>
                 </header>
                 
                 <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80" alt="Linguagem e Escrita Clássica" loading="lazy" width="1200" height="800">
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80" class="float-animation" alt="Linguagem e Escrita">
                 </div>
                 
-                <p>A <strong>Filosofia da Linguagem</strong> investiga a natureza da comunicação, a origem das línguas e a relação intrínseca entre as palavras, o pensamento e a realidade. Ela não estuda apenas gramática, mas como os signos linguísticos moldam nossa percepção do que é real. Para muitos filósofos modernos, os problemas da filosofia são, na verdade, problemas de linguagem mal resolvidos.</p>
+                <p>A Filosofia da Linguagem investiga a natureza da comunicação, a relação entre as palavras, o pensamento e a realidade. Ela busca entender como os signos linguísticos moldam nossa percepção do mundo e como o significado é construído socialmente.</p>
 
-                <p>Será que as palavras representam as coisas como elas são, ou são apenas convenções arbitrárias? A linguagem é uma ferramenta que usamos para descrever o mundo ou é ela que constrói o mundo em que vivemos?</p>
+                <p>Não falamos apenas para descrever o mundo, mas para agir nele. A linguagem é a ferramenta primária da inteligência humana, permitindo-nos compartilhar conceitos abstratos, coordenar ações complexas e construir a arquitetura simbólica da nossa cultura.</p>
 
                 <blockquote class="citacao-destaque">
                     "Os limites da minha linguagem são os limites do meu mundo." — Ludwig Wittgenstein
@@ -95,91 +113,47 @@
 
             <section class="card reveal">
                 <header class="card-header">
-                    <span class="subtitulo">Conceitos</span>
-                    <h2>Signos, Jogos e Atos de Fala</h2>
+                    <span class="subtitulo">Pragmática</span>
+                    <h2>Jogos de Linguagem</h2>
                 </header>
-
-                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">01. Significado e Referência</h3>
-                        <p><strong>Gottlob Frege</strong> distinguiu entre o "sentido" de uma expressão e sua "referência". Por exemplo, "Estrela da Manhã" e "Estrela da Tarde" têm sentidos diferentes, mas referem-se ao mesmo objeto: o planeta Vênus. Essa distinção foi vital para a lógica moderna.</p>
-                    </div>
-
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">02. Jogos de Linguagem</h3>
-                        <p>Em sua fase madura, <strong>Wittgenstein</strong> propôs que a linguagem funciona como um jogo. O significado de uma palavra não é uma definição fixa, mas o seu <strong>uso</strong> dentro de um contexto social específico. Entender uma língua é saber jogar as suas regras sociais.</p>
-                    </div>
-
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">03. Atos de Fala</h3>
-                        <p><strong>J.L. Austin</strong> argumentou que falar é <em>fazer</em> coisas. Quando dizemos "eu prometo" ou "eu te batizo", não estamos apenas descrevendo algo, estamos realizando uma ação através das palavras. A linguagem tem um poder performativo.</p>
-                    </div>
-
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">04. Gramática Universal</h3>
-                        <p><strong>Noam Chomsky</strong> revolucionou a área ao propor que todos os seres humanos nascem com uma estrutura inata para a linguagem. Existe uma "gramática universal" biológica que nos permite aprender qualquer língua complexa em poucos anos.</p>
-                    </div>
-                </div>
+                <p>Wittgenstein propôs que o significado de uma palavra não está em sua definição estática, mas no seu <strong>uso</strong> dentro de um contexto social — o que ele chamou de "jogos de linguagem". Assim como um lance no xadrez só faz sentido dentro das regras do jogo, uma expressão linguística ganha sentido através das práticas da comunidade.</p>
+                
+                <p>Esta visão revolucionou a filosofia ao mostrar que muitos "problemas profundos" eram, na verdade, mal-entendidos linguísticos causados pelo uso de palavras fora dos seus contextos apropriados. Aprender a navegar por estes jogos é essencial para a clareza do pensamento e para a resolução de conflitos intelectuais.</p>
             </section>
 
             <section class="card reveal">
                 <header class="card-header">
-                    <span class="subtitulo">Galeria do Pensamento</span>
-                    <h2>Grandes Mentes da Linguagem</h2>
+                    <span class="subtitulo">Simbolismo</span>
+                    <h2>A Construção da Realidade</h2>
                 </header>
-
-                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Ludwig_Wittgenstein.jpg" alt="Wittgenstein" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">Ludwig Wittgenstein</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">O filósofo que "matou" a metafísica ao mostrar que muitos problemas filosóficos são apenas confusões linguísticas.</p>
-                    </div>
-
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Ferdinand_de_Saussure.jpg" alt="Ferdinand de Saussure" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">F. de Saussure</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">O pai da linguística estrutural. Definiu o signo como a união arbitrária entre um conceito e uma imagem acústica.</p>
-                    </div>
-
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Chomsky.jpg" alt="Noam Chomsky" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">Noam Chomsky</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">Linguista e ativista. Sua teoria sobre a estrutura profunda da linguagem mudou a psicologia e a ciência cognitiva.</p>
-                    </div>
-
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg" alt="Platão" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">Platão</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">No diálogo <em>Crátilo</em>, ele iniciou o debate sobre se os nomes das coisas são naturais ou puramente convencionais.</p>
-                    </div>
-                </div>
+                <p>Para a filosofia contemporânea, a linguagem não apenas reflete a realidade, ela a <strong>constrói</strong>. As categorias que usamos para descrever o mundo moldam o que somos capazes de ver e sentir. Através do discurso, criamos instituições, leis, valores e identidades que definem a experiência humana.</p>
+                
+                <p>Mapear a linguagem no PhiloMap é desconstruir estas estruturas simbólicas para entender como os conceitos que herdamos influenciam nossas decisões e nossa visão de futuro. É o exercício de tornar consciente a gramática invisível que governa nossa existência.</p>
             </section>
 
             <section class="card reveal">
                 <header class="card-header">
-                    <span class="subtitulo">A Fronteira Digital</span>
-                    <h2>Linguagem, Código e Inteligência Artificial</h2>
+                    <span class="subtitulo">Mestres da Linguagem</span>
+                    <h2>Grandes Pensadores</h2>
                 </header>
-
-                <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&w=1200&q=80" alt="Código e Dados" loading="lazy" width="1200" height="800">
-                </div>
-
-                <div class="texto-flex">
-                    <p>Na era digital, a linguagem tornou-se <strong>código</strong>. Os grandes modelos de linguagem (LLMs) como os que alimentam as IAs modernas mostram que a estrutura da linguagem pode ser traduzida em pura matemática e probabilidade. No entanto, o debate filosófico continua: uma máquina que manipula signos com perfeição realmente "entende" o que está dizendo? Onde termina o processamento de dados e começa o verdadeiro significado?</p>
-                    
-                    <p style="margin-top: 1rem;">O PhiloMap convida você a refletir: em um mundo de algoritmos, nossa capacidade de usar a linguagem com consciência e ética é o que ainda nos define como humanos.</p>
+                <div class="grid-pensadores" style="display: grid; gap: 4rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Ludwig_Wittgenstein.jpg" alt="Ludwig Wittgenstein" class="foto-filosofo">
+                        <h3>Ludwig Wittgenstein</h3>
+                        <p>Revolucionou a filosofia ao propor que os problemas filosóficos são, em grande parte, confusões linguísticas e "jogos de linguagem".</p>
+                    </div>
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Ferdinand_de_Saussure.jpg" alt="Ferdinand de Saussure" class="foto-filosofo">
+                        <h3>Ferdinand de Saussure</h3>
+                        <p>Pai da linguística moderna, definiu o signo como a relação entre significante (som) e significado (conceito).</p>
+                    </div>
                 </div>
             </section>
 
-            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
-                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            <footer class="app-footer">
+                <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
             </footer>
-
-
-        <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">
-            <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
-        </footer>
+        </main>
     </div>
 </body>
 </html>

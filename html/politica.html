@@ -6,17 +6,17 @@
     <title>PhiloMap | Política e Estado</title>
     
     <!-- CSS Modular v8.0 (Sincronizado) -->
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
     
-    <script src="../js/main.js" defer></script>
+    <script src="main.js" defer></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s;">Pular para o conteúdo principal</a>
     
-    <div id="loader" class="loader-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fcfaf5; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease;">
+    <div id="loader" class="loader-container">
         <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900;">PHILOMAP</div>
     </div>
 
@@ -35,7 +35,8 @@
                     <span class="nav-label" style="margin-bottom: 0;">Grandes Conceitos</span>
                     <span class="chevron" style="color: var(--gold); font-size: 1.2rem;">▼</span>
                 </div>
-                <ul class="nav-list collapsible-content" id="conceptsList" style="display: flex; flex-direction: column; gap: 1rem; padding: 0 1rem;">
+                <ul class="nav-list" id="conceptsList">
+                    <li class="nav-item"><a href="../index.html">Página Inicial</a></li>
                     <li class="nav-item"><a href="etica.html">Ética e Valores</a></li>
                     <li class="nav-item"><a href="logica.html">Lógica e Razão</a></li>
                     <li class="nav-item"><a href="moralismo.html">Moralismo Social</a></li>
@@ -68,13 +69,21 @@
                 <div class="accessibility-controls">
                     <span class="nav-label">Acessibilidade</span>
                     <div class="acc-btn-group">
-                        <button class="acc-btn" onclick="changeFontSize('small')">A-</button>
-                        <button class="acc-btn" onclick="changeFontSize('medium')">A</button>
-                        <button class="acc-btn" onclick="changeFontSize('large')">A+</button>
+                        <button class="acc-btn" onclick="changeFontSize('small')" title="Diminuir fonte">A-</button>
+                        <button class="acc-btn" onclick="changeFontSize('medium')" title="Fonte padrão">A</button>
+                        <button class="acc-btn" onclick="changeFontSize('large')" title="Aumentar fonte">A+</button>
                     </div>
                     <div class="acc-btn-group">
-                        <button class="acc-btn theme-master" onclick="toggleTheme()">Mudar Tema</button>
-                        <button class="acc-btn" onclick="toggleHighContrast()">Contraste</button>
+                        <button class="acc-btn theme-master" onclick="toggleTheme()" title="Alternar entre modo claro e escuro">Mudar Tema</button>
+                        <button class="acc-btn" onclick="toggleHighContrast()" title="Ativar modo de alto contraste">Contraste</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleZenMode()" title="Ocultar elementos de distração">Modo Zen</button>
+                        <button class="acc-btn" onclick="toggleDyslexiaFont()" title="Usar fonte amigável para dislexia">Dislexia</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleOriginalFonts()" title="Restaurar fontes originais do projeto">Fonte Original</button>
+                        <button class="acc-btn" onclick="toggleReadingRuler()" title="Ativar régua de leitura que segue o mouse">Régua</button>
                     </div>
                 </div>
             </div>
@@ -89,11 +98,61 @@
                     <h1>Política e Estado</h1>
                 </header>
                 
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80" class="float-animation" alt="Poder e Política">
+                </div>
+                
                 <p>A filosofia política é o estudo das questões fundamentais sobre o Estado, o governo, a política, a liberdade, a justiça, a propriedade, os direitos, o direito e a aplicação de um código de leis pelas autoridades.</p>
+
+                <p>Ela busca entender não apenas como o poder é exercido, mas como ele <em>deve</em> ser legitimado. Desde a República de Platão até as democracias modernas, a política é o campo onde a ética se torna coletiva, transformando valores individuais em leis e estruturas sociais.</p>
 
                 <blockquote class="citacao-destaque">
                     "O homem é, por natureza, um animal político." — Aristóteles
                 </blockquote>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Legitimidade</span>
+                    <h2>O Contrato Social</h2>
+                </header>
+                <p>O conceito de <strong>Contrato Social</strong> é o pilar da política moderna. Ele sugere que a autoridade do Estado nasce de um acordo (explícito ou implícito) entre indivíduos que decidem abrir mão de parte de sua liberdade natural em troca de segurança, ordem e proteção de direitos.</p>
+                
+                <p>Diferentes pensadores interpretaram este contrato de formas variadas: para Hobbes, era a única saída do caos; para Locke, um meio de proteger a propriedade e a liberdade; e para Rousseau, a expressão da "vontade geral". Estas interpretações fundamentam as tensões entre autoritarismo e democracia que ainda hoje definem o cenário global.</p>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Ética Coletiva</span>
+                    <h2>Justiça e Poder</h2>
+                </header>
+                <p>A relação entre justiça e poder é o grande dilema da governança. O poder sem justiça é tirania, enquanto a justiça sem poder é ineficaz. A filosofia política investiga como equilibrar estas forças, garantindo que o exercício da autoridade esteja sempre submetido ao escrutínio ético e ao bem comum.</p>
+                
+                <p>Mapear a política no PhiloMap significa entender como as ideias de igualdade, mérito e equidade evoluíram ao longo do tempo e como elas são aplicadas na arquitetura das leis e das instituições que regem a nossa vida cotidiana.</p>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Mestres da Política</span>
+                    <h2>Grandes Pensadores</h2>
+                </header>
+                <div class="grid-pensadores" style="display: grid; gap: 4rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=300&q=80" alt="Nicolau Maquiavel" class="foto-filosofo">
+                        <h3>Nicolau Maquiavel</h3>
+                        <p>Analista do poder real, autor de "O Príncipe", separou a moral privada da ética política.</p>
+                    </div>
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=300&q=80" alt="Thomas Hobbes" class="foto-filosofo">
+                        <h3>Thomas Hobbes</h3>
+                        <p>Defensor do contrato social e do Estado forte (Leviatã) para evitar a guerra de todos contra todos.</p>
+                    </div>
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1516339901600-2e1a62dc0c45?auto=format&fit=crop&w=300&q=80" alt="John Locke" class="foto-filosofo">
+                        <h3>John Locke</h3>
+                        <p>Pai do liberalismo, defendia que o governo deve proteger os direitos naturais: vida, liberdade e propriedade.</p>
+                    </div>
+                </div>
             </section>
 
             <footer class="app-footer">

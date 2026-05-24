@@ -6,12 +6,12 @@
     <title>PhiloMap | Ética e Valores</title>
     
     <!-- CSS Modular v8.0 (Sincronizado) -->
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
     
-    <script src="../js/main.js" defer></script>
+    <script src="main.js" defer></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s;">Pular para o conteúdo principal</a>
@@ -36,6 +36,7 @@
                     <span class="chevron" style="color: var(--gold); font-size: 1.2rem;">▼</span>
                 </div>
                 <ul class="nav-list" id="conceptsList">
+                    <li class="nav-item"><a href="../index.html">Página Inicial</a></li>
                     <li class="nav-item"><a href="etica.html" class="active">Ética e Valores</a></li>
                     <li class="nav-item"><a href="logica.html">Lógica e Razão</a></li>
                     <li class="nav-item"><a href="moralismo.html">Moralismo Social</a></li>
@@ -68,13 +69,21 @@
                 <div class="accessibility-controls">
                     <span class="nav-label">Acessibilidade</span>
                     <div class="acc-btn-group">
-                        <button class="acc-btn" onclick="changeFontSize('small')">A-</button>
-                        <button class="acc-btn" onclick="changeFontSize('medium')">A</button>
-                        <button class="acc-btn" onclick="changeFontSize('large')">A+</button>
+                        <button class="acc-btn" onclick="changeFontSize('small')" title="Diminuir fonte">A-</button>
+                        <button class="acc-btn" onclick="changeFontSize('medium')" title="Fonte padrão">A</button>
+                        <button class="acc-btn" onclick="changeFontSize('large')" title="Aumentar fonte">A+</button>
                     </div>
                     <div class="acc-btn-group">
-                        <button class="acc-btn theme-master" onclick="toggleTheme()">Mudar Tema</button>
-                        <button class="acc-btn" onclick="toggleHighContrast()">Contraste</button>
+                        <button class="acc-btn theme-master" onclick="toggleTheme()" title="Alternar entre modo claro e escuro">Mudar Tema</button>
+                        <button class="acc-btn" onclick="toggleHighContrast()" title="Ativar modo de alto contraste">Contraste</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleZenMode()" title="Ocultar elementos de distração">Modo Zen</button>
+                        <button class="acc-btn" onclick="toggleDyslexiaFont()" title="Usar fonte amigável para dislexia">Dislexia</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleOriginalFonts()" title="Restaurar fontes originais do projeto">Fonte Original</button>
+                        <button class="acc-btn" onclick="toggleReadingRuler()" title="Ativar régua de leitura que segue o mouse">Régua</button>
                     </div>
                 </div>
             </div>
@@ -90,7 +99,7 @@
                 </header>
                 
                 <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80" alt="Balança da Justiça">
+                    <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80" class="float-animation" alt="Balança da Justiça">
                 </div>
                 
                 <p>A ética é o ramo da filosofia que busca entender os princípios que orientam o <strong>comportamento humano</strong>. Diferente da moral, que se baseia em costumes e tradições específicas de um grupo, a ética é uma reflexão universal e crítica sobre o que é "bom", "justo" ou "correto". Ela questiona a fundamentação das nossas ações e os valores que sustentam nossas escolhas em sociedade.</p>
@@ -100,6 +109,26 @@
                 <blockquote class="citacao-destaque">
                     "A excelência não é um ato, mas um hábito." — Aristóteles
                 </blockquote>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Fundamentos</span>
+                    <h2>O Imperativo Categórico</h2>
+                </header>
+                <p>Immanuel Kant revolucionou a ética ao propor o <strong>Imperativo Categórico</strong>: "Aja apenas segundo aquela máxima pela qual possas querer ao mesmo tempo que se torne lei universal". Para Kant, a moralidade não depende das consequências da ação, mas da intenção e do respeito à lei da razão.</p>
+                
+                <p>Esta visão deontológica coloca a dignidade humana acima de qualquer cálculo de utilidade. Ela nos obriga a tratar a humanidade, tanto na nossa pessoa quanto na de qualquer outro, sempre como um fim em si mesma, e nunca apenas como um meio para atingir outros objetivos.</p>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Desafios</span>
+                    <h2>Ética nas Fronteiras da Ciência</h2>
+                </header>
+                <p>No século XXI, a ética enfrenta desafios sem precedentes. A bioética, a ética ambiental e a ética da Inteligência Artificial forçam a filosofia a repensar conceitos tradicionais de responsabilidade e agência. Quem é responsável pelas decisões de um algoritmo? Como equilibrar o progresso científico com a preservação do planeta?</p>
+                
+                <p>Mapear a ética hoje significa navegar por estas zonas cinzentas, utilizando o rigor da lógica e a sensibilidade da tradição humanista para construir marcos normativos que garantam um futuro justo e sustentável para as próximas gerações.</p>
             </section>
 
             <section class="card reveal">
@@ -120,6 +149,30 @@
                     <div class="feature-item">
                         <h3>Virtudes</h3>
                         <p>Foca no desenvolvimento do caráter individual e na busca pelo justo meio entre extremos viciosos (Aristóteles).</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card reveal">
+                <header class="card-header">
+                    <span class="subtitulo">Mestres da Ética</span>
+                    <h2>Grandes Pensadores</h2>
+                </header>
+                <div class="grid-pensadores" style="display: grid; gap: 4rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1543165365-072ca2622924?auto=format&fit=crop&w=300&q=80" alt="Aristóteles" class="foto-filosofo">
+                        <h3>Aristóteles</h3>
+                        <p>Desenvolveu a Ética das Virtudes, focando no equilíbrio e no caráter para atingir a felicidade.</p>
+                    </div>
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1516339901600-2e1a62dc0c45?auto=format&fit=crop&w=300&q=80" alt="Immanuel Kant" class="foto-filosofo">
+                        <h3>Immanuel Kant</h3>
+                        <p>Criador do Imperativo Categórico, defendia que devemos agir conforme leis universais.</p>
+                    </div>
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="John Stuart Mill" class="foto-filosofo">
+                        <h3>John Stuart Mill</h3>
+                        <p>Principal expoente do Utilitarismo, buscava a maior felicidade para o maior número de pessoas.</p>
                     </div>
                 </div>
             </section>

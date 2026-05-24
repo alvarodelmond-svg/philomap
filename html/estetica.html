@@ -3,90 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhiloMap | Estética</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/main.css">
-    <script src="../js/main.js" defer></script>
+    <title>PhiloMap | Estética e Arte</title>
+    
+    <!-- CSS Modular v8.0 (Sincronizado) -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    
+    <script src="main.js" defer></script>
 </head>
 <body>
-    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfcf9; z-index: 10002; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease;">
-        <div style="font-family: serif; font-size: 2rem; color: #c5a059; margin-bottom: 20px; letter-spacing: 5px;">PHILOMAP</div>
+    <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s;">Pular para o conteúdo principal</a>
+    
+    <div id="loader" class="loader-container">
+        <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900;">PHILOMAP</div>
     </div>
+
     <div class="app-container">
-<aside class="sidebar">
-    <a href="../index.html" class="sidebar-logo">
-        <img src="../img/logo-site.svg" alt="PhiloMap Logo" class="logo-header" width="280">
-    </a>
-    <nav class="nav-group">
-        <span class="nav-label">Explorar</span>
-        <div class="search-container">
-            <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
-            <span class="search-icon">⚲</span>
-        </div>
-        <div class="nav-collapsible-header" id="conceptsToggle">
-            <span class="nav-label">Conceitos</span>
-            <span class="chevron">▼</span>
-        </div>
-        <ul class="nav-list collapsible-content" id="conceptsList">
-            <li class="nav-item"><a href="../pages/etica.html">Ética</a></li>
-<li class="nav-item"><a href="../pages/logica.html">Lógica</a></li>
-<li class="nav-item"><a href="../pages/moralismo.html">Moralismo</a></li>
-<li class="nav-item"><a href="../pages/existencialismo.html">Existencialismo</a></li>
-<li class="nav-item"><a href="../pages/estetica.html">Estética</a></li>
-<li class="nav-item"><a href="../pages/metafisica.html">Metafísica</a></li>
-<li class="nav-item"><a href="../pages/epistemologia.html">Epistemologia</a></li>
-<li class="nav-item"><a href="../pages/politica.html">Política</a></li>
-<li class="nav-item"><a href="../pages/linguagem.html">Linguagem</a></li>
-<li class="nav-item"><a href="../pages/estoicismo.html">Estoicismo</a></li>
-<li class="nav-item"><a href="../pages/fenomenologia.html">Fenomenologia</a></li>
-<li class="nav-item"><a href="../pages/cinismo.html">Cinismo</a></li>
-
-        </ul>
-    </nav>
-    <nav class="nav-group">
-        <span class="nav-label">Estudos</span>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../pages/literatura.html">Literatura</a></li>
-        </ul>
-    </nav>
-    <nav class="nav-group">
-        <span class="nav-label">Institucional</span>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="../index.html">Início</a></li>
-            <li class="nav-item"><a href="../public/inscricao.html">Inscrição</a></li>
-            <li class="nav-item"><a href="../pages/login.html">Portal do Aluno</a></li>
-        </ul>
-    </nav>
-    <div class="sidebar-footer">
-        <button class="theme-toggle" onclick="toggleTheme()">Mudar Tema</button>
-    </div>
-</aside>
-
-<button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
-                <div id="readingTime" class="reading-time"></div>
+        <aside class="sidebar">
+            <a href="../index.html" class="sidebar-logo">
+                <img src="../img/logo-site.svg" alt="PhiloMap Logo" width="280">
+            </a>
+            <nav class="nav-group">
+                <span class="nav-label">Explorar</span>
+                <div class="search-container">
+                    <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
+                    <span class="search-icon">⚲</span>
+                </div>
+                <div class="nav-collapsible-header" id="conceptsToggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; margin-bottom: 2rem;">
+                    <span class="nav-label" style="margin-bottom: 0;">Grandes Conceitos</span>
+                    <span class="chevron" style="color: var(--gold); font-size: 1.2rem;">▼</span>
+                </div>
+                <ul class="nav-list" id="conceptsList">
+                    <li class="nav-item"><a href="../index.html">Página Inicial</a></li>
+                    <li class="nav-item"><a href="etica.html">Ética e Valores</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica e Razão</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo Social</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html" class="active">Estética e Arte</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica do Ser</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política e Estado</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="cinismo.html">Cinismo e Natureza</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-group">
+                <span class="nav-label">Estudos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="literatura.html">Literatura</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html">Início</a></li>
+                    <li class="nav-item"><a href="../public/inscricao.html">Inscrição</a></li>
+                    <li class="nav-item"><a href="login.html">Portal do Aluno</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                <div class="accessibility-controls">
+                    <span class="nav-label">Acessibilidade</span>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="changeFontSize('small')" title="Diminuir fonte">A-</button>
+                        <button class="acc-btn" onclick="changeFontSize('medium')" title="Fonte padrão">A</button>
+                        <button class="acc-btn" onclick="changeFontSize('large')" title="Aumentar fonte">A+</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn theme-master" onclick="toggleTheme()" title="Alternar entre modo claro e escuro">Mudar Tema</button>
+                        <button class="acc-btn" onclick="toggleHighContrast()" title="Ativar modo de alto contraste">Contraste</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleZenMode()" title="Ocultar elementos de distração">Modo Zen</button>
+                        <button class="acc-btn" onclick="toggleDyslexiaFont()" title="Usar fonte amigável para dislexia">Dislexia</button>
+                    </div>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleOriginalFonts()" title="Restaurar fontes originais do projeto">Fonte Original</button>
+                        <button class="acc-btn" onclick="toggleReadingRuler()" title="Ativar régua de leitura que segue o mouse">Régua</button>
+                    </div>
+                </div>
             </div>
+        </aside>
 
-            <div class="breadcrumbs"><a href="../index.html">Início</a> / <span>Estética</span></div>
-
-                        <div class="content-actions">
-                <button onclick="readContent()" class="action-btn" id="readBtn"><span>🔊</span> Ouvir Conteúdo</button>
-                <div id="readingTime" class="reading-time"></div>
-            </div>
+        <main class="main-content" id="main-content">
+            <div class="breadcrumbs" style="width: 100%; max-width: 850px; margin-bottom: 2rem;"><a href="../index.html" style="color: var(--gold); text-decoration: none; font-weight: 700;">Início</a> / <span>Estética</span></div>
             
             <section class="card reveal active">
                 <header class="card-header">
                     <span class="subtitulo">Filosofia da Arte</span>
-                    <h1>Estética: A Filosofia do Belo e da Percepção</h1>
+                    <h1>O Belo e a Percepção</h1>
                 </header>
                 
                 <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1200&q=80" alt="Estética e Arte Clássica" loading="lazy" width="1200" height="800">
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1200&q=80" class="float-animation" alt="Estética e Arte Clássica">
                 </div>
                 
-                <p>A <strong>Estética</strong> é o ramo da filosofia que se dedica a pensar sobre a natureza do belo, os critérios de apreciação artística e a experiência do sublime. Originada do grego <em>aisthésis</em> (percepção, sensação), ela investiga como percebemos o mundo através dos nossos sentidos e como atribuímos valor estético ao que nos cerca. Não se trata apenas de "beleza", mas de toda a gama de sensações que a arte e a natureza despertam em nós.</p>
+                <p>A <strong>Estética</strong> investiga a natureza da beleza, os fundamentos da arte e as sensações que as obras despertam em nós. Mais do que apenas o "bonito", ela explora como os sentidos e a razão se unem na apreciação do mundo.</p>
 
-                <p>Ao longo dos séculos, a estética evoluiu de uma busca por proporções matemáticas ideais para uma análise profunda da subjetividade humana e do papel social da arte na era da tecnologia.</p>
+                <p>Historicamente, a estética evoluiu de uma busca por regras matemáticas de proporção (na Grécia) para uma análise da experiência subjetiva do observador. Hoje, ela abrange não apenas as belas-artes, mas também o design, a cultura de massa e as manifestações cotidianas de estilo e sensibilidade.</p>
 
                 <blockquote class="citacao-destaque">
                     "O belo é o que agrada universalmente sem conceito." — Immanuel Kant
@@ -95,91 +113,52 @@
 
             <section class="card reveal">
                 <header class="card-header">
-                    <span class="subtitulo">Conceitos Fundamentais</span>
-                    <h2>A Evolução do Gosto e da Representação</h2>
+                    <span class="subtitulo">Evolução</span>
+                    <h2>A Crise da Representação</h2>
                 </header>
-
-                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">01. Mimese e Representação</h3>
-                        <p>Para os gregos, a arte era <em>mimese</em> (imitação). Platão a via com desconfiança, como uma cópia imperfeita do mundo das ideias. Já Aristóteles defendia que a imitação é natural ao homem e que a tragédia, por exemplo, promove a <em>catarse</em> — a purificação das emoções.</p>
-                    </div>
-
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">02. O Juízo de Gosto</h3>
-                        <p>David Hume e Immanuel Kant debateram se o gosto é puramente subjetivo. Enquanto Hume buscava um "padrão de gosto" em críticos experientes, Kant argumentava que o juízo estético é um prazer desinteressado que aspira à universalidade, unindo todos os seres racionais.</p>
-                    </div>
-
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">03. A Aura da Obra de Arte</h3>
-                        <p><strong>Walter Benjamin</strong> revolucionou a estética ao analisar como a fotografia e o cinema retiram a "aura" (a unicidade) da obra de arte. Na era da reprodutibilidade técnica, a arte deixa de ser um objeto de culto ritualístico e passa a ter uma função política e social.</p>
-                    </div>
-
-                    <div style="padding: 2rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg);">
-                        <h3 style="margin-bottom: 1rem; color: var(--gold);">04. Indústria Cultural</h3>
-                        <p><strong>Theodor Adorno</strong> criticou a transformação da arte em mercadoria de consumo rápido. Para ele, a verdadeira arte deve ser "autônoma" e desafiar o espectador, servindo como uma crítica à sociedade e não como mero entretenimento passivo.</p>
-                    </div>
-                </div>
+                <p>Com o advento da modernidade, a estética rompeu com a obrigação de imitar a realidade (mimese). A arte passou a questionar sua própria natureza e a explorar o <strong>sublime</strong> — aquilo que transcende a beleza harmoniosa e nos confronta com o infinito ou com o inquietante.</p>
+                
+                <p>A arte contemporânea expandiu ainda mais essas fronteiras, transformando o conceito em obra e o espectador em participante. O foco deslocou-se do objeto artístico para a experiência e para o discurso que a obra gera, tornando a estética um campo de batalha para questões políticas, sociais e existenciais.</p>
             </section>
 
             <section class="card reveal">
                 <header class="card-header">
-                    <span class="subtitulo">Galeria do Pensamento</span>
-                    <h2>Grandes Estetas da História</h2>
+                    <span class="subtitulo">Práxis</span>
+                    <h2>A Estética da Existência</h2>
                 </header>
-
-                <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg" alt="Platão" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">Platão</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">O primeiro grande crítico da arte. Via a estética subordinada à moral e à verdade, alertando sobre o poder sedutor e enganoso das imagens.</p>
-                    </div>
-
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Immanuel_Kant_3.jpg" alt="Immanuel Kant" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">Immanuel Kant</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">Sistematizou a estética moderna. Definiu o belo como o prazer da livre harmonia entre a imaginação e o entendimento.</p>
-                    </div>
-
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Walter_Benjamin_1928.jpg" alt="Walter Benjamin" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">Walter Benjamin</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">Ponte entre a filosofia e a modernidade tecnológica. Analisou como os novos meios de comunicação transformaram a nossa percepção da arte.</p>
-                    </div>
-
-                    <div style="text-align: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: 15px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/TheodorAdorno.jpg" alt="Theodor Adorno" class="foto-filosofo" loading="lazy" width="200" height="250">
-                        <h3 style="color: var(--gold);">Theodor Adorno</h3>
-                        <p style="font-size: 0.9rem; margin-top: 1rem;">Defensor da "Estética Negativa". Acreditava que a arte moderna deve ser difícil e dissonante para refletir as feridas de um mundo fragmentado.</p>
-                    </div>
-                </div>
+                <p>Para filósofos como Foucault e Nietzsche, a estética não deve se limitar aos museus; ela deve ser aplicada à própria vida. A "estética da existência" é a ideia de transformar a própria trajetória em uma obra de arte, cultivando um estilo pessoal, rigor intelectual e uma ética da liberdade.</p>
+                
+                <p>Nesta perspectiva, cada escolha, cada hábito e cada pensamento são pinceladas em uma tela viva. Viver esteticamente significa assumir a responsabilidade pela própria criação, buscando uma harmonia entre quem somos e como nos manifestamos no mundo.</p>
             </section>
 
             <section class="card reveal">
                 <header class="card-header">
-                    <span class="subtitulo">Contemporaneidade</span>
-                    <h2>A Estética no Mundo Digital</h2>
+                    <span class="subtitulo">Mestres da Estética</span>
+                    <h2>Grandes Pensadores</h2>
                 </header>
-
-                <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1547891261-50d813e489c9?auto=format&fit=crop&w=1200&q=80" alt="Arte Digital e Abstração" loading="lazy" width="1200" height="800">
-                </div>
-
-                <div class="texto-flex">
-                    <p>Hoje, a estética expande-se para além dos museus. Vivemos em uma <strong>sociedade do espetáculo</strong>, onde a imagem é onipresente. Dilemas sobre a autoria em obras criadas por <strong>Inteligência Artificial</strong>, a estética das interfaces (UX) e a arte nas redes sociais são os novos campos de batalha da filosofia. A questão não é mais apenas "o que é belo?", mas "quem controla a nossa percepção?".</p>
-                    
-                    <p style="margin-top: 1rem;">O PhiloMap convida você a apurar o olhar: a estética é a chave para não sermos apenas consumidores passivos de imagens, mas observadores críticos e sensíveis da realidade.</p>
+                <div class="grid-pensadores" style="display: grid; gap: 4rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1543165365-072ca2622924?auto=format&fit=crop&w=300&q=80" alt="Platão" class="foto-filosofo">
+                        <h3>Platão</h3>
+                        <p>Analisou a arte como mimese (imitação), questionando sua capacidade de revelar a verdade última das ideias.</p>
+                    </div>
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1516339901600-2e1a62dc0c45?auto=format&fit=crop&w=300&q=80" alt="Immanuel Kant" class="foto-filosofo">
+                        <h3>Immanuel Kant</h3>
+                        <p>Sistematizou o juízo de gosto, definindo a experiência estética como um prazer desinteressado e universal.</p>
+                    </div>
+                    <div class="pensador-item" style="text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1549233622-a2123f83d06e?auto=format&fit=crop&w=300&q=80" alt="Friedrich Nietzsche" class="foto-filosofo">
+                        <h3>Friedrich Nietzsche</h3>
+                        <p>Contrapôs as forças Apolínea (ordem) e Dionisíaca (caos) como as bases da criação e da experiência trágica.</p>
+                    </div>
                 </div>
             </section>
 
-            <footer style="text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.8rem;">
-                <p>&copy; 2026 PhiloMap — Todos os direitos reservados.</p>
+            <footer class="app-footer">
+                <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
             </footer>
-
-
-        <footer style="text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border);">
-            <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
-        </footer>
+        </main>
     </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
  * Fontes Luxuosas e Cores Premium.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
     --bg: #fcfaf5;
@@ -16,8 +16,14 @@
     --gold-glow: rgba(179, 142, 68, 0.35);
     
     --sidebar-width: 360px;
-    --max-content: 850px; /* Largura perfeita para leitura */
+    --max-content: 1400px; /* Largura expandida para ocupar mais a página */
     --radius-md: 24px;
+    
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Lora', serif;
+    --font-accent: 'Montserrat', sans-serif;
+    
+    --font-scale: 1;
     
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --transition: all 0.6s var(--ease-out-expo);
@@ -26,13 +32,59 @@
 body.dark-mode { --bg: #0a0a0a; --text-main: #f0ede5; --text-dim: #a09c94; --border: rgba(212, 175, 55, 0.2); }
 body.high-contrast { --bg: #000000; --text-main: #ffffff; --text-dim: #ffff00; --border: #ffffff; --gold: #ffff00; }
 
+/* MODOS DE ACESSIBILIDADE */
+body.dyslexia-font { 
+    --font-body: 'OpenDyslexic', sans-serif; 
+    --font-heading: 'OpenDyslexic', sans-serif;
+}
+
+body.original-fonts {
+    --font-heading: 'Libre Baskerville', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+body.zen-mode .sidebar,
+body.zen-mode .search-container,
+body.zen-mode .nav-group,
+body.zen-mode .app-footer,
+body.zen-mode .breadcrumbs { 
+    opacity: 0; 
+    pointer-events: none; 
+    transition: opacity 0.8s;
+}
+
+body.zen-mode .main-content {
+    margin-left: 0;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.reading-ruler {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: rgba(179, 142, 68, 0.15);
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    pointer-events: none;
+    z-index: 10000;
+    display: none;
+    mix-blend-mode: multiply;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { 
+    scroll-behavior: smooth; 
+    overflow-x: hidden; 
+    font-size: calc(16px * var(--font-scale));
+}
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     background-color: var(--bg);
     color: var(--text-main);
-    line-height: 1.9;
+    line-height: 1.8;
     min-height: 100vh;
 }
