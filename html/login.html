@@ -14,10 +14,10 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s;">Pular para o conteúdo principal</a>
+    <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s">Pular para o conteúdo principal</a>
     
     <div id="loader" class="loader-container">
-        <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900;">PHILOMAP</div>
+        <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900">PHILOMAP</div>
     </div>
 
     <div class="app-container">
@@ -31,9 +31,9 @@
                     <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
                     <span class="search-icon">⚲</span>
                 </div>
-                <div class="nav-collapsible-header" id="conceptsToggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; margin-bottom: 2rem;">
-                    <span class="nav-label" style="margin-bottom: 0;">Grandes Conceitos</span>
-                    <span class="chevron" style="color: var(--gold); font-size: 1.2rem;">▼</span>
+                <div class="nav-collapsible-header" id="conceptsToggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; margin-bottom: 2rem">
+                    <span class="nav-label" style="margin-bottom: 0">Grandes Conceitos</span>
+                    <span class="chevron" style="color: var(--gold); font-size: 1.2rem">▼</span>
                 </div>
                 <ul class="nav-list" id="conceptsList">
                     <li class="nav-item"><a href="etica.html">Ética e Valores</a></li>
@@ -64,7 +64,7 @@
                     <li class="nav-item"><a href="login.html" class="active">Portal do Aluno</a></li>
                 </ul>
             </nav>
-            <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+            <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border)">
                 <div class="accessibility-controls">
                     <span class="nav-label">Acessibilidade</span>
                     <div class="acc-btn-group">
@@ -89,8 +89,8 @@
         </aside>
 
         <main class="main-content" id="main-content">
-            <div style="max-width: 500px; margin: 0 auto; padding: 4rem 2rem;">
-                <section class="card reveal active" style="text-align: center;">
+            <div style="max-width: 500px; margin: 0 auto; padding: 4rem 2rem">
+                <section class="card reveal active" style="text-align: justify">
                     <header class="card-header">
                         <span class="subtitulo">Acesso Restrito</span>
                         <h1>Portal do Explorador</h1>
@@ -99,23 +99,23 @@
                     <p>Entre com suas credenciais para acessar seu mapa de progresso e resultados.</p>
 
                     <form id="login-form" class="modern-form">
-                        <div class="form-group" style="text-align: left;">
+                        <div class="form-group" style="text-align: justify">
                             <label for="login-email">E-mail</label>
-                            <input type="email" id="login-email" required placeholder="seu@email.com" style="width: 100%; padding: 0.8rem; margin-top: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); color: var(--text);">
+                            <input type="email" id="login-email" required placeholder="seu@email.com" style="width: 100%; padding: 0.8rem; margin-top: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); color: var(--text)">
                         </div>
-                        <div class="form-group" style="margin-top: 1.5rem; text-align: left;">
+                        <div class="form-group" style="margin-top: 1.5rem; text-align: justify">
                             <label for="login-password">Senha</label>
-                            <input type="password" id="login-password" required placeholder="••••••••" style="width: 100%; padding: 0.8rem; margin-top: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); color: var(--text);">
+                            <input type="password" id="login-password" required placeholder="••••••••" style="width: 100%; padding: 0.8rem; margin-top: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); color: var(--text)">
                         </div>
-                        <button type="submit" class="acc-btn" style="width: 100%; padding: 1rem; margin-top: 2rem; background: var(--gold); color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Acessar Portal</button>
+                        <button type="submit" class="acc-btn" style="width: 100%; padding: 1rem; margin-top: 2rem; background: var(--gold); color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer">Acessar Portal</button>
                     </form>
                     
-                    <p style="margin-top: 2rem; font-size: 0.9rem;">Ainda não faz parte? <a href="registration.html" style="color: var(--gold); font-weight: bold; text-decoration: none;">Realizar Inscrição</a></p>
+                    <p style="margin-top: 2rem; font-size: 0.9rem; text-align: justify">Ainda não faz parte? <a href="registration.html" style="color: var(--gold); font-weight: bold; text-decoration: none">Realizar Inscrição</a></p>
                 </section>
             </div>
 
-            <footer class="app-footer">
-                <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
+            <footer class="app-footer" style="text-align: justify; padding-bottom: 0 !important; margin-bottom: 0 !important">
+                <p style="margin-bottom: 0 !important">&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
             </footer>
         </main>
     </div>

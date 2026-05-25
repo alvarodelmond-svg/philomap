@@ -14,10 +14,10 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s;">Pular para o conteúdo principal</a>
+    <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s">Pular para o conteúdo principal</a>
     
     <div id="loader" class="loader-container">
-        <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900;">PHILOMAP</div>
+        <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900">PHILOMAP</div>
     </div>
 
     <div class="app-container">
@@ -31,9 +31,9 @@
                     <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
                     <span class="search-icon">⚲</span>
                 </div>
-                <div class="nav-collapsible-header" id="conceptsToggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; margin-bottom: 2rem;">
-                    <span class="nav-label" style="margin-bottom: 0;">Grandes Conceitos</span>
-                    <span class="chevron" style="color: var(--gold); font-size: 1.2rem;">▼</span>
+                <div class="nav-collapsible-header" id="conceptsToggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; margin-bottom: 2rem">
+                    <span class="nav-label" style="margin-bottom: 0">Grandes Conceitos</span>
+                    <span class="chevron" style="color: var(--gold); font-size: 1.2rem">▼</span>
                 </div>
                 <ul class="nav-list" id="conceptsList">
                     <li class="nav-item"><a href="../index.html">Página Inicial</a></li>
@@ -65,7 +65,7 @@
                     <li class="nav-item"><a href="login.html">Portal do Aluno</a></li>
                 </ul>
             </nav>
-            <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+            <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border)">
                 <div class="accessibility-controls">
                     <span class="nav-label">Acessibilidade</span>
                     <div class="acc-btn-group">
@@ -90,7 +90,7 @@
         </aside>
 
         <main class="main-content" id="main-content">
-            <div class="breadcrumbs" style="width: 100%; max-width: 850px; margin-bottom: 2rem;"><a href="../index.html" style="color: var(--gold); text-decoration: none; font-weight: 700;">Início</a> / <span>Literatura</span></div>
+            <div class="breadcrumbs" style="width: 100%; max-width: 850px; margin-bottom: 2rem"><a href="../index.html" style="color: var(--gold); text-decoration: none; font-weight: 700">Início</a> / <span>Literatura</span></div>
             
             <header class="card reveal active">
                 <span class="subtitulo">Biblioteca Digital</span>
@@ -98,48 +98,48 @@
                 <p>Navegue pela nossa curadoria de obras fundamentais. Filtre por período ou dificuldade e acompanhe seu progresso na busca pela sabedoria.</p>
             </header>
 
-            <div class="filter-bar reveal" style="margin-bottom: 3rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+            <div class="filter-bar reveal" style="margin-bottom: 3rem; display: flex; gap: 1rem; flex-wrap: wrap">
                 <button class="acc-btn" onclick="filterBooks('all')">Todos</button>
                 <button class="acc-btn" onclick="filterBooks('antiguidade')">Antiguidade</button>
                 <button class="acc-btn" onclick="filterBooks('moderna')">Moderna</button>
                 <button class="acc-btn" onclick="filterBooks('contemporanea')">Contemporânea</button>
             </div>
 
-            <div class="book-grid reveal" style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            <div class="book-grid reveal" style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))">
                 <article class="feature-item" data-era="antiguidade">
-                    <h3 style="color: var(--gold);">A República</h3>
+                    <h3 style="color: var(--gold); text-align: justify">A República</h3>
                     <p>Platão</p>
-                    <p style="font-size: 0.9rem;">A obra seminal que fundou a ciência política e a metafísica ocidental.</p>
+                    <p style="font-size: 0.9rem; text-align: justify">A obra seminal que fundou a ciência política e a metafísica ocidental.</p>
                 </article>
                 <article class="feature-item" data-era="antiguidade">
-                    <h3 style="color: var(--gold);">Cartas de um Estoico</h3>
+                    <h3 style="color: var(--gold); text-align: justify">Cartas de um Estoico</h3>
                     <p>Sêneca</p>
-                    <p style="font-size: 0.9rem;">Lições práticas sobre resiliência e como viver uma vida plena.</p>
+                    <p style="font-size: 0.9rem; text-align: justify">Lições práticas sobre resiliência e como viver uma vida plena.</p>
                 </article>
                 <article class="feature-item" data-era="moderna">
-                    <h3 style="color: var(--gold);">Crítica da Razão Pura</h3>
+                    <h3 style="color: var(--gold); text-align: justify">Crítica da Razão Pura</h3>
                     <p>Immanuel Kant</p>
-                    <p style="font-size: 0.9rem;">A investigação monumental sobre os limites do conhecimento humano.</p>
+                    <p style="font-size: 0.9rem; text-align: justify">A investigação monumental sobre os limites do conhecimento humano.</p>
                 </article>
                 <article class="feature-item" data-era="moderna">
-                    <h3 style="color: var(--gold);">Assim Falou Zaratustra</h3>
+                    <h3 style="color: var(--gold); text-align: justify">Assim Falou Zaratustra</h3>
                     <p>Friedrich Nietzsche</p>
-                    <p style="font-size: 0.9rem;">Um poema filosófico que anuncia a morte de Deus e o advento do Super-homem.</p>
+                    <p style="font-size: 0.9rem; text-align: justify">Um poema filosófico que anuncia a morte de Deus e o advento do Super-homem.</p>
                 </article>
                 <article class="feature-item" data-era="contemporanea">
-                    <h3 style="color: var(--gold);">O Ser e o Nada</h3>
+                    <h3 style="color: var(--gold); text-align: justify">O Ser e o Nada</h3>
                     <p>Jean-Paul Sartre</p>
-                    <p style="font-size: 0.9rem;">A bíblia do existencialismo francês sobre a liberdade e a consciência.</p>
+                    <p style="font-size: 0.9rem; text-align: justify">A bíblia do existencialismo francês sobre a liberdade e a consciência.</p>
                 </article>
                 <article class="feature-item" data-era="contemporanea">
-                    <h3 style="color: var(--gold);">Investigações Filosóficas</h3>
+                    <h3 style="color: var(--gold); text-align: justify">Investigações Filosóficas</h3>
                     <p>Ludwig Wittgenstein</p>
-                    <p style="font-size: 0.9rem;">Uma análise profunda sobre a linguagem e como ela molda nossa mente.</p>
+                    <p style="font-size: 0.9rem; text-align: justify">Uma análise profunda sobre a linguagem e como ela molda nossa mente.</p>
                 </article>
             </div>
 
-            <footer class="app-footer">
-                <p>&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
+            <footer class="app-footer" style="text-align: justify; padding-bottom: 0 !important; margin-bottom: 0 !important">
+                <p style="margin-bottom: 0 !important">&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
             </footer>
         </main>
     </div>

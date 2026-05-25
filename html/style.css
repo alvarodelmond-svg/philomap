@@ -9,7 +9,7 @@ h1 {
     font-size: 5.5rem; 
     color: var(--gold); 
     margin: 0 auto 5rem auto; 
-    text-align: center !important; 
+    text-align: justify !important; 
     letter-spacing: 2px; 
     line-height: 1.1; 
     font-weight: 900; 
@@ -20,7 +20,7 @@ h2 {
     font-family: var(--font-heading); 
     font-size: 3.5rem; 
     margin: 4rem auto 3rem auto; 
-    text-align: center !important; 
+    text-align: justify !important; 
     font-weight: 700; 
     color: var(--gold); 
     letter-spacing: 1px; 
@@ -34,7 +34,7 @@ h2 {
     text-transform: uppercase; 
     letter-spacing: 8px; 
     margin-bottom: 2rem; 
-    text-align: center !important; 
+    text-align: justify !important; 
     font-family: var(--font-accent); 
     width: 100%;
 }
@@ -55,12 +55,12 @@ p {
 
 /* Ajuste para itens de lista e textos dentro de grids */
 .feature-item p, .pensador-item p {
-    text-align: center !important;
+    text-align: justify !important;
     margin: 1.5rem auto;
 }
 
 .feature-item h3, .pensador-item h3 {
-    text-align: center !important;
+    text-align: justify !important;
     font-family: var(--font-heading);
     color: var(--gold);
     margin-bottom: 1rem;
@@ -231,7 +231,7 @@ p {
     padding: 8rem 10%; 
     color: var(--gold); 
     position: relative; 
-    text-align: center !important; 
+    text-align: justify !important; 
     margin: 6rem auto; 
     line-height: 1.4; 
     max-width: 1100px;
@@ -256,12 +256,43 @@ p {
 /* FOOTER E AJUSTE FINAL */
 .app-footer {
     width: 100%;
-    padding: 2rem 0;
-    text-align: center;
+    padding: 2rem 0 0 0 !important;
+    text-align: justify !important;
     border-top: 1px solid var(--border);
-    margin-top: 2rem;
+    margin: 0 !important;
+}
+
+.app-footer p {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.main-content {
+    padding-bottom: 0 !important;
 }
 
 .main-content section:last-of-type {
-    margin-bottom: 2rem;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Remove margem de qualquer elemento que seja o último de seu container */
+.main-content *, 
+.card *, 
+section * {
+    margin-bottom: unset; /* Reseta para o padrão antes de forçar o zero se for o último */
+}
+
+.main-content *:last-child, 
+.card *:last-child, 
+section *:last-child,
+.app-footer *:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Garante que o container principal não tenha sobras */
+.app-container {
+    align-items: stretch;
+    min-height: unset !important;
 }

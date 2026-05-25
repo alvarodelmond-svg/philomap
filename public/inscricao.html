@@ -55,35 +55,35 @@
 </head>
 <body>
     <div class="app-container">
-        <main class="main-content" style="margin-left: 0; padding: 40px;">
+        <main class="main-content" style="margin-left: 0; padding: 40px 40px 0 40px;">
             <div class="form-container reveal active">
-                <header style="text-align: center; margin-bottom: 30px;">
+                <header style="text-align: justify; margin-bottom: 30px;">
                     <span class="subtitulo">Faça parte da nossa jornada</span>
-                    <h1>Inscrição de Estudante</h1>
+                    <h1 style="text-align: justify;">Inscrição de Estudante</h1>
                 </header>
                 
                 <form id="formInscricao">
                     <div class="form-group">
-                        <label for="nome">Nome Completo</label>
+                        <label for="nome" style="text-align: justify;">Nome Completo</label>
                         <input type="text" id="nome" name="nome" required placeholder="Ex: Sócrates de Atenas">
                     </div>
                     
                     <div class="form-group">
-                        <label for="idade">Idade</label>
+                        <label for="idade" style="text-align: justify;">Idade</label>
                         <input type="number" id="idade" name="idade" required min="1" max="150" placeholder="Ex: 25">
                     </div>
                     
                     <div class="form-group">
-                        <label for="estudo">O que deseja estudar?</label>
+                        <label for="estudo" style="text-align: justify;">O que deseja estudar?</label>
                         <textarea id="estudo" name="estudo" rows="4" required placeholder="Ex: Ética e Metafísica"></textarea>
                     </div>
                     
                     <button type="submit" class="btn-submit">Enviar Inscrição</button>
                 </form>
                 
-                <div id="feedback" style="margin-top: 20px; text-align: center; font-weight: 600;"></div>
+                <div id="feedback" style="margin-top: 20px; text-align: justify; font-weight: 600;"></div>
                 
-                <div style="margin-top: 30px; text-align: center;">
+                <div style="margin-top: 30px; text-align: justify; padding-bottom: 0; margin-bottom: 0 !important;">
                     <a href="../index.html" style="color: var(--gold); text-decoration: none; font-size: 0.9rem;">← Voltar para o início</a>
                 </div>
             </div>
