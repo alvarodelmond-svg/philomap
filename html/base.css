@@ -77,8 +77,9 @@ body.zen-mode .main-content {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { 
     scroll-behavior: smooth; 
-    overflow-x: hidden; 
+    overflow: hidden; 
     font-size: calc(16px * var(--font-scale));
+    height: 100vh;
 }
 
 body {
@@ -86,4 +87,8 @@ body {
     background-color: var(--bg);
     color: var(--text-main);
     line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
 }

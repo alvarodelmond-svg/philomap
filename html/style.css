@@ -44,7 +44,7 @@ p {
     font-size: 1.35rem; 
     color: var(--text-dim); 
     width: 100%; 
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto 2.5rem auto; 
     text-align: justify !important; 
     text-justify: inter-word;
@@ -64,6 +64,18 @@ p {
     font-family: var(--font-heading);
     color: var(--gold);
     margin-bottom: 1rem;
+}
+
+/* BOTÃO DOURADO */
+.btn-submit {
+    background: linear-gradient(135deg, var(--gold), var(--gold-bright)) !important;
+    color: white !important;
+    box-shadow: 0 20px 50px var(--gold-glow) !important;
+    border: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
 }
 
 /* ABAS DE CONCEITOS - MAIÚSCULAS E COM GRADIENTE ANIMADO */
@@ -148,10 +160,11 @@ p {
     50% { transform: translateY(-10px) rotate(1deg); }
 }
 
-.nav-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; padding: 0 1rem; }
+.nav-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; padding: 0 1rem; align-items: center; }
+.nav-item { width: 100%; }
 .nav-item a { 
     display: block; 
-    text-align: left; 
+    text-align: center; 
     padding: 1.5rem 2rem; 
     color: var(--text-dim);
     text-decoration: none; 
@@ -291,8 +304,26 @@ section *:last-child,
     padding-bottom: 0 !important;
 }
 
-/* Garante que o container principal não tenha sobras */
+/* Garante que o container principal não tenha sobras e respeite o viewport */
 .app-container {
-    align-items: stretch;
-    min-height: unset !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+    display: flex;
 }
+
+.main-content {
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-bottom: 4rem !important; /* Espaço para o rodapé respirar sem criar fundo vazio */
+}
+
+/* O rodapé agora vive no final do scroll do main-content */
+.app-footer {
+    width: 100%;
+    margin-top: auto !important;
+    padding: 4rem 0 !important;
+    border-top: 1px solid var(--border);
+}
+
+
