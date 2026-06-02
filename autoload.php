@@ -1,51 +1,45 @@
 <?php
-// autoload.php
+
+/**
+ * Autoload.php - Registro do spl_autoload_register para carregamento automático de classes.
+ */
 spl_autoload_register(function ($className) {
-    // Remove o namespace global 'App\'
-    $className = str_replace('App\\', '', $className);
-    $className = str_replace('\\', '/', $className);
-
-    // Mapeamento de namespaces para pastas físicas (para resolver inconsistências)
-    $map = [
-        'Models' => 'model',
-        'Services' => 'services',
-        'Middleware' => 'middleware',
-        'Router' => 'router'
-    ];
-
-    $parts = explode('/', $className);
-    if (isset($map[$parts[0]])) {
-        $parts[0] = $map[$parts[0]];
-    }
-    $pathName = implode('/', $parts);
-
-    // Lista de diretórios base para busca
+    // Prefix do namespace do projeto
+    $prefix = 'App\\';
     $baseDir = __DIR__ . '/app/';
-    
-    // 1. Tenta encontrar diretamente na pasta app/
-    $file = $baseDir . $pathName . '.php';
-    if (file_exists($file)) {
-        require_once $file;
+
+    // Verifica se a classe usa o prefixo do namespace
+    $len = strlen($prefix);
+    if (strncmp($prefix, $className, $len) !== 0) {
         return;
     }
 
-    // 2. Fallback para busca em subpastas específicas (legado)
-    $directories = [
-        'controller/',
-        'model/',
-        'middleware/',
-        'services/',
-        'router/',
-        'Database/',
-        'Repositories/',
-        'Exceptions/'
+    // Obtém o nome relativo da classe
+    $relativeClass = substr($className, $len);
+
+    // Mapeamento de Namespaces para Pastas (Garantindo compatibilidade com nomes minúsculos/maiúsculos)
+    $map = [
+        'Controller' => 'controller',
+        'Models'     => 'model',
+        'Services'   => 'services',
+        'Middleware' => 'middleware',
+        'Router'     => 'router'
     ];
 
-    foreach ($directories as $dir) {
-        $file = $baseDir . $dir . $className . '.php';
-        if (file_exists($file)) {
-            require_once $file;
-            return;
+    $parts = explode('\\', $relativeClass);
+    if (isset($map[$parts[0]])) {
+        $parts[0] = $map[$parts[0]];
+    }
+
+    $file = $baseDir . implode('/', $parts) . '.php';
+
+    if (file_exists($file)) {
+        require_once $file;
+    } else {
+        // Fallback genérico para outras subpastas em app/
+        $fileGeneric = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
+        if (file_exists($fileGeneric)) {
+            require_once $fileGeneric;
         }
     }
 });
