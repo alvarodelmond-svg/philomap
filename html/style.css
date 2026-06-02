@@ -356,4 +356,157 @@ input[type="submit"] {
     justify-content: flex-start !important;
 }
 
+/* ==========================================================================
+   REFINAMENTO TIPOGRÁFICO (CONTEÚDO CENTRAL)
+   Estética editorial de livro de filosofia.
+   ========================================================================== */
 
+/* Tipografia Editorial para Títulos */
+.main-content h1, 
+.main-content h2, 
+.main-content h3 {
+    font-family: 'Garamond', 'Georgia', 'Times New Roman', serif !important;
+}
+
+/* Formatação de Parágrafos para Leitura Prolongada */
+.main-content p {
+    font-family: 'Garamond', 'Georgia', serif !important;
+    line-height: 1.7 !important; /* Valor confortável entre 1.6 e 1.8 */
+    margin-bottom: 1.5rem !important; /* Margem sutil entre parágrafos */
+}
+
+/* Blocos de Citação e Máximas Filosóficas */
+.main-content blockquote, 
+.main-content .citacao-destaque {
+    padding-left: 3rem !important;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.main-content .citacao-destaque {
+    padding: 6rem 10% 6rem 3rem !important;
+}
+
+/* ==========================================================================
+   NOVOS COMPONENTES ACADÊMICOS (UX/UI)
+   ========================================================================== */
+
+/* Indicador Sutil de Leitura */
+.reading-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.reading-time::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+}
+
+/* Card de Citação em Destaque (Quote of the Day) */
+.quote-card {
+    width: 100%;
+    max-width: 900px;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--gold);
+    background: var(--surface-sunken);
+    padding: 3.5rem;
+    margin: 5rem 0;
+    border-radius: 0 25px 25px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-card::after {
+    content: '“';
+    position: absolute;
+    top: -20px;
+    right: 30px;
+    font-size: 10rem;
+    color: var(--gold);
+    opacity: 0.08;
+    font-family: 'Georgia', serif;
+}
+
+.quote-card .quote-text {
+    font-family: 'Garamond', 'Georgia', serif;
+    font-size: 1.85rem;
+    font-style: italic;
+    color: var(--text-main);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.quote-card .quote-author {
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quote-card .quote-author::before {
+    content: '';
+    width: 15px;
+    height: 2px;
+    background: var(--gold);
+}
+
+/* Seção de Referências Acadêmicas */
+.academic-references {
+    margin-top: 8rem;
+    padding: 5rem 0;
+    border-top: 1px solid var(--border);
+    width: 100%;
+    max-width: var(--max-content);
+}
+
+.academic-references h3 {
+    font-family: var(--font-heading) !important;
+    font-size: 2rem !important;
+    color: var(--gold) !important;
+    margin-bottom: 3.5rem !important;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.reference-list {
+    list-style: none;
+    padding: 0;
+}
+
+.reference-item {
+    font-family: 'Garamond', 'Georgia', serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.8rem;
+    padding-left: 2.5rem;
+    text-indent: -2.5rem; /* Recuo francês clássico para bibliografia */
+    color: var(--text-dim);
+    transition: color 0.3s ease;
+}
+
+.reference-item:hover {
+    color: var(--text-main);
+}
+
+.reference-item strong {
+    color: var(--gold);
+    font-weight: 600;
+}
