@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Início</title>
     
-    <!-- CSS Modular v8.0 (Organizado) -->
-    <link rel="stylesheet" href="html/base.css">
-    <link rel="stylesheet" href="html/layout.css">
-    <link rel="stylesheet" href="html/style.css">
-    <link rel="stylesheet" href="html/animations.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
     
-    <script src="html/main.js" defer></script>
+    <script src="main.js" defer></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s">Pular para o conteúdo principal</a>
@@ -22,9 +21,13 @@
 
     <div class="app-container">
         <aside class="sidebar">
-            <a href="index.html" class="sidebar-logo">
-                <img src="img/logo-site.svg" alt="PhiloMap Logo" width="280" class="float-animation">
-            </a>
+       <a href="index.html" class="sidebar-logo" style="display: flex; align-items: center; justify-content: center; width: 280px; height: auto;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 80" class="float-animation" style="width: 100%; height: auto;">
+        <text x="50%" y="55" font-family="'Cinzel', 'Libre Baskerville', 'Times New Roman', serif" font-size="42" font-weight="900" fill="#b38e44" text-anchor="middle" letter-spacing="6">PHILOMAP</text>
+        <line x1="40" y1="68" x2="410" y2="68" stroke="#b38e44" stroke-width="2" opacity="0.6"/>
+        <circle cx="225" cy="68" r="4" fill="#b38e44"/>
+    </svg>
+</a>
             <nav class="nav-group">
                 <span class="nav-label">Explorar</span>
                 <div class="search-container">
@@ -37,32 +40,32 @@
                 </div>
                 <ul class="nav-list" id="conceptsList">
                     <li class="nav-item"><a href="index.html">Página Inicial</a></li>
-                    <li class="nav-item"><a href="html/etica.html">Ética e Valores</a></li>
-                    <li class="nav-item"><a href="html/logica.html">Lógica e Razão</a></li>
-                    <li class="nav-item"><a href="html/moralismo.html">Moralismo Social</a></li>
-                    <li class="nav-item"><a href="html/existencialismo.html">Existencialismo</a></li>
-                    <li class="nav-item"><a href="html/estetica.html">Estética e Arte</a></li>
-                    <li class="nav-item"><a href="html/metafisica.html">Metafísica do Ser</a></li>
-                    <li class="nav-item"><a href="html/epistemologia.html">Epistemologia</a></li>
-                    <li class="nav-item"><a href="html/politica.html">Política e Estado</a></li>
-                    <li class="nav-item"><a href="html/linguagem.html">Linguagem</a></li>
-                    <li class="nav-item"><a href="html/estoicismo.html">Estoicismo</a></li>
-                    <li class="nav-item"><a href="html/fenomenologia.html">Fenomenologia</a></li>
-                    <li class="nav-item"><a href="html/cinismo.html">Cinismo e Natureza</a></li>
+                    <li class="nav-item"><a href="etica.html">Ética e Valores</a></li>
+                    <li class="nav-item"><a href="logica.html">Lógica e Razão</a></li>
+                    <li class="nav-item"><a href="moralismo.html">Moralismo Social</a></li>
+                    <li class="nav-item"><a href="existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="estetica.html">Estética e Arte</a></li>
+                    <li class="nav-item"><a href="metafisica.html">Metafísica do Ser</a></li>
+                    <li class="nav-item"><a href="epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="politica.html">Política e Estado</a></li>
+                    <li class="nav-item"><a href="linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="cinismo.html">Cinismo e Natureza</a></li>
                 </ul>
             </nav>
             <nav class="nav-group">
                 <span class="nav-label">Estudos</span>
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="html/literatura.html">Literatura</a></li>
+                    <li class="nav-item"><a href="literatura.html">Literatura</a></li>
                 </ul>
             </nav>
             <nav class="nav-group">
                 <span class="nav-label">Institucional</span>
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="active">Início</a></li>
-                    <li class="nav-item"><a href="html/registration.html">Inscrição</a></li>
-                    <li class="nav-item"><a href="html/login.html">Portal do Aluno</a></li>
+                    <li class="nav-item"><a href="registration.html">Inscrição</a></li>
+                    <li class="nav-item"><a href="login.html">Portal do Aluno</a></li>
                 </ul>
             </nav>
             <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border)">
@@ -105,7 +108,7 @@
                         <h3 style="font-size: 2.2rem; margin-bottom: 2.5rem; text-align: justify; font-family: 'Libre Baskerville', serif">Uma Nova Perspectiva Educacional e Filosófica</h3>
                         <p>O PhiloMap rompe com a linearidade engessada dos currículos acadêmicos tradicionais. Propomos uma navegação rizomática, inspirada na complexidade das redes neurais e sociais, onde cada ideia não é um ponto isolado, mas uma conexão viva dentro de uma vasta rede de saberes interdisciplinares. Através de nossa interface imersiva, o usuário pode traçar a genealogia de um pensamento, identificando como as sementes lançadas pelos filósofos clássicos floresceram em correntes contemporâneas e continuam a ressoar nas discussões éticas sobre tecnologia, sociedade e o futuro da humanidade.</p>
                         
-                        <p>Nosso sistema de curadoria não apenas apresenta o conteúdo, mas o contextualiza historicamente, oferecendo uma visão panorâmica que permite ao estudante compreender o impacto real de cada conceito. Acreditamos que a verdadeira compreensão nasce da percepção de como as ideias reagem umas às outras, em um diálogo incessante que atravessa milênios e molda a arquitetura invisível do nosso mundo cotidiano.</p>
+                        <p>Nosso sistema de curadoria não apenas apresenta o conteúdo, mas o contextualiza historicamente, oferecendo uma visão panorâmica que permite ao estudante compreender o impacto real de cada conceito. Acreditamos que a verdadeira compreensão nasce da percepção de como as ideias reagem umas às outras, in um diálogo incessante que atravessa milênios e molda a arquitetura invisível do nosso mundo cotidiano.</p>
 
                         <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 4rem">
                             <li style="border-left: 4px solid var(--gold); padding-left: 1.5rem; text-align: justify" class="reveal">
@@ -179,7 +182,7 @@
                     <span class="subtitulo">Perspectiva</span>
                     <h2>Por que Mapear a Filosofia?</h2>
                 </header>
-                <p>Vivemos em uma era de fragmentação da informação. O excesso de dados muitas vezes nos impede de enxergar a <strong>totalidade</strong>. Mapear a filosofia é, portanto, um ato de resistência contra a superficialidade. Ao visualizar as conexões entre diferentes correntes de pensamento, recuperamos a capacidade de síntese e a visão sistêmica necessária para enfrentar os desafios globais contemporâneas.</p>
+                <p>Vivemos em uma era de fragmentação da informação. O excesso de dados muitas vezes nos impede de enxergar a <strong>totalidade</strong>. Mapear a filosofia é, portanto, um ato de resistência contra a superficialidade. Ao visualizar as conexões entre diferentes correntes de pensamento, recuperamos a capacidade de síntese e a visão sistêmica necessária para enfrentar os desafios globais contemporâneos.</p>
                 
                 <p>O mapa não é o território, mas é o guia indispensável para quem deseja navegar pelas águas profundas do intelecto humano sem se perder no mar do relativismo. Com o PhiloMap, você constrói sua própria bússola intelectual, fundamentada nos pilares mais sólidos da sabedoria universal.</p>
             </section>
@@ -215,7 +218,7 @@
                 </header>
                 <p>Acreditamos que a inteligência é um potencial latente que aguarda a ferramenta certa para ser despertado em sua plenitude. No PhiloMap, buscamos forjar mentes capazes de questionar as estruturas de poder, analisar criticamente a informação e arquitetar o futuro com base no rigor acadêmico e na sensibilidade estética.</p>
                 
-                <p>Nossa missão estende-se para além da mera transferência de informações. Buscamos promover a <em>phronesis</em> (sabedoria prática), capacitando os indivíduos a tomarem decisões éticas fundamentadas em um mundo cada vez mais complexo e polarizado. A filosofia, em nossa visão, é a arquitetura invisível que sustenta todas as decisões humanas, e compreendê-la é o primeiro passo para a verdadeira autonomia intelectual.</p>
+                <p>Nossa missão estende-se para além da mera transferência de informações. Busquamos promover a <em>phronesis</em> (sabedoria prática), capacitando os indivíduos a tomarem decisões éticas fundamentadas em um mundo cada vez mais complexo e polarizado. A filosofia, em nossa visão, é a arquitetura invisível que sustenta todas as decisões humanas, e compreendê-la é o primeiro passo para a verdadeira autonomia intelectual.</p>
 
                 <blockquote class="citacao-destaque">
                     ΓΝΩΘΙ ΣΑΥΤΟΝ — Conhece-te a ti mesmo e conhecerás o universo e os deuses.
@@ -240,7 +243,7 @@
                             <li style="margin-bottom: 1rem; text-align: justify"><strong style="color: var(--gold)">• Seminários em Áudio e Vídeo:</strong> Palestras com especialistas contemporâneos que discutem as interpretações mais recentes das grandes obras.</li>
                         </ul>
                         <div style="margin-top: 3rem; text-align: justify">
-                            <a href="html/literatura.html" class="acc-btn" style="display: inline-block; padding: 1.2rem 3rem; text-decoration: none; border-radius: 50px; background: var(--gold); color: white; border: none; font-weight: 800">Acessar Biblioteca Completa</a>
+                            <a href="literatura.html" class="acc-btn" style="display: inline-block; padding: 1.2rem 3rem; text-decoration: none; border-radius: 50px; background: var(--gold); color: white; border: none; font-weight: 800">Acessar Biblioteca Completa</a>
                         </div>
                     </div>
 
@@ -257,7 +260,7 @@
                             <li style="border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1rem; text-align: justify"></li>
                             <li style="margin-bottom: 1rem; text-align: justify"><strong style="color: var(--gold)">• Personalização Tipográfica Total:</strong> Controle granular sobre o tamanho das fontes e espaçamento entre linhas, permitindo que cada usuário encontre seu equilíbrio ideal para o estudo profundo.</li>
                         </ul>
-                        <p style="margin-top: 2rem; font-style: italic; font-size: 1rem; text-align: justify">Personalize sua experiênca utilizando o painel de controles localizado na base da nossa barra lateral.</p>
+                        <p style="margin-top: 2rem; font-style: italic; font-size: 1rem; text-align: justify">Personalize sua experiência utilizando o painel de controles localizado na base da nossa barra lateral.</p>
                     </div>
                 </div>
             </section>
@@ -272,7 +275,7 @@
                 <p>Nossos membros contam com suporte dedicado, acesso a fóruns de discussão moderados por acadêmicos e a oportunidade de contribuir para o crescimento do PhiloMap, sugerindo novas áreas de mapeamento e temas para futuros estudos aprofundados. A sua jornada rumo à autonomia do pensamento começa com um simples passo: a vontade de questionar.</p>
 
                 <div class="cta-container reveal" style="margin-top: 2rem; text-align: center">
-                    <a href="html/registration.html" class="btn-submit" style="font-size: 1.5rem; padding: 2rem 5rem; border-radius: 60px; text-decoration: none;">Efetuar Inscrição no PhiloMap</a>
+                    <a href="registration.html" class="btn-submit" style="font-size: 1.5rem; padding: 2rem 5rem; border-radius: 60px; text-decoration: none;">Efetuar Inscrição no PhiloMap</a>
                 </div>
             </section>
 
