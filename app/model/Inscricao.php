@@ -1,19 +1,31 @@
 <?php
 
-namespace App\Models;
+namespace App\Model;
 
 class Inscricao {
-    public ?int $id;
-    public string $nome;
-    public int $idade;
-    public string $estudo;
-    public ?string $data_inscricao;
+    private ?int $id = null;
+    private string $nome;
+    private string $email;
+    private string $curso;
 
-    public function __construct(string $nome, int $idade, string $estudo, ?int $id = null, ?string $data_inscricao = null) {
+    public function __construct(string $nome = '', string $email = '', string $curso = '', ?int $id = null) {
         $this->id = $id;
         $this->nome = $nome;
-        $this->idade = $idade;
-        $this->estudo = $estudo;
-        $this->data_inscricao = $data_inscricao;
+        $this->email = $email;
+        $this->curso = $curso;
+    }
+
+    // Métodos mágicos para ler propriedades de forma enxuta
+    public function __get($propriedade) {
+        if (property_exists($this, $propriedade)) {
+            return $this->$propriedade;
+        }
+        return null;
+    }
+
+    public function __set($propriedade, $valor) {
+        if (property_exists($this, $propriedade)) {
+            $this->$propriedade = $valor;
+        }
     }
 }

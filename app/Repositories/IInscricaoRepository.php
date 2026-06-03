@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Inscricao;
+use App\Model\Inscricao;
 
 interface IInscricaoRepository {
     public function save(Inscricao $inscricao): bool;

@@ -1,45 +1,18 @@
 <?php
 
-/**
- * Autoload.php - Registro do spl_autoload_register para carregamento automático de classes.
- */
-spl_autoload_register(function ($className) {
-    // Prefix do namespace do projeto
-    $prefix = 'App\\';
-    $baseDir = __DIR__ . '/app/';
+spl_autoload_register(function ($class) {
+    // Transforma o Namespace (ex: App\Controller\InscricaoController) no padrão de pastas do Windows/Linux
+    // Substitui as barras invertidas (\) por barras normais (/)
+    $class = str_replace('\\', '/', $class);
+    
+    // Converte a primeira letra "App" para minúsculo "app", para bater certinho com o nome da sua pasta
+    $class = lcfirst($class);
 
-    // Verifica se a classe usa o prefixo do namespace
-    $len = strlen($prefix);
-    if (strncmp($prefix, $className, $len) !== 0) {
-        return;
-    }
+    // Monta o caminho completo até o arquivo
+    $file = __DIR__ . '/' . $class . '.php';
 
-    // Obtém o nome relativo da classe
-    $relativeClass = substr($className, $len);
-
-    // Mapeamento de Namespaces para Pastas (Garantindo compatibilidade com nomes minúsculos/maiúsculos)
-    $map = [
-        'Controller' => 'controller',
-        'Models'     => 'model',
-        'Services'   => 'services',
-        'Middleware' => 'middleware',
-        'Router'     => 'router'
-    ];
-
-    $parts = explode('\\', $relativeClass);
-    if (isset($map[$parts[0]])) {
-        $parts[0] = $map[$parts[0]];
-    }
-
-    $file = $baseDir . implode('/', $parts) . '.php';
-
+    // Se o arquivo físico existir na pasta, o PHP inclui ele automaticamente
     if (file_exists($file)) {
         require_once $file;
-    } else {
-        // Fallback genérico para outras subpastas em app/
-        $fileGeneric = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
-        if (file_exists($fileGeneric)) {
-            require_once $fileGeneric;
-        }
     }
 });

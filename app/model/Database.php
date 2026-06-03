@@ -1,56 +1,54 @@
 <?php
 
-namespace App\Database;
+namespace App\Model;
 
 use PDO;
 use PDOException;
+use Exception;
 
-/**
- * Classe Database - Gerencia a conexão com o banco de dados SQLite (Singleton).
- */
 class Database {
-    private static $instance = null;
-    private $conn;
+    private static ?PDO $instance = null;
 
-    private function __construct() {
-        try {
-            $config = parse_ini_file(__DIR__ . '/../../config.ini', true);
-            $dbPath = __DIR__ . '/../../' . $config['database']['path'];
-            
-            // Garante que o diretório existe
-            $dir = dirname($dbPath);
-            if (!is_dir($dir)) {
-                mkdir($dir, 0777, true);
+    private function __construct() {}
+    private function __clone() {}
+
+    /**
+     * Retorna a instância única do PDO conectada ao banco SQLite.
+     */
+    public static function getConnection(): PDO {
+        if (self::$instance === null) {
+            $configPath = __DIR__ . '/../../config.ini';
+
+            if (!file_exists($configPath)) {
+                throw new Exception("Arquivo de configuração config.ini não foi encontrado.");
             }
 
-            $dsn = "sqlite:" . $dbPath;
-            
-            $this->conn = new \PDO($dsn);
-            $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            $this->conn->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
-            
-            // Inicializa a tabela se não existir (Opcional, mas bom para garantir que o projeto rode)
-            $this->conn->exec("CREATE TABLE IF NOT EXISTS inscricoes (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nome TEXT NOT NULL,
-                idade INTEGER NOT NULL,
-                estudo TEXT NOT NULL,
-                data_inscricao DATETIME DEFAULT CURRENT_TIMESTAMP
-            )");
-            
-        } catch (\PDOException $e) {
-            throw new \PDOException("Erro ao conectar ao SQLite: " . $e->getMessage());
-        }
-    }
+            $config = parse_ini_file($configPath, true);
 
-    public static function getInstance() {
-        if (self::$instance == null) {
-            self::$instance = new Database();
+            if (!isset($config['database'])) {
+                throw new Exception("Seção [database] ausente no config.ini.");
+            }
+
+            $dbConfig = $config['database'];
+
+            try {
+                // Resolve o caminho físico do banco SQLite a partir do diretório atual
+                $relativeDbPath = __DIR__ . '/../../' . $dbConfig['path'];
+                $dsn = sprintf("%s:%s", $dbConfig['driver'], $relativeDbPath);
+
+                self::$instance = new PDO($dsn, null, null, [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                ]);
+
+                // Ativa restrições de chaves estrangeiras no SQLite
+                self::$instance->exec("PRAGMA foreign_keys = ON;");
+
+            } catch (PDOException $e) {
+                throw new Exception("Erro de conexão com o banco SQLite: " . $e->getMessage());
+            }
         }
+
         return self::$instance;
-    }
-
-    public function getConnection() {
-        return $this->conn;
     }
 }
