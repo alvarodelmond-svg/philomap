@@ -74,13 +74,12 @@ files.forEach(filePath => {
                 style = style.replace(/margin-bottom\s*:\s*[^;]+/gi, '').trim();
                 
                 if (style && !style.endsWith(';')) style += ';';
-                style += ' padding-bottom: 0 !important; margin-bottom: 0 !important;';
+                style += ' padding-bottom: 0; margin-bottom: 0;';
                 
-                // If there's shorthand padding, we just let the !important override it
                 return `style="${style}"`;
             }) + end;
         } else {
-            return `${start} style="text-align: justify; padding-bottom: 0 !important; margin-bottom: 0 !important;"${end}`;
+            return `${start} style="text-align: justify; padding-bottom: 0; margin-bottom: 0;"${end}`;
         }
     });
 
