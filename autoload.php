@@ -1,12 +1,13 @@
 <?php
 
 spl_autoload_register(function ($class) {
-    // Transforma o Namespace (ex: App\Controller\InscricaoController) no padrão de pastas do Windows/Linux
-    // Substitui as barras invertidas (\) por barras normais (/)
+    // Transforma o Namespace (ex: App\Controller\InscricaoController) no padrão de pastas
     $class = str_replace('\\', '/', $class);
     
-    // Converte a primeira letra "App" para minúsculo "app", para bater certinho com o nome da sua pasta
-    $class = lcfirst($class);
+    // Mapeia o prefixo 'App/' para a pasta real 'app/' (que está em minúsculo no sistema)
+    if (strpos($class, 'App/') === 0) {
+        $class = 'app' . substr($class, 3);
+    }
 
     // Monta o caminho completo até o arquivo
     $file = __DIR__ . '/' . $class . '.php';

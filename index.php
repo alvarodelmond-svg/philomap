@@ -28,7 +28,7 @@ $inscricaoController = new InscricaoController($inscricaoService);
 // 2. SISTEMA DE ROTAS SIMPLIFICADO
 // Rota para exibir o formulário de inscrição
 if ($uri === '/inscricao' && $method === 'GET') {
-    require __DIR__ . '/app/view/inscricao_form.php'; // Altere para o seu arquivo real se necessário
+    require __DIR__ . '/app/view/inscricao.html'; 
     exit;
 }
 
