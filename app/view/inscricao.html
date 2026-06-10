@@ -4,89 +4,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhiloMap | Inscrição</title>
+    
     <link rel="stylesheet" href="/app/view/base.css">
     <link rel="stylesheet" href="/app/view/layout.css">
     <link rel="stylesheet" href="/app/view/style.css">
     <link rel="stylesheet" href="/app/view/animations.css">
+    
     <style>
         .form-container {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 30px;
-            background: var(--surface);
-            border-radius: 20px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+            background: var(--bg);
+            border-radius: 30px;
             border: 1px solid var(--border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
         }
+
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 2.5rem;
         }
+
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-family: var(--font-accent);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            color: var(--gold);
         }
-        .form-group input, .form-group textarea {
+
+        .form-group input, 
+        .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: var(--bg);
+            padding: 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 15px;
+            background: #fdfdfd;
             color: var(--text-main);
-            font-family: inherit;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            outline: none;
         }
-        .btn-submit {
-            background: var(--gold);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.3s;
-        }
-        .btn-submit:hover {
-            opacity: 0.9;
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            box-shadow: 0 10px 25px var(--gold-glow);
+            background: #fff;
             transform: translateY(-2px);
         }
+
+        #feedback {
+            margin-top: 2rem;
+            font-family: var(--font-accent);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 3rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+            font-family: var(--font-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+            color: var(--gold-bright);
+        }
     </style>
+
+    <script src="/app/view/main.js" defer></script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link" style="position: fixed; top: -100px; left: 0; background: var(--gold); color: white; padding: 1rem; z-index: 10005; transition: top 0.3s">Pular para o conteúdo principal</a>
+    
+    <div id="loader" class="loader-container">
+        <div style="font-family: serif; font-size: 3rem; color: #b38e44; letter-spacing: 10px; font-weight: 900">PHILOMAP</div>
+    </div>
+
     <div class="app-container">
-        <main class="main-content" style="margin-left: 0; padding: 40px 40px 0 40px;">
-            <div class="form-container reveal active">
-                <header style="text-align: justify; margin-bottom: 30px;">
-                    <span class="subtitulo">Faça parte da nossa jornada</span>
-                    <h1 style="text-align: justify;">Inscrição de Estudante</h1>
-                </header>
-                
-                <form id="formInscricao">
-                    <div class="form-group">
-                        <label for="nome" style="text-align: justify;">Nome Completo</label>
-                        <input type="text" id="nome" name="nome" required placeholder="Ex: Sócrates de Atenas">
+        <aside class="sidebar">
+            <a href="/app/view/index.html" class="sidebar-logo">
+                <img src="/imagens/logo-site.svg" alt="PhiloMap Logo" class="logo-img">
+            </a>
+            <nav class="nav-group">
+                <span class="nav-label">Explorar</span>
+                <div class="search-container">
+                    <input type="text" id="searchConcepts" placeholder="Buscar verdade..." autocomplete="off">
+                    <span class="search-icon">⚲</span>
+                </div>
+                <div class="nav-collapsible-header" id="conceptsToggle" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; margin-bottom: 2rem">
+                    <span class="nav-label" style="margin-bottom: 0">Grandes Conceitos</span>
+                    <span class="chevron" style="color: var(--gold); font-size: 1.2rem">▼</span>
+                </div>
+                <ul class="nav-list" id="conceptsList">
+                    <li class="nav-item"><a href="/app/view/index.html">Página Inicial</a></li>
+                    <li class="nav-item"><a href="/app/view/etica.html">Ética e Valores</a></li>
+                    <li class="nav-item"><a href="/app/view/logica.html">Lógica e Razão</a></li>
+                    <li class="nav-item"><a href="/app/view/moralismo.html">Moralismo Social</a></li>
+                    <li class="nav-item"><a href="/app/view/existencialismo.html">Existencialismo</a></li>
+                    <li class="nav-item"><a href="/app/view/estetica.html">Estética e Arte</a></li>
+                    <li class="nav-item"><a href="/app/view/metafisica.html">Metafísica do Ser</a></li>
+                    <li class="nav-item"><a href="/app/view/epistemologia.html">Epistemologia</a></li>
+                    <li class="nav-item"><a href="/app/view/politica.html">Política e Estado</a></li>
+                    <li class="nav-item"><a href="/app/view/linguagem.html">Linguagem</a></li>
+                    <li class="nav-item"><a href="/app/view/estoicismo.html">Estoicismo</a></li>
+                    <li class="nav-item"><a href="/app/view/fenomenologia.html">Fenomenologia</a></li>
+                    <li class="nav-item"><a href="/app/view/cinismo.html">Cinismo e Natureza</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-group">
+                <span class="nav-label">Estudos</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/app/view/literatura.html">Literatura</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-group">
+                <span class="nav-label">Institucional</span>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/app/view/index.html">Início</a></li>
+                    <li class="nav-item"><a href="/inscricao" class="active">Inscrição</a></li>
+                    <li class="nav-item"><a href="/app/view/login.html">Portal do Aluno</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border)">
+                <div class="accessibility-controls">
+                    <span class="nav-label">Acessibilidade</span>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="changeFontSize('small')" title="Diminuir fonte">A-</button>
+                        <button class="acc-btn" onclick="changeFontSize('medium')" title="Fonte padrão">A</button>
+                        <button class="acc-btn" onclick="changeFontSize('large')" title="Aumentar fonte">A+</button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="idade" style="text-align: justify;">Idade</label>
-                        <input type="number" id="idade" name="idade" required min="1" max="150" placeholder="Ex: 25">
+                    <div class="acc-btn-group">
+                        <button class="acc-btn theme-master" onclick="toggleTheme()" title="Alternar entre modo claro e escuro">Mudar Tema</button>
+                        <button class="acc-btn" onclick="toggleHighContrast()" title="Ativar modo de alto contraste">Contraste</button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="estudo" style="text-align: justify;">O que deseja estudar?</label>
-                        <textarea id="estudo" name="estudo" rows="4" required placeholder="Ex: Ética e Metafísica"></textarea>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleZenMode()" title="Ocultar elementos de distração">Modo Zen</button>
+                        <button class="acc-btn" onclick="toggleDyslexiaFont()" title="Usar fonte amigável para dislexia">Dislexia</button>
                     </div>
-                    
-                    <button type="submit" class="btn-submit">Enviar Inscrição</button>
-                </form>
-                
-                <div id="feedback" style="margin-top: 20px; text-align: justify; font-weight: 600;"></div>
-                
-                <div style="margin-top: 30px; text-align: justify; padding-bottom: 0; margin-bottom: 0 !important;">
-                    <a href="../index.html" style="color: var(--gold); text-decoration: none; font-size: 0.9rem;">← Voltar para o início</a>
+                    <div class="acc-btn-group">
+                        <button class="acc-btn" onclick="toggleOriginalFonts()" title="Restaurar fontes originais do projeto">Fonte Original</button>
+                        <button class="acc-btn" onclick="toggleReadingRuler()" title="Ativar régua de leitura que segue o mouse">Régua</button>
+                    </div>
                 </div>
             </div>
+        </aside>
+
+        <main class="main-content" id="main-content">
+            <div class="breadcrumbs" style="width: 100%; max-width: 800px; margin-bottom: 2rem">
+                <a href="/app/view/index.html" style="color: var(--gold); text-decoration: none; font-weight: 700">Início</a> / <span>Inscrição</span>
+            </div>
+
+            <section class="card reveal active" style="max-width: 800px;">
+                <header class="card-header">
+                    <span class="subtitulo">Faça parte da nossa jornada</span>
+                    <h1>Inscrição de Estudante</h1>
+                </header>
+                
+                <div class="form-container">
+                    <form id="formInscricao">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Ex: Sócrates de Atenas">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="idade">Idade</label>
+                            <input type="number" id="idade" name="idade" required min="1" max="150" placeholder="Ex: 25">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="estudo">O que deseja estudar?</label>
+                            <textarea id="estudo" name="estudo" rows="4" required placeholder="Ex: Ética e Metafísica"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit" style="width: 100%; padding: 1.8rem; font-size: 1.2rem; border-radius: 20px;">Enviar Inscrição</button>
+                    </form>
+                    
+                    <div id="feedback"></div>
+                    
+                    <a href="/app/view/index.html" class="back-link">← Voltar para o início</a>
+                </div>
+            </section>
+
+            <footer class="app-footer" style="text-align: justify; padding-bottom: 0 !important; margin-bottom: 0 !important">
+                <p style="margin-bottom: 0 !important">&copy; 2026 PhiloMap — Mapping Philosophical Architecture. Todos os direitos reservados.</p>
+            </footer>
         </main>
     </div>
 
