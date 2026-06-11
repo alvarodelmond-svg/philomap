@@ -1,6 +1,33 @@
 <?php
 
-// 1. Carrega os autoloaders do projeto (garantindo que as classes sejam achadas)
+// Habilitar erros para diagnóstico (pode remover depois)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// 0. Se o arquivo existir no disco (CSS, JS, imagens), o PHP serve direto
+if (php_sapi_name() === 'cli-server') {
+    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $file = __DIR__ . $path;
+
+    // 1. Tenta encontrar o arquivo no caminho direto (raiz)
+    if (file_exists($file) && is_file($file)) {
+        return false;
+    }
+
+    // 2. Se não achou na raiz, tenta procurar dentro de app/view/
+    $viewPath = __DIR__ . '/app/view' . $path;
+    if (file_exists($viewPath) && is_file($viewPath)) {
+        $ext = pathinfo($viewPath, PATHINFO_EXTENSION);
+        if ($ext === 'css') header('Content-Type: text/css');
+        if ($ext === 'js') header('Content-Type: application/javascript');
+        if ($ext === 'svg') header('Content-Type: image/svg+xml');
+        readfile($viewPath);
+        return true;
+    }
+}
+
+// 1. Carrega os autoloaders e configs
 require_once __DIR__ . '/autoload.php'; 
 require_once __DIR__ . '/config.php';
 
@@ -8,48 +35,53 @@ use App\Repositories\InscricaoRepository;
 use App\Services\InscricaoService;
 use App\Controller\InscricaoController;
 
-// Obtém o método HTTP e a URL atual da requisição
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-// ----------------------------------------------------------------------
-// CONTAINER DE INJEÇÃO DE DEPENDÊNCIA (A montagem dos motores do sistema)
-// ----------------------------------------------------------------------
-// O Repositório abre a conexão via Singleton automaticamente no construtor
+// Injeção de Dependência
 $inscricaoRepository = new InscricaoRepository();
-
-// Injeta o Repositório dentro do Service
 $inscricaoService = new InscricaoService($inscricaoRepository);
-
-// Injeta o Service dentro do Controller
 $inscricaoController = new InscricaoController($inscricaoService);
-// ----------------------------------------------------------------------
 
-// 2. SISTEMA DE ROTAS SIMPLIFICADO
-// Rota para exibir o formulário de inscrição
-if ($uri === '/inscricao' && $method === 'GET') {
+// 2. SISTEMA DE ROTAS DINÂMICO
+
+// Rota para a página inicial
+if ($uri === '/' || $uri === '/index.html') {
+    require __DIR__ . '/app/view/index.html'; 
+    exit;
+}
+
+// Rota específica para inscrição (GET e POST)
+if ($uri === '/inscricao') {
     require __DIR__ . '/app/view/inscricao.html'; 
     exit;
 }
 
-// Rota POST: Onde o usuário envia os dados do formulário
 if ($uri === '/inscricao/salvar' && $method === 'POST') {
-    
-    // --- SANITIZAÇÃO CONTRA XSS (Exigência extra do Passo 5) ---
-    // Limpa tags HTML maliciosas antes que elas cheguem no Controller
     $_POST['nome']  = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
     $_POST['email'] = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $_POST['curso'] = filter_input(INPUT_POST, 'curso', FILTER_SANITIZE_SPECIAL_CHARS);
-    
-    // Dispara a execução no Controller já montado com suas dependências
     $inscricaoController->store();
     exit;
 }
 
-// Rota de Sucesso após o redirecionamento
-if ($uri === '/inscricao/sucesso' && $method === 'GET') {
+if ($uri === '/inscricao/sucesso') {
     echo "<h2>Inscrição realizada com sucesso no PhiloMap!</h2>";
-    echo "<a href='/inscricao'>Voltar ao formulário</a>";
+    echo "<a href='/'>Voltar ao início</a>";
+    exit;
+}
+
+// Tenta encontrar o arquivo correspondente na pasta app/view
+$viewFile = __DIR__ . '/app/view' . $uri;
+if (file_exists($viewFile) && is_file($viewFile)) {
+    require $viewFile;
+    exit;
+}
+
+// Tenta encontrar sem a extensão .html
+$viewFileWithExt = __DIR__ . '/app/view' . $uri . '.html';
+if (file_exists($viewFileWithExt) && is_file($viewFileWithExt)) {
+    require $viewFileWithExt;
     exit;
 }
 
