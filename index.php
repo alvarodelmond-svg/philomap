@@ -12,6 +12,14 @@ use App\Controller\InscricaoController;
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
+// Permite o servidor embutido do PHP servir arquivos estáticos diretamente
+if (php_sapi_name() === 'cli-server') {
+    $requestedFile = __DIR__ . $uri;
+    if (is_file($requestedFile)) {
+        return false;
+    }
+}
+
 // ----------------------------------------------------------------------
 // CONTAINER DE INJEÇÃO DE DEPENDÊNCIA (A montagem dos motores do sistema)
 // ----------------------------------------------------------------------
@@ -26,6 +34,12 @@ $inscricaoController = new InscricaoController($inscricaoService);
 // ----------------------------------------------------------------------
 
 // 2. SISTEMA DE ROTAS SIMPLIFICADO
+// Rota para redirecionar a raiz para o índice visual do site
+if (($uri === '/' || $uri === '/home' || $uri === '/index') && $method === 'GET') {
+    header('Location: /app/view/index.html');
+    exit;
+}
+
 // Rota para exibir o formulário de inscrição
 if ($uri === '/inscricao' && $method === 'GET') {
     require __DIR__ . '/app/view/inscricao.html'; 
